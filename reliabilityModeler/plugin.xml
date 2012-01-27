@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="com.system.reliability.modeler.editor.ReliabilityModelEditor"
+            default="false"
+            id="com.system.reliability.editorId"
+            name="Reliability Model Editor">
+      </editor>
+   </extension>
+
+</plugin>

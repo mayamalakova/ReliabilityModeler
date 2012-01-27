@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ReliabilityModeler
+Bundle-SymbolicName: reliabilityModeler;singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Activator: com.system.reliability.modeler.Activator
+Bundle-Vendor: Maya Malakova
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ system.reliability.model;bundle-version="1.0.0",
+ org.eclipse.gef;bundle-version="3.7.1"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
