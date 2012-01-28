@@ -118,6 +118,7 @@ public interface Transition extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Failure State</b></em>' containment reference.
+	 * It is bidirectional and its opposite is '{@link com.reliability.system.Failure#getOwner <em>Owner</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Failure State</em>' containment reference isn't clear,
@@ -127,7 +128,8 @@ public interface Transition extends EObject {
 	 * @return the value of the '<em>Failure State</em>' containment reference.
 	 * @see #setFailureState(Failure)
 	 * @see com.reliability.system.SystemPackage#getTransition_FailureState()
-	 * @model containment="true" required="true"
+	 * @see com.reliability.system.Failure#getOwner
+	 * @model opposite="owner" containment="true" required="true"
 	 * @generated
 	 */
 	Failure getFailureState();

@@ -17,7 +17,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="outputPorts" unique="false"
         lowerBound="1" upperBound="-1" eType="#//Port"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="failureState" unique="false"
-        lowerBound="1" eType="#//Failure" containment="true"/>
+        lowerBound="1" eType="#//Failure" containment="true" eOpposite="#//Failure/owner"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" unique="false" eType="#//TransitionType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Position" abstract="true">
@@ -67,5 +67,8 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" unique="false" eType="#//PositionType"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Failure" eSuperTypes="#//Position"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Failure" eSuperTypes="#//Position">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owner" eType="#//Transition"
+        eOpposite="#//Transition/failureState"/>
+  </eClassifiers>
 </ecore:EPackage>

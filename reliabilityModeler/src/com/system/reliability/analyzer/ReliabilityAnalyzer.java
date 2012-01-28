@@ -40,7 +40,7 @@ public class ReliabilityAnalyzer {
 	public void findAllFailurePaths(TransitionPath currentPath, Position currentPosition) {
 		if (currentPosition instanceof Failure) {
 			System.out.print(currentPath);
-			System.out.println(" Reliability = " + currentPath.getReliability());
+			System.out.println(" Necessity for failure = " + currentPath.getReliability());
 			ReliabilityProfile profile = reliabilityProfiles.get(currentPath.getStartPosition());
 			profile.updateFailureNecessity(currentPath);
 			return;

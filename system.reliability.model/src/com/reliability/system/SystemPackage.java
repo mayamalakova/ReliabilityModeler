@@ -337,13 +337,22 @@ public interface SystemPackage extends EPackage {
 	int FAILURE__ID = POSITION__ID;
 
 	/**
+	 * The feature id for the '<em><b>Owner</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FAILURE__OWNER = POSITION_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Failure</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FAILURE_FEATURE_COUNT = POSITION_FEATURE_COUNT + 0;
+	int FAILURE_FEATURE_COUNT = POSITION_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link com.reliability.system.PositionType <em>Position Type</em>}' enum.
@@ -614,6 +623,17 @@ public interface SystemPackage extends EPackage {
 	EClass getFailure();
 
 	/**
+	 * Returns the meta object for the container reference '{@link com.reliability.system.Failure#getOwner <em>Owner</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Owner</em>'.
+	 * @see com.reliability.system.Failure#getOwner()
+	 * @see #getFailure()
+	 * @generated
+	 */
+	EReference getFailure_Owner();
+
+	/**
 	 * Returns the meta object for enum '{@link com.reliability.system.PositionType <em>Position Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -850,6 +870,14 @@ public interface SystemPackage extends EPackage {
 		 * @generated
 		 */
 		EClass FAILURE = eINSTANCE.getFailure();
+
+		/**
+		 * The meta object literal for the '<em><b>Owner</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FAILURE__OWNER = eINSTANCE.getFailure_Owner();
 
 		/**
 		 * The meta object literal for the '{@link com.reliability.system.PositionType <em>Position Type</em>}' enum.

@@ -254,9 +254,9 @@ public class TransitionImpl extends EObjectImpl implements Transition {
 		if (newFailureState != failureState) {
 			NotificationChain msgs = null;
 			if (failureState != null)
-				msgs = ((InternalEObject)failureState).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SystemPackage.TRANSITION__FAILURE_STATE, null, msgs);
+				msgs = ((InternalEObject)failureState).eInverseRemove(this, SystemPackage.FAILURE__OWNER, Failure.class, msgs);
 			if (newFailureState != null)
-				msgs = ((InternalEObject)newFailureState).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SystemPackage.TRANSITION__FAILURE_STATE, null, msgs);
+				msgs = ((InternalEObject)newFailureState).eInverseAdd(this, SystemPackage.FAILURE__OWNER, Failure.class, msgs);
 			msgs = basicSetFailureState(newFailureState, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
@@ -283,6 +283,22 @@ public class TransitionImpl extends EObjectImpl implements Transition {
 		type = newType == null ? TYPE_EDEFAULT : newType;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, SystemPackage.TRANSITION__TYPE, oldType, type));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case SystemPackage.TRANSITION__FAILURE_STATE:
+				if (failureState != null)
+					msgs = ((InternalEObject)failureState).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SystemPackage.TRANSITION__FAILURE_STATE, null, msgs);
+				return basicSetFailureState((Failure)otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
