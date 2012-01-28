@@ -32,12 +32,10 @@ public class ReliabilityAnalyzer {
 		
 	}
 
-
 	private static void estimateReliability() {
 		// TODO Auto-generated method stub
 		System.out.println("Not yet implemented");
 	}
-
 
 	private static void readModel() {
 		System.out.println("Enter model file location: ");
@@ -49,14 +47,11 @@ public class ReliabilityAnalyzer {
 		
 	}
 
-
 	private static void displayMenu() {
 			System.out.println("Select action:");
 			System.out.println("1  -Read model");
 			System.out.println("2 - Estimate reliability");
 			System.out.println("3 - Quit");
 	}
-	
-	
 	
 }
