@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import com.reliability.system.Failure;
 import com.reliability.system.Port;
 import com.reliability.system.TransitionMatrixElement;
 
@@ -12,6 +13,7 @@ public class TransitionPath {
 	private Port startPosition;
 	private List<TransitionMatrixElement> route;
 	private Set<String> positionsSet;
+	private Failure failure;
 	
 	public TransitionPath(Port startPosition) {
 		this.startPosition = startPosition;
@@ -22,6 +24,9 @@ public class TransitionPath {
 	public void addPosition(TransitionMatrixElement element) {
 		route.add(element);
 		positionsSet.add(element.getOppositePosition().getId());
+		if (element.getOppositePosition() instanceof Failure){
+			failure = (Failure) element.getOppositePosition();
+		}
 	}
 	
 	public boolean containsNode(TransitionMatrixElement element) {
@@ -32,12 +37,18 @@ public class TransitionPath {
 		return startPosition;
 	}
 
-	public  void displayPath() {
-		System.out.print("Path: " + startPosition.getId() );
+	public  String toString() {
+		StringBuilder builder = new StringBuilder("Path: ").append(startPosition.getId());
 		for (TransitionMatrixElement node: route) {
-			System.out.print(" -<" + node.getNecessity() + ", " + node.getPossibility() + ">- " + node.getOppositePosition().getId());
+			builder.append(" -<");
+			builder.append(node.getNecessity());
+			builder.append(", ");
+			builder.append(node.getPossibility());
+			builder.append(">- ");
+			builder.append(node.getOppositePosition().getId());
 		}
-		System.out.println(" Reliability = " + getReliability());
+		
+		return builder.toString();
 	}
 	
 	public void removeLastPosition() {
@@ -54,6 +65,10 @@ public class TransitionPath {
 		}
 		
 		return result;
+	}
+
+	public Failure getFailure() {
+		return failure;
 	}
 	
 }

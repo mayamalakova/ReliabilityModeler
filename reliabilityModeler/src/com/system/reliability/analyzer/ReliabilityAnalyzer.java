@@ -1,6 +1,8 @@
 package com.system.reliability.analyzer;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 import com.reliability.system.Failure;
@@ -12,16 +14,19 @@ import com.system.reliability.modeler.utils.ReliabilityModelUtils;
 
 public class ReliabilityAnalyzer {
 	private  GeneralizedNet systemModel = null;
+	private Map<Port, ReliabilityProfile> reliabilityProfiles;
 
-	public  void estimateReliability() {
-		// TODO Auto-generated method stub
-		System.out.println("Not yet implemented");
-		
+	public  Map<Port, ReliabilityProfile> estimateReliability() {
 		List<Port> systemInputs = ReliabilityModelUtils.getSystemInputs(systemModel);
 		displayPortList(systemInputs);
+		reliabilityProfiles = new HashMap<Port, ReliabilityProfile>();
 		for (Port systemInput: systemInputs) {
+			ReliabilityProfile profile = new ReliabilityProfile();
+			reliabilityProfiles.put(systemInput, profile);
 			findAllFailurePaths(new TransitionPath(systemInput), systemInput);
 		}
+		
+		return reliabilityProfiles;
 	}
 
 	public void readModel(String fileLocation) {
@@ -34,7 +39,10 @@ public class ReliabilityAnalyzer {
 	
 	public void findAllFailurePaths(TransitionPath currentPath, Position currentPosition) {
 		if (currentPosition instanceof Failure) {
-			currentPath.displayPath();
+			System.out.print(currentPath);
+			System.out.println(" Reliability = " + currentPath.getReliability());
+			ReliabilityProfile profile = reliabilityProfiles.get(currentPath.getStartPosition());
+			profile.updateFailureNecessity(currentPath);
 			return;
 		}
 		
@@ -47,6 +55,10 @@ public class ReliabilityAnalyzer {
 		}
 	}
 	
+	public Map<Port, ReliabilityProfile> getReliabilityProfiles() {
+		return reliabilityProfiles;
+	}
+
 	public static void main(String[] args) {
 		ReliabilityAnalyzer analyzer = new ReliabilityAnalyzer();
 		Scanner scanner = new Scanner(System.in);
@@ -66,7 +78,8 @@ public class ReliabilityAnalyzer {
 				break;
 
 			case 2:
-				analyzer.estimateReliability();
+				Map<Port, ReliabilityProfile> reliabilityProfiles = analyzer.estimateReliability();
+				displayReliabilityProfiles(reliabilityProfiles);
 				break;
 				
 			default:
@@ -92,6 +105,13 @@ public class ReliabilityAnalyzer {
 		
 		sb.delete(sb.length() - 1, sb.length());
 		System.out.println("System inputs: " + sb.toString());
+	}
+	
+	private static void displayReliabilityProfiles(Map<Port, ReliabilityProfile> reliabilityProfiles) {
+		for (Port port: reliabilityProfiles.keySet()) {
+			ReliabilityProfile profile = reliabilityProfiles.get(port);
+			System.out.println("Input: " + port.getId() + " - " + profile);
+		}
 	}
 	
 }
