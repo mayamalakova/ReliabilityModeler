@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gn:GeneralizedNet xmlns:gn="system.reliability.model" name="User Interface">
+  <transitions name="Event Transmitter" inputPorts="#L12 #L22 #L32" outputPorts="#L11 #L21 #L31 #L41" type="Connector">
+    <failureState id="M5"/>
+  </transitions>
+  <transitions name="Input Device Driver 1" inputPorts="#L11" outputPorts="#L12">
+    <failureState id="M1"/>
+  </transitions>
+  <transitions name="Screen Driver">
+    <failureState id="M4"/>
+  </transitions>
+  <transitions name="Input Device Driver 2" inputPorts="#L21" outputPorts="#L22">
+    <failureState id="M2"/>
+  </transitions>
+  <transitions name="Visualization Component" description="" inputPorts="#L31" outputPorts="#L32">
+    <failureState id="M3"/>
+  </transitions>
+  <positions id="L11">
+    <transitionRow oppositePosition="#L12" necessity="1.0"/>
+    <transitionRow oppositePosition="#M1" necessity="0.01" possibility="0.99"/>
+  </positions>
+  <positions id="L12">
+    <transitionRow oppositePosition="#L31" necessity="1.0"/>
+    <transitionRow oppositePosition="#M5" necessity="0.02" possibility="0.98"/>
+  </positions>
+  <positions id="L21">
+    <transitionRow oppositePosition="#L22" necessity="1.0"/>
+    <transitionRow oppositePosition="#M2" necessity="0.03" possibility="0.97"/>
+  </positions>
+  <positions id="L22">
+    <transitionRow oppositePosition="#L31" necessity="1.0"/>
+    <transitionRow oppositePosition="#M5" necessity="0.02" possibility="0.98"/>
+  </positions>
+  <positions id="L31">
+    <transitionRow oppositePosition="#M3" necessity="0.0040" possibility="0.996"/>
+    <transitionRow oppositePosition="#L32" necessity="1.0"/>
+  </positions>
+  <positions id="L32">
+    <transitionRow oppositePosition="#L41" necessity="1.0"/>
+    <transitionRow oppositePosition="#M5" necessity="0.02" possibility="0.98"/>
+  </positions>
+  <positions id="L41">
+    <transitionRow oppositePosition="#L42" necessity="1.0"/>
+    <transitionRow oppositePosition="#M4" necessity="0.0070" possibility="0.993"/>
+  </positions>
+  <positions id="L42"/>
+</gn:GeneralizedNet>

@@ -1,6 +1,8 @@
 package com.system.reliability.modeler.utils;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -14,6 +16,7 @@ import com.reliability.system.PositionType;
 import com.reliability.system.SystemFactory;
 import com.reliability.system.SystemPackage;
 import com.reliability.system.Transition;
+import com.reliability.system.TransitionMatrixElement;
 import com.reliability.system.TransitionType;
 import com.reliability.system.util.SystemResourceFactoryImpl;
 
@@ -102,4 +105,25 @@ public class ReliabilityModelUtils {
 		
 		return failure;
 	}
+	
+	public static List<Port> clonePortsList(List<Port> source){
+		List<Port> target = new ArrayList<Port>();
+		for (Port port: source){
+			target.add(port);
+		}
+		return target;
+	}
+	
+	public static List<Port> getSystemInputs(GeneralizedNet systemModel) {
+		List<Port> systemInputs = ReliabilityModelUtils.clonePortsList(systemModel.getPositions());
+		
+		for (Port port: systemModel.getPositions()) {
+			for (TransitionMatrixElement matrixElement: port.getTransitionRow()){
+				systemInputs.remove(matrixElement.getOppositePosition());
+			}
+		}
+		
+		return systemInputs;
+	}
+	
 }
