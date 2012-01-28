@@ -1,4 +1,4 @@
-package com.system.reliability.modeler.editor;
+package com.system.reliability.modeler.editor.part;
 
 import java.util.ArrayList;
 import java.util.List;

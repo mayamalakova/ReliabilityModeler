@@ -1,12 +1,21 @@
 package com.system.reliability.modeler.utils;
 
+import java.io.IOException;
+
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+
 import com.reliability.system.Failure;
 import com.reliability.system.GeneralizedNet;
 import com.reliability.system.Port;
 import com.reliability.system.PositionType;
 import com.reliability.system.SystemFactory;
+import com.reliability.system.SystemPackage;
 import com.reliability.system.Transition;
 import com.reliability.system.TransitionType;
+import com.reliability.system.util.SystemResourceFactoryImpl;
 
 public class ReliabilityModelUtils {
 	
@@ -43,6 +52,31 @@ public class ReliabilityModelUtils {
 		generalizedNet.getTransitions().add(screenDriver);
 		
 		return generalizedNet;
+	}
+	
+	public static GeneralizedNet createModelFromFile(String fileLocaltion) {
+		GeneralizedNet model  = null;
+		
+		SystemPackage.eINSTANCE.eClass();
+		ResourceSet resourceSet = new ResourceSetImpl();
+		URI uri = URI.createFileURI(fileLocaltion);
+		Resource resource = resourceSet.createResource(uri);
+		
+		if (resource == null) {
+			//explicitly register the model resource factory if invoked outside of the eclipse platform
+			resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("system", new SystemResourceFactoryImpl());
+			resource = resourceSet.createResource(uri);
+		}
+		
+		try {
+			resource.load(null);
+			model = (GeneralizedNet) resource.getContents().get(0);
+		} catch (IOException e) {
+			model = null;
+			e.printStackTrace();
+		}
+
+		return model;
 	}
 	
 	private static Transition createTransition(String name, String description, TransitionType type){
