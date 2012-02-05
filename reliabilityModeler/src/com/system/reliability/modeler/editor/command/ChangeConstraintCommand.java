@@ -3,12 +3,12 @@ package com.system.reliability.modeler.editor.command;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.commands.Command;
 
-import com.reliability.system.view.TransitionView;
+import com.reliability.system.view.ViewObject;
 
 public class ChangeConstraintCommand extends Command {
 	private Rectangle oldConstraint;
 	private Rectangle newConstraint;
-	private TransitionView model;
+	private ViewObject model;
 
 	@Override
 	public void execute() {
@@ -23,7 +23,7 @@ public class ChangeConstraintCommand extends Command {
 		model.setConstraints(oldConstraint);
 	}
 
-	public void setModel(TransitionView model) {
+	public void setModel(ViewObject model) {
 		this.model = model;
 	}
 

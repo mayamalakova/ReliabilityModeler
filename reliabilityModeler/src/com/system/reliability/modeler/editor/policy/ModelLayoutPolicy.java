@@ -12,6 +12,7 @@ import com.reliability.system.TransitionType;
 import com.reliability.system.view.PortView;
 import com.reliability.system.view.SystemView;
 import com.reliability.system.view.TransitionView;
+import com.reliability.system.view.ViewObject;
 import com.system.reliability.modeler.editor.command.ChangeConstraintCommand;
 import com.system.reliability.modeler.editor.command.CreateComponentCommand;
 import com.system.reliability.modeler.editor.command.CreateConnectorCommand;
@@ -23,7 +24,7 @@ public class ModelLayoutPolicy extends XYLayoutEditPolicy {
 	@Override 
 	protected Command createChangeConstraintCommand(EditPart child, Object constraint) {
 	    ChangeConstraintCommand command = new ChangeConstraintCommand();
-	    command.setModel((TransitionView) child.getModel());
+	    command.setModel((ViewObject) child.getModel());
 	    command.setNewConstraint((Rectangle) constraint);
 	    return command;
 	  }

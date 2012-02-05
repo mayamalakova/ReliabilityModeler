@@ -84,6 +84,7 @@ public class ViewSwitch<T> extends Switch<T> {
 				TransitionView transitionView = (TransitionView)theEObject;
 				T result = caseTransitionView(transitionView);
 				if (result == null) result = caseTransition(transitionView);
+				if (result == null) result = caseViewObject(transitionView);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}

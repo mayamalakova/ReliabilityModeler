@@ -185,17 +185,8 @@ public class ViewPackageImpl extends EPackageImpl implements ViewPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTransitionView_Constraints() {
-		return (EAttribute)transitionViewEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getTransitionView_Owner() {
-		return (EReference)transitionViewEClass.getEStructuralFeatures().get(1);
+		return (EReference)transitionViewEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -232,6 +223,15 @@ public class ViewPackageImpl extends EPackageImpl implements ViewPackage {
 	 */
 	public EAttribute getViewObject_Constraints() {
 		return (EAttribute)viewObjectEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getViewObject_Label() {
+		return (EAttribute)viewObjectEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -277,7 +277,6 @@ public class ViewPackageImpl extends EPackageImpl implements ViewPackage {
 		createEAttribute(systemViewEClass, SYSTEM_VIEW__NAME);
 
 		transitionViewEClass = createEClass(TRANSITION_VIEW);
-		createEAttribute(transitionViewEClass, TRANSITION_VIEW__CONSTRAINTS);
 		createEReference(transitionViewEClass, TRANSITION_VIEW__OWNER);
 
 		portViewEClass = createEClass(PORT_VIEW);
@@ -285,6 +284,7 @@ public class ViewPackageImpl extends EPackageImpl implements ViewPackage {
 
 		viewObjectEClass = createEClass(VIEW_OBJECT);
 		createEAttribute(viewObjectEClass, VIEW_OBJECT__CONSTRAINTS);
+		createEAttribute(viewObjectEClass, VIEW_OBJECT__LABEL);
 
 		// Create data types
 		rectangleEDataType = createEDataType(RECTANGLE);
@@ -322,6 +322,7 @@ public class ViewPackageImpl extends EPackageImpl implements ViewPackage {
 
 		// Add supertypes to classes
 		transitionViewEClass.getESuperTypes().add(theSystemPackage.getTransition());
+		transitionViewEClass.getESuperTypes().add(this.getViewObject());
 		portViewEClass.getESuperTypes().add(theSystemPackage.getPort());
 		portViewEClass.getESuperTypes().add(this.getViewObject());
 
@@ -332,7 +333,6 @@ public class ViewPackageImpl extends EPackageImpl implements ViewPackage {
 		initEAttribute(getSystemView_Name(), ecorePackage.getEString(), "name", "", 0, 1, SystemView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(transitionViewEClass, TransitionView.class, "TransitionView", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTransitionView_Constraints(), this.getRectangle(), "constraints", null, 0, 1, TransitionView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTransitionView_Owner(), this.getSystemView(), this.getSystemView_Transitions(), "owner", null, 0, 1, TransitionView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(portViewEClass, PortView.class, "PortView", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -340,6 +340,7 @@ public class ViewPackageImpl extends EPackageImpl implements ViewPackage {
 
 		initEClass(viewObjectEClass, ViewObject.class, "ViewObject", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getViewObject_Constraints(), this.getRectangle(), "constraints", null, 0, 1, ViewObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getViewObject_Label(), ecorePackage.getEString(), "label", "", 0, 1, ViewObject.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		// Initialize data types
 		initEDataType(rectangleEDataType, Rectangle.class, "Rectangle", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

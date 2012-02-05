@@ -66,6 +66,7 @@ public class TransitionViewItemProvider
 			super.getPropertyDescriptors(object);
 
 			addConstraintsPropertyDescriptor(object);
+			addLabelPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -81,9 +82,31 @@ public class TransitionViewItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_TransitionView_constraints_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_TransitionView_constraints_feature", "_UI_TransitionView_type"),
-				 ViewPackage.Literals.TRANSITION_VIEW__CONSTRAINTS,
+				 getString("_UI_ViewObject_constraints_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ViewObject_constraints_feature", "_UI_ViewObject_type"),
+				 ViewPackage.Literals.VIEW_OBJECT__CONSTRAINTS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Label feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addLabelPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ViewObject_label_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ViewObject_label_feature", "_UI_ViewObject_type"),
+				 ViewPackage.Literals.VIEW_OBJECT__LABEL,
 				 true,
 				 false,
 				 false,
@@ -130,6 +153,7 @@ public class TransitionViewItemProvider
 
 		switch (notification.getFeatureID(TransitionView.class)) {
 			case ViewPackage.TRANSITION_VIEW__CONSTRAINTS:
+			case ViewPackage.TRANSITION_VIEW__LABEL:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

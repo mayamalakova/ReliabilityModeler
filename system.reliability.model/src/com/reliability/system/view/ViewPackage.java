@@ -182,13 +182,22 @@ public interface ViewPackage extends EPackage {
 	int TRANSITION_VIEW__CONSTRAINTS = SystemPackage.TRANSITION_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION_VIEW__LABEL = SystemPackage.TRANSITION_FEATURE_COUNT + 1;
+
+	/**
 	 * The feature id for the '<em><b>Owner</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION_VIEW__OWNER = SystemPackage.TRANSITION_FEATURE_COUNT + 1;
+	int TRANSITION_VIEW__OWNER = SystemPackage.TRANSITION_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Transition View</em>' class.
@@ -197,7 +206,7 @@ public interface ViewPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION_VIEW_FEATURE_COUNT = SystemPackage.TRANSITION_FEATURE_COUNT + 2;
+	int TRANSITION_VIEW_FEATURE_COUNT = SystemPackage.TRANSITION_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link com.reliability.system.view.impl.PortViewImpl <em>Port View</em>}' class.
@@ -246,13 +255,22 @@ public interface ViewPackage extends EPackage {
 	int PORT_VIEW__CONSTRAINTS = SystemPackage.PORT_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PORT_VIEW__LABEL = SystemPackage.PORT_FEATURE_COUNT + 1;
+
+	/**
 	 * The feature id for the '<em><b>Owner</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PORT_VIEW__OWNER = SystemPackage.PORT_FEATURE_COUNT + 1;
+	int PORT_VIEW__OWNER = SystemPackage.PORT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Port View</em>' class.
@@ -261,7 +279,7 @@ public interface ViewPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PORT_VIEW_FEATURE_COUNT = SystemPackage.PORT_FEATURE_COUNT + 2;
+	int PORT_VIEW_FEATURE_COUNT = SystemPackage.PORT_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link com.reliability.system.view.impl.ViewObjectImpl <em>Object</em>}' class.
@@ -283,13 +301,22 @@ public interface ViewPackage extends EPackage {
 	int VIEW_OBJECT__CONSTRAINTS = 0;
 
 	/**
+	 * The feature id for the '<em><b>Label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_OBJECT__LABEL = 1;
+
+	/**
 	 * The number of structural features of the '<em>Object</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VIEW_OBJECT_FEATURE_COUNT = 1;
+	int VIEW_OBJECT_FEATURE_COUNT = 2;
 
 	/**
 	 * The meta object id for the '<em>Rectangle</em>' data type.
@@ -356,17 +383,6 @@ public interface ViewPackage extends EPackage {
 	EClass getTransitionView();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.reliability.system.view.TransitionView#getConstraints <em>Constraints</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Constraints</em>'.
-	 * @see com.reliability.system.view.TransitionView#getConstraints()
-	 * @see #getTransitionView()
-	 * @generated
-	 */
-	EAttribute getTransitionView_Constraints();
-
-	/**
 	 * Returns the meta object for the container reference '{@link com.reliability.system.view.TransitionView#getOwner <em>Owner</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -418,6 +434,17 @@ public interface ViewPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getViewObject_Constraints();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.reliability.system.view.ViewObject#getLabel <em>Label</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Label</em>'.
+	 * @see com.reliability.system.view.ViewObject#getLabel()
+	 * @see #getViewObject()
+	 * @generated
+	 */
+	EAttribute getViewObject_Label();
 
 	/**
 	 * Returns the meta object for data type '{@link org.eclipse.draw2d.geometry.Rectangle <em>Rectangle</em>}'.
@@ -497,14 +524,6 @@ public interface ViewPackage extends EPackage {
 		EClass TRANSITION_VIEW = eINSTANCE.getTransitionView();
 
 		/**
-		 * The meta object literal for the '<em><b>Constraints</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TRANSITION_VIEW__CONSTRAINTS = eINSTANCE.getTransitionView_Constraints();
-
-		/**
 		 * The meta object literal for the '<em><b>Owner</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -547,6 +566,14 @@ public interface ViewPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute VIEW_OBJECT__CONSTRAINTS = eINSTANCE.getViewObject_Constraints();
+
+		/**
+		 * The meta object literal for the '<em><b>Label</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VIEW_OBJECT__LABEL = eINSTANCE.getViewObject_Label();
 
 		/**
 		 * The meta object literal for the '<em>Rectangle</em>' data type.

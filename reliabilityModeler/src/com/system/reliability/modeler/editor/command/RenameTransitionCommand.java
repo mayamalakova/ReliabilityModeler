@@ -2,28 +2,28 @@ package com.system.reliability.modeler.editor.command;
 
 import org.eclipse.gef.commands.Command;
 
-import com.reliability.system.view.TransitionView;
+import com.reliability.system.view.ViewObject;
 
 public class RenameTransitionCommand extends Command {
 	private String oldName, newName;
-	private TransitionView model;
+	private ViewObject model;
 
 	@Override
 	public void execute() {
-		oldName = model.getName();
-		model.setName(newName);
+		oldName = model.getLabel();
+		model.setLabel(newName);
 	}
 
 	@Override
 	public void undo() {
-		model.setName(oldName);
+		model.setLabel(oldName);
 	}
 
 	public void setNewName(String newName) {
 		this.newName = newName;
 	}
 
-	public void setModel(TransitionView model) {
+	public void setModel(ViewObject model) {
 		this.model = model;
 	}
 }

@@ -18,7 +18,6 @@ import org.eclipse.draw2d.geometry.Rectangle;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link com.reliability.system.view.TransitionView#getConstraints <em>Constraints</em>}</li>
  *   <li>{@link com.reliability.system.view.TransitionView#getOwner <em>Owner</em>}</li>
  * </ul>
  * </p>
@@ -27,33 +26,7 @@ import org.eclipse.draw2d.geometry.Rectangle;
  * @model
  * @generated
  */
-public interface TransitionView extends Transition {
-	/**
-	 * Returns the value of the '<em><b>Constraints</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Constraints</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Constraints</em>' attribute.
-	 * @see #setConstraints(Rectangle)
-	 * @see com.reliability.system.view.ViewPackage#getTransitionView_Constraints()
-	 * @model dataType="com.reliability.system.view.Rectangle"
-	 * @generated
-	 */
-	Rectangle getConstraints();
-
-	/**
-	 * Sets the value of the '{@link com.reliability.system.view.TransitionView#getConstraints <em>Constraints</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Constraints</em>' attribute.
-	 * @see #getConstraints()
-	 * @generated
-	 */
-	void setConstraints(Rectangle value);
-
+public interface TransitionView extends Transition, ViewObject {
 	/**
 	 * Returns the value of the '<em><b>Owner</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link com.reliability.system.view.SystemView#getTransitions <em>Transitions</em>}'.

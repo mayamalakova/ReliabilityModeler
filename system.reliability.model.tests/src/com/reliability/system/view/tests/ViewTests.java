@@ -35,6 +35,8 @@ public class ViewTests extends TestSuite {
 	 */
 	public static Test suite() {
 		TestSuite suite = new ViewTests("view Tests");
+		suite.addTestSuite(TransitionViewTest.class);
+		suite.addTestSuite(PortViewTest.class);
 		return suite;
 	}
 

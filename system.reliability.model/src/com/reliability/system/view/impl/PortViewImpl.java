@@ -33,6 +33,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * The following features are implemented:
  * <ul>
  *   <li>{@link com.reliability.system.view.impl.PortViewImpl#getConstraints <em>Constraints</em>}</li>
+ *   <li>{@link com.reliability.system.view.impl.PortViewImpl#getLabel <em>Label</em>}</li>
  *   <li>{@link com.reliability.system.view.impl.PortViewImpl#getOwner <em>Owner</em>}</li>
  * </ul>
  * </p>
@@ -59,6 +60,26 @@ public class PortViewImpl extends PortImpl implements PortView {
 	 * @ordered
 	 */
 	protected Rectangle constraints = CONSTRAINTS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLabel()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String LABEL_EDEFAULT = "";
+
+	/**
+	 * The cached value of the '{@link #getLabel() <em>Label</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLabel()
+	 * @generated
+	 * @ordered
+	 */
+	protected String label = LABEL_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -98,6 +119,24 @@ public class PortViewImpl extends PortImpl implements PortView {
 		constraints = newConstraints;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ViewPackage.PORT_VIEW__CONSTRAINTS, oldConstraints, constraints));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @not generated
+	 */
+	public String getLabel() {
+		return getId();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @not generated
+	 */
+	public void setLabel(String newLabel) {
+		setId(newLabel);
 	}
 
 	/**
@@ -195,6 +234,8 @@ public class PortViewImpl extends PortImpl implements PortView {
 		switch (featureID) {
 			case ViewPackage.PORT_VIEW__CONSTRAINTS:
 				return getConstraints();
+			case ViewPackage.PORT_VIEW__LABEL:
+				return getLabel();
 			case ViewPackage.PORT_VIEW__OWNER:
 				return getOwner();
 		}
@@ -211,6 +252,9 @@ public class PortViewImpl extends PortImpl implements PortView {
 		switch (featureID) {
 			case ViewPackage.PORT_VIEW__CONSTRAINTS:
 				setConstraints((Rectangle)newValue);
+				return;
+			case ViewPackage.PORT_VIEW__LABEL:
+				setLabel((String)newValue);
 				return;
 			case ViewPackage.PORT_VIEW__OWNER:
 				setOwner((SystemView)newValue);
@@ -230,6 +274,9 @@ public class PortViewImpl extends PortImpl implements PortView {
 			case ViewPackage.PORT_VIEW__CONSTRAINTS:
 				setConstraints(CONSTRAINTS_EDEFAULT);
 				return;
+			case ViewPackage.PORT_VIEW__LABEL:
+				setLabel(LABEL_EDEFAULT);
+				return;
 			case ViewPackage.PORT_VIEW__OWNER:
 				setOwner((SystemView)null);
 				return;
@@ -247,6 +294,8 @@ public class PortViewImpl extends PortImpl implements PortView {
 		switch (featureID) {
 			case ViewPackage.PORT_VIEW__CONSTRAINTS:
 				return CONSTRAINTS_EDEFAULT == null ? constraints != null : !CONSTRAINTS_EDEFAULT.equals(constraints);
+			case ViewPackage.PORT_VIEW__LABEL:
+				return LABEL_EDEFAULT == null ? label != null : !LABEL_EDEFAULT.equals(label);
 			case ViewPackage.PORT_VIEW__OWNER:
 				return getOwner() != null;
 		}
@@ -263,6 +312,7 @@ public class PortViewImpl extends PortImpl implements PortView {
 		if (baseClass == ViewObject.class) {
 			switch (derivedFeatureID) {
 				case ViewPackage.PORT_VIEW__CONSTRAINTS: return ViewPackage.VIEW_OBJECT__CONSTRAINTS;
+				case ViewPackage.PORT_VIEW__LABEL: return ViewPackage.VIEW_OBJECT__LABEL;
 				default: return -1;
 			}
 		}
@@ -279,6 +329,7 @@ public class PortViewImpl extends PortImpl implements PortView {
 		if (baseClass == ViewObject.class) {
 			switch (baseFeatureID) {
 				case ViewPackage.VIEW_OBJECT__CONSTRAINTS: return ViewPackage.PORT_VIEW__CONSTRAINTS;
+				case ViewPackage.VIEW_OBJECT__LABEL: return ViewPackage.PORT_VIEW__LABEL;
 				default: return -1;
 			}
 		}
@@ -297,6 +348,8 @@ public class PortViewImpl extends PortImpl implements PortView {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (constraints: ");
 		result.append(constraints);
+		result.append(", label: ");
+		result.append(label);
 		result.append(')');
 		return result.toString();
 	}

@@ -12,18 +12,17 @@ import org.eclipse.gef.RequestConstants;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 import org.eclipse.jface.viewers.TextCellEditor;
 
-import com.reliability.system.view.PortView;
-import com.reliability.system.view.TransitionView;
+import com.reliability.system.view.ViewObject;
 import com.system.reliability.modeler.editor.ReliabilityDirectEditManager;
 import com.system.reliability.modeler.editor.TransitionCellEditorLocator;
 import com.system.reliability.modeler.editor.figure.IModelFigure;
 import com.system.reliability.modeler.editor.policy.TransitionDirectEditPolicy;
 import com.system.reliability.modeler.editor.policy.TransitionEditPolicy;
 
-public abstract class ModelEditPart extends AbstractGraphicalEditPart {
+public abstract class ViewObjectEditPart extends AbstractGraphicalEditPart {
 	private ModelAdapter adapter;
 
-	public ModelEditPart() {
+	public ViewObjectEditPart() {
 		super();
 		adapter = new ModelAdapter();
 	}
@@ -34,16 +33,11 @@ public abstract class ModelEditPart extends AbstractGraphicalEditPart {
 		GeneralizedNetEditPart parent = (GeneralizedNetEditPart) getParent();
 		String name = null;
 		Rectangle constraints = null;
-		if (getModel() instanceof TransitionView) {
-			TransitionView model = (TransitionView) getModel();
-			name = model.getName();
+		if (getModel() instanceof ViewObject) {
+			ViewObject model = (ViewObject) getModel();
+			name = model.getLabel();
 			constraints = model.getConstraints();
-			
-		} else if (getModel() instanceof PortView) {
-			PortView model = (PortView) getModel();
-			name = model.getId();
-			constraints = model.getConstraints();
-		}
+		} 
 				
 		figure.getNameLabel().setText(name);
 		parent.setLayoutConstraint(this, figure, constraints);
@@ -95,7 +89,7 @@ public abstract class ModelEditPart extends AbstractGraphicalEditPart {
 
 		@Override
 		public Notifier getTarget() {
-			return (TransitionView) getModel();
+			return (Notifier) getModel();
 		}
 
 		@Override
@@ -105,7 +99,7 @@ public abstract class ModelEditPart extends AbstractGraphicalEditPart {
 
 		@Override
 		public boolean isAdapterForType(Object type) {
-			return type.equals(TransitionView.class);
+			return ViewObject.class.isAssignableFrom((Class<?>) type);
 		}
 	}
 	

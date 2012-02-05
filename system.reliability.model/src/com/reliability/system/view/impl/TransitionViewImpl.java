@@ -10,6 +10,7 @@ import com.reliability.system.impl.TransitionImpl;
 
 import com.reliability.system.view.SystemView;
 import com.reliability.system.view.TransitionView;
+import com.reliability.system.view.ViewObject;
 import com.reliability.system.view.ViewPackage;
 
 import org.eclipse.draw2d.geometry.Rectangle;
@@ -31,6 +32,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * The following features are implemented:
  * <ul>
  *   <li>{@link com.reliability.system.view.impl.TransitionViewImpl#getConstraints <em>Constraints</em>}</li>
+ *   <li>{@link com.reliability.system.view.impl.TransitionViewImpl#getLabel <em>Label</em>}</li>
  *   <li>{@link com.reliability.system.view.impl.TransitionViewImpl#getOwner <em>Owner</em>}</li>
  * </ul>
  * </p>
@@ -57,6 +59,26 @@ public class TransitionViewImpl extends TransitionImpl implements TransitionView
 	 * @ordered
 	 */
 	protected Rectangle constraints = CONSTRAINTS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLabel()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String LABEL_EDEFAULT = "";
+
+	/**
+	 * The cached value of the '{@link #getLabel() <em>Label</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLabel()
+	 * @generated
+	 * @ordered
+	 */
+	protected String label = LABEL_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -96,6 +118,24 @@ public class TransitionViewImpl extends TransitionImpl implements TransitionView
 		constraints = newConstraints;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ViewPackage.TRANSITION_VIEW__CONSTRAINTS, oldConstraints, constraints));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @not generated
+	 */
+	public String getLabel() {
+		return getName();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @not generated
+	 */
+	public void setLabel(String newLabel) {
+		setName(newLabel);
 	}
 
 	/**
@@ -193,6 +233,8 @@ public class TransitionViewImpl extends TransitionImpl implements TransitionView
 		switch (featureID) {
 			case ViewPackage.TRANSITION_VIEW__CONSTRAINTS:
 				return getConstraints();
+			case ViewPackage.TRANSITION_VIEW__LABEL:
+				return getLabel();
 			case ViewPackage.TRANSITION_VIEW__OWNER:
 				return getOwner();
 		}
@@ -209,6 +251,9 @@ public class TransitionViewImpl extends TransitionImpl implements TransitionView
 		switch (featureID) {
 			case ViewPackage.TRANSITION_VIEW__CONSTRAINTS:
 				setConstraints((Rectangle)newValue);
+				return;
+			case ViewPackage.TRANSITION_VIEW__LABEL:
+				setLabel((String)newValue);
 				return;
 			case ViewPackage.TRANSITION_VIEW__OWNER:
 				setOwner((SystemView)newValue);
@@ -228,6 +273,9 @@ public class TransitionViewImpl extends TransitionImpl implements TransitionView
 			case ViewPackage.TRANSITION_VIEW__CONSTRAINTS:
 				setConstraints(CONSTRAINTS_EDEFAULT);
 				return;
+			case ViewPackage.TRANSITION_VIEW__LABEL:
+				setLabel(LABEL_EDEFAULT);
+				return;
 			case ViewPackage.TRANSITION_VIEW__OWNER:
 				setOwner((SystemView)null);
 				return;
@@ -245,10 +293,46 @@ public class TransitionViewImpl extends TransitionImpl implements TransitionView
 		switch (featureID) {
 			case ViewPackage.TRANSITION_VIEW__CONSTRAINTS:
 				return CONSTRAINTS_EDEFAULT == null ? constraints != null : !CONSTRAINTS_EDEFAULT.equals(constraints);
+			case ViewPackage.TRANSITION_VIEW__LABEL:
+				return LABEL_EDEFAULT == null ? label != null : !LABEL_EDEFAULT.equals(label);
 			case ViewPackage.TRANSITION_VIEW__OWNER:
 				return getOwner() != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == ViewObject.class) {
+			switch (derivedFeatureID) {
+				case ViewPackage.TRANSITION_VIEW__CONSTRAINTS: return ViewPackage.VIEW_OBJECT__CONSTRAINTS;
+				case ViewPackage.TRANSITION_VIEW__LABEL: return ViewPackage.VIEW_OBJECT__LABEL;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == ViewObject.class) {
+			switch (baseFeatureID) {
+				case ViewPackage.VIEW_OBJECT__CONSTRAINTS: return ViewPackage.TRANSITION_VIEW__CONSTRAINTS;
+				case ViewPackage.VIEW_OBJECT__LABEL: return ViewPackage.TRANSITION_VIEW__LABEL;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 	/**
@@ -263,6 +347,8 @@ public class TransitionViewImpl extends TransitionImpl implements TransitionView
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (constraints: ");
 		result.append(constraints);
+		result.append(", label: ");
+		result.append(label);
 		result.append(')');
 		return result.toString();
 	}

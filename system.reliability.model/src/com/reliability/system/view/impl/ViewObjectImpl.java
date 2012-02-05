@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link com.reliability.system.view.impl.ViewObjectImpl#getConstraints <em>Constraints</em>}</li>
+ *   <li>{@link com.reliability.system.view.impl.ViewObjectImpl#getLabel <em>Label</em>}</li>
  * </ul>
  * </p>
  *
@@ -51,6 +52,26 @@ public abstract class ViewObjectImpl extends EObjectImpl implements ViewObject {
 	 * @ordered
 	 */
 	protected Rectangle constraints = CONSTRAINTS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLabel()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String LABEL_EDEFAULT = "";
+
+	/**
+	 * The cached value of the '{@link #getLabel() <em>Label</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLabel()
+	 * @generated
+	 * @ordered
+	 */
+	protected String label = LABEL_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -97,11 +118,34 @@ public abstract class ViewObjectImpl extends EObjectImpl implements ViewObject {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getLabel() {
+		return label;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setLabel(String newLabel) {
+		String oldLabel = label;
+		label = newLabel;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ViewPackage.VIEW_OBJECT__LABEL, oldLabel, label));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case ViewPackage.VIEW_OBJECT__CONSTRAINTS:
 				return getConstraints();
+			case ViewPackage.VIEW_OBJECT__LABEL:
+				return getLabel();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -116,6 +160,9 @@ public abstract class ViewObjectImpl extends EObjectImpl implements ViewObject {
 		switch (featureID) {
 			case ViewPackage.VIEW_OBJECT__CONSTRAINTS:
 				setConstraints((Rectangle)newValue);
+				return;
+			case ViewPackage.VIEW_OBJECT__LABEL:
+				setLabel((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -132,6 +179,9 @@ public abstract class ViewObjectImpl extends EObjectImpl implements ViewObject {
 			case ViewPackage.VIEW_OBJECT__CONSTRAINTS:
 				setConstraints(CONSTRAINTS_EDEFAULT);
 				return;
+			case ViewPackage.VIEW_OBJECT__LABEL:
+				setLabel(LABEL_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -146,6 +196,8 @@ public abstract class ViewObjectImpl extends EObjectImpl implements ViewObject {
 		switch (featureID) {
 			case ViewPackage.VIEW_OBJECT__CONSTRAINTS:
 				return CONSTRAINTS_EDEFAULT == null ? constraints != null : !CONSTRAINTS_EDEFAULT.equals(constraints);
+			case ViewPackage.VIEW_OBJECT__LABEL:
+				return LABEL_EDEFAULT == null ? label != null : !LABEL_EDEFAULT.equals(label);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -162,6 +214,8 @@ public abstract class ViewObjectImpl extends EObjectImpl implements ViewObject {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (constraints: ");
 		result.append(constraints);
+		result.append(", label: ");
+		result.append(label);
 		result.append(')');
 		return result.toString();
 	}
