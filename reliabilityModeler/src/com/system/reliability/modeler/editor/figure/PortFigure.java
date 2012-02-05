@@ -1,21 +1,21 @@
 package com.system.reliability.modeler.editor.figure;
 
+import org.eclipse.draw2d.Ellipse;
 import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.PositionConstants;
-import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.XYLayout;
 import org.eclipse.draw2d.geometry.Rectangle;
 
-public class ConnectorFigure extends Figure implements IModelFigure{
+public class PortFigure extends Figure  implements IModelFigure {
 	private Label label;
-	private RectangleFigure square;
-
-	public ConnectorFigure() {
+	private Ellipse ellipse;
+	
+	public PortFigure(){
 		setLayoutManager(new XYLayout());
-		square = new RectangleFigure();
-		add(square);
+		ellipse = new Ellipse();
+		add(ellipse);
 		label = new Label();
 		label.setTextAlignment(PositionConstants.CENTER);
 		add(label);
@@ -24,17 +24,13 @@ public class ConnectorFigure extends Figure implements IModelFigure{
 	@Override 
 	protected void paintFigure(Graphics graphics) {
 		Rectangle bounds = getBounds().getCopy();
-		setConstraint(square, new Rectangle(bounds.width/2 - 20,25, 40, 40));
+		setConstraint(ellipse, new Rectangle(bounds.width/2 - 20,25, 40, 40));
 		setConstraint(label, new Rectangle(0, 0, bounds.width, 25));
-		graphics.drawLine(bounds.x + bounds.width/2, bounds.y + 65, bounds.x + bounds.width/2, bounds.y + bounds.height);
 	}
 	
-	public Label getLabel() {
-	    return label;
-	  }
-
 	@Override
 	public Label getNameLabel() {
 		return label;
 	}
+
 }

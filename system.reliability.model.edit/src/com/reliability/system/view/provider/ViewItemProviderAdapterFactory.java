@@ -122,6 +122,29 @@ public class ViewItemProviderAdapterFactory extends ViewAdapterFactory implement
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link com.reliability.system.view.PortView} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PortViewItemProvider portViewItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link com.reliability.system.view.PortView}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createPortViewAdapter() {
+		if (portViewItemProvider == null) {
+			portViewItemProvider = new PortViewItemProvider(this);
+		}
+
+		return portViewItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -222,6 +245,7 @@ public class ViewItemProviderAdapterFactory extends ViewAdapterFactory implement
 	public void dispose() {
 		if (systemViewItemProvider != null) systemViewItemProvider.dispose();
 		if (transitionViewItemProvider != null) transitionViewItemProvider.dispose();
+		if (portViewItemProvider != null) portViewItemProvider.dispose();
 	}
 
 }

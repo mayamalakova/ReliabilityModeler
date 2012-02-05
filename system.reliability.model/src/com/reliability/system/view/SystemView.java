@@ -51,7 +51,8 @@ public interface SystemView extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Ports</b></em>' containment reference list.
-	 * The list contents are of type {@link com.reliability.system.Port}.
+	 * The list contents are of type {@link com.reliability.system.view.PortView}.
+	 * It is bidirectional and its opposite is '{@link com.reliability.system.view.PortView#getOwner <em>Owner</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Ports</em>' containment reference list isn't clear,
@@ -60,10 +61,11 @@ public interface SystemView extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Ports</em>' containment reference list.
 	 * @see com.reliability.system.view.ViewPackage#getSystemView_Ports()
-	 * @model containment="true"
+	 * @see com.reliability.system.view.PortView#getOwner
+	 * @model opposite="owner" containment="true"
 	 * @generated
 	 */
-	EList<Port> getPorts();
+	EList<PortView> getPorts();
 
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.

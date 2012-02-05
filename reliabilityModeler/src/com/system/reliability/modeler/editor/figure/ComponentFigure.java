@@ -18,13 +18,16 @@ public class ComponentFigure extends Figure implements IModelFigure{
 		triangle.setDirection(PositionConstants.SOUTH);
 		add(triangle);
 		label = new Label();
+		label.setTextAlignment(PositionConstants.CENTER);
 		add(label);
 	}
 	
-	@Override protected void paintFigure(Graphics graphics) {
+	@Override 
+	protected void paintFigure(Graphics graphics) {
 		Rectangle bounds = getBounds().getCopy();
-		setConstraint(triangle, new Rectangle(20,10, bounds.width - 40, bounds.height - 40));
+		setConstraint(triangle, new Rectangle(bounds.width/2 - 30,10, 60, 60));
 		setConstraint(label, new Rectangle(0, 0, bounds.width, 25));
+		graphics.drawLine(bounds.x + bounds.width/2, bounds.y + 50, bounds.x + bounds.width/2, bounds.y + bounds.height);
 	}
 	
 	public Label getLabel() {

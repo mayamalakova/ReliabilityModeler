@@ -6,6 +6,8 @@
  */
 package com.reliability.system.view.util;
 
+import com.reliability.system.Port;
+import com.reliability.system.Position;
 import com.reliability.system.Transition;
 
 import com.reliability.system.view.*;
@@ -82,8 +84,24 @@ public class ViewAdapterFactory extends AdapterFactoryImpl {
 				return createTransitionViewAdapter();
 			}
 			@Override
+			public Adapter casePortView(PortView object) {
+				return createPortViewAdapter();
+			}
+			@Override
+			public Adapter caseViewObject(ViewObject object) {
+				return createViewObjectAdapter();
+			}
+			@Override
 			public Adapter caseTransition(Transition object) {
 				return createTransitionAdapter();
+			}
+			@Override
+			public Adapter casePosition(Position object) {
+				return createPositionAdapter();
+			}
+			@Override
+			public Adapter casePort(Port object) {
+				return createPortAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -134,6 +152,34 @@ public class ViewAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link com.reliability.system.view.PortView <em>Port View</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see com.reliability.system.view.PortView
+	 * @generated
+	 */
+	public Adapter createPortViewAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link com.reliability.system.view.ViewObject <em>Object</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see com.reliability.system.view.ViewObject
+	 * @generated
+	 */
+	public Adapter createViewObjectAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link com.reliability.system.Transition <em>Transition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -144,6 +190,34 @@ public class ViewAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createTransitionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link com.reliability.system.Position <em>Position</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see com.reliability.system.Position
+	 * @generated
+	 */
+	public Adapter createPositionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link com.reliability.system.Port <em>Port</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see com.reliability.system.Port
+	 * @generated
+	 */
+	public Adapter createPortAdapter() {
 		return null;
 	}
 

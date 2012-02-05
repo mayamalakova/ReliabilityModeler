@@ -6,13 +6,16 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editpolicies.XYLayoutEditPolicy;
 import org.eclipse.gef.requests.CreateRequest;
 
+import com.reliability.system.Port;
 import com.reliability.system.Transition;
 import com.reliability.system.TransitionType;
+import com.reliability.system.view.PortView;
 import com.reliability.system.view.SystemView;
 import com.reliability.system.view.TransitionView;
 import com.system.reliability.modeler.editor.command.ChangeConstraintCommand;
 import com.system.reliability.modeler.editor.command.CreateComponentCommand;
 import com.system.reliability.modeler.editor.command.CreateConnectorCommand;
+import com.system.reliability.modeler.editor.command.CreatePortCommand;
 import com.system.reliability.modeler.editor.command.CreateTransitionCommand;
 
 public class ModelLayoutPolicy extends XYLayoutEditPolicy {
@@ -29,7 +32,7 @@ public class ModelLayoutPolicy extends XYLayoutEditPolicy {
 	protected Command getCreateCommand(CreateRequest request) {
 		Command command = null;
 		if (request.getNewObject() instanceof Transition) {
-			Transition transition = (Transition) request.getNewObject();
+			TransitionView transition = (TransitionView) request.getNewObject();
 			if (transition.getType() == TransitionType.COMPONENT) {
 				command = new CreateComponentCommand();
 				
@@ -38,8 +41,15 @@ public class ModelLayoutPolicy extends XYLayoutEditPolicy {
 			}
 			
 			((CreateTransitionCommand) command).setLocation(request.getLocation());
-			((CreateTransitionCommand) command).setTransition((TransitionView) request.getNewObject());
+			((CreateTransitionCommand) command).setTransition(transition);
 			((CreateTransitionCommand) command).setParent((SystemView) getHost().getModel());
+		
+		} else if (request.getNewObject() instanceof Port) {
+			PortView port = (PortView) request.getNewObject(); 
+			command = new CreatePortCommand();
+			((CreatePortCommand)command).setLocation(request.getLocation());
+			((CreatePortCommand)command).setPort(port);
+			((CreatePortCommand)command).setParent((SystemView) getHost().getModel());
 		}
 		
 	    return command;

@@ -5,10 +5,10 @@ import org.eclipse.gef.palette.PaletteGroup;
 import org.eclipse.gef.palette.PaletteRoot;
 import org.eclipse.gef.palette.SelectionToolEntry;
 
-import com.reliability.system.TransitionType;
 import com.system.reliability.modeler.editor.CreationAndDirectEditTool;
 import com.system.reliability.modeler.editor.factory.ComponentObjectFactory;
 import com.system.reliability.modeler.editor.factory.ConnectorObjectFactory;
+import com.system.reliability.modeler.editor.factory.PortObjectFactory;
 
 public class ModelEditorPalette extends PaletteRoot {
 
@@ -19,6 +19,7 @@ public class ModelEditorPalette extends PaletteRoot {
 	    addSelectionTool();
 	    addComponentTool();
 	    addConnectorTool();
+	    addPortTool();
 	}
 	
 	private void addSelectionTool() {
@@ -35,14 +36,18 @@ public class ModelEditorPalette extends PaletteRoot {
 	  private void addComponentTool() {
 	    CreationToolEntry entry = new CreationToolEntry("Component", "Create a new Component", new ComponentObjectFactory(), null, null);
 	    entry.setToolClass(CreationAndDirectEditTool.class);
-	    entry.setType(TransitionType.COMPONENT	);
 	    group.add(entry);
 	  }
 	 
 	  private void addConnectorTool() {
 	    CreationToolEntry entry = new CreationToolEntry("Connector", "Create a new Connector", new ConnectorObjectFactory(), null, null);
 	    entry.setToolClass(CreationAndDirectEditTool.class);
-	    entry.setType(TransitionType.CONNECTOR);
 	    group.add(entry);
 	  }
+	  
+	  private void addPortTool() {
+		    CreationToolEntry entry = new CreationToolEntry("Port", "Create a new Port", new PortObjectFactory(), null, null);
+		    entry.setToolClass(CreationAndDirectEditTool.class);
+		    group.add(entry);
+		  }
 }

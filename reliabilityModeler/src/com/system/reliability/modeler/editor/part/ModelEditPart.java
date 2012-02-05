@@ -1,15 +1,18 @@
 package com.system.reliability.modeler.editor.part;
 
 import org.eclipse.draw2d.Label;
+import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.RequestConstants;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 import org.eclipse.jface.viewers.TextCellEditor;
 
+import com.reliability.system.view.PortView;
 import com.reliability.system.view.TransitionView;
 import com.system.reliability.modeler.editor.ReliabilityDirectEditManager;
 import com.system.reliability.modeler.editor.TransitionCellEditorLocator;
@@ -28,11 +31,22 @@ public abstract class ModelEditPart extends AbstractGraphicalEditPart {
 	@Override
 	protected void refreshVisuals() {
 		IModelFigure figure = (IModelFigure) getFigure();
-		TransitionView model = (TransitionView) getModel();
 		GeneralizedNetEditPart parent = (GeneralizedNetEditPart) getParent();
-
-		figure.getNameLabel().setText(model.getName());
-		parent.setLayoutConstraint(this, figure, model.getConstraints());
+		String name = null;
+		Rectangle constraints = null;
+		if (getModel() instanceof TransitionView) {
+			TransitionView model = (TransitionView) getModel();
+			name = model.getName();
+			constraints = model.getConstraints();
+			
+		} else if (getModel() instanceof PortView) {
+			PortView model = (PortView) getModel();
+			name = model.getId();
+			constraints = model.getConstraints();
+		}
+				
+		figure.getNameLabel().setText(name);
+		parent.setLayoutConstraint(this, figure, constraints);
 	}
 	
 	@Override
@@ -41,7 +55,8 @@ public abstract class ModelEditPart extends AbstractGraphicalEditPart {
 		installEditPolicy(EditPolicy.COMPONENT_ROLE, new TransitionEditPolicy());
 	}
 
-	@Override public void performRequest(Request req) {
+	@Override 
+	public void performRequest(Request req) {
 	    if(req.getType() == RequestConstants.REQ_DIRECT_EDIT) {
 	      performDirectEditing();
 	    }
@@ -57,7 +72,7 @@ public abstract class ModelEditPart extends AbstractGraphicalEditPart {
 	@Override
 	public void activate() {
 		if (!isActive()) {
-			((TransitionView) getModel()).eAdapters().add(adapter);
+			((EObject)getModel()).eAdapters().add(adapter);
 		}
 		super.activate();
 	}
@@ -65,7 +80,7 @@ public abstract class ModelEditPart extends AbstractGraphicalEditPart {
 	@Override
 	public void deactivate() {
 		if (isActive()) {
-			((TransitionView) getModel()).eAdapters().remove(adapter);
+			((EObject) getModel()).eAdapters().remove(adapter);
 		}
 
 		super.deactivate();

@@ -17,6 +17,12 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute reliabilityView.ecore#//TransitionView/constraints"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference reliabilityView.ecore#//TransitionView/owner"/>
     </genClasses>
+    <genClasses ecoreClass="reliabilityView.ecore#//PortView">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference reliabilityView.ecore#//PortView/owner"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="reliabilityView.ecore#//ViewObject">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute reliabilityView.ecore#//ViewObject/constraints"/>
+    </genClasses>
   </genPackages>
   <genPackages prefix="System" basePackage="com.reliability" resource="XML" disposableProviderFactory="true"
       presentationPackageSuffix="ui" ecorePackage="reliability.ecore#/">

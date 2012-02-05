@@ -63,6 +63,7 @@ public class ViewFactoryImpl extends EFactoryImpl implements ViewFactory {
 		switch (eClass.getClassifierID()) {
 			case ViewPackage.SYSTEM_VIEW: return createSystemView();
 			case ViewPackage.TRANSITION_VIEW: return createTransitionView();
+			case ViewPackage.PORT_VIEW: return createPortView();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -112,6 +113,16 @@ public class ViewFactoryImpl extends EFactoryImpl implements ViewFactory {
 	public TransitionView createTransitionView() {
 		TransitionViewImpl transitionView = new TransitionViewImpl();
 		return transitionView;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PortView createPortView() {
+		PortViewImpl portView = new PortViewImpl();
+		return portView;
 	}
 
 	/**

@@ -6,6 +6,7 @@
  */
 package com.reliability.system.view.impl;
 
+import com.reliability.system.view.PortView;
 import com.reliability.system.Port;
 
 import com.reliability.system.view.SystemView;
@@ -63,7 +64,7 @@ public class SystemViewImpl extends EObjectImpl implements SystemView {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Port> ports;
+	protected EList<PortView> ports;
 
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -121,9 +122,9 @@ public class SystemViewImpl extends EObjectImpl implements SystemView {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Port> getPorts() {
+	public EList<PortView> getPorts() {
 		if (ports == null) {
-			ports = new EObjectContainmentEList<Port>(Port.class, this, ViewPackage.SYSTEM_VIEW__PORTS);
+			ports = new EObjectContainmentWithInverseEList<PortView>(PortView.class, this, ViewPackage.SYSTEM_VIEW__PORTS, ViewPackage.PORT_VIEW__OWNER);
 		}
 		return ports;
 	}
@@ -160,6 +161,8 @@ public class SystemViewImpl extends EObjectImpl implements SystemView {
 		switch (featureID) {
 			case ViewPackage.SYSTEM_VIEW__TRANSITIONS:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getTransitions()).basicAdd(otherEnd, msgs);
+			case ViewPackage.SYSTEM_VIEW__PORTS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getPorts()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -213,7 +216,7 @@ public class SystemViewImpl extends EObjectImpl implements SystemView {
 				return;
 			case ViewPackage.SYSTEM_VIEW__PORTS:
 				getPorts().clear();
-				getPorts().addAll((Collection<? extends Port>)newValue);
+				getPorts().addAll((Collection<? extends PortView>)newValue);
 				return;
 			case ViewPackage.SYSTEM_VIEW__NAME:
 				setName((String)newValue);

@@ -200,6 +200,98 @@ public interface ViewPackage extends EPackage {
 	int TRANSITION_VIEW_FEATURE_COUNT = SystemPackage.TRANSITION_FEATURE_COUNT + 2;
 
 	/**
+	 * The meta object id for the '{@link com.reliability.system.view.impl.PortViewImpl <em>Port View</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.reliability.system.view.impl.PortViewImpl
+	 * @see com.reliability.system.view.impl.ViewPackageImpl#getPortView()
+	 * @generated
+	 */
+	int PORT_VIEW = 2;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PORT_VIEW__ID = SystemPackage.PORT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Transition Row</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PORT_VIEW__TRANSITION_ROW = SystemPackage.PORT__TRANSITION_ROW;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PORT_VIEW__TYPE = SystemPackage.PORT__TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PORT_VIEW__CONSTRAINTS = SystemPackage.PORT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PORT_VIEW__OWNER = SystemPackage.PORT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Port View</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PORT_VIEW_FEATURE_COUNT = SystemPackage.PORT_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link com.reliability.system.view.impl.ViewObjectImpl <em>Object</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.reliability.system.view.impl.ViewObjectImpl
+	 * @see com.reliability.system.view.impl.ViewPackageImpl#getViewObject()
+	 * @generated
+	 */
+	int VIEW_OBJECT = 3;
+
+	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_OBJECT__CONSTRAINTS = 0;
+
+	/**
+	 * The number of structural features of the '<em>Object</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_OBJECT_FEATURE_COUNT = 1;
+
+	/**
 	 * The meta object id for the '<em>Rectangle</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -207,7 +299,7 @@ public interface ViewPackage extends EPackage {
 	 * @see com.reliability.system.view.impl.ViewPackageImpl#getRectangle()
 	 * @generated
 	 */
-	int RECTANGLE = 2;
+	int RECTANGLE = 4;
 
 
 	/**
@@ -284,6 +376,48 @@ public interface ViewPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getTransitionView_Owner();
+
+	/**
+	 * Returns the meta object for class '{@link com.reliability.system.view.PortView <em>Port View</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Port View</em>'.
+	 * @see com.reliability.system.view.PortView
+	 * @generated
+	 */
+	EClass getPortView();
+
+	/**
+	 * Returns the meta object for the container reference '{@link com.reliability.system.view.PortView#getOwner <em>Owner</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Owner</em>'.
+	 * @see com.reliability.system.view.PortView#getOwner()
+	 * @see #getPortView()
+	 * @generated
+	 */
+	EReference getPortView_Owner();
+
+	/**
+	 * Returns the meta object for class '{@link com.reliability.system.view.ViewObject <em>Object</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Object</em>'.
+	 * @see com.reliability.system.view.ViewObject
+	 * @generated
+	 */
+	EClass getViewObject();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.reliability.system.view.ViewObject#getConstraints <em>Constraints</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Constraints</em>'.
+	 * @see com.reliability.system.view.ViewObject#getConstraints()
+	 * @see #getViewObject()
+	 * @generated
+	 */
+	EAttribute getViewObject_Constraints();
 
 	/**
 	 * Returns the meta object for data type '{@link org.eclipse.draw2d.geometry.Rectangle <em>Rectangle</em>}'.
@@ -377,6 +511,42 @@ public interface ViewPackage extends EPackage {
 		 * @generated
 		 */
 		EReference TRANSITION_VIEW__OWNER = eINSTANCE.getTransitionView_Owner();
+
+		/**
+		 * The meta object literal for the '{@link com.reliability.system.view.impl.PortViewImpl <em>Port View</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.reliability.system.view.impl.PortViewImpl
+		 * @see com.reliability.system.view.impl.ViewPackageImpl#getPortView()
+		 * @generated
+		 */
+		EClass PORT_VIEW = eINSTANCE.getPortView();
+
+		/**
+		 * The meta object literal for the '<em><b>Owner</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PORT_VIEW__OWNER = eINSTANCE.getPortView_Owner();
+
+		/**
+		 * The meta object literal for the '{@link com.reliability.system.view.impl.ViewObjectImpl <em>Object</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.reliability.system.view.impl.ViewObjectImpl
+		 * @see com.reliability.system.view.impl.ViewPackageImpl#getViewObject()
+		 * @generated
+		 */
+		EClass VIEW_OBJECT = eINSTANCE.getViewObject();
+
+		/**
+		 * The meta object literal for the '<em><b>Constraints</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VIEW_OBJECT__CONSTRAINTS = eINSTANCE.getViewObject_Constraints();
 
 		/**
 		 * The meta object literal for the '<em>Rectangle</em>' data type.

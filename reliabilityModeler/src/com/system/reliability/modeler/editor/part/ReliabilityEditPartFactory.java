@@ -5,6 +5,7 @@ import org.eclipse.gef.EditPartFactory;
 
 import com.reliability.system.Transition;
 import com.reliability.system.TransitionType;
+import com.reliability.system.view.PortView;
 import com.reliability.system.view.SystemView;
 
 public class ReliabilityEditPartFactory implements EditPartFactory {
@@ -19,6 +20,9 @@ public class ReliabilityEditPartFactory implements EditPartFactory {
 		} else if (model instanceof Transition) {
 			part = (((Transition) model).getType().equals(TransitionType.CONNECTOR)) ? 
 					new ConnectorEditPart() : new ComponentEditPart();
+
+		} else if (model instanceof PortView) {
+			part = new PortEditPart();
 		}
 	 
 	    if (part != null) {

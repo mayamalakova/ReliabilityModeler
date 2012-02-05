@@ -7,7 +7,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="transitions" upperBound="-1"
         eType="#//TransitionView" containment="true" eOpposite="#//TransitionView/owner"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ports" upperBound="-1"
-        eType="ecore:EClass reliability.ecore#//Port" containment="true"/>
+        eType="#//PortView" containment="true" eOpposite="#//PortView/owner"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral=""/>
   </eClassifiers>
@@ -17,4 +17,11 @@
         eOpposite="#//SystemView/transitions"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="Rectangle" instanceClassName="org.eclipse.draw2d.geometry.Rectangle"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PortView" eSuperTypes="reliability.ecore#//Port #//ViewObject">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owner" eType="#//SystemView"
+        eOpposite="#//SystemView/ports"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ViewObject" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="constraints" eType="#//Rectangle"/>
+  </eClassifiers>
 </ecore:EPackage>

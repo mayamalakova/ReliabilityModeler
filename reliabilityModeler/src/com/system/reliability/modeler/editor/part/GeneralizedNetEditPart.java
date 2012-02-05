@@ -1,5 +1,6 @@
 package com.system.reliability.modeler.editor.part;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.draw2d.FreeformLayer;
@@ -9,6 +10,7 @@ import org.eclipse.draw2d.LineBorder;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 
@@ -38,9 +40,12 @@ public class GeneralizedNetEditPart extends AbstractGraphicalEditPart {
 	}
 	
 	@Override 
-	protected List<TransitionView> getModelChildren() {
+	protected List<EObject> getModelChildren() {
+		List<EObject> children = new ArrayList<EObject>();
 	    SystemView generalizedNet = (SystemView) getModel();
-	    return generalizedNet.getTransitions();
+	    children.addAll(generalizedNet.getTransitions());
+	    children.addAll(generalizedNet.getPorts());
+	    return children;
 	  }
 	
 	@Override public void activate() {

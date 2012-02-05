@@ -44,6 +44,15 @@ public interface ViewFactory extends EFactory {
 	TransitionView createTransitionView();
 
 	/**
+	 * Returns a new object of class '<em>Port View</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Port View</em>'.
+	 * @generated
+	 */
+	PortView createPortView();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -248,6 +248,11 @@ public class GeneralizedNetItemProvider
 			(createChildParameter
 				(SystemPackage.Literals.GENERALIZED_NET__POSITIONS,
 				 SystemFactory.eINSTANCE.createPort()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SystemPackage.Literals.GENERALIZED_NET__POSITIONS,
+				 ViewFactory.eINSTANCE.createPortView()));
 	}
 
 	/**
