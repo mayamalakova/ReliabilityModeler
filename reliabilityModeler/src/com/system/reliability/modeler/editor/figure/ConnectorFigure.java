@@ -7,7 +7,7 @@ import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.XYLayout;
 import org.eclipse.draw2d.geometry.Rectangle;
 
-public class ConnectorFigure extends Figure implements IModleFigure{
+public class ConnectorFigure extends Figure implements IModelFigure{
 	private Label label;
 	private RectangleFigure square;
 

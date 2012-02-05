@@ -64,14 +64,14 @@ public class ReliabilityModelUtils {
 		return generalizedNet;
 	}
 	
-	public static EObject createModelFromFile(String fileLocaltion) {
+	public static EObject createModelFromFile(String fileLocaltion, Resource resource) {
 		EObject model  = null;
 		
 		SystemPackage.eINSTANCE.eClass();
 		ViewPackage.eINSTANCE.eClass();
 		ResourceSet resourceSet = new ResourceSetImpl();
 		URI uri = URI.createFileURI(fileLocaltion);
-		Resource resource = resourceSet.createResource(uri);
+		resource = resourceSet.createResource(uri);
 		
 		if (resource == null) {
 			//explicitly register the model resource factory if invoked outside of the eclipse platform

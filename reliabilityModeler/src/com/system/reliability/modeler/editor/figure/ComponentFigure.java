@@ -8,7 +8,7 @@ import org.eclipse.draw2d.Triangle;
 import org.eclipse.draw2d.XYLayout;
 import org.eclipse.draw2d.geometry.Rectangle;
 
-public class ComponentFigure extends Figure implements IModleFigure{
+public class ComponentFigure extends Figure implements IModelFigure{
 	private Label label;
 	private Triangle triangle;
 

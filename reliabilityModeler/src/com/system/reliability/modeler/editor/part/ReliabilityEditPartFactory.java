@@ -3,7 +3,6 @@ package com.system.reliability.modeler.editor.part;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPartFactory;
 
-import com.reliability.system.GeneralizedNet;
 import com.reliability.system.Transition;
 import com.reliability.system.TransitionType;
 import com.reliability.view.view.SystemView;

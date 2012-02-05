@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import com.reliability.system.Failure;
 import com.reliability.system.GeneralizedNet;
 import com.reliability.system.Port;
@@ -15,6 +17,7 @@ import com.system.reliability.modeler.utils.ReliabilityModelUtils;
 
 public class ReliabilityAnalyzer {
 	private  GeneralizedNet systemModel = null;
+	private Resource resource = null;
 	private Map<Port, ReliabilityProfile> reliabilityProfiles;
 
 	public  Map<Port, ReliabilityProfile> estimateReliability() {
@@ -31,7 +34,7 @@ public class ReliabilityAnalyzer {
 	}
 
 	public void readModel(String fileLocation) {
-		systemModel = (GeneralizedNet) ReliabilityModelUtils.createModelFromFile(fileLocation);
+		systemModel = (GeneralizedNet) ReliabilityModelUtils.createModelFromFile(fileLocation, resource);
 	}
 
 	public GeneralizedNet getSystemModel() {
