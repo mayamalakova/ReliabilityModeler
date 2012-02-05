@@ -16,7 +16,7 @@ import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 
 import com.reliability.system.view.SystemView;
 import com.reliability.system.view.TransitionView;
-import com.system.reliability.modeler.editor.policy.ModelLayoutPolicy;
+import com.system.reliability.modeler.editor.policy.ViewObjectLayoutPolicy;
 
 public class GeneralizedNetEditPart extends AbstractGraphicalEditPart {
 	private ReliabilityModelAdapter modelAdapter;
@@ -36,7 +36,7 @@ public class GeneralizedNetEditPart extends AbstractGraphicalEditPart {
 
 	@Override
 	protected void createEditPolicies() {
-		installEditPolicy(EditPolicy.LAYOUT_ROLE, new ModelLayoutPolicy());
+		installEditPolicy(EditPolicy.LAYOUT_ROLE, new ViewObjectLayoutPolicy());
 	}
 	
 	@Override 

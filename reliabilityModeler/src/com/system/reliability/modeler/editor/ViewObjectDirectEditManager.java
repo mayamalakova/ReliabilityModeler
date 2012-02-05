@@ -5,11 +5,11 @@ import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gef.tools.CellEditorLocator;
 import org.eclipse.gef.tools.DirectEditManager;
 
-public class ReliabilityDirectEditManager extends DirectEditManager {
+public class ViewObjectDirectEditManager extends DirectEditManager {
 	private Label label;
 	
 	@SuppressWarnings("rawtypes")
-	public ReliabilityDirectEditManager(GraphicalEditPart source, Class editorType, CellEditorLocator locator, Label label) {
+	public ViewObjectDirectEditManager(GraphicalEditPart source, Class editorType, CellEditorLocator locator, Label label) {
 		super(source, editorType, locator);
 		this.label = label;
 	}

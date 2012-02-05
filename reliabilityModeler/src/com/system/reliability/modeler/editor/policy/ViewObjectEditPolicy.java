@@ -10,7 +10,7 @@ import com.reliability.system.view.TransitionView;
 import com.system.reliability.modeler.editor.command.DeletePortCommand;
 import com.system.reliability.modeler.editor.command.DeleteTransitionCommand;
 
-public class TransitionEditPolicy extends ComponentEditPolicy {
+public class ViewObjectEditPolicy extends ComponentEditPolicy {
 
 	@Override
 	protected Command getDeleteCommand(GroupRequest request) {

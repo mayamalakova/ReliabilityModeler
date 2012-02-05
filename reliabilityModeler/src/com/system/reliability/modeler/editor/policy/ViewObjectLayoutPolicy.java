@@ -19,7 +19,7 @@ import com.system.reliability.modeler.editor.command.CreateConnectorCommand;
 import com.system.reliability.modeler.editor.command.CreatePortCommand;
 import com.system.reliability.modeler.editor.command.CreateTransitionCommand;
 
-public class ModelLayoutPolicy extends XYLayoutEditPolicy {
+public class ViewObjectLayoutPolicy extends XYLayoutEditPolicy {
 
 	@Override 
 	protected Command createChangeConstraintCommand(EditPart child, Object constraint) {

@@ -13,11 +13,11 @@ import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 import org.eclipse.jface.viewers.TextCellEditor;
 
 import com.reliability.system.view.ViewObject;
-import com.system.reliability.modeler.editor.ReliabilityDirectEditManager;
-import com.system.reliability.modeler.editor.TransitionCellEditorLocator;
+import com.system.reliability.modeler.editor.ViewObjectDirectEditManager;
+import com.system.reliability.modeler.editor.ViewObjectCellEditorLocator;
 import com.system.reliability.modeler.editor.figure.IModelFigure;
-import com.system.reliability.modeler.editor.policy.TransitionDirectEditPolicy;
-import com.system.reliability.modeler.editor.policy.TransitionEditPolicy;
+import com.system.reliability.modeler.editor.policy.ViewObjectDirectEditPolicy;
+import com.system.reliability.modeler.editor.policy.ViewObjectEditPolicy;
 
 public abstract class ViewObjectEditPart extends AbstractGraphicalEditPart {
 	private ModelAdapter adapter;
@@ -45,8 +45,8 @@ public abstract class ViewObjectEditPart extends AbstractGraphicalEditPart {
 	
 	@Override
 	protected void createEditPolicies() {
-		installEditPolicy(EditPolicy.DIRECT_EDIT_ROLE, new TransitionDirectEditPolicy());
-		installEditPolicy(EditPolicy.COMPONENT_ROLE, new TransitionEditPolicy());
+		installEditPolicy(EditPolicy.DIRECT_EDIT_ROLE, new ViewObjectDirectEditPolicy());
+		installEditPolicy(EditPolicy.COMPONENT_ROLE, new ViewObjectEditPolicy());
 	}
 
 	@Override 
@@ -59,7 +59,7 @@ public abstract class ViewObjectEditPart extends AbstractGraphicalEditPart {
 	  private void performDirectEditing() {
 	    Label label = ((IModelFigure)getFigure()).getNameLabel();
 
-	    ReliabilityDirectEditManager manager = new ReliabilityDirectEditManager(this, TextCellEditor.class, new TransitionCellEditorLocator(label), label);
+	    ViewObjectDirectEditManager manager = new ViewObjectDirectEditManager(this, TextCellEditor.class, new ViewObjectCellEditorLocator(label), label);
 	    manager.show();
 	  }   
 	  

@@ -8,7 +8,7 @@ import com.reliability.system.view.ViewObject;
 import com.system.reliability.modeler.editor.command.RenameTransitionCommand;
 import com.system.reliability.modeler.editor.figure.IModelFigure;
 
-public class TransitionDirectEditPolicy extends DirectEditPolicy {
+public class ViewObjectDirectEditPolicy extends DirectEditPolicy {
 
 	@Override
 	protected Command getDirectEditCommand(DirectEditRequest request) {

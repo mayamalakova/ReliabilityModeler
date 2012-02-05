@@ -8,10 +8,10 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Text;
 
-public class TransitionCellEditorLocator implements CellEditorLocator {
+public class ViewObjectCellEditorLocator implements CellEditorLocator {
 	private Label nameLabel;
 	
-	public TransitionCellEditorLocator(Label label) {
+	public ViewObjectCellEditorLocator(Label label) {
 		this.nameLabel = label;
 	}
 	@Override
