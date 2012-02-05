@@ -182,13 +182,22 @@ public interface ViewPackage extends EPackage {
 	int TRANSITION_VIEW__CONSTRAINTS = SystemPackage.TRANSITION_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Owner</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION_VIEW__OWNER = SystemPackage.TRANSITION_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Transition View</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION_VIEW_FEATURE_COUNT = SystemPackage.TRANSITION_FEATURE_COUNT + 1;
+	int TRANSITION_VIEW_FEATURE_COUNT = SystemPackage.TRANSITION_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '<em>Rectangle</em>' data type.
@@ -264,6 +273,17 @@ public interface ViewPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getTransitionView_Constraints();
+
+	/**
+	 * Returns the meta object for the container reference '{@link com.reliability.system.view.TransitionView#getOwner <em>Owner</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Owner</em>'.
+	 * @see com.reliability.system.view.TransitionView#getOwner()
+	 * @see #getTransitionView()
+	 * @generated
+	 */
+	EReference getTransitionView_Owner();
 
 	/**
 	 * Returns the meta object for data type '{@link org.eclipse.draw2d.geometry.Rectangle <em>Rectangle</em>}'.
@@ -349,6 +369,14 @@ public interface ViewPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TRANSITION_VIEW__CONSTRAINTS = eINSTANCE.getTransitionView_Constraints();
+
+		/**
+		 * The meta object literal for the '<em><b>Owner</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TRANSITION_VIEW__OWNER = eINSTANCE.getTransitionView_Owner();
 
 		/**
 		 * The meta object literal for the '<em>Rectangle</em>' data type.

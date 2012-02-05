@@ -22,33 +22,32 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
- * 
  * @generated
  */
 public class ViewFactoryImpl extends EFactoryImpl implements ViewFactory {
 	/**
-	 * Creates the default factory implementation. <!-- begin-user-doc --> <!--
+	 * Creates the default factory implementation.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public static ViewFactory init() {
 		try {
-			ViewFactory theViewFactory = (ViewFactory) EPackage.Registry.INSTANCE
-					.getEFactory("system.reliability.model.view");
+			ViewFactory theViewFactory = (ViewFactory)EPackage.Registry.INSTANCE.getEFactory("system.reliability.model.view"); 
 			if (theViewFactory != null) {
 				return theViewFactory;
 			}
-		} catch (Exception exception) {
+		}
+		catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new ViewFactoryImpl();
 	}
 
 	/**
-	 * Creates an instance of the factory. <!-- begin-user-doc --> <!--
+	 * Creates an instance of the factory.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public ViewFactoryImpl() {
@@ -57,57 +56,48 @@ public class ViewFactoryImpl extends EFactoryImpl implements ViewFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-		case ViewPackage.SYSTEM_VIEW:
-			return createSystemView();
-		case ViewPackage.TRANSITION_VIEW:
-			return createTransitionView();
-		default:
-			throw new IllegalArgumentException("The class '" + eClass.getName()
-					+ "' is not a valid classifier");
+			case ViewPackage.SYSTEM_VIEW: return createSystemView();
+			case ViewPackage.TRANSITION_VIEW: return createTransitionView();
+			default:
+				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-		case ViewPackage.RECTANGLE:
-			return createRectangleFromString(eDataType, initialValue);
-		default:
-			throw new IllegalArgumentException("The datatype '" + eDataType.getName()
-					+ "' is not a valid classifier");
+			case ViewPackage.RECTANGLE:
+				return createRectangleFromString(eDataType, initialValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-		case ViewPackage.RECTANGLE:
-			return convertRectangleToString(eDataType, instanceValue);
-		default:
-			throw new IllegalArgumentException("The datatype '" + eDataType.getName()
-					+ "' is not a valid classifier");
+			case ViewPackage.RECTANGLE:
+				return convertRectangleToString(eDataType, instanceValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public SystemView createSystemView() {
@@ -117,7 +107,6 @@ public class ViewFactoryImpl extends EFactoryImpl implements ViewFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public TransitionView createTransitionView() {
@@ -169,16 +158,14 @@ public class ViewFactoryImpl extends EFactoryImpl implements ViewFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public ViewPackage getViewPackage() {
-		return (ViewPackage) getEPackage();
+		return (ViewPackage)getEPackage();
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @deprecated
 	 * @generated
 	 */

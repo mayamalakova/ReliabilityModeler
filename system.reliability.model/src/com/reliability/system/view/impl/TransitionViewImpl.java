@@ -8,6 +8,7 @@ package com.reliability.system.view.impl;
 
 import com.reliability.system.impl.TransitionImpl;
 
+import com.reliability.system.view.SystemView;
 import com.reliability.system.view.TransitionView;
 import com.reliability.system.view.ViewPackage;
 
@@ -15,9 +16,12 @@ import org.eclipse.draw2d.geometry.Rectangle;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
  * <!-- begin-user-doc -->
@@ -27,6 +31,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link com.reliability.system.view.impl.TransitionViewImpl#getConstraints <em>Constraints</em>}</li>
+ *   <li>{@link com.reliability.system.view.impl.TransitionViewImpl#getOwner <em>Owner</em>}</li>
  * </ul>
  * </p>
  *
@@ -98,11 +103,98 @@ public class TransitionViewImpl extends TransitionImpl implements TransitionView
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public SystemView getOwner() {
+		if (eContainerFeatureID() != ViewPackage.TRANSITION_VIEW__OWNER) return null;
+		return (SystemView)eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetOwner(SystemView newOwner, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newOwner, ViewPackage.TRANSITION_VIEW__OWNER, msgs);
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOwner(SystemView newOwner) {
+		if (newOwner != eInternalContainer() || (eContainerFeatureID() != ViewPackage.TRANSITION_VIEW__OWNER && newOwner != null)) {
+			if (EcoreUtil.isAncestor(this, newOwner))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newOwner != null)
+				msgs = ((InternalEObject)newOwner).eInverseAdd(this, ViewPackage.SYSTEM_VIEW__TRANSITIONS, SystemView.class, msgs);
+			msgs = basicSetOwner(newOwner, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ViewPackage.TRANSITION_VIEW__OWNER, newOwner, newOwner));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case ViewPackage.TRANSITION_VIEW__OWNER:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetOwner((SystemView)otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case ViewPackage.TRANSITION_VIEW__OWNER:
+				return basicSetOwner(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+		switch (eContainerFeatureID()) {
+			case ViewPackage.TRANSITION_VIEW__OWNER:
+				return eInternalContainer().eInverseRemove(this, ViewPackage.SYSTEM_VIEW__TRANSITIONS, SystemView.class, msgs);
+		}
+		return super.eBasicRemoveFromContainerFeature(msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case ViewPackage.TRANSITION_VIEW__CONSTRAINTS:
 				return getConstraints();
+			case ViewPackage.TRANSITION_VIEW__OWNER:
+				return getOwner();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -117,6 +209,9 @@ public class TransitionViewImpl extends TransitionImpl implements TransitionView
 		switch (featureID) {
 			case ViewPackage.TRANSITION_VIEW__CONSTRAINTS:
 				setConstraints((Rectangle)newValue);
+				return;
+			case ViewPackage.TRANSITION_VIEW__OWNER:
+				setOwner((SystemView)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -133,6 +228,9 @@ public class TransitionViewImpl extends TransitionImpl implements TransitionView
 			case ViewPackage.TRANSITION_VIEW__CONSTRAINTS:
 				setConstraints(CONSTRAINTS_EDEFAULT);
 				return;
+			case ViewPackage.TRANSITION_VIEW__OWNER:
+				setOwner((SystemView)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -147,6 +245,8 @@ public class TransitionViewImpl extends TransitionImpl implements TransitionView
 		switch (featureID) {
 			case ViewPackage.TRANSITION_VIEW__CONSTRAINTS:
 				return CONSTRAINTS_EDEFAULT == null ? constraints != null : !CONSTRAINTS_EDEFAULT.equals(constraints);
+			case ViewPackage.TRANSITION_VIEW__OWNER:
+				return getOwner() != null;
 		}
 		return super.eIsSet(featureID);
 	}

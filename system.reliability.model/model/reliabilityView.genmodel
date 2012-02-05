@@ -15,6 +15,7 @@
     </genClasses>
     <genClasses ecoreClass="reliabilityView.ecore#//TransitionView">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute reliabilityView.ecore#//TransitionView/constraints"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference reliabilityView.ecore#//TransitionView/owner"/>
     </genClasses>
   </genPackages>
   <genPackages prefix="System" basePackage="com.reliability" resource="XML" disposableProviderFactory="true"

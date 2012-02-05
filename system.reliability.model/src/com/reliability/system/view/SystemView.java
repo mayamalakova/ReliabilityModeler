@@ -34,6 +34,7 @@ public interface SystemView extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Transitions</b></em>' containment reference list.
 	 * The list contents are of type {@link com.reliability.system.view.TransitionView}.
+	 * It is bidirectional and its opposite is '{@link com.reliability.system.view.TransitionView#getOwner <em>Owner</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Transitions</em>' containment reference list isn't clear,
@@ -42,7 +43,8 @@ public interface SystemView extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Transitions</em>' containment reference list.
 	 * @see com.reliability.system.view.ViewPackage#getSystemView_Transitions()
-	 * @model containment="true"
+	 * @see com.reliability.system.view.TransitionView#getOwner
+	 * @model opposite="owner" containment="true"
 	 * @generated
 	 */
 	EList<TransitionView> getTransitions();

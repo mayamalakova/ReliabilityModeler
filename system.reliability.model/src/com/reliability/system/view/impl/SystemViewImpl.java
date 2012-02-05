@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -110,7 +111,7 @@ public class SystemViewImpl extends EObjectImpl implements SystemView {
 	 */
 	public EList<TransitionView> getTransitions() {
 		if (transitions == null) {
-			transitions = new EObjectContainmentEList<TransitionView>(TransitionView.class, this, ViewPackage.SYSTEM_VIEW__TRANSITIONS);
+			transitions = new EObjectContainmentWithInverseEList<TransitionView>(TransitionView.class, this, ViewPackage.SYSTEM_VIEW__TRANSITIONS, ViewPackage.TRANSITION_VIEW__OWNER);
 		}
 		return transitions;
 	}
@@ -146,6 +147,21 @@ public class SystemViewImpl extends EObjectImpl implements SystemView {
 		name = newName;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ViewPackage.SYSTEM_VIEW__NAME, oldName, name));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case ViewPackage.SYSTEM_VIEW__TRANSITIONS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getTransitions()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**

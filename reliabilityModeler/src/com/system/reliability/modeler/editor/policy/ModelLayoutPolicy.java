@@ -1,4 +1,4 @@
-package com.system.reliability.modeler.editor.layout;
+package com.system.reliability.modeler.editor.policy;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.EditPart;

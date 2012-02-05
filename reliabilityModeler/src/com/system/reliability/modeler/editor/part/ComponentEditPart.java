@@ -11,9 +11,4 @@ public class ComponentEditPart extends ModelEditPart {
 		return new ComponentFigure();
 	}
 
-	@Override
-	protected void createEditPolicies() {
-		// TODO Auto-generated method stub
-	}
-
 }

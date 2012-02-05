@@ -178,6 +178,15 @@ public class ViewPackageImpl extends EPackageImpl implements ViewPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getTransitionView_Owner() {
+		return (EReference)transitionViewEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EDataType getRectangle() {
 		return rectangleEDataType;
 	}
@@ -217,6 +226,7 @@ public class ViewPackageImpl extends EPackageImpl implements ViewPackage {
 
 		transitionViewEClass = createEClass(TRANSITION_VIEW);
 		createEAttribute(transitionViewEClass, TRANSITION_VIEW__CONSTRAINTS);
+		createEReference(transitionViewEClass, TRANSITION_VIEW__OWNER);
 
 		// Create data types
 		rectangleEDataType = createEDataType(RECTANGLE);
@@ -257,12 +267,13 @@ public class ViewPackageImpl extends EPackageImpl implements ViewPackage {
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(systemViewEClass, SystemView.class, "SystemView", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSystemView_Transitions(), this.getTransitionView(), null, "transitions", null, 0, -1, SystemView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSystemView_Transitions(), this.getTransitionView(), this.getTransitionView_Owner(), "transitions", null, 0, -1, SystemView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSystemView_Ports(), theSystemPackage.getPort(), null, "ports", null, 0, -1, SystemView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSystemView_Name(), ecorePackage.getEString(), "name", "", 0, 1, SystemView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(transitionViewEClass, TransitionView.class, "TransitionView", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTransitionView_Constraints(), this.getRectangle(), "constraints", null, 0, 1, TransitionView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTransitionView_Owner(), this.getSystemView(), this.getSystemView_Transitions(), "owner", null, 0, 1, TransitionView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize data types
 		initEDataType(rectangleEDataType, Rectangle.class, "Rectangle", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

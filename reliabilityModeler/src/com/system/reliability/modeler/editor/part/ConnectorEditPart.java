@@ -11,9 +11,4 @@ public class ConnectorEditPart extends ModelEditPart {
 		return new ConnectorFigure();
 	}
 
-	@Override
-	protected void createEditPolicies() {
-		// TODO Auto-generated method stub
-	}
-
 }

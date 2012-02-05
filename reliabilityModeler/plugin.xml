@@ -5,6 +5,7 @@
          point="org.eclipse.ui.editors">
       <editor
             class="com.system.reliability.modeler.editor.ReliabilityModelEditor"
+            contributorClass="com.system.reliability.modeler.editor.EditorActionBarContributor"
             default="false"
             extensions="view"
             id="com.system.reliability.editorId"
