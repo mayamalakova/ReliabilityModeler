@@ -10,6 +10,7 @@ package com.reliability.system.view.provider;
 import com.reliability.system.provider.PortItemProvider;
 
 import com.reliability.system.view.PortView;
+import com.reliability.system.view.ViewFactory;
 import com.reliability.system.view.ViewPackage;
 
 import java.util.Collection;
@@ -20,6 +21,7 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -67,6 +69,8 @@ public class PortViewItemProvider
 
 			addConstraintsPropertyDescriptor(object);
 			addLabelPropertyDescriptor(object);
+			addOutgoingLinksPropertyDescriptor(object);
+			addIncomingLinksPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -116,6 +120,80 @@ public class PortViewItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Outgoing Links feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOutgoingLinksPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ViewObject_outgoingLinks_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ViewObject_outgoingLinks_feature", "_UI_ViewObject_type"),
+				 ViewPackage.Literals.VIEW_OBJECT__OUTGOING_LINKS,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Incoming Links feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addIncomingLinksPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ViewObject_incomingLinks_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ViewObject_incomingLinks_feature", "_UI_ViewObject_type"),
+				 ViewPackage.Literals.VIEW_OBJECT__INCOMING_LINKS,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+		if (childrenFeatures == null) {
+			super.getChildrenFeatures(object);
+			childrenFeatures.add(ViewPackage.Literals.VIEW_OBJECT__OUTGOING_LINKS);
+		}
+		return childrenFeatures;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
+	}
+
+	/**
 	 * This returns PortView.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -156,6 +234,9 @@ public class PortViewItemProvider
 			case ViewPackage.PORT_VIEW__LABEL:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
+			case ViewPackage.PORT_VIEW__OUTGOING_LINKS:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+				return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -170,6 +251,11 @@ public class PortViewItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ViewPackage.Literals.VIEW_OBJECT__OUTGOING_LINKS,
+				 ViewFactory.eINSTANCE.createViewLink()));
 	}
 
 	/**

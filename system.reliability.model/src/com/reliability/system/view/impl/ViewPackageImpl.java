@@ -14,9 +14,11 @@ import com.reliability.system.view.PortView;
 import com.reliability.system.view.SystemView;
 import com.reliability.system.view.TransitionView;
 import com.reliability.system.view.ViewFactory;
+import com.reliability.system.view.ViewLink;
 import com.reliability.system.view.ViewObject;
 import com.reliability.system.view.ViewPackage;
 
+import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -67,7 +69,21 @@ public class ViewPackageImpl extends EPackageImpl implements ViewPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass viewLinkEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EDataType rectangleEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType pointEDataType = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -239,8 +255,71 @@ public class ViewPackageImpl extends EPackageImpl implements ViewPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getViewObject_OutgoingLinks() {
+		return (EReference)viewObjectEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getViewObject_IncomingLinks() {
+		return (EReference)viewObjectEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getViewLink() {
+		return viewLinkEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getViewLink_Source() {
+		return (EReference)viewLinkEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getViewLink_Target() {
+		return (EReference)viewLinkEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getViewLink_Bendpoints() {
+		return (EAttribute)viewLinkEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EDataType getRectangle() {
 		return rectangleEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getPoint() {
+		return pointEDataType;
 	}
 
 	/**
@@ -285,9 +364,17 @@ public class ViewPackageImpl extends EPackageImpl implements ViewPackage {
 		viewObjectEClass = createEClass(VIEW_OBJECT);
 		createEAttribute(viewObjectEClass, VIEW_OBJECT__CONSTRAINTS);
 		createEAttribute(viewObjectEClass, VIEW_OBJECT__LABEL);
+		createEReference(viewObjectEClass, VIEW_OBJECT__OUTGOING_LINKS);
+		createEReference(viewObjectEClass, VIEW_OBJECT__INCOMING_LINKS);
+
+		viewLinkEClass = createEClass(VIEW_LINK);
+		createEReference(viewLinkEClass, VIEW_LINK__SOURCE);
+		createEReference(viewLinkEClass, VIEW_LINK__TARGET);
+		createEAttribute(viewLinkEClass, VIEW_LINK__BENDPOINTS);
 
 		// Create data types
 		rectangleEDataType = createEDataType(RECTANGLE);
+		pointEDataType = createEDataType(POINT);
 	}
 
 	/**
@@ -341,9 +428,17 @@ public class ViewPackageImpl extends EPackageImpl implements ViewPackage {
 		initEClass(viewObjectEClass, ViewObject.class, "ViewObject", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getViewObject_Constraints(), this.getRectangle(), "constraints", null, 0, 1, ViewObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getViewObject_Label(), ecorePackage.getEString(), "label", "", 0, 1, ViewObject.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getViewObject_OutgoingLinks(), this.getViewLink(), this.getViewLink_Source(), "outgoingLinks", null, 0, -1, ViewObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getViewObject_IncomingLinks(), this.getViewLink(), this.getViewLink_Target(), "incomingLinks", null, 0, -1, ViewObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(viewLinkEClass, ViewLink.class, "ViewLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getViewLink_Source(), this.getViewObject(), this.getViewObject_OutgoingLinks(), "source", null, 0, 1, ViewLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getViewLink_Target(), this.getViewObject(), this.getViewObject_IncomingLinks(), "target", null, 0, 1, ViewLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getViewLink_Bendpoints(), this.getPoint(), "bendpoints", null, 0, 1, ViewLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize data types
 		initEDataType(rectangleEDataType, Rectangle.class, "Rectangle", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(pointEDataType, Point.class, "Point", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

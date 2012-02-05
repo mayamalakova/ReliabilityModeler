@@ -8,6 +8,7 @@ package com.reliability.system.view;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -20,6 +21,8 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link com.reliability.system.view.ViewObject#getConstraints <em>Constraints</em>}</li>
  *   <li>{@link com.reliability.system.view.ViewObject#getLabel <em>Label</em>}</li>
+ *   <li>{@link com.reliability.system.view.ViewObject#getOutgoingLinks <em>Outgoing Links</em>}</li>
+ *   <li>{@link com.reliability.system.view.ViewObject#getIncomingLinks <em>Incoming Links</em>}</li>
  * </ul>
  * </p>
  *
@@ -80,5 +83,41 @@ public interface ViewObject extends EObject {
 	 * @generated
 	 */
 	void setLabel(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Outgoing Links</b></em>' containment reference list.
+	 * The list contents are of type {@link com.reliability.system.view.ViewLink}.
+	 * It is bidirectional and its opposite is '{@link com.reliability.system.view.ViewLink#getSource <em>Source</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Outgoing Links</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Outgoing Links</em>' containment reference list.
+	 * @see com.reliability.system.view.ViewPackage#getViewObject_OutgoingLinks()
+	 * @see com.reliability.system.view.ViewLink#getSource
+	 * @model opposite="source" containment="true"
+	 * @generated
+	 */
+	EList<ViewLink> getOutgoingLinks();
+
+	/**
+	 * Returns the value of the '<em><b>Incoming Links</b></em>' reference list.
+	 * The list contents are of type {@link com.reliability.system.view.ViewLink}.
+	 * It is bidirectional and its opposite is '{@link com.reliability.system.view.ViewLink#getTarget <em>Target</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Incoming Links</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Incoming Links</em>' reference list.
+	 * @see com.reliability.system.view.ViewPackage#getViewObject_IncomingLinks()
+	 * @see com.reliability.system.view.ViewLink#getTarget
+	 * @model opposite="target"
+	 * @generated
+	 */
+	EList<ViewLink> getIncomingLinks();
 
 } // ViewObject

@@ -1,5 +1,7 @@
 package com.system.reliability.modeler.editor.figure;
 
+import org.eclipse.draw2d.ChopboxAnchor;
+import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.Label;
@@ -11,6 +13,7 @@ import org.eclipse.draw2d.geometry.Rectangle;
 public class ComponentFigure extends Figure implements IModelFigure{
 	private Label label;
 	private Triangle triangle;
+	private ConnectionAnchor connectionAnchor;	
 
 	public ComponentFigure(){
 		setLayoutManager(new XYLayout());
@@ -28,6 +31,8 @@ public class ComponentFigure extends Figure implements IModelFigure{
 		setConstraint(triangle, new Rectangle(bounds.width/2 - 30,10, 60, 60));
 		setConstraint(label, new Rectangle(0, 0, bounds.width, 25));
 		graphics.drawLine(bounds.x + bounds.width/2, bounds.y + 50, bounds.x + bounds.width/2, bounds.y + bounds.height);
+		label.invalidate();
+		triangle.invalidate();
 	}
 	
 	public Label getLabel() {
@@ -37,6 +42,14 @@ public class ComponentFigure extends Figure implements IModelFigure{
 	@Override
 	public Label getNameLabel() {
 		return label;
+	}
+
+	@Override
+	public ConnectionAnchor getConnectionAnchor() {
+		if (connectionAnchor == null) {
+			connectionAnchor = new ChopboxAnchor(this);
+		}
+		return connectionAnchor;
 	}
 
 }

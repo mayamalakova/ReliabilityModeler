@@ -92,6 +92,10 @@ public class ViewAdapterFactory extends AdapterFactoryImpl {
 				return createViewObjectAdapter();
 			}
 			@Override
+			public Adapter caseViewLink(ViewLink object) {
+				return createViewLinkAdapter();
+			}
+			@Override
 			public Adapter caseTransition(Transition object) {
 				return createTransitionAdapter();
 			}
@@ -176,6 +180,20 @@ public class ViewAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createViewObjectAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link com.reliability.system.view.ViewLink <em>Link</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see com.reliability.system.view.ViewLink
+	 * @generated
+	 */
+	public Adapter createViewLinkAdapter() {
 		return null;
 	}
 

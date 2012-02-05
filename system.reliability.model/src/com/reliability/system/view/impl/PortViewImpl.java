@@ -10,20 +10,26 @@ import com.reliability.system.impl.PortImpl;
 
 import com.reliability.system.view.PortView;
 import com.reliability.system.view.SystemView;
+import com.reliability.system.view.ViewLink;
 import com.reliability.system.view.ViewObject;
 import com.reliability.system.view.ViewPackage;
 
+import java.util.Collection;
 import org.eclipse.draw2d.geometry.Rectangle;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
+import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -34,6 +40,8 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * <ul>
  *   <li>{@link com.reliability.system.view.impl.PortViewImpl#getConstraints <em>Constraints</em>}</li>
  *   <li>{@link com.reliability.system.view.impl.PortViewImpl#getLabel <em>Label</em>}</li>
+ *   <li>{@link com.reliability.system.view.impl.PortViewImpl#getOutgoingLinks <em>Outgoing Links</em>}</li>
+ *   <li>{@link com.reliability.system.view.impl.PortViewImpl#getIncomingLinks <em>Incoming Links</em>}</li>
  *   <li>{@link com.reliability.system.view.impl.PortViewImpl#getOwner <em>Owner</em>}</li>
  * </ul>
  * </p>
@@ -80,6 +88,26 @@ public class PortViewImpl extends PortImpl implements PortView {
 	 * @ordered
 	 */
 	protected String label = LABEL_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getOutgoingLinks() <em>Outgoing Links</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOutgoingLinks()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ViewLink> outgoingLinks;
+
+	/**
+	 * The cached value of the '{@link #getIncomingLinks() <em>Incoming Links</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIncomingLinks()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ViewLink> incomingLinks;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -144,6 +172,30 @@ public class PortViewImpl extends PortImpl implements PortView {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<ViewLink> getOutgoingLinks() {
+		if (outgoingLinks == null) {
+			outgoingLinks = new EObjectContainmentWithInverseEList<ViewLink>(ViewLink.class, this, ViewPackage.PORT_VIEW__OUTGOING_LINKS, ViewPackage.VIEW_LINK__SOURCE);
+		}
+		return outgoingLinks;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<ViewLink> getIncomingLinks() {
+		if (incomingLinks == null) {
+			incomingLinks = new EObjectWithInverseResolvingEList<ViewLink>(ViewLink.class, this, ViewPackage.PORT_VIEW__INCOMING_LINKS, ViewPackage.VIEW_LINK__TARGET);
+		}
+		return incomingLinks;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public SystemView getOwner() {
 		if (eContainerFeatureID() != ViewPackage.PORT_VIEW__OWNER) return null;
 		return (SystemView)eContainer();
@@ -185,9 +237,14 @@ public class PortViewImpl extends PortImpl implements PortView {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case ViewPackage.PORT_VIEW__OUTGOING_LINKS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getOutgoingLinks()).basicAdd(otherEnd, msgs);
+			case ViewPackage.PORT_VIEW__INCOMING_LINKS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getIncomingLinks()).basicAdd(otherEnd, msgs);
 			case ViewPackage.PORT_VIEW__OWNER:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -204,6 +261,10 @@ public class PortViewImpl extends PortImpl implements PortView {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case ViewPackage.PORT_VIEW__OUTGOING_LINKS:
+				return ((InternalEList<?>)getOutgoingLinks()).basicRemove(otherEnd, msgs);
+			case ViewPackage.PORT_VIEW__INCOMING_LINKS:
+				return ((InternalEList<?>)getIncomingLinks()).basicRemove(otherEnd, msgs);
 			case ViewPackage.PORT_VIEW__OWNER:
 				return basicSetOwner(null, msgs);
 		}
@@ -236,6 +297,10 @@ public class PortViewImpl extends PortImpl implements PortView {
 				return getConstraints();
 			case ViewPackage.PORT_VIEW__LABEL:
 				return getLabel();
+			case ViewPackage.PORT_VIEW__OUTGOING_LINKS:
+				return getOutgoingLinks();
+			case ViewPackage.PORT_VIEW__INCOMING_LINKS:
+				return getIncomingLinks();
 			case ViewPackage.PORT_VIEW__OWNER:
 				return getOwner();
 		}
@@ -247,6 +312,7 @@ public class PortViewImpl extends PortImpl implements PortView {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -255,6 +321,14 @@ public class PortViewImpl extends PortImpl implements PortView {
 				return;
 			case ViewPackage.PORT_VIEW__LABEL:
 				setLabel((String)newValue);
+				return;
+			case ViewPackage.PORT_VIEW__OUTGOING_LINKS:
+				getOutgoingLinks().clear();
+				getOutgoingLinks().addAll((Collection<? extends ViewLink>)newValue);
+				return;
+			case ViewPackage.PORT_VIEW__INCOMING_LINKS:
+				getIncomingLinks().clear();
+				getIncomingLinks().addAll((Collection<? extends ViewLink>)newValue);
 				return;
 			case ViewPackage.PORT_VIEW__OWNER:
 				setOwner((SystemView)newValue);
@@ -277,6 +351,12 @@ public class PortViewImpl extends PortImpl implements PortView {
 			case ViewPackage.PORT_VIEW__LABEL:
 				setLabel(LABEL_EDEFAULT);
 				return;
+			case ViewPackage.PORT_VIEW__OUTGOING_LINKS:
+				getOutgoingLinks().clear();
+				return;
+			case ViewPackage.PORT_VIEW__INCOMING_LINKS:
+				getIncomingLinks().clear();
+				return;
 			case ViewPackage.PORT_VIEW__OWNER:
 				setOwner((SystemView)null);
 				return;
@@ -296,6 +376,10 @@ public class PortViewImpl extends PortImpl implements PortView {
 				return CONSTRAINTS_EDEFAULT == null ? constraints != null : !CONSTRAINTS_EDEFAULT.equals(constraints);
 			case ViewPackage.PORT_VIEW__LABEL:
 				return LABEL_EDEFAULT == null ? label != null : !LABEL_EDEFAULT.equals(label);
+			case ViewPackage.PORT_VIEW__OUTGOING_LINKS:
+				return outgoingLinks != null && !outgoingLinks.isEmpty();
+			case ViewPackage.PORT_VIEW__INCOMING_LINKS:
+				return incomingLinks != null && !incomingLinks.isEmpty();
 			case ViewPackage.PORT_VIEW__OWNER:
 				return getOwner() != null;
 		}
@@ -313,6 +397,8 @@ public class PortViewImpl extends PortImpl implements PortView {
 			switch (derivedFeatureID) {
 				case ViewPackage.PORT_VIEW__CONSTRAINTS: return ViewPackage.VIEW_OBJECT__CONSTRAINTS;
 				case ViewPackage.PORT_VIEW__LABEL: return ViewPackage.VIEW_OBJECT__LABEL;
+				case ViewPackage.PORT_VIEW__OUTGOING_LINKS: return ViewPackage.VIEW_OBJECT__OUTGOING_LINKS;
+				case ViewPackage.PORT_VIEW__INCOMING_LINKS: return ViewPackage.VIEW_OBJECT__INCOMING_LINKS;
 				default: return -1;
 			}
 		}
@@ -330,6 +416,8 @@ public class PortViewImpl extends PortImpl implements PortView {
 			switch (baseFeatureID) {
 				case ViewPackage.VIEW_OBJECT__CONSTRAINTS: return ViewPackage.PORT_VIEW__CONSTRAINTS;
 				case ViewPackage.VIEW_OBJECT__LABEL: return ViewPackage.PORT_VIEW__LABEL;
+				case ViewPackage.VIEW_OBJECT__OUTGOING_LINKS: return ViewPackage.PORT_VIEW__OUTGOING_LINKS;
+				case ViewPackage.VIEW_OBJECT__INCOMING_LINKS: return ViewPackage.PORT_VIEW__INCOMING_LINKS;
 				default: return -1;
 			}
 		}

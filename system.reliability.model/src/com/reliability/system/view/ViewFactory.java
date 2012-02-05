@@ -53,6 +53,15 @@ public interface ViewFactory extends EFactory {
 	PortView createPortView();
 
 	/**
+	 * Returns a new object of class '<em>Link</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Link</em>'.
+	 * @generated
+	 */
+	ViewLink createViewLink();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

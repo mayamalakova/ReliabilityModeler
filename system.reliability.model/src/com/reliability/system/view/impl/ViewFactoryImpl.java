@@ -8,6 +8,7 @@ package com.reliability.system.view.impl;
 
 import com.reliability.system.view.*;
 
+import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 
 import org.eclipse.emf.ecore.EClass;
@@ -64,6 +65,7 @@ public class ViewFactoryImpl extends EFactoryImpl implements ViewFactory {
 			case ViewPackage.SYSTEM_VIEW: return createSystemView();
 			case ViewPackage.TRANSITION_VIEW: return createTransitionView();
 			case ViewPackage.PORT_VIEW: return createPortView();
+			case ViewPackage.VIEW_LINK: return createViewLink();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -78,6 +80,8 @@ public class ViewFactoryImpl extends EFactoryImpl implements ViewFactory {
 		switch (eDataType.getClassifierID()) {
 			case ViewPackage.RECTANGLE:
 				return createRectangleFromString(eDataType, initialValue);
+			case ViewPackage.POINT:
+				return createPointFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -92,6 +96,8 @@ public class ViewFactoryImpl extends EFactoryImpl implements ViewFactory {
 		switch (eDataType.getClassifierID()) {
 			case ViewPackage.RECTANGLE:
 				return convertRectangleToString(eDataType, instanceValue);
+			case ViewPackage.POINT:
+				return convertPointToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -123,6 +129,16 @@ public class ViewFactoryImpl extends EFactoryImpl implements ViewFactory {
 	public PortView createPortView() {
 		PortViewImpl portView = new PortViewImpl();
 		return portView;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ViewLink createViewLink() {
+		ViewLinkImpl viewLink = new ViewLinkImpl();
+		return viewLink;
 	}
 
 	/**
@@ -165,6 +181,24 @@ public class ViewFactoryImpl extends EFactoryImpl implements ViewFactory {
 		}
 		Rectangle rect = (Rectangle) instanceValue;
 		return rect.x + "," + rect.y + "," + rect.width + "," + rect.height;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Point createPointFromString(EDataType eDataType, String initialValue) {
+		return (Point)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertPointToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
 	}
 
 	/**

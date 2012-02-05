@@ -191,13 +191,31 @@ public interface ViewPackage extends EPackage {
 	int TRANSITION_VIEW__LABEL = SystemPackage.TRANSITION_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Outgoing Links</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION_VIEW__OUTGOING_LINKS = SystemPackage.TRANSITION_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Incoming Links</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION_VIEW__INCOMING_LINKS = SystemPackage.TRANSITION_FEATURE_COUNT + 3;
+
+	/**
 	 * The feature id for the '<em><b>Owner</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION_VIEW__OWNER = SystemPackage.TRANSITION_FEATURE_COUNT + 2;
+	int TRANSITION_VIEW__OWNER = SystemPackage.TRANSITION_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Transition View</em>' class.
@@ -206,7 +224,7 @@ public interface ViewPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION_VIEW_FEATURE_COUNT = SystemPackage.TRANSITION_FEATURE_COUNT + 3;
+	int TRANSITION_VIEW_FEATURE_COUNT = SystemPackage.TRANSITION_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link com.reliability.system.view.impl.PortViewImpl <em>Port View</em>}' class.
@@ -264,13 +282,31 @@ public interface ViewPackage extends EPackage {
 	int PORT_VIEW__LABEL = SystemPackage.PORT_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Outgoing Links</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PORT_VIEW__OUTGOING_LINKS = SystemPackage.PORT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Incoming Links</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PORT_VIEW__INCOMING_LINKS = SystemPackage.PORT_FEATURE_COUNT + 3;
+
+	/**
 	 * The feature id for the '<em><b>Owner</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PORT_VIEW__OWNER = SystemPackage.PORT_FEATURE_COUNT + 2;
+	int PORT_VIEW__OWNER = SystemPackage.PORT_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Port View</em>' class.
@@ -279,7 +315,7 @@ public interface ViewPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PORT_VIEW_FEATURE_COUNT = SystemPackage.PORT_FEATURE_COUNT + 3;
+	int PORT_VIEW_FEATURE_COUNT = SystemPackage.PORT_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link com.reliability.system.view.impl.ViewObjectImpl <em>Object</em>}' class.
@@ -310,13 +346,77 @@ public interface ViewPackage extends EPackage {
 	int VIEW_OBJECT__LABEL = 1;
 
 	/**
+	 * The feature id for the '<em><b>Outgoing Links</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_OBJECT__OUTGOING_LINKS = 2;
+
+	/**
+	 * The feature id for the '<em><b>Incoming Links</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_OBJECT__INCOMING_LINKS = 3;
+
+	/**
 	 * The number of structural features of the '<em>Object</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VIEW_OBJECT_FEATURE_COUNT = 2;
+	int VIEW_OBJECT_FEATURE_COUNT = 4;
+
+	/**
+	 * The meta object id for the '{@link com.reliability.system.view.impl.ViewLinkImpl <em>Link</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.reliability.system.view.impl.ViewLinkImpl
+	 * @see com.reliability.system.view.impl.ViewPackageImpl#getViewLink()
+	 * @generated
+	 */
+	int VIEW_LINK = 4;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_LINK__SOURCE = 0;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_LINK__TARGET = 1;
+
+	/**
+	 * The feature id for the '<em><b>Bendpoints</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_LINK__BENDPOINTS = 2;
+
+	/**
+	 * The number of structural features of the '<em>Link</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_LINK_FEATURE_COUNT = 3;
 
 	/**
 	 * The meta object id for the '<em>Rectangle</em>' data type.
@@ -326,7 +426,18 @@ public interface ViewPackage extends EPackage {
 	 * @see com.reliability.system.view.impl.ViewPackageImpl#getRectangle()
 	 * @generated
 	 */
-	int RECTANGLE = 4;
+	int RECTANGLE = 5;
+
+
+	/**
+	 * The meta object id for the '<em>Point</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.draw2d.geometry.Point
+	 * @see com.reliability.system.view.impl.ViewPackageImpl#getPoint()
+	 * @generated
+	 */
+	int POINT = 6;
 
 
 	/**
@@ -447,6 +558,71 @@ public interface ViewPackage extends EPackage {
 	EAttribute getViewObject_Label();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link com.reliability.system.view.ViewObject#getOutgoingLinks <em>Outgoing Links</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Outgoing Links</em>'.
+	 * @see com.reliability.system.view.ViewObject#getOutgoingLinks()
+	 * @see #getViewObject()
+	 * @generated
+	 */
+	EReference getViewObject_OutgoingLinks();
+
+	/**
+	 * Returns the meta object for the reference list '{@link com.reliability.system.view.ViewObject#getIncomingLinks <em>Incoming Links</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Incoming Links</em>'.
+	 * @see com.reliability.system.view.ViewObject#getIncomingLinks()
+	 * @see #getViewObject()
+	 * @generated
+	 */
+	EReference getViewObject_IncomingLinks();
+
+	/**
+	 * Returns the meta object for class '{@link com.reliability.system.view.ViewLink <em>Link</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Link</em>'.
+	 * @see com.reliability.system.view.ViewLink
+	 * @generated
+	 */
+	EClass getViewLink();
+
+	/**
+	 * Returns the meta object for the container reference '{@link com.reliability.system.view.ViewLink#getSource <em>Source</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Source</em>'.
+	 * @see com.reliability.system.view.ViewLink#getSource()
+	 * @see #getViewLink()
+	 * @generated
+	 */
+	EReference getViewLink_Source();
+
+	/**
+	 * Returns the meta object for the reference '{@link com.reliability.system.view.ViewLink#getTarget <em>Target</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Target</em>'.
+	 * @see com.reliability.system.view.ViewLink#getTarget()
+	 * @see #getViewLink()
+	 * @generated
+	 */
+	EReference getViewLink_Target();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.reliability.system.view.ViewLink#getBendpoints <em>Bendpoints</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Bendpoints</em>'.
+	 * @see com.reliability.system.view.ViewLink#getBendpoints()
+	 * @see #getViewLink()
+	 * @generated
+	 */
+	EAttribute getViewLink_Bendpoints();
+
+	/**
 	 * Returns the meta object for data type '{@link org.eclipse.draw2d.geometry.Rectangle <em>Rectangle</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -456,6 +632,17 @@ public interface ViewPackage extends EPackage {
 	 * @generated
 	 */
 	EDataType getRectangle();
+
+	/**
+	 * Returns the meta object for data type '{@link org.eclipse.draw2d.geometry.Point <em>Point</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Point</em>'.
+	 * @see org.eclipse.draw2d.geometry.Point
+	 * @model instanceClass="org.eclipse.draw2d.geometry.Point"
+	 * @generated
+	 */
+	EDataType getPoint();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -576,6 +763,56 @@ public interface ViewPackage extends EPackage {
 		EAttribute VIEW_OBJECT__LABEL = eINSTANCE.getViewObject_Label();
 
 		/**
+		 * The meta object literal for the '<em><b>Outgoing Links</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference VIEW_OBJECT__OUTGOING_LINKS = eINSTANCE.getViewObject_OutgoingLinks();
+
+		/**
+		 * The meta object literal for the '<em><b>Incoming Links</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference VIEW_OBJECT__INCOMING_LINKS = eINSTANCE.getViewObject_IncomingLinks();
+
+		/**
+		 * The meta object literal for the '{@link com.reliability.system.view.impl.ViewLinkImpl <em>Link</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.reliability.system.view.impl.ViewLinkImpl
+		 * @see com.reliability.system.view.impl.ViewPackageImpl#getViewLink()
+		 * @generated
+		 */
+		EClass VIEW_LINK = eINSTANCE.getViewLink();
+
+		/**
+		 * The meta object literal for the '<em><b>Source</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference VIEW_LINK__SOURCE = eINSTANCE.getViewLink_Source();
+
+		/**
+		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference VIEW_LINK__TARGET = eINSTANCE.getViewLink_Target();
+
+		/**
+		 * The meta object literal for the '<em><b>Bendpoints</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VIEW_LINK__BENDPOINTS = eINSTANCE.getViewLink_Bendpoints();
+
+		/**
 		 * The meta object literal for the '<em>Rectangle</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -584,6 +821,16 @@ public interface ViewPackage extends EPackage {
 		 * @generated
 		 */
 		EDataType RECTANGLE = eINSTANCE.getRectangle();
+
+		/**
+		 * The meta object literal for the '<em>Point</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.draw2d.geometry.Point
+		 * @see com.reliability.system.view.impl.ViewPackageImpl#getPoint()
+		 * @generated
+		 */
+		EDataType POINT = eINSTANCE.getPoint();
 
 	}
 

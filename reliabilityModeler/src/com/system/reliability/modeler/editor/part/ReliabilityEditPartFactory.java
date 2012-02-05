@@ -7,6 +7,7 @@ import com.reliability.system.Transition;
 import com.reliability.system.TransitionType;
 import com.reliability.system.view.PortView;
 import com.reliability.system.view.SystemView;
+import com.reliability.system.view.ViewLink;
 
 public class ReliabilityEditPartFactory implements EditPartFactory {
 
@@ -23,6 +24,9 @@ public class ReliabilityEditPartFactory implements EditPartFactory {
 
 		} else if (model instanceof PortView) {
 			part = new PortEditPart();
+			
+		} else if (model instanceof ViewLink) {
+			part = new ViewLinkEditPart();
 		}
 	 
 	    if (part != null) {
