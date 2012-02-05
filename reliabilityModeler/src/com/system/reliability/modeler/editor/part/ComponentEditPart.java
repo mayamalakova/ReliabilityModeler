@@ -3,16 +3,17 @@ package com.system.reliability.modeler.editor.part;
 import java.util.Random;
 
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 
-import com.system.reliability.modeler.editor.figure.ConnectorFigure;
+import com.system.reliability.modeler.editor.figure.ComponentFigure;
 
-public class ConnectorEditPart extends ModelEditPart {
+public class ComponentEditPart extends AbstractGraphicalEditPart {
 
 	Random rand = new Random();
 	
 	@Override
 	protected IFigure createFigure() {
-		return new ConnectorFigure();
+		return new ComponentFigure();
 	}
 
 	@Override

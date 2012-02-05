@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
@@ -15,19 +17,24 @@ import com.reliability.system.Port;
 import com.reliability.system.PositionType;
 import com.reliability.system.SystemFactory;
 import com.reliability.system.SystemPackage;
-import com.reliability.system.Transition;
 import com.reliability.system.TransitionMatrixElement;
 import com.reliability.system.TransitionType;
 import com.reliability.system.util.SystemResourceFactoryImpl;
+import com.reliability.view.view.SystemView;
+import com.reliability.view.view.TransitionView;
+import com.reliability.view.view.ViewFactory;
+import com.reliability.view.view.ViewPackage;
+import com.reliability.view.view.util.ViewResourceFactoryImpl;
 
 public class ReliabilityModelUtils {
 	
-	private static SystemFactory factory = SystemFactory.eINSTANCE; 
+	private static ViewFactory viewFactory = ViewFactory.eINSTANCE; 
+	private static SystemFactory systemFactory = SystemFactory.eINSTANCE;
 	
-	public static GeneralizedNet createModel(){
-		GeneralizedNet generalizedNet = factory.createGeneralizedNet();
+	public static SystemView createModel(){
+		SystemView generalizedNet = viewFactory.createSystemView();
 		
-		Transition connector = createTransition("Event Bus", "Transmits events between components", TransitionType.CONNECTOR);
+		TransitionView connector = createTransition("Event Bus", "Transmits events between components", TransitionType.CONNECTOR);
 		Port input1 = createPort("L11", PositionType.INTERNAL);
 		connector.getInputPorts().add(input1);
 		Port output1 = createPort("L12", PositionType.INTERNAL);
@@ -36,7 +43,7 @@ public class ReliabilityModelUtils {
 		connector.setFailureState(failure);
 		generalizedNet.getTransitions().add(connector);
 		
-		Transition userInput = createTransition("User Input", null, TransitionType.COMPONENT);
+		TransitionView userInput = createTransition("User Input", null, TransitionType.COMPONENT);
 		input1 = createPort("L21", PositionType.SYSTEM_INPUT);
 		userInput.getInputPorts().add(input1);
 		output1 = createPort("L22", PositionType.INTERNAL);
@@ -45,7 +52,7 @@ public class ReliabilityModelUtils {
 		userInput.setFailureState(failure);
 		generalizedNet.getTransitions().add(userInput);
 		
-		Transition screenDriver = createTransition("Screen Driver", null, TransitionType.COMPONENT);
+		TransitionView screenDriver = createTransition("Screen Driver", null, TransitionType.COMPONENT);
 		input1 = createPort("L31", PositionType.INTERNAL);
 		screenDriver.getInputPorts().add(input1);
 		output1 = createPort("L32", PositionType.FINAL);
@@ -57,10 +64,11 @@ public class ReliabilityModelUtils {
 		return generalizedNet;
 	}
 	
-	public static GeneralizedNet createModelFromFile(String fileLocaltion) {
-		GeneralizedNet model  = null;
+	public static EObject createModelFromFile(String fileLocaltion) {
+		EObject model  = null;
 		
 		SystemPackage.eINSTANCE.eClass();
+		ViewPackage.eINSTANCE.eClass();
 		ResourceSet resourceSet = new ResourceSetImpl();
 		URI uri = URI.createFileURI(fileLocaltion);
 		Resource resource = resourceSet.createResource(uri);
@@ -68,12 +76,13 @@ public class ReliabilityModelUtils {
 		if (resource == null) {
 			//explicitly register the model resource factory if invoked outside of the eclipse platform
 			resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("system", new SystemResourceFactoryImpl());
+			resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("view", new ViewResourceFactoryImpl());
 			resource = resourceSet.createResource(uri);
 		}
 		
 		try {
 			resource.load(null);
-			model = (GeneralizedNet) resource.getContents().get(0);
+			model = resource.getContents().get(0);
 		} catch (IOException e) {
 			model = null;
 			e.printStackTrace();
@@ -82,17 +91,18 @@ public class ReliabilityModelUtils {
 		return model;
 	}
 	
-	private static Transition createTransition(String name, String description, TransitionType type){
-		Transition connector = factory.createTransition();
+	private static TransitionView createTransition(String name, String description, TransitionType type){
+		TransitionView connector = viewFactory.createTransitionView();
 		connector.setName(name);
 		connector.setDescription(description);
 		connector.setType(type);
+		connector.setConstraints(new Rectangle(0, 0, 30, 30));
 		
 		return connector;
 	}
 	
 	private static Port createPort(String id, PositionType type){
-		Port port = factory.createPort();
+		Port port = systemFactory.createPort();
 		port.setId(id);
 		port.setType(type);
 		
@@ -100,7 +110,7 @@ public class ReliabilityModelUtils {
 	}
 	
 	private static Failure createFailure(String id){
-		Failure failure = factory.createFailure();
+		Failure failure = systemFactory.createFailure();
 		failure.setId(id);
 		
 		return failure;
@@ -114,6 +124,7 @@ public class ReliabilityModelUtils {
 		return target;
 	}
 	
+	//TODO: Make this work with SystemView
 	public static List<Port> getSystemInputs(GeneralizedNet systemModel) {
 		List<Port> systemInputs = ReliabilityModelUtils.clonePortsList(systemModel.getPositions());
 		

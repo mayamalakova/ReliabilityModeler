@@ -9,8 +9,8 @@ import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.LineBorder;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 
-import com.reliability.system.GeneralizedNet;
 import com.reliability.system.Transition;
+import com.reliability.view.view.SystemView;
 
 public class GeneralizedNetEditPart extends AbstractGraphicalEditPart {
 
@@ -31,7 +31,7 @@ public class GeneralizedNetEditPart extends AbstractGraphicalEditPart {
 	@Override 
 	protected List<Transition> getModelChildren() {
 	    List<Transition> transitions = new ArrayList<Transition>();
-	    GeneralizedNet generalizedNet = (GeneralizedNet) getModel();
+	    SystemView generalizedNet = (SystemView) getModel();
 	    transitions.addAll(generalizedNet.getTransitions());
 	    return transitions;
 	  }

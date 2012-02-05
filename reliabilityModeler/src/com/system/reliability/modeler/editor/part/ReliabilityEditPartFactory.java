@@ -5,6 +5,8 @@ import org.eclipse.gef.EditPartFactory;
 
 import com.reliability.system.GeneralizedNet;
 import com.reliability.system.Transition;
+import com.reliability.system.TransitionType;
+import com.reliability.view.view.SystemView;
 
 public class ReliabilityEditPartFactory implements EditPartFactory {
 
@@ -12,11 +14,13 @@ public class ReliabilityEditPartFactory implements EditPartFactory {
 	public EditPart createEditPart(EditPart context, Object model) {
 		EditPart part = null;
 		 
-	    if(model instanceof GeneralizedNet) {
+	    if(model instanceof SystemView) {
 	      part = new GeneralizedNetEditPart();
-	    } else if (model instanceof Transition) {
-	      part = new ConnectorEditPart();
-	    }
+	    
+		} else if (model instanceof Transition) {
+			part = (((Transition) model).getType().equals(TransitionType.CONNECTOR)) ? 
+					new ConnectorEditPart() : new ComponentEditPart();
+		}
 	 
 	    if (part != null) {
 	      part.setModel(model);

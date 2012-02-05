@@ -6,9 +6,61 @@
       <editor
             class="com.system.reliability.modeler.editor.ReliabilityModelEditor"
             default="false"
+            extensions="view"
             id="com.system.reliability.editorId"
             name="Reliability Model Editor">
       </editor>
+   </extension>
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <parser
+            type="view"
+            class=" com.reliability.view.view.util.ViewResourceFactoryImpl"/>
+   </extension>
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="system.reliability.model.view"
+            class="com.reliability.view.view.ViewPackage"
+            genModel="model/reliabilityView.genmodel"/>
+   </extension>
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.eclipse.ui.ide.workbench"
+            name="%productName">
+         <property
+               name="windowImages"
+               value="eclipse.gif,eclipse32.gif,eclipse48.gif,eclipse.png,eclipse32.png">
+         </property>
+         <property
+               name="aboutText"
+               value="%productBlurb">
+         </property>
+         <property
+               name="aboutImage"
+               value="eclipse_lg.gif">
+         </property>
+         <property
+               name="startupForegroundColor"
+               value="C8D5EA">
+         </property>
+         <property
+               name="startupProgressRect"
+               value="0,280,455,15">
+         </property>
+         <property
+               name="startupMessageRect"
+               value="7,220,441,20">
+         </property>
+         <property
+               name="appName"
+               value="%productName">
+         </property>
+         <property
+               name="preferenceCustomization"
+               value="plugin_customization.ini">
+         </property>
+      </product>
    </extension>
 
 </plugin>

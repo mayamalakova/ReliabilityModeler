@@ -3,25 +3,27 @@ package com.system.reliability.modeler.editor.figure;
 import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.Label;
-import org.eclipse.draw2d.RectangleFigure;
+import org.eclipse.draw2d.PositionConstants;
+import org.eclipse.draw2d.Triangle;
 import org.eclipse.draw2d.XYLayout;
 import org.eclipse.draw2d.geometry.Rectangle;
 
-public class ConnectorFigure extends Figure implements IModleFigure{
+public class ComponentFigure extends Figure implements IModleFigure{
 	private Label label;
-	private RectangleFigure square;
+	private Triangle triangle;
 
-	public ConnectorFigure() {
+	public ComponentFigure(){
 		setLayoutManager(new XYLayout());
-		square = new RectangleFigure();
-		add(square);
+		triangle = new Triangle();
+		triangle.setDirection(PositionConstants.SOUTH);
+		add(triangle);
 		label = new Label();
 		add(label);
 	}
 	
 	@Override protected void paintFigure(Graphics graphics) {
 		Rectangle bounds = getBounds().getCopy();
-		setConstraint(square, new Rectangle(20,25, bounds.width - 60, bounds.height - 60));
+		setConstraint(triangle, new Rectangle(20,10, bounds.width - 40, bounds.height - 40));
 		setConstraint(label, new Rectangle(0, 0, bounds.width, 25));
 	}
 	
@@ -33,4 +35,5 @@ public class ConnectorFigure extends Figure implements IModleFigure{
 	public Label getNameLabel() {
 		return label;
 	}
+
 }
