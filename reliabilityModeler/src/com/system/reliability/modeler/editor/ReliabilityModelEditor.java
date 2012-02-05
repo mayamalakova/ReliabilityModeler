@@ -13,7 +13,7 @@ import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.PartInitException;
 
-import com.reliability.view.view.SystemView;
+import com.reliability.system.view.SystemView;
 import com.system.reliability.modeler.editor.palette.ModelEditorPalette;
 import com.system.reliability.modeler.editor.part.ReliabilityEditPartFactory;
 import com.system.reliability.modeler.utils.ReliabilityModelUtils;

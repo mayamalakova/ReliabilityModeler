@@ -20,11 +20,11 @@ import com.reliability.system.SystemPackage;
 import com.reliability.system.TransitionMatrixElement;
 import com.reliability.system.TransitionType;
 import com.reliability.system.util.SystemResourceFactoryImpl;
-import com.reliability.view.view.SystemView;
-import com.reliability.view.view.TransitionView;
-import com.reliability.view.view.ViewFactory;
-import com.reliability.view.view.ViewPackage;
-import com.reliability.view.view.util.ViewResourceFactoryImpl;
+import com.reliability.system.view.SystemView;
+import com.reliability.system.view.TransitionView;
+import com.reliability.system.view.ViewFactory;
+import com.reliability.system.view.ViewPackage;
+import com.reliability.system.view.util.ViewResourceFactoryImpl;
 
 public class ReliabilityModelUtils {
 	

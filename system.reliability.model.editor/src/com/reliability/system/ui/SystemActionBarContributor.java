@@ -6,6 +6,8 @@
  */
 package com.reliability.system.ui;
 
+import com.reliability.system.view.ui.ReliabilityViewEditorPlugin;
+
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -75,14 +77,14 @@ public class SystemActionBarContributor
 	 * @generated
 	 */
 	protected IAction showPropertiesViewAction =
-		new Action(ReliabilityEditorPlugin.INSTANCE.getString("_UI_ShowPropertiesView_menu_item")) {
+		new Action(ReliabilityViewEditorPlugin.INSTANCE.getString("_UI_ShowPropertiesView_menu_item")) {
 			@Override
 			public void run() {
 				try {
 					getPage().showView("org.eclipse.ui.views.PropertySheet");
 				}
 				catch (PartInitException exception) {
-					ReliabilityEditorPlugin.INSTANCE.log(exception);
+					ReliabilityViewEditorPlugin.INSTANCE.log(exception);
 				}
 			}
 		};
@@ -95,7 +97,7 @@ public class SystemActionBarContributor
 	 * @generated
 	 */
 	protected IAction refreshViewerAction =
-		new Action(ReliabilityEditorPlugin.INSTANCE.getString("_UI_RefreshViewer_menu_item")) {
+		new Action(ReliabilityViewEditorPlugin.INSTANCE.getString("_UI_RefreshViewer_menu_item")) {
 			@Override
 			public boolean isEnabled() {
 				return activeEditorPart instanceof IViewerProvider;
@@ -182,7 +184,7 @@ public class SystemActionBarContributor
 	public void contributeToMenu(IMenuManager menuManager) {
 		super.contributeToMenu(menuManager);
 
-		IMenuManager submenuManager = new MenuManager(ReliabilityEditorPlugin.INSTANCE.getString("_UI_SystemEditor_menu"), "com.reliability.systemMenuID");
+		IMenuManager submenuManager = new MenuManager(ReliabilityViewEditorPlugin.INSTANCE.getString("_UI_SystemEditor_menu"), "com.reliability.systemMenuID");
 		menuManager.insertAfter("additions", submenuManager);
 		submenuManager.add(new Separator("settings"));
 		submenuManager.add(new Separator("actions"));
@@ -191,12 +193,12 @@ public class SystemActionBarContributor
 
 		// Prepare for CreateChild item addition or removal.
 		//
-		createChildMenuManager = new MenuManager(ReliabilityEditorPlugin.INSTANCE.getString("_UI_CreateChild_menu_item"));
+		createChildMenuManager = new MenuManager(ReliabilityViewEditorPlugin.INSTANCE.getString("_UI_CreateChild_menu_item"));
 		submenuManager.insertBefore("additions", createChildMenuManager);
 
 		// Prepare for CreateSibling item addition or removal.
 		//
-		createSiblingMenuManager = new MenuManager(ReliabilityEditorPlugin.INSTANCE.getString("_UI_CreateSibling_menu_item"));
+		createSiblingMenuManager = new MenuManager(ReliabilityViewEditorPlugin.INSTANCE.getString("_UI_CreateSibling_menu_item"));
 		submenuManager.insertBefore("additions", createSiblingMenuManager);
 
 		// Force an update because Eclipse hides empty menus now.
@@ -387,11 +389,11 @@ public class SystemActionBarContributor
 		super.menuAboutToShow(menuManager);
 		MenuManager submenuManager = null;
 
-		submenuManager = new MenuManager(ReliabilityEditorPlugin.INSTANCE.getString("_UI_CreateChild_menu_item"));
+		submenuManager = new MenuManager(ReliabilityViewEditorPlugin.INSTANCE.getString("_UI_CreateChild_menu_item"));
 		populateManager(submenuManager, createChildActions, null);
 		menuManager.insertBefore("edit", submenuManager);
 
-		submenuManager = new MenuManager(ReliabilityEditorPlugin.INSTANCE.getString("_UI_CreateSibling_menu_item"));
+		submenuManager = new MenuManager(ReliabilityViewEditorPlugin.INSTANCE.getString("_UI_CreateSibling_menu_item"));
 		populateManager(submenuManager, createSiblingActions, null);
 		menuManager.insertBefore("edit", submenuManager);
 	}

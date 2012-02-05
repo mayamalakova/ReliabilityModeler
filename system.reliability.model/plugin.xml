@@ -12,9 +12,22 @@
 
    <extension point="org.eclipse.emf.ecore.generated_package">
       <package
+            uri="system.reliability.model.view"
+            class="com.reliability.system.view.ViewPackage"
+            genModel="model/reliabilityView.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <parser
+            type="view"
+            class="com.reliability.system.view.util.ViewResourceFactoryImpl"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package
             uri="system.reliability.model"
             class="com.reliability.system.SystemPackage"
-            genModel="model/reliability.genmodel"/>
+            genModel="model/reliabilityView.genmodel"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.extension_parser">

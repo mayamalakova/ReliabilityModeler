@@ -24,7 +24,6 @@ package com.reliability.system;
  * @generated
  */
 public interface Failure extends Position {
-
 	/**
 	 * Returns the value of the '<em><b>Owner</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link com.reliability.system.Transition#getFailureState <em>Failure State</em>}'.
@@ -52,4 +51,5 @@ public interface Failure extends Position {
 	 * @generated
 	 */
 	void setOwner(Transition value);
+
 } // Failure

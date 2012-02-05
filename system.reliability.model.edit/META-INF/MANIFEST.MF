@@ -2,13 +2,14 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: system.reliability.model.edit;singleton:=true
-Bundle-Version: 1.0.0
+Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
-Bundle-Activator: com.reliability.system.provider.ReliabilityEditPlugin$Implementation
+Bundle-Activator: com.reliability.system.view.provider.ReliabilityViewEditPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: com.reliability.system.provider
+Export-Package: com.reliability.system.provider,
+ com.reliability.system.view.provider
 Require-Bundle: org.eclipse.core.runtime,
  system.reliability.model;visibility:=reexport,
  org.eclipse.emf.edit;visibility:=reexport

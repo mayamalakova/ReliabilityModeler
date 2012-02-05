@@ -5,7 +5,7 @@ import org.eclipse.gef.EditPartFactory;
 
 import com.reliability.system.Transition;
 import com.reliability.system.TransitionType;
-import com.reliability.view.view.SystemView;
+import com.reliability.system.view.SystemView;
 
 public class ReliabilityEditPartFactory implements EditPartFactory {
 

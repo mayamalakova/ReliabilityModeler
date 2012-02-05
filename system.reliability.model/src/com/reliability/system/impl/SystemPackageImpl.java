@@ -17,6 +17,10 @@ import com.reliability.system.Transition;
 import com.reliability.system.TransitionMatrixElement;
 import com.reliability.system.TransitionType;
 
+import com.reliability.system.view.ViewPackage;
+
+import com.reliability.system.view.impl.ViewPackageImpl;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
@@ -134,11 +138,16 @@ public class SystemPackageImpl extends EPackageImpl implements SystemPackage {
 
 		isInited = true;
 
+		// Obtain or create and register interdependencies
+		ViewPackageImpl theViewPackage = (ViewPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ViewPackage.eNS_URI) instanceof ViewPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ViewPackage.eNS_URI) : ViewPackage.eINSTANCE);
+
 		// Create package meta-data objects
 		theSystemPackage.createPackageContents();
+		theViewPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theSystemPackage.initializePackageContents();
+		theViewPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theSystemPackage.freeze();

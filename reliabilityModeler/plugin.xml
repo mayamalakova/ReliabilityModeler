@@ -11,17 +11,6 @@
             name="Reliability Model Editor">
       </editor>
    </extension>
-   <extension point="org.eclipse.emf.ecore.extension_parser">
-      <parser
-            type="view"
-            class=" com.reliability.view.view.util.ViewResourceFactoryImpl"/>
-   </extension>
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <package
-            uri="system.reliability.model.view"
-            class="com.reliability.view.view.ViewPackage"
-            genModel="model/reliabilityView.genmodel"/>
-   </extension>
    <extension
          id="product"
          point="org.eclipse.core.runtime.products">

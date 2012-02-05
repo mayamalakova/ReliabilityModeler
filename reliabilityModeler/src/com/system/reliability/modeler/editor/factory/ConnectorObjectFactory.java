@@ -3,8 +3,8 @@ package com.system.reliability.modeler.editor.factory;
 import org.eclipse.gef.requests.CreationFactory;
 
 import com.reliability.system.TransitionType;
-import com.reliability.view.view.TransitionView;
-import com.reliability.view.view.ViewFactory;
+import com.reliability.system.view.TransitionView;
+import com.reliability.system.view.ViewFactory;
 
 public class ConnectorObjectFactory implements CreationFactory {
 

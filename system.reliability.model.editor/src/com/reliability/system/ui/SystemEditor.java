@@ -159,6 +159,10 @@ import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
 
 import com.reliability.system.provider.SystemItemProviderAdapterFactory;
 
+import com.reliability.system.view.provider.ViewItemProviderAdapterFactory;
+
+import com.reliability.system.view.ui.ReliabilityViewEditorPlugin;
+
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 
@@ -523,7 +527,7 @@ public class SystemEditor
 					}
 				}
 				catch (CoreException exception) {
-					ReliabilityEditorPlugin.INSTANCE.log(exception);
+					ReliabilityViewEditorPlugin.INSTANCE.log(exception);
 				}
 			}
 		};
@@ -639,7 +643,7 @@ public class SystemEditor
 					showTabs();
 				}
 				catch (PartInitException exception) {
-					ReliabilityEditorPlugin.INSTANCE.log(exception);
+					ReliabilityViewEditorPlugin.INSTANCE.log(exception);
 				}
 			}
 
@@ -650,7 +654,7 @@ public class SystemEditor
 						markerHelper.createMarkers(diagnostic);
 					}
 					catch (CoreException exception) {
-						ReliabilityEditorPlugin.INSTANCE.log(exception);
+						ReliabilityViewEditorPlugin.INSTANCE.log(exception);
 					}
 				}
 			}
@@ -694,6 +698,7 @@ public class SystemEditor
 		adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 
 		adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new ViewItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new SystemItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 
@@ -1509,7 +1514,7 @@ public class SystemEditor
 		catch (Exception exception) {
 			// Something went wrong that shouldn't.
 			//
-			ReliabilityEditorPlugin.INSTANCE.log(exception);
+			ReliabilityViewEditorPlugin.INSTANCE.log(exception);
 		}
 		updateProblemIndication = true;
 		updateProblemIndication();
@@ -1602,7 +1607,7 @@ public class SystemEditor
 			}
 		}
 		catch (CoreException exception) {
-			ReliabilityEditorPlugin.INSTANCE.log(exception);
+			ReliabilityViewEditorPlugin.INSTANCE.log(exception);
 		}
 	}
 
@@ -1724,7 +1729,7 @@ public class SystemEditor
 	 * @generated
 	 */
 	private static String getString(String key) {
-		return ReliabilityEditorPlugin.INSTANCE.getString(key);
+		return ReliabilityViewEditorPlugin.INSTANCE.getString(key);
 	}
 
 	/**
@@ -1734,7 +1739,7 @@ public class SystemEditor
 	 * @generated
 	 */
 	private static String getString(String key, Object s1) {
-		return ReliabilityEditorPlugin.INSTANCE.getString(key, new Object [] { s1 });
+		return ReliabilityViewEditorPlugin.INSTANCE.getString(key, new Object [] { s1 });
 	}
 
 	/**

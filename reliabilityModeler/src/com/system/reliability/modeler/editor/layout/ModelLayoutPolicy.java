@@ -6,8 +6,8 @@ import org.eclipse.gef.requests.CreateRequest;
 
 import com.reliability.system.Transition;
 import com.reliability.system.TransitionType;
-import com.reliability.view.view.SystemView;
-import com.reliability.view.view.TransitionView;
+import com.reliability.system.view.SystemView;
+import com.reliability.system.view.TransitionView;
 import com.system.reliability.modeler.editor.command.CreateComponentCommand;
 import com.system.reliability.modeler.editor.command.CreateConnectorCommand;
 import com.system.reliability.modeler.editor.command.CreateTransitionCommand;

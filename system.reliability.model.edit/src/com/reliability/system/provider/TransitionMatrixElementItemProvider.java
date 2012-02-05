@@ -10,6 +10,8 @@ package com.reliability.system.provider;
 import com.reliability.system.SystemPackage;
 import com.reliability.system.TransitionMatrixElement;
 
+import com.reliability.system.view.provider.ReliabilityViewEditPlugin;
+
 import java.util.Collection;
 import java.util.List;
 
@@ -200,7 +202,7 @@ public class TransitionMatrixElementItemProvider
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return ReliabilityEditPlugin.INSTANCE;
+		return ReliabilityViewEditPlugin.INSTANCE;
 	}
 
 }

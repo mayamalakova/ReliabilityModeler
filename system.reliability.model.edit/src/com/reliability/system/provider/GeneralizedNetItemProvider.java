@@ -11,6 +11,10 @@ import com.reliability.system.GeneralizedNet;
 import com.reliability.system.SystemFactory;
 import com.reliability.system.SystemPackage;
 
+import com.reliability.system.view.ViewFactory;
+
+import com.reliability.system.view.provider.ReliabilityViewEditPlugin;
+
 import java.util.Collection;
 import java.util.List;
 
@@ -237,6 +241,11 @@ public class GeneralizedNetItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
+				(SystemPackage.Literals.GENERALIZED_NET__TRANSITIONS,
+				 ViewFactory.eINSTANCE.createTransitionView()));
+
+		newChildDescriptors.add
+			(createChildParameter
 				(SystemPackage.Literals.GENERALIZED_NET__POSITIONS,
 				 SystemFactory.eINSTANCE.createPort()));
 	}
@@ -249,7 +258,7 @@ public class GeneralizedNetItemProvider
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return ReliabilityEditPlugin.INSTANCE;
+		return ReliabilityViewEditPlugin.INSTANCE;
 	}
 
 }

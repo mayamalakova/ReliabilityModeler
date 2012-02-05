@@ -12,7 +12,6 @@ import com.reliability.system.GeneralizedNet;
 import com.reliability.system.Port;
 import com.reliability.system.Position;
 import com.reliability.system.TransitionMatrixElement;
-import com.reliability.view.view.SystemView;
 import com.system.reliability.modeler.utils.ReliabilityModelUtils;
 
 public class ReliabilityAnalyzer {

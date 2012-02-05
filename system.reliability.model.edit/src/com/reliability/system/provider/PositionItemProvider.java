@@ -10,6 +10,8 @@ package com.reliability.system.provider;
 import com.reliability.system.Position;
 import com.reliability.system.SystemPackage;
 
+import com.reliability.system.view.provider.ReliabilityViewEditPlugin;
+
 import java.util.Collection;
 import java.util.List;
 
@@ -92,17 +94,6 @@ public class PositionItemProvider
 	}
 
 	/**
-	 * This returns Position.gif.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Position"));
-	}
-
-	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -155,7 +146,7 @@ public class PositionItemProvider
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return ReliabilityEditPlugin.INSTANCE;
+		return ReliabilityViewEditPlugin.INSTANCE;
 	}
 
 }

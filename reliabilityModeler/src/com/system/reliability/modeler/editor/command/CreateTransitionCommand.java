@@ -5,8 +5,8 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.commands.Command;
 
-import com.reliability.view.view.SystemView;
-import com.reliability.view.view.TransitionView;
+import com.reliability.system.view.SystemView;
+import com.reliability.system.view.TransitionView;
 
 public abstract class CreateTransitionCommand extends Command {
 

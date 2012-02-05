@@ -12,8 +12,8 @@ import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 
-import com.reliability.view.view.SystemView;
-import com.reliability.view.view.TransitionView;
+import com.reliability.system.view.SystemView;
+import com.reliability.system.view.TransitionView;
 import com.system.reliability.modeler.editor.layout.ModelLayoutPolicy;
 
 public class GeneralizedNetEditPart extends AbstractGraphicalEditPart {

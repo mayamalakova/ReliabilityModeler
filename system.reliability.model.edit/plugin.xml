@@ -12,6 +12,18 @@
 
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory
+            uri="system.reliability.model.view"
+            class="com.reliability.system.view.provider.ViewItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <factory
             uri="system.reliability.model"
             class="com.reliability.system.provider.SystemItemProviderAdapterFactory"
             supportedTypes=

@@ -2,7 +2,7 @@ package com.system.reliability.modeler.editor.part;
 
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 
-import com.reliability.view.view.TransitionView;
+import com.reliability.system.view.TransitionView;
 import com.system.reliability.modeler.editor.figure.IModelFigure;
 
 public abstract class ModelEditPart extends AbstractGraphicalEditPart {
