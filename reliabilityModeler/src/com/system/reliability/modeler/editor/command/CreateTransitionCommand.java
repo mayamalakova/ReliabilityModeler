@@ -8,7 +8,7 @@ import org.eclipse.gef.commands.Command;
 import com.reliability.system.view.SystemView;
 import com.reliability.system.view.TransitionView;
 
-public abstract class CreateTransitionCommand extends Command {
+public class CreateTransitionCommand extends Command {
 
 	private static final Dimension DEFAULT_DIMENSION = new Dimension(100, 100);
 	private static final String DEFAULT_NAME = "<...>";

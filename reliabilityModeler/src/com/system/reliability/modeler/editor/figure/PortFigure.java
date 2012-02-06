@@ -11,6 +11,8 @@ import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.XYLayout;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Display;
 
 import com.system.reliability.modeler.editor.anchor.PortAnchor;
 
@@ -35,6 +37,7 @@ public class PortFigure extends Figure  implements IModelFigure {
 		setConstraint(label, new Rectangle(0, 0, bounds.width, LABEL_HEIGTH));
 		label.invalidate();
 		ellipse.invalidate();
+		ellipse.setBackgroundColor(Display.getCurrent().getSystemColor(SWT.COLOR_CYAN));
 	}
 	
 	@Override

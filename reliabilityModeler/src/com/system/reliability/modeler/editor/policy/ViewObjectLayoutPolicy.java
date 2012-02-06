@@ -8,14 +8,11 @@ import org.eclipse.gef.requests.CreateRequest;
 
 import com.reliability.system.Port;
 import com.reliability.system.Transition;
-import com.reliability.system.TransitionType;
 import com.reliability.system.view.PortView;
 import com.reliability.system.view.SystemView;
 import com.reliability.system.view.TransitionView;
 import com.reliability.system.view.ViewObject;
 import com.system.reliability.modeler.editor.command.ChangeConstraintCommand;
-import com.system.reliability.modeler.editor.command.CreateComponentCommand;
-import com.system.reliability.modeler.editor.command.CreateConnectorCommand;
 import com.system.reliability.modeler.editor.command.CreatePortCommand;
 import com.system.reliability.modeler.editor.command.CreateTransitionCommand;
 
@@ -34,13 +31,7 @@ public class ViewObjectLayoutPolicy extends XYLayoutEditPolicy {
 		Command command = null;
 		if (request.getNewObject() instanceof Transition) {
 			TransitionView transition = (TransitionView) request.getNewObject();
-			if (transition.getType() == TransitionType.COMPONENT) {
-				command = new CreateComponentCommand();
-				
-			} else if (transition.getType() == TransitionType.CONNECTOR){
-				command = new CreateConnectorCommand();
-			}
-			
+			command = new CreateTransitionCommand();
 			((CreateTransitionCommand) command).setLocation(request.getLocation());
 			((CreateTransitionCommand) command).setTransition(transition);
 			((CreateTransitionCommand) command).setParent((SystemView) getHost().getModel());

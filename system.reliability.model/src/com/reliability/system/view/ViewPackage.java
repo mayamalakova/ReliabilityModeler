@@ -401,7 +401,7 @@ public interface ViewPackage extends EPackage {
 	int VIEW_LINK__TARGET = 1;
 
 	/**
-	 * The feature id for the '<em><b>Bendpoints</b></em>' attribute.
+	 * The feature id for the '<em><b>Bendpoints</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -612,10 +612,10 @@ public interface ViewPackage extends EPackage {
 	EReference getViewLink_Target();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.reliability.system.view.ViewLink#getBendpoints <em>Bendpoints</em>}'.
+	 * Returns the meta object for the attribute list '{@link com.reliability.system.view.ViewLink#getBendpoints <em>Bendpoints</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Bendpoints</em>'.
+	 * @return the meta object for the attribute list '<em>Bendpoints</em>'.
 	 * @see com.reliability.system.view.ViewLink#getBendpoints()
 	 * @see #getViewLink()
 	 * @generated
@@ -805,7 +805,7 @@ public interface ViewPackage extends EPackage {
 		EReference VIEW_LINK__TARGET = eINSTANCE.getViewLink_Target();
 
 		/**
-		 * The meta object literal for the '<em><b>Bendpoints</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Bendpoints</b></em>' attribute list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

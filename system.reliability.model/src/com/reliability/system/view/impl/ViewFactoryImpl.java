@@ -186,19 +186,38 @@ public class ViewFactoryImpl extends EFactoryImpl implements ViewFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @not generated
 	 */
 	public Point createPointFromString(EDataType eDataType, String initialValue) {
-		return (Point)super.createFromString(eDataType, initialValue);
+		if (initialValue == null) {
+			return null;
+		}
+		String[] values = initialValue.split(",");
+		if (values.length != 2) {
+			return null;
+		}
+		
+		Point point = new Point();
+		try { 
+			point.setLocation(Integer.parseInt(values[0].trim()), Integer.parseInt(values[1].trim()));
+		} catch(NumberFormatException e) {
+			EcorePlugin.INSTANCE.log(e);
+			point = null;		
+		}
+		return point;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @not generated
 	 */
 	public String convertPointToString(EDataType eDataType, Object instanceValue) {
-		return super.convertToString(eDataType, instanceValue);
+		if (instanceValue == null) {
+			return null;
+		}
+		Point p = (Point)instanceValue;
+		return p.x + "," + p.y;
 	}
 
 	/**

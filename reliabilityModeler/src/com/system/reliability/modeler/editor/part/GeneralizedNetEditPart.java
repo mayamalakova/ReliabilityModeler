@@ -15,7 +15,6 @@ import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 
 import com.reliability.system.view.SystemView;
-import com.reliability.system.view.TransitionView;
 import com.system.reliability.modeler.editor.policy.ViewObjectLayoutPolicy;
 
 public class GeneralizedNetEditPart extends AbstractGraphicalEditPart {

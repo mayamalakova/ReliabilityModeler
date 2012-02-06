@@ -1,6 +1,7 @@
 package com.system.reliability.modeler.editor;
 
 import java.io.IOException;
+import java.util.EventObject;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -43,6 +44,7 @@ public class ReliabilityModelEditor extends GraphicalEditorWithFlyoutPalette {
 
 		try {
 			systemResource.save(null);
+			getCommandStack().markSaveLocation();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -85,4 +87,10 @@ public class ReliabilityModelEditor extends GraphicalEditorWithFlyoutPalette {
 		}
 	}
 
+	@Override 
+	public void commandStackChanged(EventObject event) {
+        firePropertyChange(PROP_DIRTY);
+        super.commandStackChanged(event);
+    }
+	
 }

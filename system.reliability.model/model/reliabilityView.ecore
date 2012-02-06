@@ -34,7 +34,8 @@
         eOpposite="#//ViewObject/outgoingLinks"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//ViewObject"
         eOpposite="#//ViewObject/incomingLinks"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="bendpoints" eType="#//Point"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="bendpoints" upperBound="-1"
+        eType="#//Point"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="Point" instanceClassName="org.eclipse.draw2d.geometry.Point"/>
 </ecore:EPackage>

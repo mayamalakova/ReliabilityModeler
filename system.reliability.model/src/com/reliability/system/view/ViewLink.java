@@ -8,6 +8,7 @@ package com.reliability.system.view;
 
 import org.eclipse.draw2d.geometry.Point;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -86,29 +87,19 @@ public interface ViewLink extends EObject {
 	void setTarget(ViewObject value);
 
 	/**
-	 * Returns the value of the '<em><b>Bendpoints</b></em>' attribute.
+	 * Returns the value of the '<em><b>Bendpoints</b></em>' attribute list.
+	 * The list contents are of type {@link org.eclipse.draw2d.geometry.Point}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Bendpoints</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Bendpoints</em>' attribute.
-	 * @see #setBendpoints(Point)
+	 * @return the value of the '<em>Bendpoints</em>' attribute list.
 	 * @see com.reliability.system.view.ViewPackage#getViewLink_Bendpoints()
 	 * @model dataType="com.reliability.system.view.Point"
 	 * @generated
 	 */
-	Point getBendpoints();
-
-	/**
-	 * Sets the value of the '{@link com.reliability.system.view.ViewLink#getBendpoints <em>Bendpoints</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Bendpoints</em>' attribute.
-	 * @see #getBendpoints()
-	 * @generated
-	 */
-	void setBendpoints(Point value);
+	EList<Point> getBendpoints();
 
 } // ViewLink

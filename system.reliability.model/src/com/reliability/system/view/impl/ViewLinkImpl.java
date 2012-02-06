@@ -11,16 +11,19 @@ import com.reliability.system.view.ViewLink;
 import com.reliability.system.view.ViewObject;
 import com.reliability.system.view.ViewPackage;
 
+import java.util.Collection;
 import org.eclipse.draw2d.geometry.Point;
 
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
@@ -50,24 +53,14 @@ public class ViewLinkImpl extends EObjectImpl implements ViewLink {
 	protected ViewObject target;
 
 	/**
-	 * The default value of the '{@link #getBendpoints() <em>Bendpoints</em>}' attribute.
+	 * The cached value of the '{@link #getBendpoints() <em>Bendpoints</em>}' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getBendpoints()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Point BENDPOINTS_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getBendpoints() <em>Bendpoints</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getBendpoints()
-	 * @generated
-	 * @ordered
-	 */
-	protected Point bendpoints = BENDPOINTS_EDEFAULT;
+	protected EList<Point> bendpoints;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -194,20 +187,11 @@ public class ViewLinkImpl extends EObjectImpl implements ViewLink {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Point getBendpoints() {
+	public EList<Point> getBendpoints() {
+		if (bendpoints == null) {
+			bendpoints = new EDataTypeUniqueEList<Point>(Point.class, this, ViewPackage.VIEW_LINK__BENDPOINTS);
+		}
 		return bendpoints;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setBendpoints(Point newBendpoints) {
-		Point oldBendpoints = bendpoints;
-		bendpoints = newBendpoints;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ViewPackage.VIEW_LINK__BENDPOINTS, oldBendpoints, bendpoints));
 	}
 
 	/**
@@ -284,6 +268,7 @@ public class ViewLinkImpl extends EObjectImpl implements ViewLink {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -294,7 +279,8 @@ public class ViewLinkImpl extends EObjectImpl implements ViewLink {
 				setTarget((ViewObject)newValue);
 				return;
 			case ViewPackage.VIEW_LINK__BENDPOINTS:
-				setBendpoints((Point)newValue);
+				getBendpoints().clear();
+				getBendpoints().addAll((Collection<? extends Point>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -315,7 +301,7 @@ public class ViewLinkImpl extends EObjectImpl implements ViewLink {
 				setTarget((ViewObject)null);
 				return;
 			case ViewPackage.VIEW_LINK__BENDPOINTS:
-				setBendpoints(BENDPOINTS_EDEFAULT);
+				getBendpoints().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -334,7 +320,7 @@ public class ViewLinkImpl extends EObjectImpl implements ViewLink {
 			case ViewPackage.VIEW_LINK__TARGET:
 				return target != null;
 			case ViewPackage.VIEW_LINK__BENDPOINTS:
-				return BENDPOINTS_EDEFAULT == null ? bendpoints != null : !BENDPOINTS_EDEFAULT.equals(bendpoints);
+				return bendpoints != null && !bendpoints.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

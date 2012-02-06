@@ -2,12 +2,10 @@ package com.system.reliability.modeler.editor.command;
 
 import org.eclipse.gef.commands.Command;
 
-import com.reliability.system.view.SystemView;
 import com.reliability.system.view.ViewLink;
 import com.reliability.system.view.ViewObject;
 
 public class CreateLinkCommand extends Command {
-	private SystemView model;
 	private ViewLink link;
 	private ViewObject source;
 	private ViewObject target;
