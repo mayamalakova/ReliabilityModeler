@@ -6,6 +6,8 @@ import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.editparts.AbstractConnectionEditPart;
 import org.eclipse.gef.editpolicies.ConnectionEndpointEditPolicy;
 
+import com.system.reliability.modeler.editor.policy.LinkConnectionEditPolicy;
+
 public class ViewLinkEditPart extends  AbstractConnectionEditPart {
 
 	 public ViewLinkEditPart() {
@@ -15,6 +17,7 @@ public class ViewLinkEditPart extends  AbstractConnectionEditPart {
 		  @Override 
 		  protected void createEditPolicies() {
 		    installEditPolicy(EditPolicy.CONNECTION_ENDPOINTS_ROLE, new ConnectionEndpointEditPolicy());
+		    installEditPolicy(EditPolicy.CONNECTION_ROLE, new LinkConnectionEditPolicy());
 		  }
 		 
 		  @Override 
