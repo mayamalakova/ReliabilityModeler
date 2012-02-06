@@ -1,6 +1,8 @@
 package com.system.reliability.modeler.editor.figure;
 
-import org.eclipse.draw2d.ChopboxAnchor;
+import static com.system.reliability.modeler.utils.Constants.COMPONENT_WIDTH;
+import static com.system.reliability.modeler.utils.Constants.LABEL_HEIGTH;
+
 import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.Graphics;
@@ -9,6 +11,8 @@ import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.Triangle;
 import org.eclipse.draw2d.XYLayout;
 import org.eclipse.draw2d.geometry.Rectangle;
+
+import com.system.reliability.modeler.editor.anchor.TransitionAnchor;
 
 public class ComponentFigure extends Figure implements IModelFigure{
 	private Label label;
@@ -28,8 +32,8 @@ public class ComponentFigure extends Figure implements IModelFigure{
 	@Override 
 	protected void paintFigure(Graphics graphics) {
 		Rectangle bounds = getBounds().getCopy();
-		setConstraint(triangle, new Rectangle(bounds.width/2 - 30,10, 60, 60));
-		setConstraint(label, new Rectangle(0, 0, bounds.width, 25));
+		setConstraint(triangle, new Rectangle(bounds.width/2 - COMPONENT_WIDTH/2, 10, COMPONENT_WIDTH, COMPONENT_WIDTH));
+		setConstraint(label, new Rectangle(0, 0, bounds.width, LABEL_HEIGTH));
 		graphics.drawLine(bounds.x + bounds.width/2, bounds.y + 50, bounds.x + bounds.width/2, bounds.y + bounds.height);
 		label.invalidate();
 		triangle.invalidate();
@@ -47,7 +51,7 @@ public class ComponentFigure extends Figure implements IModelFigure{
 	@Override
 	public ConnectionAnchor getConnectionAnchor() {
 		if (connectionAnchor == null) {
-			connectionAnchor = new ChopboxAnchor(this);
+			connectionAnchor = new TransitionAnchor(this);
 		}
 		return connectionAnchor;
 	}

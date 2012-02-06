@@ -10,7 +10,7 @@ import com.reliability.system.view.SystemView;
 
 public class CreatePortCommand extends Command {
 
-	private static final Dimension DEFAULT_DIMENSION = new Dimension(100, 100);
+	private static final Dimension DEFAULT_DIMENSION = new Dimension(40, 65);
 	private static final String DEFAULT_NAME = "<...>";
 	
 	protected PortView newPort; 

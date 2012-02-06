@@ -1,14 +1,18 @@
 package com.system.reliability.modeler.editor.figure;
 
+import static com.system.reliability.modeler.utils.Constants.LABEL_HEIGTH;
+import static com.system.reliability.modeler.utils.Constants.PORT_WIDTH;
+
 import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.Ellipse;
-import org.eclipse.draw2d.EllipseAnchor;
 import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.XYLayout;
 import org.eclipse.draw2d.geometry.Rectangle;
+
+import com.system.reliability.modeler.editor.anchor.PortAnchor;
 
 public class PortFigure extends Figure  implements IModelFigure {
 	private Label label;
@@ -27,8 +31,8 @@ public class PortFigure extends Figure  implements IModelFigure {
 	@Override 
 	protected void paintFigure(Graphics graphics) {
 		Rectangle bounds = getBounds().getCopy();
-		setConstraint(ellipse, new Rectangle(bounds.width/2 - 20,25, 40, 40));
-		setConstraint(label, new Rectangle(0, 0, bounds.width, 25));
+		setConstraint(ellipse, new Rectangle(bounds.width/2 - PORT_WIDTH/2, LABEL_HEIGTH, PORT_WIDTH, PORT_WIDTH));
+		setConstraint(label, new Rectangle(0, 0, bounds.width, LABEL_HEIGTH));
 		label.invalidate();
 		ellipse.invalidate();
 	}
@@ -41,7 +45,7 @@ public class PortFigure extends Figure  implements IModelFigure {
 	@Override
 	public ConnectionAnchor getConnectionAnchor() {
 		if (connectionAnchor == null) {
-			connectionAnchor = new EllipseAnchor(this);
+			connectionAnchor = new PortAnchor(this);
 		}
 		return connectionAnchor;
 	}
