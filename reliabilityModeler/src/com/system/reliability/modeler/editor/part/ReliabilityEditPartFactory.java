@@ -27,7 +27,11 @@ public class ReliabilityEditPartFactory implements EditPartFactory {
 			
 		} else if (model instanceof ViewLink) {
 			part = new ViewLinkEditPart();
-		}
+		
+		} else {
+            throw new IllegalArgumentException("Model class " + model.getClass() + " not supported yet.");
+        }
+ 
 	 
 	    if (part != null) {
 	      part.setModel(model);
