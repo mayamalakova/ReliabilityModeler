@@ -62,6 +62,15 @@ public interface ViewFactory extends EFactory {
 	ViewLink createViewLink();
 
 	/**
+	 * Returns a new object of class '<em>Failure View</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Failure View</em>'.
+	 * @generated
+	 */
+	FailureView createFailureView();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

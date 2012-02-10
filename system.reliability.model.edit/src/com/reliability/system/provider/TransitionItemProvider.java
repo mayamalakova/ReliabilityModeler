@@ -11,6 +11,7 @@ import com.reliability.system.SystemFactory;
 import com.reliability.system.SystemPackage;
 import com.reliability.system.Transition;
 
+import com.reliability.system.view.ViewFactory;
 import com.reliability.system.view.provider.ReliabilityViewEditPlugin;
 
 import java.util.Collection;
@@ -282,6 +283,11 @@ public class TransitionItemProvider
 			(createChildParameter
 				(SystemPackage.Literals.TRANSITION__FAILURE_STATE,
 				 SystemFactory.eINSTANCE.createFailure()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SystemPackage.Literals.TRANSITION__FAILURE_STATE,
+				 ViewFactory.eINSTANCE.createFailureView()));
 	}
 
 	/**

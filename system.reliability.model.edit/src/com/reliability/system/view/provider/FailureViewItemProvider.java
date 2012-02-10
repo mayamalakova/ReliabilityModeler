@@ -7,9 +7,9 @@
 package com.reliability.system.view.provider;
 
 
-import com.reliability.system.provider.TransitionItemProvider;
+import com.reliability.system.provider.FailureItemProvider;
 
-import com.reliability.system.view.TransitionView;
+import com.reliability.system.view.FailureView;
 import com.reliability.system.view.ViewFactory;
 import com.reliability.system.view.ViewPackage;
 
@@ -22,6 +22,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -33,13 +34,13 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link com.reliability.system.view.TransitionView} object.
+ * This is the item provider adapter for a {@link com.reliability.system.view.FailureView} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class TransitionViewItemProvider
-	extends TransitionItemProvider
+public class FailureViewItemProvider
+	extends FailureItemProvider
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,
@@ -52,7 +53,7 @@ public class TransitionViewItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TransitionViewItemProvider(AdapterFactory adapterFactory) {
+	public FailureViewItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -176,7 +177,6 @@ public class TransitionViewItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(ViewPackage.Literals.VIEW_OBJECT__OUTGOING_LINKS);
-			childrenFeatures.add(ViewPackage.Literals.TRANSITION_VIEW__FAILURE_LINK);
 		}
 		return childrenFeatures;
 	}
@@ -195,14 +195,14 @@ public class TransitionViewItemProvider
 	}
 
 	/**
-	 * This returns TransitionView.gif.
+	 * This returns FailureView.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/TransitionView"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/FailureView"));
 	}
 
 	/**
@@ -213,10 +213,10 @@ public class TransitionViewItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((TransitionView)object).getName();
+		String label = ((FailureView)object).getId();
 		return label == null || label.length() == 0 ?
-			getString("_UI_TransitionView_type") :
-			getString("_UI_TransitionView_type") + " " + label;
+			getString("_UI_FailureView_type") :
+			getString("_UI_FailureView_type") + " " + label;
 	}
 
 	/**
@@ -230,13 +230,12 @@ public class TransitionViewItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(TransitionView.class)) {
-			case ViewPackage.TRANSITION_VIEW__CONSTRAINTS:
-			case ViewPackage.TRANSITION_VIEW__LABEL:
+		switch (notification.getFeatureID(FailureView.class)) {
+			case ViewPackage.FAILURE_VIEW__CONSTRAINTS:
+			case ViewPackage.FAILURE_VIEW__LABEL:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case ViewPackage.TRANSITION_VIEW__OUTGOING_LINKS:
-			case ViewPackage.TRANSITION_VIEW__FAILURE_LINK:
+			case ViewPackage.FAILURE_VIEW__OUTGOING_LINKS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -258,34 +257,6 @@ public class TransitionViewItemProvider
 			(createChildParameter
 				(ViewPackage.Literals.VIEW_OBJECT__OUTGOING_LINKS,
 				 ViewFactory.eINSTANCE.createViewLink()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ViewPackage.Literals.TRANSITION_VIEW__FAILURE_LINK,
-				 ViewFactory.eINSTANCE.createViewLink()));
-	}
-
-	/**
-	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
-		Object childFeature = feature;
-		Object childObject = child;
-
-		boolean qualify =
-			childFeature == ViewPackage.Literals.VIEW_OBJECT__OUTGOING_LINKS ||
-			childFeature == ViewPackage.Literals.TRANSITION_VIEW__FAILURE_LINK;
-
-		if (qualify) {
-			return getString
-				("_UI_CreateChild_text2",
-				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
-		}
-		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 	/**

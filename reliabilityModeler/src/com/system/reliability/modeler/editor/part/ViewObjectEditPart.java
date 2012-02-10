@@ -36,8 +36,8 @@ public abstract class ViewObjectEditPart extends AbstractGraphicalEditPart imple
 
 	@Override
 	protected void refreshVisuals() {
-		IModelFigure figure = (IModelFigure) getFigure();
 		GeneralizedNetEditPart parent = (GeneralizedNetEditPart) getParent();
+		parent.refresh();
 		String name = null;
 		Rectangle constraints = null;
 		if (getModel() instanceof ViewObject) {
@@ -46,6 +46,7 @@ public abstract class ViewObjectEditPart extends AbstractGraphicalEditPart imple
 			constraints = model.getConstraints();
 		}
 
+		IModelFigure figure = (IModelFigure) getFigure();
 		figure.getNameLabel().setText(name);
 		parent.setLayoutConstraint(this, figure, constraints);
 	}

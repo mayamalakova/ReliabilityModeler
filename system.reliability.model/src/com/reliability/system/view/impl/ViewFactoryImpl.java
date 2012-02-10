@@ -66,6 +66,7 @@ public class ViewFactoryImpl extends EFactoryImpl implements ViewFactory {
 			case ViewPackage.TRANSITION_VIEW: return createTransitionView();
 			case ViewPackage.PORT_VIEW: return createPortView();
 			case ViewPackage.VIEW_LINK: return createViewLink();
+			case ViewPackage.FAILURE_VIEW: return createFailureView();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -139,6 +140,16 @@ public class ViewFactoryImpl extends EFactoryImpl implements ViewFactory {
 	public ViewLink createViewLink() {
 		ViewLinkImpl viewLink = new ViewLinkImpl();
 		return viewLink;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public FailureView createFailureView() {
+		FailureViewImpl failureView = new FailureViewImpl();
+		return failureView;
 	}
 
 	/**

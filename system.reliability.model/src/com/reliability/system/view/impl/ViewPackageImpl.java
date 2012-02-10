@@ -10,6 +10,7 @@ import com.reliability.system.SystemPackage;
 
 import com.reliability.system.impl.SystemPackageImpl;
 
+import com.reliability.system.view.FailureView;
 import com.reliability.system.view.PortView;
 import com.reliability.system.view.SystemView;
 import com.reliability.system.view.TransitionView;
@@ -70,6 +71,13 @@ public class ViewPackageImpl extends EPackageImpl implements ViewPackage {
 	 * @generated
 	 */
 	private EClass viewLinkEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass failureViewEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -210,6 +218,15 @@ public class ViewPackageImpl extends EPackageImpl implements ViewPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getTransitionView_FailureLink() {
+		return (EReference)transitionViewEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getPortView() {
 		return portViewEClass;
 	}
@@ -309,6 +326,15 @@ public class ViewPackageImpl extends EPackageImpl implements ViewPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getFailureView() {
+		return failureViewEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EDataType getRectangle() {
 		return rectangleEDataType;
 	}
@@ -357,6 +383,7 @@ public class ViewPackageImpl extends EPackageImpl implements ViewPackage {
 
 		transitionViewEClass = createEClass(TRANSITION_VIEW);
 		createEReference(transitionViewEClass, TRANSITION_VIEW__OWNER);
+		createEReference(transitionViewEClass, TRANSITION_VIEW__FAILURE_LINK);
 
 		portViewEClass = createEClass(PORT_VIEW);
 		createEReference(portViewEClass, PORT_VIEW__OWNER);
@@ -371,6 +398,8 @@ public class ViewPackageImpl extends EPackageImpl implements ViewPackage {
 		createEReference(viewLinkEClass, VIEW_LINK__SOURCE);
 		createEReference(viewLinkEClass, VIEW_LINK__TARGET);
 		createEAttribute(viewLinkEClass, VIEW_LINK__BENDPOINTS);
+
+		failureViewEClass = createEClass(FAILURE_VIEW);
 
 		// Create data types
 		rectangleEDataType = createEDataType(RECTANGLE);
@@ -412,6 +441,8 @@ public class ViewPackageImpl extends EPackageImpl implements ViewPackage {
 		transitionViewEClass.getESuperTypes().add(this.getViewObject());
 		portViewEClass.getESuperTypes().add(theSystemPackage.getPort());
 		portViewEClass.getESuperTypes().add(this.getViewObject());
+		failureViewEClass.getESuperTypes().add(theSystemPackage.getFailure());
+		failureViewEClass.getESuperTypes().add(this.getViewObject());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(systemViewEClass, SystemView.class, "SystemView", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -421,6 +452,7 @@ public class ViewPackageImpl extends EPackageImpl implements ViewPackage {
 
 		initEClass(transitionViewEClass, TransitionView.class, "TransitionView", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTransitionView_Owner(), this.getSystemView(), this.getSystemView_Transitions(), "owner", null, 0, 1, TransitionView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTransitionView_FailureLink(), this.getViewLink(), null, "failureLink", null, 0, 1, TransitionView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(portViewEClass, PortView.class, "PortView", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPortView_Owner(), this.getSystemView(), this.getSystemView_Ports(), "owner", null, 0, 1, PortView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -435,6 +467,8 @@ public class ViewPackageImpl extends EPackageImpl implements ViewPackage {
 		initEReference(getViewLink_Source(), this.getViewObject(), this.getViewObject_OutgoingLinks(), "source", null, 0, 1, ViewLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getViewLink_Target(), this.getViewObject(), this.getViewObject_IncomingLinks(), "target", null, 0, 1, ViewLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getViewLink_Bendpoints(), this.getPoint(), "bendpoints", null, 0, -1, ViewLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(failureViewEClass, FailureView.class, "FailureView", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Initialize data types
 		initEDataType(rectangleEDataType, Rectangle.class, "Rectangle", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

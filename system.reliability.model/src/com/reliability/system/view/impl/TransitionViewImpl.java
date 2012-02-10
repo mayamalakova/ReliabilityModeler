@@ -42,6 +42,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link com.reliability.system.view.impl.TransitionViewImpl#getOutgoingLinks <em>Outgoing Links</em>}</li>
  *   <li>{@link com.reliability.system.view.impl.TransitionViewImpl#getIncomingLinks <em>Incoming Links</em>}</li>
  *   <li>{@link com.reliability.system.view.impl.TransitionViewImpl#getOwner <em>Owner</em>}</li>
+ *   <li>{@link com.reliability.system.view.impl.TransitionViewImpl#getFailureLink <em>Failure Link</em>}</li>
  * </ul>
  * </p>
  *
@@ -107,6 +108,16 @@ public class TransitionViewImpl extends TransitionImpl implements TransitionView
 	 * @ordered
 	 */
 	protected EList<ViewLink> incomingLinks;
+
+	/**
+	 * The cached value of the '{@link #getFailureLink() <em>Failure Link</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFailureLink()
+	 * @generated
+	 * @ordered
+	 */
+	protected ViewLink failureLink;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -236,6 +247,49 @@ public class TransitionViewImpl extends TransitionImpl implements TransitionView
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ViewLink getFailureLink() {
+		return failureLink;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetFailureLink(ViewLink newFailureLink, NotificationChain msgs) {
+		ViewLink oldFailureLink = failureLink;
+		failureLink = newFailureLink;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ViewPackage.TRANSITION_VIEW__FAILURE_LINK, oldFailureLink, newFailureLink);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setFailureLink(ViewLink newFailureLink) {
+		if (newFailureLink != failureLink) {
+			NotificationChain msgs = null;
+			if (failureLink != null)
+				msgs = ((InternalEObject)failureLink).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ViewPackage.TRANSITION_VIEW__FAILURE_LINK, null, msgs);
+			if (newFailureLink != null)
+				msgs = ((InternalEObject)newFailureLink).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ViewPackage.TRANSITION_VIEW__FAILURE_LINK, null, msgs);
+			msgs = basicSetFailureLink(newFailureLink, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ViewPackage.TRANSITION_VIEW__FAILURE_LINK, newFailureLink, newFailureLink));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -266,6 +320,8 @@ public class TransitionViewImpl extends TransitionImpl implements TransitionView
 				return ((InternalEList<?>)getIncomingLinks()).basicRemove(otherEnd, msgs);
 			case ViewPackage.TRANSITION_VIEW__OWNER:
 				return basicSetOwner(null, msgs);
+			case ViewPackage.TRANSITION_VIEW__FAILURE_LINK:
+				return basicSetFailureLink(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -302,6 +358,8 @@ public class TransitionViewImpl extends TransitionImpl implements TransitionView
 				return getIncomingLinks();
 			case ViewPackage.TRANSITION_VIEW__OWNER:
 				return getOwner();
+			case ViewPackage.TRANSITION_VIEW__FAILURE_LINK:
+				return getFailureLink();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -332,6 +390,9 @@ public class TransitionViewImpl extends TransitionImpl implements TransitionView
 			case ViewPackage.TRANSITION_VIEW__OWNER:
 				setOwner((SystemView)newValue);
 				return;
+			case ViewPackage.TRANSITION_VIEW__FAILURE_LINK:
+				setFailureLink((ViewLink)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -359,6 +420,9 @@ public class TransitionViewImpl extends TransitionImpl implements TransitionView
 			case ViewPackage.TRANSITION_VIEW__OWNER:
 				setOwner((SystemView)null);
 				return;
+			case ViewPackage.TRANSITION_VIEW__FAILURE_LINK:
+				setFailureLink((ViewLink)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -381,6 +445,8 @@ public class TransitionViewImpl extends TransitionImpl implements TransitionView
 				return incomingLinks != null && !incomingLinks.isEmpty();
 			case ViewPackage.TRANSITION_VIEW__OWNER:
 				return getOwner() != null;
+			case ViewPackage.TRANSITION_VIEW__FAILURE_LINK:
+				return failureLink != null;
 		}
 		return super.eIsSet(featureID);
 	}

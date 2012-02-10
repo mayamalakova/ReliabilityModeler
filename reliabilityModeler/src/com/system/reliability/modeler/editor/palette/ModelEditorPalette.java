@@ -9,6 +9,7 @@ import org.eclipse.gef.palette.SelectionToolEntry;
 import com.system.reliability.modeler.editor.CreationAndDirectEditTool;
 import com.system.reliability.modeler.editor.factory.ComponentObjectFactory;
 import com.system.reliability.modeler.editor.factory.ConnectorObjectFactory;
+import com.system.reliability.modeler.editor.factory.FailureObjectFactory;
 import com.system.reliability.modeler.editor.factory.LinkObjectFactory;
 import com.system.reliability.modeler.editor.factory.PortObjectFactory;
 
@@ -22,6 +23,7 @@ public class ModelEditorPalette extends PaletteRoot {
 	    addComponentTool();
 	    addConnectorTool();
 	    addPortTool();
+	    addFailureTool();
 	    addLinkTool();
 	}
 	
@@ -54,8 +56,15 @@ public class ModelEditorPalette extends PaletteRoot {
 		group.add(entry);
 	}
 	
+	private void addFailureTool() {
+		CreationToolEntry entry = new CreationToolEntry("Failure", "Create a new Failure", 	new FailureObjectFactory(), null, null);
+		entry.setToolClass(CreationAndDirectEditTool.class);
+		group.add(entry);
+	}
+
 	private void addLinkTool() {
 		CreationToolEntry entry = new ConnectionCreationToolEntry("Link", "Create a new Link", 	new LinkObjectFactory(), null, null);
 		group.add(entry);
 	}
+	
 }

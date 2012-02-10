@@ -16,6 +16,7 @@
     </genClasses>
     <genClasses ecoreClass="reliabilityView.ecore#//TransitionView">
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference reliabilityView.ecore#//TransitionView/owner"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference reliabilityView.ecore#//TransitionView/failureLink"/>
     </genClasses>
     <genClasses ecoreClass="reliabilityView.ecore#//PortView">
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference reliabilityView.ecore#//PortView/owner"/>
@@ -31,6 +32,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference reliabilityView.ecore#//ViewLink/target"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute reliabilityView.ecore#//ViewLink/bendpoints"/>
     </genClasses>
+    <genClasses ecoreClass="reliabilityView.ecore#//FailureView"/>
   </genPackages>
   <genPackages prefix="System" basePackage="com.reliability" resource="XML" disposableProviderFactory="true"
       presentationPackageSuffix="ui" ecorePackage="reliability.ecore#/">

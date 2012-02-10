@@ -19,6 +19,7 @@ import org.eclipse.draw2d.geometry.Rectangle;
  * The following features are supported:
  * <ul>
  *   <li>{@link com.reliability.system.view.TransitionView#getOwner <em>Owner</em>}</li>
+ *   <li>{@link com.reliability.system.view.TransitionView#getFailureLink <em>Failure Link</em>}</li>
  * </ul>
  * </p>
  *
@@ -54,5 +55,31 @@ public interface TransitionView extends Transition, ViewObject {
 	 * @generated
 	 */
 	void setOwner(SystemView value);
+
+	/**
+	 * Returns the value of the '<em><b>Failure Link</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Failure Link</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Failure Link</em>' containment reference.
+	 * @see #setFailureLink(ViewLink)
+	 * @see com.reliability.system.view.ViewPackage#getTransitionView_FailureLink()
+	 * @model containment="true"
+	 * @generated
+	 */
+	ViewLink getFailureLink();
+
+	/**
+	 * Sets the value of the '{@link com.reliability.system.view.TransitionView#getFailureLink <em>Failure Link</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Failure Link</em>' containment reference.
+	 * @see #getFailureLink()
+	 * @generated
+	 */
+	void setFailureLink(ViewLink value);
 
 } // TransitionView

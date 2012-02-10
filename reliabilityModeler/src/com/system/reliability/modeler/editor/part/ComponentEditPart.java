@@ -4,7 +4,7 @@ import org.eclipse.draw2d.IFigure;
 
 import com.system.reliability.modeler.editor.figure.ComponentFigure;
 
-public class ComponentEditPart extends ViewObjectEditPart {
+public class ComponentEditPart extends TransitionEditPart {
 	
 	@Override
 	protected IFigure createFigure() {

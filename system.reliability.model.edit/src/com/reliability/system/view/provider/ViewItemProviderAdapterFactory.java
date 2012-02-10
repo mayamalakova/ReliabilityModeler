@@ -168,6 +168,29 @@ public class ViewItemProviderAdapterFactory extends ViewAdapterFactory implement
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link com.reliability.system.view.FailureView} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected FailureViewItemProvider failureViewItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link com.reliability.system.view.FailureView}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createFailureViewAdapter() {
+		if (failureViewItemProvider == null) {
+			failureViewItemProvider = new FailureViewItemProvider(this);
+		}
+
+		return failureViewItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -270,6 +293,7 @@ public class ViewItemProviderAdapterFactory extends ViewAdapterFactory implement
 		if (transitionViewItemProvider != null) transitionViewItemProvider.dispose();
 		if (portViewItemProvider != null) portViewItemProvider.dispose();
 		if (viewLinkItemProvider != null) viewLinkItemProvider.dispose();
+		if (failureViewItemProvider != null) failureViewItemProvider.dispose();
 	}
 
 }

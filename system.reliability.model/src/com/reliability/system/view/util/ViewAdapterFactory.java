@@ -6,6 +6,7 @@
  */
 package com.reliability.system.view.util;
 
+import com.reliability.system.Failure;
 import com.reliability.system.Port;
 import com.reliability.system.Position;
 import com.reliability.system.Transition;
@@ -96,6 +97,10 @@ public class ViewAdapterFactory extends AdapterFactoryImpl {
 				return createViewLinkAdapter();
 			}
 			@Override
+			public Adapter caseFailureView(FailureView object) {
+				return createFailureViewAdapter();
+			}
+			@Override
 			public Adapter caseTransition(Transition object) {
 				return createTransitionAdapter();
 			}
@@ -106,6 +111,10 @@ public class ViewAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter casePort(Port object) {
 				return createPortAdapter();
+			}
+			@Override
+			public Adapter caseFailure(Failure object) {
+				return createFailureAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -198,6 +207,20 @@ public class ViewAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link com.reliability.system.view.FailureView <em>Failure View</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see com.reliability.system.view.FailureView
+	 * @generated
+	 */
+	public Adapter createFailureViewAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link com.reliability.system.Transition <em>Transition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -236,6 +259,20 @@ public class ViewAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createPortAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link com.reliability.system.Failure <em>Failure</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see com.reliability.system.Failure
+	 * @generated
+	 */
+	public Adapter createFailureAdapter() {
 		return null;
 	}
 

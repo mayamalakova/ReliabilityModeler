@@ -5,6 +5,7 @@ import org.eclipse.gef.EditPartFactory;
 
 import com.reliability.system.Transition;
 import com.reliability.system.TransitionType;
+import com.reliability.system.view.FailureView;
 import com.reliability.system.view.PortView;
 import com.reliability.system.view.SystemView;
 import com.reliability.system.view.ViewLink;
@@ -27,6 +28,9 @@ public class ReliabilityEditPartFactory implements EditPartFactory {
 			
 		} else if (model instanceof ViewLink) {
 			part = new ViewLinkEditPart();
+		
+		} else if (model instanceof FailureView) {
+			part = new FailureEditPart();
 		
 		} else {
             throw new IllegalArgumentException("Model class " + model.getClass() + " not supported yet.");

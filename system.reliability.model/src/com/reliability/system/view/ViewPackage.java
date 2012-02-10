@@ -218,13 +218,22 @@ public interface ViewPackage extends EPackage {
 	int TRANSITION_VIEW__OWNER = SystemPackage.TRANSITION_FEATURE_COUNT + 4;
 
 	/**
+	 * The feature id for the '<em><b>Failure Link</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION_VIEW__FAILURE_LINK = SystemPackage.TRANSITION_FEATURE_COUNT + 5;
+
+	/**
 	 * The number of structural features of the '<em>Transition View</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION_VIEW_FEATURE_COUNT = SystemPackage.TRANSITION_FEATURE_COUNT + 5;
+	int TRANSITION_VIEW_FEATURE_COUNT = SystemPackage.TRANSITION_FEATURE_COUNT + 6;
 
 	/**
 	 * The meta object id for the '{@link com.reliability.system.view.impl.PortViewImpl <em>Port View</em>}' class.
@@ -419,6 +428,79 @@ public interface ViewPackage extends EPackage {
 	int VIEW_LINK_FEATURE_COUNT = 3;
 
 	/**
+	 * The meta object id for the '{@link com.reliability.system.view.impl.FailureViewImpl <em>Failure View</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.reliability.system.view.impl.FailureViewImpl
+	 * @see com.reliability.system.view.impl.ViewPackageImpl#getFailureView()
+	 * @generated
+	 */
+	int FAILURE_VIEW = 5;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FAILURE_VIEW__ID = SystemPackage.FAILURE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FAILURE_VIEW__OWNER = SystemPackage.FAILURE__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FAILURE_VIEW__CONSTRAINTS = SystemPackage.FAILURE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FAILURE_VIEW__LABEL = SystemPackage.FAILURE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Outgoing Links</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FAILURE_VIEW__OUTGOING_LINKS = SystemPackage.FAILURE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Incoming Links</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FAILURE_VIEW__INCOMING_LINKS = SystemPackage.FAILURE_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Failure View</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FAILURE_VIEW_FEATURE_COUNT = SystemPackage.FAILURE_FEATURE_COUNT + 4;
+
+	/**
 	 * The meta object id for the '<em>Rectangle</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -426,7 +508,7 @@ public interface ViewPackage extends EPackage {
 	 * @see com.reliability.system.view.impl.ViewPackageImpl#getRectangle()
 	 * @generated
 	 */
-	int RECTANGLE = 5;
+	int RECTANGLE = 6;
 
 
 	/**
@@ -437,7 +519,7 @@ public interface ViewPackage extends EPackage {
 	 * @see com.reliability.system.view.impl.ViewPackageImpl#getPoint()
 	 * @generated
 	 */
-	int POINT = 6;
+	int POINT = 7;
 
 
 	/**
@@ -503,6 +585,17 @@ public interface ViewPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getTransitionView_Owner();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link com.reliability.system.view.TransitionView#getFailureLink <em>Failure Link</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Failure Link</em>'.
+	 * @see com.reliability.system.view.TransitionView#getFailureLink()
+	 * @see #getTransitionView()
+	 * @generated
+	 */
+	EReference getTransitionView_FailureLink();
 
 	/**
 	 * Returns the meta object for class '{@link com.reliability.system.view.PortView <em>Port View</em>}'.
@@ -623,6 +716,16 @@ public interface ViewPackage extends EPackage {
 	EAttribute getViewLink_Bendpoints();
 
 	/**
+	 * Returns the meta object for class '{@link com.reliability.system.view.FailureView <em>Failure View</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Failure View</em>'.
+	 * @see com.reliability.system.view.FailureView
+	 * @generated
+	 */
+	EClass getFailureView();
+
+	/**
 	 * Returns the meta object for data type '{@link org.eclipse.draw2d.geometry.Rectangle <em>Rectangle</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -719,6 +822,14 @@ public interface ViewPackage extends EPackage {
 		EReference TRANSITION_VIEW__OWNER = eINSTANCE.getTransitionView_Owner();
 
 		/**
+		 * The meta object literal for the '<em><b>Failure Link</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TRANSITION_VIEW__FAILURE_LINK = eINSTANCE.getTransitionView_FailureLink();
+
+		/**
 		 * The meta object literal for the '{@link com.reliability.system.view.impl.PortViewImpl <em>Port View</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -811,6 +922,16 @@ public interface ViewPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute VIEW_LINK__BENDPOINTS = eINSTANCE.getViewLink_Bendpoints();
+
+		/**
+		 * The meta object literal for the '{@link com.reliability.system.view.impl.FailureViewImpl <em>Failure View</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.reliability.system.view.impl.FailureViewImpl
+		 * @see com.reliability.system.view.impl.ViewPackageImpl#getFailureView()
+		 * @generated
+		 */
+		EClass FAILURE_VIEW = eINSTANCE.getFailureView();
 
 		/**
 		 * The meta object literal for the '<em>Rectangle</em>' data type.
