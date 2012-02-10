@@ -6,12 +6,11 @@
  */
 package com.reliability.system.view.tests;
 
-import com.reliability.system.tests.FailureTest;
+import junit.textui.TestRunner;
 
+import com.reliability.system.tests.FailureTest;
 import com.reliability.system.view.FailureView;
 import com.reliability.system.view.ViewFactory;
-
-import junit.textui.TestRunner;
 
 /**
  * <!-- begin-user-doc -->

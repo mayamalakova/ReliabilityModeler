@@ -7,25 +7,32 @@
 package com.reliability.system.view.impl;
 
 import com.reliability.system.view.*;
-
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+
+import com.reliability.system.Failure;
+import com.reliability.system.Port;
+import com.reliability.system.Transition;
+import com.reliability.system.impl.SystemFactoryImpl;
+import com.reliability.system.view.FailureView;
+import com.reliability.system.view.PortView;
+import com.reliability.system.view.TransitionView;
+import com.reliability.system.view.ViewFactory;
+import com.reliability.system.view.ViewLink;
+import com.reliability.system.view.ViewPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
  * @generated
  */
-public class ViewFactoryImpl extends EFactoryImpl implements ViewFactory {
+public class ViewFactoryImpl extends SystemFactoryImpl implements ViewFactory {
 	/**
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc --> <!--
@@ -62,11 +69,11 @@ public class ViewFactoryImpl extends EFactoryImpl implements ViewFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case ViewPackage.SYSTEM_VIEW: return createSystemView();
 			case ViewPackage.TRANSITION_VIEW: return createTransitionView();
 			case ViewPackage.PORT_VIEW: return createPortView();
 			case ViewPackage.VIEW_LINK: return createViewLink();
 			case ViewPackage.FAILURE_VIEW: return createFailureView();
+			case ViewPackage.SYSTEM_VIEW: return createSystemView();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -108,15 +115,6 @@ public class ViewFactoryImpl extends EFactoryImpl implements ViewFactory {
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SystemView createSystemView() {
-		SystemViewImpl systemView = new SystemViewImpl();
-		return systemView;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
 	public TransitionView createTransitionView() {
 		TransitionViewImpl transitionView = new TransitionViewImpl();
 		return transitionView;
@@ -150,6 +148,16 @@ public class ViewFactoryImpl extends EFactoryImpl implements ViewFactory {
 	public FailureView createFailureView() {
 		FailureViewImpl failureView = new FailureViewImpl();
 		return failureView;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SystemView createSystemView() {
+		SystemViewImpl systemView = new SystemViewImpl();
+		return systemView;
 	}
 
 	/**
@@ -240,13 +248,27 @@ public class ViewFactoryImpl extends EFactoryImpl implements ViewFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @deprecated
-	 * @generated
+	 * @not generated
 	 */
-	@Deprecated
-	public static ViewPackage getPackage() {
-		return ViewPackage.eINSTANCE;
+	@Override
+	public Transition createTransition() {
+		return createTransitionView();
+	}
+
+	/**
+	 * @not generated
+	 */
+	@Override
+	public Port createPort() {
+		return createPortView();
+	}
+
+	/**
+	 * @not generated
+	 */
+	@Override
+	public Failure createFailure() {
+		return createFailureView();
 	}
 
 } // ViewFactoryImpl

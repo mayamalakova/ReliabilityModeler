@@ -6,12 +6,11 @@
  */
 package com.reliability.system.view.tests;
 
-import com.reliability.system.tests.PortTest;
+import junit.textui.TestRunner;
 
+import com.reliability.system.tests.PortTest;
 import com.reliability.system.view.PortView;
 import com.reliability.system.view.ViewFactory;
-
-import junit.textui.TestRunner;
 
 /**
  * <!-- begin-user-doc -->

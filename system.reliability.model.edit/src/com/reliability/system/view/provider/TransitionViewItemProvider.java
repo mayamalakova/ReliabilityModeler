@@ -7,20 +7,12 @@
 package com.reliability.system.view.provider;
 
 
-import com.reliability.system.provider.TransitionItemProvider;
-
-import com.reliability.system.view.TransitionView;
-import com.reliability.system.view.ViewFactory;
-import com.reliability.system.view.ViewPackage;
-
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
@@ -31,6 +23,11 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+
+import com.reliability.system.provider.TransitionItemProvider;
+import com.reliability.system.view.TransitionView;
+import com.reliability.system.view.ViewFactory;
+import com.reliability.system.view.ViewPackage;
 
 /**
  * This is the item provider adapter for a {@link com.reliability.system.view.TransitionView} object.
@@ -176,7 +173,6 @@ public class TransitionViewItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(ViewPackage.Literals.VIEW_OBJECT__OUTGOING_LINKS);
-			childrenFeatures.add(ViewPackage.Literals.TRANSITION_VIEW__FAILURE_LINK);
 		}
 		return childrenFeatures;
 	}
@@ -236,7 +232,6 @@ public class TransitionViewItemProvider
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case ViewPackage.TRANSITION_VIEW__OUTGOING_LINKS:
-			case ViewPackage.TRANSITION_VIEW__FAILURE_LINK:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -258,34 +253,6 @@ public class TransitionViewItemProvider
 			(createChildParameter
 				(ViewPackage.Literals.VIEW_OBJECT__OUTGOING_LINKS,
 				 ViewFactory.eINSTANCE.createViewLink()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ViewPackage.Literals.TRANSITION_VIEW__FAILURE_LINK,
-				 ViewFactory.eINSTANCE.createViewLink()));
-	}
-
-	/**
-	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
-		Object childFeature = feature;
-		Object childObject = child;
-
-		boolean qualify =
-			childFeature == ViewPackage.Literals.VIEW_OBJECT__OUTGOING_LINKS ||
-			childFeature == ViewPackage.Literals.TRANSITION_VIEW__FAILURE_LINK;
-
-		if (qualify) {
-			return getString
-				("_UI_CreateChild_text2",
-				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
-		}
-		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 	/**

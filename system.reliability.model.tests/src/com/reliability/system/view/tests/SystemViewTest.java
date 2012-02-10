@@ -6,10 +6,10 @@
  */
 package com.reliability.system.view.tests;
 
+import com.reliability.system.tests.GeneralizedNetTest;
+
 import com.reliability.system.view.SystemView;
 import com.reliability.system.view.ViewFactory;
-
-import junit.framework.TestCase;
 
 import junit.textui.TestRunner;
 
@@ -19,15 +19,7 @@ import junit.textui.TestRunner;
  * <!-- end-user-doc -->
  * @generated
  */
-public class SystemViewTest extends TestCase {
-
-	/**
-	 * The fixture for this System View test case.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected SystemView fixture = null;
+public class SystemViewTest extends GeneralizedNetTest {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -49,23 +41,14 @@ public class SystemViewTest extends TestCase {
 	}
 
 	/**
-	 * Sets the fixture for this System View test case.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void setFixture(SystemView fixture) {
-		this.fixture = fixture;
-	}
-
-	/**
 	 * Returns the fixture for this System View test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected SystemView getFixture() {
-		return fixture;
+		return (SystemView)fixture;
 	}
 
 	/**

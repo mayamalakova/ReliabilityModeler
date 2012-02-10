@@ -6,26 +6,21 @@
  */
 package com.reliability.system.view.tests;
 
-import com.reliability.system.view.SystemView;
-import com.reliability.system.view.ViewFactory;
-import com.reliability.system.view.ViewPackage;
-
-import com.reliability.system.view.util.ViewResourceFactoryImpl;
-
 import java.io.File;
 import java.io.IOException;
 
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
-
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-
 import org.eclipse.emf.ecore.util.Diagnostician;
+
+import com.reliability.system.view.TransitionView;
+import com.reliability.system.view.ViewFactory;
+import com.reliability.system.view.ViewPackage;
+import com.reliability.system.view.util.ViewResourceFactoryImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -64,7 +59,7 @@ public class ViewExample {
 			System.out.println("Enter a list of file paths or URIs that have content like this:");
 			try {
 				Resource resource = resourceSet.createResource(URI.createURI("http:///My.view"));
-				SystemView root = ViewFactory.eINSTANCE.createSystemView();
+				TransitionView root = ViewFactory.eINSTANCE.createTransitionView();
 				resource.getContents().add(root);
 				resource.save(System.out, null);
 			}

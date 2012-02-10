@@ -14,8 +14,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 
-import com.reliability.system.view.SystemView;
-import com.reliability.system.view.TransitionView;
+import com.reliability.system.GeneralizedNet;
+import com.reliability.system.Transition;
 import com.system.reliability.modeler.editor.policy.ViewObjectLayoutPolicy;
 
 public class GeneralizedNetEditPart extends AbstractGraphicalEditPart {
@@ -42,10 +42,10 @@ public class GeneralizedNetEditPart extends AbstractGraphicalEditPart {
 	@Override 
 	protected List<EObject> getModelChildren() {
 		List<EObject> children = new ArrayList<EObject>();
-	    SystemView generalizedNet = (SystemView) getModel();
+		GeneralizedNet generalizedNet = (GeneralizedNet) getModel();
 	    children.addAll(generalizedNet.getTransitions());
-	    children.addAll(generalizedNet.getPorts());
-	    for(TransitionView transition: generalizedNet.getTransitions()) {
+	    children.addAll(generalizedNet.getPositions());
+	    for(Transition transition: generalizedNet.getTransitions()) {
 	    	if (transition.getFailureState() != null) {
 	    		children.add(transition.getFailureState());
 	    	}
@@ -55,14 +55,14 @@ public class GeneralizedNetEditPart extends AbstractGraphicalEditPart {
 	
 	@Override public void activate() {
 	    if(!isActive()) {
-	      ((SystemView)getModel()).eAdapters().add(modelAdapter);
+	      ((GeneralizedNet)getModel()).eAdapters().add(modelAdapter);
 	    }
 	    super.activate();
 	  }
 	 
 	  @Override public void deactivate() {
 	    if(isActive()) {
-	      ((SystemView)getModel()).eAdapters().remove(modelAdapter);
+	      ((GeneralizedNet)getModel()).eAdapters().remove(modelAdapter);
 	    }
 	    super.deactivate();
 	  }
@@ -76,7 +76,7 @@ public class GeneralizedNetEditPart extends AbstractGraphicalEditPart {
 	 
 	    @Override 
 	    public Notifier getTarget() {
-	      return (SystemView) getModel();
+	      return (GeneralizedNet) getModel();
 	    }
 	 
 	    @Override 
@@ -86,7 +86,7 @@ public class GeneralizedNetEditPart extends AbstractGraphicalEditPart {
 	 
 	    @Override 
 	    public boolean isAdapterForType(Object type) {
-	      return type.equals(SystemView.class);
+	      return type.equals(GeneralizedNet.class);
 	    }
 	  } 
 }

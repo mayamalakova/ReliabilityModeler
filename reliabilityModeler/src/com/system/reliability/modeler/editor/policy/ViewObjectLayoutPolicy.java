@@ -6,10 +6,10 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editpolicies.XYLayoutEditPolicy;
 import org.eclipse.gef.requests.CreateRequest;
 
+import com.reliability.system.GeneralizedNet;
 import com.reliability.system.Port;
 import com.reliability.system.Transition;
 import com.reliability.system.view.PortView;
-import com.reliability.system.view.SystemView;
 import com.reliability.system.view.TransitionView;
 import com.reliability.system.view.ViewObject;
 import com.system.reliability.modeler.editor.command.ChangeConstraintCommand;
@@ -34,14 +34,14 @@ public class ViewObjectLayoutPolicy extends XYLayoutEditPolicy {
 			command = new CreateTransitionCommand();
 			((CreateTransitionCommand) command).setLocation(request.getLocation());
 			((CreateTransitionCommand) command).setTransition(transition);
-			((CreateTransitionCommand) command).setParent((SystemView) getHost().getModel());
+			((CreateTransitionCommand) command).setParent((GeneralizedNet) getHost().getModel());
 		
 		} else if (request.getNewObject() instanceof Port) {
 			PortView port = (PortView) request.getNewObject(); 
 			command = new CreatePortCommand();
 			((CreatePortCommand)command).setLocation(request.getLocation());
 			((CreatePortCommand)command).setPort(port);
-			((CreatePortCommand)command).setParent((SystemView) getHost().getModel());
+			((CreatePortCommand)command).setParent((GeneralizedNet) getHost().getModel());
 		}
 		
 	    return command;

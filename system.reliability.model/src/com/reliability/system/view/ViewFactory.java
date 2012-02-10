@@ -6,7 +6,7 @@
  */
 package com.reliability.system.view;
 
-import org.eclipse.emf.ecore.EFactory;
+import com.reliability.system.SystemFactory;
 
 /**
  * <!-- begin-user-doc -->
@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EFactory;
  * @see com.reliability.system.view.ViewPackage
  * @generated
  */
-public interface ViewFactory extends EFactory {
+public interface ViewFactory extends SystemFactory {
 	/**
 	 * The singleton instance of the factory.
 	 * <!-- begin-user-doc -->
@@ -24,15 +24,6 @@ public interface ViewFactory extends EFactory {
 	 * @generated
 	 */
 	ViewFactory eINSTANCE = com.reliability.system.view.impl.ViewFactoryImpl.init();
-
-	/**
-	 * Returns a new object of class '<em>System View</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>System View</em>'.
-	 * @generated
-	 */
-	SystemView createSystemView();
 
 	/**
 	 * Returns a new object of class '<em>Transition View</em>'.
@@ -69,6 +60,15 @@ public interface ViewFactory extends EFactory {
 	 * @generated
 	 */
 	FailureView createFailureView();
+
+	/**
+	 * Returns a new object of class '<em>System View</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>System View</em>'.
+	 * @generated
+	 */
+	SystemView createSystemView();
 
 	/**
 	 * Returns the package supported by this factory.

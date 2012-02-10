@@ -7,6 +7,7 @@
 package com.reliability.system.view.util;
 
 import com.reliability.system.Failure;
+import com.reliability.system.GeneralizedNet;
 import com.reliability.system.Port;
 import com.reliability.system.Position;
 import com.reliability.system.Transition;
@@ -75,12 +76,6 @@ public class ViewSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case ViewPackage.SYSTEM_VIEW: {
-				SystemView systemView = (SystemView)theEObject;
-				T result = caseSystemView(systemView);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case ViewPackage.TRANSITION_VIEW: {
 				TransitionView transitionView = (TransitionView)theEObject;
 				T result = caseTransitionView(transitionView);
@@ -119,23 +114,15 @@ public class ViewSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case ViewPackage.SYSTEM_VIEW: {
+				SystemView systemView = (SystemView)theEObject;
+				T result = caseSystemView(systemView);
+				if (result == null) result = caseGeneralizedNet(systemView);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>System View</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>System View</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseSystemView(SystemView object) {
-		return null;
 	}
 
 	/**
@@ -214,6 +201,21 @@ public class ViewSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>System View</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>System View</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSystemView(SystemView object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Transition</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -270,6 +272,21 @@ public class ViewSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseFailure(Failure object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Generalized Net</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Generalized Net</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseGeneralizedNet(GeneralizedNet object) {
 		return null;
 	}
 

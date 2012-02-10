@@ -48,7 +48,7 @@ public class FailureFigure extends Figure implements IModelFigure {
 		trianglePolygon.addPoint(point5);
 		trianglePolygon.addPoint(point6);
 		
-		graphics.setBackgroundColor(ColorConstants.cyan);
+		graphics.setBackgroundColor(ColorConstants.yellow);
 		graphics.setForegroundColor(ColorConstants.black);
 		graphics.fillPolygon(trianglePolygon);
 		graphics.drawPolygon(trianglePolygon);

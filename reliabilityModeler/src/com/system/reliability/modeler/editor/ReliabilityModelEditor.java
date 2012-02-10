@@ -17,13 +17,13 @@ import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.PartInitException;
 
-import com.reliability.system.view.SystemView;
+import com.reliability.system.GeneralizedNet;
 import com.reliability.system.view.ViewPackage;
 import com.system.reliability.modeler.editor.palette.ModelEditorPalette;
 import com.system.reliability.modeler.editor.part.ReliabilityEditPartFactory;
 
 public class ReliabilityModelEditor extends GraphicalEditorWithFlyoutPalette {
-	private SystemView system;
+	private GeneralizedNet system;
 	private Resource systemResource;
 
 	public ReliabilityModelEditor() {
@@ -81,7 +81,7 @@ public class ReliabilityModelEditor extends GraphicalEditorWithFlyoutPalette {
 
 		try {
 			systemResource.load(null);
-			system = (SystemView) systemResource.getContents().get(0);
+			system = (GeneralizedNet) systemResource.getContents().get(0);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

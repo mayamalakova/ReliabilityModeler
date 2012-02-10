@@ -5,8 +5,8 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.commands.Command;
 
+import com.reliability.system.GeneralizedNet;
 import com.reliability.system.view.PortView;
-import com.reliability.system.view.SystemView;
 
 public class CreatePortCommand extends Command {
 
@@ -15,7 +15,7 @@ public class CreatePortCommand extends Command {
 	
 	protected PortView newPort; 
 	private Rectangle constraints;
-	private SystemView parent;
+	private GeneralizedNet parent;
 
 	@Override
 	public void execute() {
@@ -24,14 +24,14 @@ public class CreatePortCommand extends Command {
 			newPort.setConstraints(constraints);
 		}
 		if (parent != null) {
-			parent.getPorts().add(newPort);
+			parent.getPositions().add(newPort);
 		}
 	}
 	
 	@Override
 	public void undo() {
 		super.undo();
-		parent.getPorts().remove(newPort);
+		parent.getPositions().remove(newPort);
 	}
 
 
@@ -43,7 +43,7 @@ public class CreatePortCommand extends Command {
 		newPort = port;
 	}
 	
-	public void setParent(SystemView system) {
+	public void setParent(GeneralizedNet system) {
 		parent = system;
 	}
 	

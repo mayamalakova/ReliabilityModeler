@@ -35,7 +35,6 @@ public class CreateFailureCommand extends Command {
 	@Override
 	public void undo() {
 		super.undo();
-		parent.setFailureLink(null);
 		link.setSource(null);
 		link.setTarget(null);
 	}

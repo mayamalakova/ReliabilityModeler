@@ -9,18 +9,8 @@
       presentationPackageSuffix="ui" ecorePackage="reliabilityView.ecore#/">
     <genDataTypes ecoreDataType="reliabilityView.ecore#//Rectangle"/>
     <genDataTypes ecoreDataType="reliabilityView.ecore#//Point"/>
-    <genClasses ecoreClass="reliabilityView.ecore#//SystemView">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference reliabilityView.ecore#//SystemView/transitions"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference reliabilityView.ecore#//SystemView/ports"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute reliabilityView.ecore#//SystemView/name"/>
-    </genClasses>
-    <genClasses ecoreClass="reliabilityView.ecore#//TransitionView">
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference reliabilityView.ecore#//TransitionView/owner"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference reliabilityView.ecore#//TransitionView/failureLink"/>
-    </genClasses>
-    <genClasses ecoreClass="reliabilityView.ecore#//PortView">
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference reliabilityView.ecore#//PortView/owner"/>
-    </genClasses>
+    <genClasses ecoreClass="reliabilityView.ecore#//TransitionView"/>
+    <genClasses ecoreClass="reliabilityView.ecore#//PortView"/>
     <genClasses image="false" ecoreClass="reliabilityView.ecore#//ViewObject">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute reliabilityView.ecore#//ViewObject/constraints"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute reliabilityView.ecore#//ViewObject/label"/>
@@ -33,6 +23,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute reliabilityView.ecore#//ViewLink/bendpoints"/>
     </genClasses>
     <genClasses ecoreClass="reliabilityView.ecore#//FailureView"/>
+    <genClasses ecoreClass="reliabilityView.ecore#//SystemView"/>
   </genPackages>
   <genPackages prefix="System" basePackage="com.reliability" resource="XML" disposableProviderFactory="true"
       presentationPackageSuffix="ui" ecorePackage="reliability.ecore#/">

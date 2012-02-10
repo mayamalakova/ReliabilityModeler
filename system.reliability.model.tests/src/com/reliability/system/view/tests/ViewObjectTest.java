@@ -6,9 +6,9 @@
  */
 package com.reliability.system.view.tests;
 
-import com.reliability.system.view.ViewObject;
-
 import junit.framework.TestCase;
+
+import com.reliability.system.view.ViewObject;
 
 /**
  * <!-- begin-user-doc -->

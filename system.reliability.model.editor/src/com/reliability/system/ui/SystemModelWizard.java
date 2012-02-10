@@ -75,6 +75,7 @@ import org.eclipse.ui.part.ISetSelectionTarget;
 
 import com.reliability.system.SystemFactory;
 import com.reliability.system.SystemPackage;
+import com.reliability.system.provider.ReliabilityEditPlugin;
 import com.reliability.system.view.provider.ReliabilityViewEditPlugin;
 
 

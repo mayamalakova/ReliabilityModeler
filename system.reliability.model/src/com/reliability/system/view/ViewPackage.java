@@ -63,52 +63,6 @@ public interface ViewPackage extends EPackage {
 	ViewPackage eINSTANCE = com.reliability.system.view.impl.ViewPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link com.reliability.system.view.impl.SystemViewImpl <em>System View</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see com.reliability.system.view.impl.SystemViewImpl
-	 * @see com.reliability.system.view.impl.ViewPackageImpl#getSystemView()
-	 * @generated
-	 */
-	int SYSTEM_VIEW = 0;
-
-	/**
-	 * The feature id for the '<em><b>Transitions</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SYSTEM_VIEW__TRANSITIONS = 0;
-
-	/**
-	 * The feature id for the '<em><b>Ports</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SYSTEM_VIEW__PORTS = 1;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SYSTEM_VIEW__NAME = 2;
-
-	/**
-	 * The number of structural features of the '<em>System View</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SYSTEM_VIEW_FEATURE_COUNT = 3;
-
-	/**
 	 * The meta object id for the '{@link com.reliability.system.view.impl.TransitionViewImpl <em>Transition View</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -116,7 +70,7 @@ public interface ViewPackage extends EPackage {
 	 * @see com.reliability.system.view.impl.ViewPackageImpl#getTransitionView()
 	 * @generated
 	 */
-	int TRANSITION_VIEW = 1;
+	int TRANSITION_VIEW = 0;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -209,31 +163,13 @@ public interface ViewPackage extends EPackage {
 	int TRANSITION_VIEW__INCOMING_LINKS = SystemPackage.TRANSITION_FEATURE_COUNT + 3;
 
 	/**
-	 * The feature id for the '<em><b>Owner</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRANSITION_VIEW__OWNER = SystemPackage.TRANSITION_FEATURE_COUNT + 4;
-
-	/**
-	 * The feature id for the '<em><b>Failure Link</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRANSITION_VIEW__FAILURE_LINK = SystemPackage.TRANSITION_FEATURE_COUNT + 5;
-
-	/**
 	 * The number of structural features of the '<em>Transition View</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION_VIEW_FEATURE_COUNT = SystemPackage.TRANSITION_FEATURE_COUNT + 6;
+	int TRANSITION_VIEW_FEATURE_COUNT = SystemPackage.TRANSITION_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link com.reliability.system.view.impl.PortViewImpl <em>Port View</em>}' class.
@@ -243,7 +179,7 @@ public interface ViewPackage extends EPackage {
 	 * @see com.reliability.system.view.impl.ViewPackageImpl#getPortView()
 	 * @generated
 	 */
-	int PORT_VIEW = 2;
+	int PORT_VIEW = 1;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -309,22 +245,13 @@ public interface ViewPackage extends EPackage {
 	int PORT_VIEW__INCOMING_LINKS = SystemPackage.PORT_FEATURE_COUNT + 3;
 
 	/**
-	 * The feature id for the '<em><b>Owner</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PORT_VIEW__OWNER = SystemPackage.PORT_FEATURE_COUNT + 4;
-
-	/**
 	 * The number of structural features of the '<em>Port View</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PORT_VIEW_FEATURE_COUNT = SystemPackage.PORT_FEATURE_COUNT + 5;
+	int PORT_VIEW_FEATURE_COUNT = SystemPackage.PORT_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link com.reliability.system.view.impl.ViewObjectImpl <em>Object</em>}' class.
@@ -334,7 +261,7 @@ public interface ViewPackage extends EPackage {
 	 * @see com.reliability.system.view.impl.ViewPackageImpl#getViewObject()
 	 * @generated
 	 */
-	int VIEW_OBJECT = 3;
+	int VIEW_OBJECT = 2;
 
 	/**
 	 * The feature id for the '<em><b>Constraints</b></em>' attribute.
@@ -389,7 +316,7 @@ public interface ViewPackage extends EPackage {
 	 * @see com.reliability.system.view.impl.ViewPackageImpl#getViewLink()
 	 * @generated
 	 */
-	int VIEW_LINK = 4;
+	int VIEW_LINK = 3;
 
 	/**
 	 * The feature id for the '<em><b>Source</b></em>' container reference.
@@ -435,7 +362,7 @@ public interface ViewPackage extends EPackage {
 	 * @see com.reliability.system.view.impl.ViewPackageImpl#getFailureView()
 	 * @generated
 	 */
-	int FAILURE_VIEW = 5;
+	int FAILURE_VIEW = 4;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -501,6 +428,70 @@ public interface ViewPackage extends EPackage {
 	int FAILURE_VIEW_FEATURE_COUNT = SystemPackage.FAILURE_FEATURE_COUNT + 4;
 
 	/**
+	 * The meta object id for the '{@link com.reliability.system.view.impl.SystemViewImpl <em>System View</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.reliability.system.view.impl.SystemViewImpl
+	 * @see com.reliability.system.view.impl.ViewPackageImpl#getSystemView()
+	 * @generated
+	 */
+	int SYSTEM_VIEW = 5;
+
+	/**
+	 * The feature id for the '<em><b>Transitions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM_VIEW__TRANSITIONS = SystemPackage.GENERALIZED_NET__TRANSITIONS;
+
+	/**
+	 * The feature id for the '<em><b>Positions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM_VIEW__POSITIONS = SystemPackage.GENERALIZED_NET__POSITIONS;
+
+	/**
+	 * The feature id for the '<em><b>System Inputs</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM_VIEW__SYSTEM_INPUTS = SystemPackage.GENERALIZED_NET__SYSTEM_INPUTS;
+
+	/**
+	 * The feature id for the '<em><b>Final Positions</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM_VIEW__FINAL_POSITIONS = SystemPackage.GENERALIZED_NET__FINAL_POSITIONS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM_VIEW__NAME = SystemPackage.GENERALIZED_NET__NAME;
+
+	/**
+	 * The number of structural features of the '<em>System View</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM_VIEW_FEATURE_COUNT = SystemPackage.GENERALIZED_NET_FEATURE_COUNT + 0;
+
+	/**
 	 * The meta object id for the '<em>Rectangle</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -523,49 +514,6 @@ public interface ViewPackage extends EPackage {
 
 
 	/**
-	 * Returns the meta object for class '{@link com.reliability.system.view.SystemView <em>System View</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>System View</em>'.
-	 * @see com.reliability.system.view.SystemView
-	 * @generated
-	 */
-	EClass getSystemView();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link com.reliability.system.view.SystemView#getTransitions <em>Transitions</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Transitions</em>'.
-	 * @see com.reliability.system.view.SystemView#getTransitions()
-	 * @see #getSystemView()
-	 * @generated
-	 */
-	EReference getSystemView_Transitions();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link com.reliability.system.view.SystemView#getPorts <em>Ports</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Ports</em>'.
-	 * @see com.reliability.system.view.SystemView#getPorts()
-	 * @see #getSystemView()
-	 * @generated
-	 */
-	EReference getSystemView_Ports();
-
-	/**
-	 * Returns the meta object for the attribute '{@link com.reliability.system.view.SystemView#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see com.reliability.system.view.SystemView#getName()
-	 * @see #getSystemView()
-	 * @generated
-	 */
-	EAttribute getSystemView_Name();
-
-	/**
 	 * Returns the meta object for class '{@link com.reliability.system.view.TransitionView <em>Transition View</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -576,28 +524,6 @@ public interface ViewPackage extends EPackage {
 	EClass getTransitionView();
 
 	/**
-	 * Returns the meta object for the container reference '{@link com.reliability.system.view.TransitionView#getOwner <em>Owner</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Owner</em>'.
-	 * @see com.reliability.system.view.TransitionView#getOwner()
-	 * @see #getTransitionView()
-	 * @generated
-	 */
-	EReference getTransitionView_Owner();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link com.reliability.system.view.TransitionView#getFailureLink <em>Failure Link</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Failure Link</em>'.
-	 * @see com.reliability.system.view.TransitionView#getFailureLink()
-	 * @see #getTransitionView()
-	 * @generated
-	 */
-	EReference getTransitionView_FailureLink();
-
-	/**
 	 * Returns the meta object for class '{@link com.reliability.system.view.PortView <em>Port View</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -606,17 +532,6 @@ public interface ViewPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getPortView();
-
-	/**
-	 * Returns the meta object for the container reference '{@link com.reliability.system.view.PortView#getOwner <em>Owner</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Owner</em>'.
-	 * @see com.reliability.system.view.PortView#getOwner()
-	 * @see #getPortView()
-	 * @generated
-	 */
-	EReference getPortView_Owner();
 
 	/**
 	 * Returns the meta object for class '{@link com.reliability.system.view.ViewObject <em>Object</em>}'.
@@ -726,6 +641,16 @@ public interface ViewPackage extends EPackage {
 	EClass getFailureView();
 
 	/**
+	 * Returns the meta object for class '{@link com.reliability.system.view.SystemView <em>System View</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>System View</em>'.
+	 * @see com.reliability.system.view.SystemView
+	 * @generated
+	 */
+	EClass getSystemView();
+
+	/**
 	 * Returns the meta object for data type '{@link org.eclipse.draw2d.geometry.Rectangle <em>Rectangle</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -770,40 +695,6 @@ public interface ViewPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link com.reliability.system.view.impl.SystemViewImpl <em>System View</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see com.reliability.system.view.impl.SystemViewImpl
-		 * @see com.reliability.system.view.impl.ViewPackageImpl#getSystemView()
-		 * @generated
-		 */
-		EClass SYSTEM_VIEW = eINSTANCE.getSystemView();
-
-		/**
-		 * The meta object literal for the '<em><b>Transitions</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference SYSTEM_VIEW__TRANSITIONS = eINSTANCE.getSystemView_Transitions();
-
-		/**
-		 * The meta object literal for the '<em><b>Ports</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference SYSTEM_VIEW__PORTS = eINSTANCE.getSystemView_Ports();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SYSTEM_VIEW__NAME = eINSTANCE.getSystemView_Name();
-
-		/**
 		 * The meta object literal for the '{@link com.reliability.system.view.impl.TransitionViewImpl <em>Transition View</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -814,22 +705,6 @@ public interface ViewPackage extends EPackage {
 		EClass TRANSITION_VIEW = eINSTANCE.getTransitionView();
 
 		/**
-		 * The meta object literal for the '<em><b>Owner</b></em>' container reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TRANSITION_VIEW__OWNER = eINSTANCE.getTransitionView_Owner();
-
-		/**
-		 * The meta object literal for the '<em><b>Failure Link</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TRANSITION_VIEW__FAILURE_LINK = eINSTANCE.getTransitionView_FailureLink();
-
-		/**
 		 * The meta object literal for the '{@link com.reliability.system.view.impl.PortViewImpl <em>Port View</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -838,14 +713,6 @@ public interface ViewPackage extends EPackage {
 		 * @generated
 		 */
 		EClass PORT_VIEW = eINSTANCE.getPortView();
-
-		/**
-		 * The meta object literal for the '<em><b>Owner</b></em>' container reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PORT_VIEW__OWNER = eINSTANCE.getPortView_Owner();
 
 		/**
 		 * The meta object literal for the '{@link com.reliability.system.view.impl.ViewObjectImpl <em>Object</em>}' class.
@@ -932,6 +799,16 @@ public interface ViewPackage extends EPackage {
 		 * @generated
 		 */
 		EClass FAILURE_VIEW = eINSTANCE.getFailureView();
+
+		/**
+		 * The meta object literal for the '{@link com.reliability.system.view.impl.SystemViewImpl <em>System View</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.reliability.system.view.impl.SystemViewImpl
+		 * @see com.reliability.system.view.impl.ViewPackageImpl#getSystemView()
+		 * @generated
+		 */
+		EClass SYSTEM_VIEW = eINSTANCE.getSystemView();
 
 		/**
 		 * The meta object literal for the '<em>Rectangle</em>' data type.

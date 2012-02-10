@@ -7,20 +7,12 @@
 package com.reliability.system.view.provider;
 
 
-import com.reliability.system.provider.PortItemProvider;
-
-import com.reliability.system.view.PortView;
-import com.reliability.system.view.ViewFactory;
-import com.reliability.system.view.ViewPackage;
-
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
@@ -31,6 +23,11 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+
+import com.reliability.system.provider.PortItemProvider;
+import com.reliability.system.view.PortView;
+import com.reliability.system.view.ViewFactory;
+import com.reliability.system.view.ViewPackage;
 
 /**
  * This is the item provider adapter for a {@link com.reliability.system.view.PortView} object.

@@ -6,30 +6,24 @@
  */
 package com.reliability.system.view.impl;
 
-import com.reliability.system.impl.PortImpl;
-
-import com.reliability.system.view.PortView;
-import com.reliability.system.view.SystemView;
-import com.reliability.system.view.ViewLink;
-import com.reliability.system.view.ViewObject;
-import com.reliability.system.view.ViewPackage;
-
 import java.util.Collection;
-import org.eclipse.draw2d.geometry.Rectangle;
 
+import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import com.reliability.system.impl.PortImpl;
+import com.reliability.system.view.PortView;
+import com.reliability.system.view.ViewLink;
+import com.reliability.system.view.ViewObject;
+import com.reliability.system.view.ViewPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -42,7 +36,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link com.reliability.system.view.impl.PortViewImpl#getLabel <em>Label</em>}</li>
  *   <li>{@link com.reliability.system.view.impl.PortViewImpl#getOutgoingLinks <em>Outgoing Links</em>}</li>
  *   <li>{@link com.reliability.system.view.impl.PortViewImpl#getIncomingLinks <em>Incoming Links</em>}</li>
- *   <li>{@link com.reliability.system.view.impl.PortViewImpl#getOwner <em>Owner</em>}</li>
  * </ul>
  * </p>
  *
@@ -196,47 +189,6 @@ public class PortViewImpl extends PortImpl implements PortView {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SystemView getOwner() {
-		if (eContainerFeatureID() != ViewPackage.PORT_VIEW__OWNER) return null;
-		return (SystemView)eContainer();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetOwner(SystemView newOwner, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newOwner, ViewPackage.PORT_VIEW__OWNER, msgs);
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setOwner(SystemView newOwner) {
-		if (newOwner != eInternalContainer() || (eContainerFeatureID() != ViewPackage.PORT_VIEW__OWNER && newOwner != null)) {
-			if (EcoreUtil.isAncestor(this, newOwner))
-				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
-			NotificationChain msgs = null;
-			if (eInternalContainer() != null)
-				msgs = eBasicRemoveFromContainer(msgs);
-			if (newOwner != null)
-				msgs = ((InternalEObject)newOwner).eInverseAdd(this, ViewPackage.SYSTEM_VIEW__PORTS, SystemView.class, msgs);
-			msgs = basicSetOwner(newOwner, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ViewPackage.PORT_VIEW__OWNER, newOwner, newOwner));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -245,10 +197,6 @@ public class PortViewImpl extends PortImpl implements PortView {
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getOutgoingLinks()).basicAdd(otherEnd, msgs);
 			case ViewPackage.PORT_VIEW__INCOMING_LINKS:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getIncomingLinks()).basicAdd(otherEnd, msgs);
-			case ViewPackage.PORT_VIEW__OWNER:
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetOwner((SystemView)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -265,24 +213,8 @@ public class PortViewImpl extends PortImpl implements PortView {
 				return ((InternalEList<?>)getOutgoingLinks()).basicRemove(otherEnd, msgs);
 			case ViewPackage.PORT_VIEW__INCOMING_LINKS:
 				return ((InternalEList<?>)getIncomingLinks()).basicRemove(otherEnd, msgs);
-			case ViewPackage.PORT_VIEW__OWNER:
-				return basicSetOwner(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
-		switch (eContainerFeatureID()) {
-			case ViewPackage.PORT_VIEW__OWNER:
-				return eInternalContainer().eInverseRemove(this, ViewPackage.SYSTEM_VIEW__PORTS, SystemView.class, msgs);
-		}
-		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
 
 	/**
@@ -301,8 +233,6 @@ public class PortViewImpl extends PortImpl implements PortView {
 				return getOutgoingLinks();
 			case ViewPackage.PORT_VIEW__INCOMING_LINKS:
 				return getIncomingLinks();
-			case ViewPackage.PORT_VIEW__OWNER:
-				return getOwner();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -330,9 +260,6 @@ public class PortViewImpl extends PortImpl implements PortView {
 				getIncomingLinks().clear();
 				getIncomingLinks().addAll((Collection<? extends ViewLink>)newValue);
 				return;
-			case ViewPackage.PORT_VIEW__OWNER:
-				setOwner((SystemView)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -357,9 +284,6 @@ public class PortViewImpl extends PortImpl implements PortView {
 			case ViewPackage.PORT_VIEW__INCOMING_LINKS:
 				getIncomingLinks().clear();
 				return;
-			case ViewPackage.PORT_VIEW__OWNER:
-				setOwner((SystemView)null);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -380,8 +304,6 @@ public class PortViewImpl extends PortImpl implements PortView {
 				return outgoingLinks != null && !outgoingLinks.isEmpty();
 			case ViewPackage.PORT_VIEW__INCOMING_LINKS:
 				return incomingLinks != null && !incomingLinks.isEmpty();
-			case ViewPackage.PORT_VIEW__OWNER:
-				return getOwner() != null;
 		}
 		return super.eIsSet(featureID);
 	}

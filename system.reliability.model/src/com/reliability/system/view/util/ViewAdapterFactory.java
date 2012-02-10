@@ -7,6 +7,7 @@
 package com.reliability.system.view.util;
 
 import com.reliability.system.Failure;
+import com.reliability.system.GeneralizedNet;
 import com.reliability.system.Port;
 import com.reliability.system.Position;
 import com.reliability.system.Transition;
@@ -77,10 +78,6 @@ public class ViewAdapterFactory extends AdapterFactoryImpl {
 	protected ViewSwitch<Adapter> modelSwitch =
 		new ViewSwitch<Adapter>() {
 			@Override
-			public Adapter caseSystemView(SystemView object) {
-				return createSystemViewAdapter();
-			}
-			@Override
 			public Adapter caseTransitionView(TransitionView object) {
 				return createTransitionViewAdapter();
 			}
@@ -101,6 +98,10 @@ public class ViewAdapterFactory extends AdapterFactoryImpl {
 				return createFailureViewAdapter();
 			}
 			@Override
+			public Adapter caseSystemView(SystemView object) {
+				return createSystemViewAdapter();
+			}
+			@Override
 			public Adapter caseTransition(Transition object) {
 				return createTransitionAdapter();
 			}
@@ -115,6 +116,10 @@ public class ViewAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseFailure(Failure object) {
 				return createFailureAdapter();
+			}
+			@Override
+			public Adapter caseGeneralizedNet(GeneralizedNet object) {
+				return createGeneralizedNetAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -135,20 +140,6 @@ public class ViewAdapterFactory extends AdapterFactoryImpl {
 		return modelSwitch.doSwitch((EObject)target);
 	}
 
-
-	/**
-	 * Creates a new adapter for an object of class '{@link com.reliability.system.view.SystemView <em>System View</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see com.reliability.system.view.SystemView
-	 * @generated
-	 */
-	public Adapter createSystemViewAdapter() {
-		return null;
-	}
 
 	/**
 	 * Creates a new adapter for an object of class '{@link com.reliability.system.view.TransitionView <em>Transition View</em>}'.
@@ -221,6 +212,20 @@ public class ViewAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link com.reliability.system.view.SystemView <em>System View</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see com.reliability.system.view.SystemView
+	 * @generated
+	 */
+	public Adapter createSystemViewAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link com.reliability.system.Transition <em>Transition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -273,6 +278,20 @@ public class ViewAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createFailureAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link com.reliability.system.GeneralizedNet <em>Generalized Net</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see com.reliability.system.GeneralizedNet
+	 * @generated
+	 */
+	public Adapter createGeneralizedNetAdapter() {
 		return null;
 	}
 

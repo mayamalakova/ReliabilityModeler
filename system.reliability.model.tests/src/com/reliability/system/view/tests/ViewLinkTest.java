@@ -6,12 +6,11 @@
  */
 package com.reliability.system.view.tests;
 
+import junit.framework.TestCase;
+import junit.textui.TestRunner;
+
 import com.reliability.system.view.ViewFactory;
 import com.reliability.system.view.ViewLink;
-
-import junit.framework.TestCase;
-
-import junit.textui.TestRunner;
 
 /**
  * <!-- begin-user-doc -->

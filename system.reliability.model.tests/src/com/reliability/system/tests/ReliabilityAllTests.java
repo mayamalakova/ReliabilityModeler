@@ -4,19 +4,20 @@
  *
  * $Id$
  */
-package com.reliability.system.view.tests;
+package com.reliability.system.tests;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
+
 import junit.textui.TestRunner;
 
 /**
  * <!-- begin-user-doc -->
- * A test suite for the '<em><b>view</b></em>' package.
+ * A test suite for the '<em><b>Reliability</b></em>' model.
  * <!-- end-user-doc -->
  * @generated
  */
-public class ViewTests extends TestSuite {
+public class ReliabilityAllTests extends TestSuite {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -33,11 +34,8 @@ public class ViewTests extends TestSuite {
 	 * @generated
 	 */
 	public static Test suite() {
-		TestSuite suite = new ViewTests("view Tests");
-		suite.addTestSuite(TransitionViewTest.class);
-		suite.addTestSuite(PortViewTest.class);
-		suite.addTestSuite(FailureViewTest.class);
-		suite.addTestSuite(SystemViewTest.class);
+		TestSuite suite = new ReliabilityAllTests("Reliability Tests");
+		suite.addTest(SystemTests.suite());
 		return suite;
 	}
 
@@ -46,8 +44,8 @@ public class ViewTests extends TestSuite {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ViewTests(String name) {
+	public ReliabilityAllTests(String name) {
 		super(name);
 	}
 
-} //ViewTests
+} //ReliabilityAllTests

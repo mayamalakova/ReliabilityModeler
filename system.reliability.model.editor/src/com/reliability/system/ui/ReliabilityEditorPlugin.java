@@ -4,26 +4,29 @@
  *
  * $Id$
  */
-package com.reliability.system.view.provider;
+package com.reliability.system.ui;
 
 import org.eclipse.emf.common.EMFPlugin;
+
+import org.eclipse.emf.common.ui.EclipseUIPlugin;
+
 import org.eclipse.emf.common.util.ResourceLocator;
 
 /**
- * This is the central singleton for the ReliabilityView edit plugin.
+ * This is the central singleton for the Reliability editor plugin.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public final class ReliabilityViewEditPlugin extends EMFPlugin {
+public final class ReliabilityEditorPlugin extends EMFPlugin {
 	/**
 	 * Keep track of the singleton.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final ReliabilityViewEditPlugin INSTANCE = new ReliabilityViewEditPlugin();
-
+	public static final ReliabilityEditorPlugin INSTANCE = new ReliabilityEditorPlugin();
+	
 	/**
 	 * Keep track of the singleton.
 	 * <!-- begin-user-doc -->
@@ -38,10 +41,10 @@ public final class ReliabilityViewEditPlugin extends EMFPlugin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ReliabilityViewEditPlugin() {
+	public ReliabilityEditorPlugin() {
 		super
-		  (new ResourceLocator [] {
-		   });
+			(new ResourceLocator [] {
+			});
 	}
 
 	/**
@@ -55,7 +58,7 @@ public final class ReliabilityViewEditPlugin extends EMFPlugin {
 	public ResourceLocator getPluginResourceLocator() {
 		return plugin;
 	}
-
+	
 	/**
 	 * Returns the singleton instance of the Eclipse plugin.
 	 * <!-- begin-user-doc -->
@@ -66,14 +69,14 @@ public final class ReliabilityViewEditPlugin extends EMFPlugin {
 	public static Implementation getPlugin() {
 		return plugin;
 	}
-
+	
 	/**
 	 * The actual implementation of the Eclipse <b>Plugin</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static class Implementation extends EclipsePlugin {
+	public static class Implementation extends EclipseUIPlugin {
 		/**
 		 * Creates an instance.
 		 * <!-- begin-user-doc -->
@@ -82,7 +85,7 @@ public final class ReliabilityViewEditPlugin extends EMFPlugin {
 		 */
 		public Implementation() {
 			super();
-
+	
 			// Remember the static instance.
 			//
 			plugin = this;

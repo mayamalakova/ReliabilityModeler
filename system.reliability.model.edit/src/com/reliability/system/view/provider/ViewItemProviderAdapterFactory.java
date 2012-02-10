@@ -6,15 +6,12 @@
  */
 package com.reliability.system.view.provider;
 
-import com.reliability.system.view.util.ViewAdapterFactory;
-
 import java.util.ArrayList;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.edit.provider.ChangeNotifier;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
@@ -26,6 +23,8 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+
+import com.reliability.system.view.util.ViewAdapterFactory;
 
 /**
  * This is the factory that is used to provide the interfaces needed to support Viewers.
@@ -73,29 +72,6 @@ public class ViewItemProviderAdapterFactory extends ViewAdapterFactory implement
 		supportedTypes.add(ITreeItemContentProvider.class);
 		supportedTypes.add(IItemLabelProvider.class);
 		supportedTypes.add(IItemPropertySource.class);
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link com.reliability.system.view.SystemView} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected SystemViewItemProvider systemViewItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link com.reliability.system.view.SystemView}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createSystemViewAdapter() {
-		if (systemViewItemProvider == null) {
-			systemViewItemProvider = new SystemViewItemProvider(this);
-		}
-
-		return systemViewItemProvider;
 	}
 
 	/**
@@ -188,6 +164,29 @@ public class ViewItemProviderAdapterFactory extends ViewAdapterFactory implement
 		}
 
 		return failureViewItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link com.reliability.system.view.SystemView} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SystemViewItemProvider systemViewItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link com.reliability.system.view.SystemView}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSystemViewAdapter() {
+		if (systemViewItemProvider == null) {
+			systemViewItemProvider = new SystemViewItemProvider(this);
+		}
+
+		return systemViewItemProvider;
 	}
 
 	/**
@@ -289,11 +288,11 @@ public class ViewItemProviderAdapterFactory extends ViewAdapterFactory implement
 	 * @generated
 	 */
 	public void dispose() {
-		if (systemViewItemProvider != null) systemViewItemProvider.dispose();
 		if (transitionViewItemProvider != null) transitionViewItemProvider.dispose();
 		if (portViewItemProvider != null) portViewItemProvider.dispose();
 		if (viewLinkItemProvider != null) viewLinkItemProvider.dispose();
 		if (failureViewItemProvider != null) failureViewItemProvider.dispose();
+		if (systemViewItemProvider != null) systemViewItemProvider.dispose();
 	}
 
 }

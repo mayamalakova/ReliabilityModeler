@@ -4,25 +4,25 @@
  *
  * $Id$
  */
-package com.reliability.system.view.provider;
+package com.reliability.system.provider;
 
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
 
 /**
- * This is the central singleton for the ReliabilityView edit plugin.
+ * This is the central singleton for the Reliability edit plugin.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public final class ReliabilityViewEditPlugin extends EMFPlugin {
+public final class ReliabilityEditPlugin extends EMFPlugin {
 	/**
 	 * Keep track of the singleton.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final ReliabilityViewEditPlugin INSTANCE = new ReliabilityViewEditPlugin();
+	public static final ReliabilityEditPlugin INSTANCE = new ReliabilityEditPlugin();
 
 	/**
 	 * Keep track of the singleton.
@@ -38,7 +38,7 @@ public final class ReliabilityViewEditPlugin extends EMFPlugin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ReliabilityViewEditPlugin() {
+	public ReliabilityEditPlugin() {
 		super
 		  (new ResourceLocator [] {
 		   });

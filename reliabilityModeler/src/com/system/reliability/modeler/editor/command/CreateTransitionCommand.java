@@ -5,7 +5,7 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.commands.Command;
 
-import com.reliability.system.view.SystemView;
+import com.reliability.system.GeneralizedNet;
 import com.reliability.system.view.TransitionView;
 
 public class CreateTransitionCommand extends Command {
@@ -15,7 +15,7 @@ public class CreateTransitionCommand extends Command {
 	
 	protected TransitionView newTransition; 
 	private Rectangle constraints;
-	private SystemView parent;
+	private GeneralizedNet parent;
 
 	@Override
 	public void execute() {
@@ -43,7 +43,7 @@ public class CreateTransitionCommand extends Command {
 		newTransition = transition;
 	}
 	
-	public void setParent(SystemView system) {
+	public void setParent(GeneralizedNet system) {
 		parent = system;
 	}
 }

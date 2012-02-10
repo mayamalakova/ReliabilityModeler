@@ -3,25 +3,9 @@
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="view"
     nsURI="system.reliability.model.view" nsPrefix="view">
-  <eClassifiers xsi:type="ecore:EClass" name="SystemView">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="transitions" upperBound="-1"
-        eType="#//TransitionView" containment="true" eOpposite="#//TransitionView/owner"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" upperBound="-1"
-        eType="#//PortView" containment="true" eOpposite="#//PortView/owner"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        defaultValueLiteral=""/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TransitionView" eSuperTypes="reliability.ecore#//Transition #//ViewObject">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="owner" eType="#//SystemView"
-        eOpposite="#//SystemView/transitions"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="failureLink" eType="#//ViewLink"
-        containment="true"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TransitionView" eSuperTypes="reliability.ecore#//Transition #//ViewObject"/>
   <eClassifiers xsi:type="ecore:EDataType" name="Rectangle" instanceClassName="org.eclipse.draw2d.geometry.Rectangle"/>
-  <eClassifiers xsi:type="ecore:EClass" name="PortView" eSuperTypes="reliability.ecore#//Port #//ViewObject">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="owner" eType="#//SystemView"
-        eOpposite="#//SystemView/ports"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PortView" eSuperTypes="reliability.ecore#//Port #//ViewObject"/>
   <eClassifiers xsi:type="ecore:EClass" name="ViewObject" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="constraints" eType="#//Rectangle"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
@@ -41,4 +25,5 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="Point" instanceClassName="org.eclipse.draw2d.geometry.Point"/>
   <eClassifiers xsi:type="ecore:EClass" name="FailureView" eSuperTypes="reliability.ecore#//Failure #//ViewObject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SystemView" eSuperTypes="reliability.ecore#//GeneralizedNet"/>
 </ecore:EPackage>
