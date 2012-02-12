@@ -3,6 +3,7 @@ package com.system.reliability.modeler.editor.part;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.draw2d.ConnectionLayer;
 import org.eclipse.draw2d.FreeformLayer;
 import org.eclipse.draw2d.FreeformLayout;
 import org.eclipse.draw2d.IFigure;
@@ -12,7 +13,9 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPolicy;
+import org.eclipse.gef.LayerConstants;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
+import org.eclipse.swt.SWT;
 
 import com.reliability.system.GeneralizedNet;
 import com.reliability.system.SystemPackage;
@@ -33,6 +36,9 @@ public class GeneralizedNetEditPart extends AbstractGraphicalEditPart {
 		FreeformLayer layer = new FreeformLayer();
 		layer.setLayoutManager(new FreeformLayout());
 		layer.setBorder(new LineBorder(1));
+		//set connections antialiasing on
+		ConnectionLayer connectionLayer = (ConnectionLayer) getLayer(LayerConstants.CONNECTION_LAYER);
+		connectionLayer.setAntialias(SWT.ON);		
 		return layer;
 	}
 

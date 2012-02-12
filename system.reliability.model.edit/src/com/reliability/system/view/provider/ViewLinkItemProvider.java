@@ -25,7 +25,6 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import com.reliability.system.view.ViewLink;
-import com.reliability.system.view.ViewObject;
 import com.reliability.system.view.ViewPackage;
 
 /**

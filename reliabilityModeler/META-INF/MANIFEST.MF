@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: ReliabilityModeler
+Bundle-Name: Reliability Graphical Editing Tools
 Bundle-SymbolicName: reliabilityModeler;singleton:=true
 Bundle-Version: 1.0.0
-Bundle-Activator: com.system.reliability.modeler.Activator
+Bundle-Activator: com.system.reliability.modeler.RgetPlugin
 Bundle-Vendor: Maya Malakova
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,

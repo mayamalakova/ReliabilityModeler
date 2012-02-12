@@ -28,6 +28,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import com.reliability.system.SystemFactory;
 import com.reliability.system.SystemPackage;
 import com.reliability.system.Transition;
+import com.reliability.system.TransitionType;
 import com.reliability.system.view.ViewFactory;
 import com.reliability.system.view.provider.ReliabilityViewEditPlugin;
 

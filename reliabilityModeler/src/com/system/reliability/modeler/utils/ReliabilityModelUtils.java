@@ -15,7 +15,6 @@ import com.reliability.system.Failure;
 import com.reliability.system.GeneralizedNet;
 import com.reliability.system.Port;
 import com.reliability.system.PositionType;
-import com.reliability.system.SystemFactory;
 import com.reliability.system.SystemPackage;
 import com.reliability.system.Transition;
 import com.reliability.system.TransitionMatrixElement;
@@ -29,7 +28,7 @@ import com.reliability.system.view.util.ViewResourceFactoryImpl;
 public class ReliabilityModelUtils {
 	
 	private static ViewFactory viewFactory = ViewFactory.eINSTANCE; 
-	private static SystemFactory systemFactory = SystemFactory.eINSTANCE;
+//	private static SystemFactory systemFactory = SystemFactory.eINSTANCE;
 	
 	public static GeneralizedNet createViewModel(){
 		GeneralizedNet generalizedNet = viewFactory.createGeneralizedNet();

@@ -39,7 +39,7 @@ public class ViewLinkEditPart extends AbstractConnectionEditPart {
 
 	@Override
 	protected IFigure createFigure() {
-		PolylineConnection conn = new PolylineConnection();
+		PolylineConnection conn = (PolylineConnection) super.createFigure();
 		conn.setConnectionRouter(new BendpointConnectionRouter());
 		conn.setTargetDecoration(new PolylineDecoration());
 		return conn;

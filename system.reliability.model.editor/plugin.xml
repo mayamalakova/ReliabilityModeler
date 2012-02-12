@@ -45,7 +45,7 @@
             name="%_UI_SystemModelWizard_label"
             class="com.reliability.system.ui.SystemModelWizard"
             category="org.eclipse.emf.ecore.Wizard.category.ID"
-            icon="icons/full/obj16/SystemModelFile.gif">
+            icon="icons/full/obj16/cube_molecule.png">
          <description>%_UI_SystemModelWizard_description</description>
          <selection class="org.eclipse.core.resources.IResource"/>
       </wizard>
@@ -55,7 +55,7 @@
       <editor
             id="com.reliability.system.ui.SystemEditorID"
             name="%_UI_SystemEditor_label"
-            icon="icons/full/obj16/SystemModelFile.gif"
+            icon="icons/full/obj16/cube_molecule.png"
             extensions="system"
             class="com.reliability.system.ui.SystemEditor"
             contributorClass="com.reliability.system.ui.SystemActionBarContributor">

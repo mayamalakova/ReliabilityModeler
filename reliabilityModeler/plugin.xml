@@ -8,6 +8,7 @@
             contributorClass="com.system.reliability.modeler.editor.EditorActionBarContributor"
             default="false"
             extensions="view"
+            icon="icons/cube_molecule.png"
             id="com.system.reliability.editorId"
             name="Reliability Model Editor">
       </editor>
