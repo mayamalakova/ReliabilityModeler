@@ -89,31 +89,13 @@ public interface SystemPackage extends EPackage {
 	int TRANSITION__DESCRIPTION = 1;
 
 	/**
-	 * The feature id for the '<em><b>Input Ports</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRANSITION__INPUT_PORTS = 2;
-
-	/**
-	 * The feature id for the '<em><b>Output Ports</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRANSITION__OUTPUT_PORTS = 3;
-
-	/**
 	 * The feature id for the '<em><b>Failure State</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION__FAILURE_STATE = 4;
+	int TRANSITION__FAILURE_STATE = 2;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -122,7 +104,16 @@ public interface SystemPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION__TYPE = 5;
+	int TRANSITION__TYPE = 3;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__OWNER = 4;
 
 	/**
 	 * The number of structural features of the '<em>Transition</em>' class.
@@ -131,7 +122,7 @@ public interface SystemPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION_FEATURE_COUNT = 6;
+	int TRANSITION_FEATURE_COUNT = 5;
 
 	/**
 	 * The meta object id for the '{@link com.reliability.system.impl.PositionImpl <em>Position</em>}' class.
@@ -236,31 +227,13 @@ public interface SystemPackage extends EPackage {
 	int GENERALIZED_NET__POSITIONS = 1;
 
 	/**
-	 * The feature id for the '<em><b>System Inputs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GENERALIZED_NET__SYSTEM_INPUTS = 2;
-
-	/**
-	 * The feature id for the '<em><b>Final Positions</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GENERALIZED_NET__FINAL_POSITIONS = 3;
-
-	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GENERALIZED_NET__NAME = 4;
+	int GENERALIZED_NET__NAME = 2;
 
 	/**
 	 * The number of structural features of the '<em>Generalized Net</em>' class.
@@ -269,7 +242,7 @@ public interface SystemPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GENERALIZED_NET_FEATURE_COUNT = 5;
+	int GENERALIZED_NET_FEATURE_COUNT = 3;
 
 	/**
 	 * The meta object id for the '{@link com.reliability.system.impl.PortImpl <em>Port</em>}' class.
@@ -309,13 +282,22 @@ public interface SystemPackage extends EPackage {
 	int PORT__TYPE = POSITION_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Owner</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PORT__OWNER = POSITION_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Port</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PORT_FEATURE_COUNT = POSITION_FEATURE_COUNT + 2;
+	int PORT_FEATURE_COUNT = POSITION_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link com.reliability.system.impl.FailureImpl <em>Failure</em>}' class.
@@ -408,28 +390,6 @@ public interface SystemPackage extends EPackage {
 	EAttribute getTransition_Description();
 
 	/**
-	 * Returns the meta object for the reference list '{@link com.reliability.system.Transition#getInputPorts <em>Input Ports</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Input Ports</em>'.
-	 * @see com.reliability.system.Transition#getInputPorts()
-	 * @see #getTransition()
-	 * @generated
-	 */
-	EReference getTransition_InputPorts();
-
-	/**
-	 * Returns the meta object for the reference list '{@link com.reliability.system.Transition#getOutputPorts <em>Output Ports</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Output Ports</em>'.
-	 * @see com.reliability.system.Transition#getOutputPorts()
-	 * @see #getTransition()
-	 * @generated
-	 */
-	EReference getTransition_OutputPorts();
-
-	/**
 	 * Returns the meta object for the containment reference '{@link com.reliability.system.Transition#getFailureState <em>Failure State</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -450,6 +410,17 @@ public interface SystemPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getTransition_Type();
+
+	/**
+	 * Returns the meta object for the container reference '{@link com.reliability.system.Transition#getOwner <em>Owner</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Owner</em>'.
+	 * @see com.reliability.system.Transition#getOwner()
+	 * @see #getTransition()
+	 * @generated
+	 */
+	EReference getTransition_Owner();
 
 	/**
 	 * Returns the meta object for class '{@link com.reliability.system.Position <em>Position</em>}'.
@@ -548,28 +519,6 @@ public interface SystemPackage extends EPackage {
 	EReference getGeneralizedNet_Positions();
 
 	/**
-	 * Returns the meta object for the reference list '{@link com.reliability.system.GeneralizedNet#getSystemInputs <em>System Inputs</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>System Inputs</em>'.
-	 * @see com.reliability.system.GeneralizedNet#getSystemInputs()
-	 * @see #getGeneralizedNet()
-	 * @generated
-	 */
-	EReference getGeneralizedNet_SystemInputs();
-
-	/**
-	 * Returns the meta object for the reference list '{@link com.reliability.system.GeneralizedNet#getFinalPositions <em>Final Positions</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Final Positions</em>'.
-	 * @see com.reliability.system.GeneralizedNet#getFinalPositions()
-	 * @see #getGeneralizedNet()
-	 * @generated
-	 */
-	EReference getGeneralizedNet_FinalPositions();
-
-	/**
 	 * Returns the meta object for the attribute '{@link com.reliability.system.GeneralizedNet#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -611,6 +560,17 @@ public interface SystemPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getPort_Type();
+
+	/**
+	 * Returns the meta object for the container reference '{@link com.reliability.system.Port#getOwner <em>Owner</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Owner</em>'.
+	 * @see com.reliability.system.Port#getOwner()
+	 * @see #getPort()
+	 * @generated
+	 */
+	EReference getPort_Owner();
 
 	/**
 	 * Returns the meta object for class '{@link com.reliability.system.Failure <em>Failure</em>}'.
@@ -702,22 +662,6 @@ public interface SystemPackage extends EPackage {
 		EAttribute TRANSITION__DESCRIPTION = eINSTANCE.getTransition_Description();
 
 		/**
-		 * The meta object literal for the '<em><b>Input Ports</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TRANSITION__INPUT_PORTS = eINSTANCE.getTransition_InputPorts();
-
-		/**
-		 * The meta object literal for the '<em><b>Output Ports</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TRANSITION__OUTPUT_PORTS = eINSTANCE.getTransition_OutputPorts();
-
-		/**
 		 * The meta object literal for the '<em><b>Failure State</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -732,6 +676,14 @@ public interface SystemPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TRANSITION__TYPE = eINSTANCE.getTransition_Type();
+
+		/**
+		 * The meta object literal for the '<em><b>Owner</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TRANSITION__OWNER = eINSTANCE.getTransition_Owner();
 
 		/**
 		 * The meta object literal for the '{@link com.reliability.system.impl.PositionImpl <em>Position</em>}' class.
@@ -812,22 +764,6 @@ public interface SystemPackage extends EPackage {
 		EReference GENERALIZED_NET__POSITIONS = eINSTANCE.getGeneralizedNet_Positions();
 
 		/**
-		 * The meta object literal for the '<em><b>System Inputs</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference GENERALIZED_NET__SYSTEM_INPUTS = eINSTANCE.getGeneralizedNet_SystemInputs();
-
-		/**
-		 * The meta object literal for the '<em><b>Final Positions</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference GENERALIZED_NET__FINAL_POSITIONS = eINSTANCE.getGeneralizedNet_FinalPositions();
-
-		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -860,6 +796,14 @@ public interface SystemPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PORT__TYPE = eINSTANCE.getPort_Type();
+
+		/**
+		 * The meta object literal for the '<em><b>Owner</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PORT__OWNER = eINSTANCE.getPort_Owner();
 
 		/**
 		 * The meta object literal for the '{@link com.reliability.system.impl.FailureImpl <em>Failure</em>}' class.

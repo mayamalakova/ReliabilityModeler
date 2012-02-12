@@ -6,15 +6,13 @@
  */
 package com.reliability.system.view.util;
 
-import com.reliability.system.view.ViewPackage;
-
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.resource.Resource;
-
 import org.eclipse.emf.ecore.xmi.util.XMLProcessor;
+
+import com.reliability.system.view.ViewPackage;
 
 /**
  * This class contains helper methods to serialize and deserialize XML documents

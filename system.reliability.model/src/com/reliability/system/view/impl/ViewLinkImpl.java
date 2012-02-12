@@ -325,16 +325,19 @@ public class ViewLinkImpl extends EObjectImpl implements ViewLink {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @not generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (bendpoints: ");
-		result.append(bendpoints);
-		result.append(')');
+		StringBuffer result = new StringBuffer("Link: ");
+		result.append(getSource().getLabel());
+		result.append(" -> ");
+		if (getTarget() != null) {
+			result.append(getTarget().getLabel());
+		} else {
+			result.append("N/A");
+		}
+		
 		return result.toString();
 	}
 

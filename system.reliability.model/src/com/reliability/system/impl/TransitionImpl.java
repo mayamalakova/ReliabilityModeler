@@ -6,26 +6,19 @@
  */
 package com.reliability.system.impl;
 
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+
 import com.reliability.system.Failure;
-import com.reliability.system.Port;
+import com.reliability.system.GeneralizedNet;
 import com.reliability.system.SystemPackage;
 import com.reliability.system.Transition;
 import com.reliability.system.TransitionType;
-
-import java.util.Collection;
-
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -36,10 +29,9 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * <ul>
  *   <li>{@link com.reliability.system.impl.TransitionImpl#getName <em>Name</em>}</li>
  *   <li>{@link com.reliability.system.impl.TransitionImpl#getDescription <em>Description</em>}</li>
- *   <li>{@link com.reliability.system.impl.TransitionImpl#getInputPorts <em>Input Ports</em>}</li>
- *   <li>{@link com.reliability.system.impl.TransitionImpl#getOutputPorts <em>Output Ports</em>}</li>
  *   <li>{@link com.reliability.system.impl.TransitionImpl#getFailureState <em>Failure State</em>}</li>
  *   <li>{@link com.reliability.system.impl.TransitionImpl#getType <em>Type</em>}</li>
+ *   <li>{@link com.reliability.system.impl.TransitionImpl#getOwner <em>Owner</em>}</li>
  * </ul>
  * </p>
  *
@@ -85,26 +77,6 @@ public class TransitionImpl extends EObjectImpl implements Transition {
 	 * @ordered
 	 */
 	protected String description = DESCRIPTION_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getInputPorts() <em>Input Ports</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getInputPorts()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Port> inputPorts;
-
-	/**
-	 * The cached value of the '{@link #getOutputPorts() <em>Output Ports</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOutputPorts()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Port> outputPorts;
 
 	/**
 	 * The cached value of the '{@link #getFailureState() <em>Failure State</em>}' containment reference.
@@ -202,30 +174,6 @@ public class TransitionImpl extends EObjectImpl implements Transition {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Port> getInputPorts() {
-		if (inputPorts == null) {
-			inputPorts = new EObjectResolvingEList<Port>(Port.class, this, SystemPackage.TRANSITION__INPUT_PORTS);
-		}
-		return inputPorts;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<Port> getOutputPorts() {
-		if (outputPorts == null) {
-			outputPorts = new EObjectResolvingEList<Port>(Port.class, this, SystemPackage.TRANSITION__OUTPUT_PORTS);
-		}
-		return outputPorts;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public Failure getFailureState() {
 		return failureState;
 	}
@@ -290,6 +238,47 @@ public class TransitionImpl extends EObjectImpl implements Transition {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public GeneralizedNet getOwner() {
+		if (eContainerFeatureID() != SystemPackage.TRANSITION__OWNER) return null;
+		return (GeneralizedNet)eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetOwner(GeneralizedNet newOwner, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newOwner, SystemPackage.TRANSITION__OWNER, msgs);
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOwner(GeneralizedNet newOwner) {
+		if (newOwner != eInternalContainer() || (eContainerFeatureID() != SystemPackage.TRANSITION__OWNER && newOwner != null)) {
+			if (EcoreUtil.isAncestor(this, newOwner))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newOwner != null)
+				msgs = ((InternalEObject)newOwner).eInverseAdd(this, SystemPackage.GENERALIZED_NET__TRANSITIONS, GeneralizedNet.class, msgs);
+			msgs = basicSetOwner(newOwner, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SystemPackage.TRANSITION__OWNER, newOwner, newOwner));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -297,6 +286,10 @@ public class TransitionImpl extends EObjectImpl implements Transition {
 				if (failureState != null)
 					msgs = ((InternalEObject)failureState).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SystemPackage.TRANSITION__FAILURE_STATE, null, msgs);
 				return basicSetFailureState((Failure)otherEnd, msgs);
+			case SystemPackage.TRANSITION__OWNER:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetOwner((GeneralizedNet)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -311,8 +304,24 @@ public class TransitionImpl extends EObjectImpl implements Transition {
 		switch (featureID) {
 			case SystemPackage.TRANSITION__FAILURE_STATE:
 				return basicSetFailureState(null, msgs);
+			case SystemPackage.TRANSITION__OWNER:
+				return basicSetOwner(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+		switch (eContainerFeatureID()) {
+			case SystemPackage.TRANSITION__OWNER:
+				return eInternalContainer().eInverseRemove(this, SystemPackage.GENERALIZED_NET__TRANSITIONS, GeneralizedNet.class, msgs);
+		}
+		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
 
 	/**
@@ -327,14 +336,12 @@ public class TransitionImpl extends EObjectImpl implements Transition {
 				return getName();
 			case SystemPackage.TRANSITION__DESCRIPTION:
 				return getDescription();
-			case SystemPackage.TRANSITION__INPUT_PORTS:
-				return getInputPorts();
-			case SystemPackage.TRANSITION__OUTPUT_PORTS:
-				return getOutputPorts();
 			case SystemPackage.TRANSITION__FAILURE_STATE:
 				return getFailureState();
 			case SystemPackage.TRANSITION__TYPE:
 				return getType();
+			case SystemPackage.TRANSITION__OWNER:
+				return getOwner();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -344,7 +351,6 @@ public class TransitionImpl extends EObjectImpl implements Transition {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -354,19 +360,14 @@ public class TransitionImpl extends EObjectImpl implements Transition {
 			case SystemPackage.TRANSITION__DESCRIPTION:
 				setDescription((String)newValue);
 				return;
-			case SystemPackage.TRANSITION__INPUT_PORTS:
-				getInputPorts().clear();
-				getInputPorts().addAll((Collection<? extends Port>)newValue);
-				return;
-			case SystemPackage.TRANSITION__OUTPUT_PORTS:
-				getOutputPorts().clear();
-				getOutputPorts().addAll((Collection<? extends Port>)newValue);
-				return;
 			case SystemPackage.TRANSITION__FAILURE_STATE:
 				setFailureState((Failure)newValue);
 				return;
 			case SystemPackage.TRANSITION__TYPE:
 				setType((TransitionType)newValue);
+				return;
+			case SystemPackage.TRANSITION__OWNER:
+				setOwner((GeneralizedNet)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -386,17 +387,14 @@ public class TransitionImpl extends EObjectImpl implements Transition {
 			case SystemPackage.TRANSITION__DESCRIPTION:
 				setDescription(DESCRIPTION_EDEFAULT);
 				return;
-			case SystemPackage.TRANSITION__INPUT_PORTS:
-				getInputPorts().clear();
-				return;
-			case SystemPackage.TRANSITION__OUTPUT_PORTS:
-				getOutputPorts().clear();
-				return;
 			case SystemPackage.TRANSITION__FAILURE_STATE:
 				setFailureState((Failure)null);
 				return;
 			case SystemPackage.TRANSITION__TYPE:
 				setType(TYPE_EDEFAULT);
+				return;
+			case SystemPackage.TRANSITION__OWNER:
+				setOwner((GeneralizedNet)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -414,14 +412,12 @@ public class TransitionImpl extends EObjectImpl implements Transition {
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case SystemPackage.TRANSITION__DESCRIPTION:
 				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
-			case SystemPackage.TRANSITION__INPUT_PORTS:
-				return inputPorts != null && !inputPorts.isEmpty();
-			case SystemPackage.TRANSITION__OUTPUT_PORTS:
-				return outputPorts != null && !outputPorts.isEmpty();
 			case SystemPackage.TRANSITION__FAILURE_STATE:
 				return failureState != null;
 			case SystemPackage.TRANSITION__TYPE:
 				return type != TYPE_EDEFAULT;
+			case SystemPackage.TRANSITION__OWNER:
+				return getOwner() != null;
 		}
 		return super.eIsSet(featureID);
 	}

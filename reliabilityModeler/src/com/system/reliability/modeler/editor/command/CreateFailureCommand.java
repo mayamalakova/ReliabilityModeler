@@ -34,7 +34,7 @@ public class CreateFailureCommand extends Command {
 	
 	@Override
 	public void undo() {
-		super.undo();
+		parent.setFailureState(null);
 		link.setSource(null);
 		link.setTarget(null);
 	}
@@ -51,5 +51,19 @@ public class CreateFailureCommand extends Command {
 	public void setParent(TransitionView transition) {
 		parent = transition;
 	}
+
+	@Override
+	public boolean canExecute() {
+		if (!(parent instanceof TransitionView)) {
+			return false;
+		}
+		
+		if (((TransitionView) parent).getFailureState() != null) {
+			return false;
+		}
+		
+		return true;
+	}
+	
 	
 }

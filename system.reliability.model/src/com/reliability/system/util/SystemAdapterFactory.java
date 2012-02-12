@@ -6,14 +6,18 @@
  */
 package com.reliability.system.util;
 
-import com.reliability.system.*;
-
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
+
+import com.reliability.system.Failure;
+import com.reliability.system.GeneralizedNet;
+import com.reliability.system.Port;
+import com.reliability.system.Position;
+import com.reliability.system.SystemPackage;
+import com.reliability.system.Transition;
+import com.reliability.system.TransitionMatrixElement;
 
 /**
  * <!-- begin-user-doc -->

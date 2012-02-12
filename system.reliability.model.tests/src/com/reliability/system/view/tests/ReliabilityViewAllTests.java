@@ -37,7 +37,6 @@ public class ReliabilityViewAllTests extends TestSuite {
 	public static Test suite() {
 		TestSuite suite = new ReliabilityViewAllTests("ReliabilityView Tests");
 		suite.addTest(ViewTests.suite());
-		suite.addTest(SystemTests.suite());
 		return suite;
 	}
 

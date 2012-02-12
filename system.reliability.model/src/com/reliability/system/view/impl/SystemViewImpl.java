@@ -6,12 +6,11 @@
  */
 package com.reliability.system.view.impl;
 
-import com.reliability.system.impl.GeneralizedNetImpl;
+import org.eclipse.emf.ecore.EClass;
 
+import com.reliability.system.impl.GeneralizedNetImpl;
 import com.reliability.system.view.SystemView;
 import com.reliability.system.view.ViewPackage;
-
-import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->

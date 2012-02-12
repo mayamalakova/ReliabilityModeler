@@ -5,7 +5,7 @@ import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 
-public class TransitionAnchor extends AbstractConnectionAnchor{
+public class TransitionAnchor extends AbstractConnectionAnchor {
 
 	public TransitionAnchor(){
 	}

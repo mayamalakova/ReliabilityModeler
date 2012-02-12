@@ -6,14 +6,12 @@
  */
 package com.reliability.system.view.impl;
 
-import com.reliability.system.view.*;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 import com.reliability.system.Failure;
@@ -22,6 +20,7 @@ import com.reliability.system.Transition;
 import com.reliability.system.impl.SystemFactoryImpl;
 import com.reliability.system.view.FailureView;
 import com.reliability.system.view.PortView;
+import com.reliability.system.view.SystemView;
 import com.reliability.system.view.TransitionView;
 import com.reliability.system.view.ViewFactory;
 import com.reliability.system.view.ViewLink;
@@ -30,7 +29,7 @@ import com.reliability.system.view.ViewPackage;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
- * @generated
+ * @not generated
  */
 public class ViewFactoryImpl extends SystemFactoryImpl implements ViewFactory {
 	/**

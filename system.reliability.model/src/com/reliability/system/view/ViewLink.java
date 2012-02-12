@@ -7,7 +7,6 @@
 package com.reliability.system.view;
 
 import org.eclipse.draw2d.geometry.Point;
-
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
@@ -43,7 +42,7 @@ public interface ViewLink extends EObject {
 	 * @see #setSource(ViewObject)
 	 * @see com.reliability.system.view.ViewPackage#getViewLink_Source()
 	 * @see com.reliability.system.view.ViewObject#getOutgoingLinks
-	 * @model opposite="outgoingLinks" transient="false"
+	 * @model opposite="outgoingLinks" keys="label" transient="false"
 	 * @generated
 	 */
 	ViewObject getSource();
@@ -71,7 +70,7 @@ public interface ViewLink extends EObject {
 	 * @see #setTarget(ViewObject)
 	 * @see com.reliability.system.view.ViewPackage#getViewLink_Target()
 	 * @see com.reliability.system.view.ViewObject#getIncomingLinks
-	 * @model opposite="incomingLinks"
+	 * @model opposite="incomingLinks" keys="label"
 	 * @generated
 	 */
 	ViewObject getTarget();

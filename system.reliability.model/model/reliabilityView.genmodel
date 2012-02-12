@@ -39,10 +39,9 @@
     <genClasses ecoreClass="reliability.ecore#//Transition">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute reliability.ecore#//Transition/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute reliability.ecore#//Transition/description"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference reliability.ecore#//Transition/inputPorts"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference reliability.ecore#//Transition/outputPorts"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference reliability.ecore#//Transition/failureState"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute reliability.ecore#//Transition/type"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference reliability.ecore#//Transition/owner"/>
     </genClasses>
     <genClasses image="false" ecoreClass="reliability.ecore#//Position">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute reliability.ecore#//Position/id"/>
@@ -55,13 +54,12 @@
     <genClasses ecoreClass="reliability.ecore#//GeneralizedNet">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference reliability.ecore#//GeneralizedNet/transitions"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference reliability.ecore#//GeneralizedNet/positions"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference reliability.ecore#//GeneralizedNet/systemInputs"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference reliability.ecore#//GeneralizedNet/finalPositions"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute reliability.ecore#//GeneralizedNet/name"/>
     </genClasses>
     <genClasses ecoreClass="reliability.ecore#//Port">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference reliability.ecore#//Port/transitionRow"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute reliability.ecore#//Port/type"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference reliability.ecore#//Port/owner"/>
     </genClasses>
     <genClasses ecoreClass="reliability.ecore#//Failure">
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference reliability.ecore#//Failure/owner"/>

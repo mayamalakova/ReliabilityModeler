@@ -6,26 +6,22 @@
  */
 package com.reliability.system.impl;
 
-import com.reliability.system.GeneralizedNet;
-import com.reliability.system.Port;
-import com.reliability.system.SystemPackage;
-import com.reliability.system.Transition;
-
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import com.reliability.system.GeneralizedNet;
+import com.reliability.system.Port;
+import com.reliability.system.SystemPackage;
+import com.reliability.system.Transition;
 
 /**
  * <!-- begin-user-doc -->
@@ -36,8 +32,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link com.reliability.system.impl.GeneralizedNetImpl#getTransitions <em>Transitions</em>}</li>
  *   <li>{@link com.reliability.system.impl.GeneralizedNetImpl#getPositions <em>Positions</em>}</li>
- *   <li>{@link com.reliability.system.impl.GeneralizedNetImpl#getSystemInputs <em>System Inputs</em>}</li>
- *   <li>{@link com.reliability.system.impl.GeneralizedNetImpl#getFinalPositions <em>Final Positions</em>}</li>
  *   <li>{@link com.reliability.system.impl.GeneralizedNetImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
@@ -111,7 +105,7 @@ public class GeneralizedNetImpl extends EObjectImpl implements GeneralizedNet {
 	 */
 	public EList<Transition> getTransitions() {
 		if (transitions == null) {
-			transitions = new EObjectContainmentEList<Transition>(Transition.class, this, SystemPackage.GENERALIZED_NET__TRANSITIONS);
+			transitions = new EObjectContainmentWithInverseEList<Transition>(Transition.class, this, SystemPackage.GENERALIZED_NET__TRANSITIONS, SystemPackage.TRANSITION__OWNER);
 		}
 		return transitions;
 	}
@@ -123,35 +117,9 @@ public class GeneralizedNetImpl extends EObjectImpl implements GeneralizedNet {
 	 */
 	public EList<Port> getPositions() {
 		if (positions == null) {
-			positions = new EObjectContainmentEList<Port>(Port.class, this, SystemPackage.GENERALIZED_NET__POSITIONS);
+			positions = new EObjectContainmentWithInverseEList<Port>(Port.class, this, SystemPackage.GENERALIZED_NET__POSITIONS, SystemPackage.PORT__OWNER);
 		}
 		return positions;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<Port> getSystemInputs() {
-		// TODO: implement this method to return the 'System Inputs' reference list
-		// Ensure that you remove @generated or mark it @generated NOT
-		// The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and org.eclipse.emf.ecore.EStructuralFeature.Setting
-		// so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<Port> getFinalPositions() {
-		// TODO: implement this method to return the 'Final Positions' reference list
-		// Ensure that you remove @generated or mark it @generated NOT
-		// The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and org.eclipse.emf.ecore.EStructuralFeature.Setting
-		// so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
-		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -173,6 +141,23 @@ public class GeneralizedNetImpl extends EObjectImpl implements GeneralizedNet {
 		name = newName;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, SystemPackage.GENERALIZED_NET__NAME, oldName, name));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case SystemPackage.GENERALIZED_NET__TRANSITIONS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getTransitions()).basicAdd(otherEnd, msgs);
+			case SystemPackage.GENERALIZED_NET__POSITIONS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getPositions()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -203,10 +188,6 @@ public class GeneralizedNetImpl extends EObjectImpl implements GeneralizedNet {
 				return getTransitions();
 			case SystemPackage.GENERALIZED_NET__POSITIONS:
 				return getPositions();
-			case SystemPackage.GENERALIZED_NET__SYSTEM_INPUTS:
-				return getSystemInputs();
-			case SystemPackage.GENERALIZED_NET__FINAL_POSITIONS:
-				return getFinalPositions();
 			case SystemPackage.GENERALIZED_NET__NAME:
 				return getName();
 		}
@@ -230,14 +211,6 @@ public class GeneralizedNetImpl extends EObjectImpl implements GeneralizedNet {
 				getPositions().clear();
 				getPositions().addAll((Collection<? extends Port>)newValue);
 				return;
-			case SystemPackage.GENERALIZED_NET__SYSTEM_INPUTS:
-				getSystemInputs().clear();
-				getSystemInputs().addAll((Collection<? extends Port>)newValue);
-				return;
-			case SystemPackage.GENERALIZED_NET__FINAL_POSITIONS:
-				getFinalPositions().clear();
-				getFinalPositions().addAll((Collection<? extends Port>)newValue);
-				return;
 			case SystemPackage.GENERALIZED_NET__NAME:
 				setName((String)newValue);
 				return;
@@ -259,12 +232,6 @@ public class GeneralizedNetImpl extends EObjectImpl implements GeneralizedNet {
 			case SystemPackage.GENERALIZED_NET__POSITIONS:
 				getPositions().clear();
 				return;
-			case SystemPackage.GENERALIZED_NET__SYSTEM_INPUTS:
-				getSystemInputs().clear();
-				return;
-			case SystemPackage.GENERALIZED_NET__FINAL_POSITIONS:
-				getFinalPositions().clear();
-				return;
 			case SystemPackage.GENERALIZED_NET__NAME:
 				setName(NAME_EDEFAULT);
 				return;
@@ -284,10 +251,6 @@ public class GeneralizedNetImpl extends EObjectImpl implements GeneralizedNet {
 				return transitions != null && !transitions.isEmpty();
 			case SystemPackage.GENERALIZED_NET__POSITIONS:
 				return positions != null && !positions.isEmpty();
-			case SystemPackage.GENERALIZED_NET__SYSTEM_INPUTS:
-				return !getSystemInputs().isEmpty();
-			case SystemPackage.GENERALIZED_NET__FINAL_POSITIONS:
-				return !getFinalPositions().isEmpty();
 			case SystemPackage.GENERALIZED_NET__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}

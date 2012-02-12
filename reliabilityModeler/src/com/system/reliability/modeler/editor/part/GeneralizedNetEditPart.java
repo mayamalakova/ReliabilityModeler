@@ -15,78 +15,114 @@ import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 
 import com.reliability.system.GeneralizedNet;
+import com.reliability.system.SystemPackage;
 import com.reliability.system.Transition;
+import com.reliability.system.view.TransitionView;
 import com.system.reliability.modeler.editor.policy.ViewObjectLayoutPolicy;
 
 public class GeneralizedNetEditPart extends AbstractGraphicalEditPart {
 	private ReliabilityModelAdapter modelAdapter;
-	
-	public GeneralizedNetEditPart(){
+
+	public GeneralizedNetEditPart() {
 		super();
 		modelAdapter = new ReliabilityModelAdapter();
 	}
-	
+
 	@Override
 	protected IFigure createFigure() {
 		FreeformLayer layer = new FreeformLayer();
-	    layer.setLayoutManager(new FreeformLayout());
-	    layer.setBorder(new LineBorder(1));
-	    return layer;
+		layer.setLayoutManager(new FreeformLayout());
+		layer.setBorder(new LineBorder(1));
+		return layer;
 	}
 
 	@Override
 	protected void createEditPolicies() {
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, new ViewObjectLayoutPolicy());
 	}
-	
-	@Override 
+
+	@Override
 	protected List<EObject> getModelChildren() {
 		List<EObject> children = new ArrayList<EObject>();
 		GeneralizedNet generalizedNet = (GeneralizedNet) getModel();
-	    children.addAll(generalizedNet.getTransitions());
-	    children.addAll(generalizedNet.getPositions());
-	    for(Transition transition: generalizedNet.getTransitions()) {
-	    	if (transition.getFailureState() != null) {
-	    		children.add(transition.getFailureState());
-	    	}
-	    }
-	    return children;
-	  }
-	
-	@Override public void activate() {
-	    if(!isActive()) {
-	      ((GeneralizedNet)getModel()).eAdapters().add(modelAdapter);
-	    }
-	    super.activate();
-	  }
-	 
-	  @Override public void deactivate() {
-	    if(isActive()) {
-	      ((GeneralizedNet)getModel()).eAdapters().remove(modelAdapter);
-	    }
-	    super.deactivate();
-	  }
+		children.addAll(generalizedNet.getTransitions());
+		children.addAll(generalizedNet.getPositions());
+		for (Transition transition : generalizedNet.getTransitions()) {
+			if (transition.getFailureState() != null) {
+				children.add(transition.getFailureState());
+			}
+		}
+		return children;
+	}
+
+	@Override
+	public void activate() {
+		if (!isActive()) {
+			GeneralizedNet model = (GeneralizedNet) getModel();
+			model.eAdapters().add(modelAdapter);
+			for (Transition transition : model.getTransitions()) {
+				transition.eAdapters().add(modelAdapter);
+			}
+		}
+		super.activate();
+	}
+
+	@Override
+	public void deactivate() {
+		if (isActive()) {
+			GeneralizedNet model = (GeneralizedNet) getModel();
+			model.eAdapters().remove(modelAdapter);
+			for (Transition transition : model.getTransitions()) {
+				transition.eAdapters().remove(modelAdapter);
+			}
+		}
+		super.deactivate();
+	}
+
+	private final void updateTransitionAdapters() {
+		GeneralizedNet model = (GeneralizedNet) getModel();
+		for (Transition transition : model.getTransitions()) {
+			if (!transition.eAdapters().contains(modelAdapter)) {
+				transition.eAdapters().add(modelAdapter);
+			}
+		}
+	}
 
 	public class ReliabilityModelAdapter implements Adapter {
-		 
-	    @Override 
-	    public void notifyChanged(Notification notification) {
-	      refreshChildren();
-	    }
-	 
-	    @Override 
-	    public Notifier getTarget() {
-	      return (GeneralizedNet) getModel();
-	    }
-	 
-	    @Override 
-	    public void setTarget(Notifier newTarget) {
-	      // Do nothing.
-	    }
-	 
-	    @Override 
-	    public boolean isAdapterForType(Object type) {
-	      return type.equals(GeneralizedNet.class);
-	    }
-	  } 
+		private EObject target;
+
+		@Override
+		public void notifyChanged(Notification notification) {
+			//removing the adapter also causes notification and in this case the feature is null 
+			if (notification.getFeature() == null) {
+				return;
+			}
+			//refresh the whole container if a failureState hes been added/removed
+			if (notification.getFeature().equals(SystemPackage.eINSTANCE.getTransition_FailureState())) {
+				refresh();
+				return;
+			}
+			
+			if (notification.getFeature().equals(SystemPackage.eINSTANCE.getGeneralizedNet_Transitions())) {
+				updateTransitionAdapters();
+			}
+			
+			refreshChildren();
+		}
+
+		@Override
+		public Notifier getTarget() {
+			return target;
+		}
+
+		@Override
+		public void setTarget(Notifier newTarget) {
+			target = (EObject) newTarget;
+		}
+
+		@Override
+		public boolean isAdapterForType(Object type) {
+			return type.equals(GeneralizedNet.class) || type.equals(TransitionView.class);
+		}
+	}
 }

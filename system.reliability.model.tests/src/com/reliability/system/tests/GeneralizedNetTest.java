@@ -17,13 +17,6 @@ import junit.textui.TestRunner;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Generalized Net</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * The following features are tested:
- * <ul>
- *   <li>{@link com.reliability.system.GeneralizedNet#getSystemInputs() <em>System Inputs</em>}</li>
- *   <li>{@link com.reliability.system.GeneralizedNet#getFinalPositions() <em>Final Positions</em>}</li>
- * </ul>
- * </p>
  * @generated
  */
 public class GeneralizedNetTest extends TestCase {
@@ -95,32 +88,6 @@ public class GeneralizedNetTest extends TestCase {
 	@Override
 	protected void tearDown() throws Exception {
 		setFixture(null);
-	}
-
-	/**
-	 * Tests the '{@link com.reliability.system.GeneralizedNet#getSystemInputs() <em>System Inputs</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see com.reliability.system.GeneralizedNet#getSystemInputs()
-	 * @generated
-	 */
-	public void testGetSystemInputs() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-		fail();
-	}
-
-	/**
-	 * Tests the '{@link com.reliability.system.GeneralizedNet#getFinalPositions() <em>Final Positions</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see com.reliability.system.GeneralizedNet#getFinalPositions()
-	 * @generated
-	 */
-	public void testGetFinalPositions() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-		fail();
 	}
 
 } //GeneralizedNetTest

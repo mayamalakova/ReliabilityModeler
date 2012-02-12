@@ -6,28 +6,27 @@ import com.reliability.system.view.ViewObject;
 
 public class DeletePortCommand extends DeleteViewObjectCommand {
 	private PortView port;
-	private GeneralizedNet system;
+	private GeneralizedNet parent;
 
 	@Override
 	public void execute() {
-		system.getPositions().remove(port);
+		parent.getPositions().remove(port);
 		detachLinks();
 	}
 
 	@Override
 	public void undo() {
-		system.getPositions().add(port);
+		parent.getPositions().add(port);
 		reattachLinks();
 	}
 
 	public void setPort(PortView port) {
 		this.port = port;
-//		this.system = port.getOwner();
+		parent = port.getOwner();
 	}
 
 	@Override
 	protected ViewObject getSelectedObject() {
 		return port;
 	}
-
 }

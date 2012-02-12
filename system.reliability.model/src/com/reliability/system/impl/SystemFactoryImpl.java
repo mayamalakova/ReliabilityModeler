@@ -6,16 +6,22 @@
  */
 package com.reliability.system.impl;
 
-import com.reliability.system.*;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+
+import com.reliability.system.Failure;
+import com.reliability.system.GeneralizedNet;
+import com.reliability.system.Port;
+import com.reliability.system.PositionType;
+import com.reliability.system.SystemFactory;
+import com.reliability.system.SystemPackage;
+import com.reliability.system.Transition;
+import com.reliability.system.TransitionMatrixElement;
+import com.reliability.system.TransitionType;
 
 /**
  * <!-- begin-user-doc -->

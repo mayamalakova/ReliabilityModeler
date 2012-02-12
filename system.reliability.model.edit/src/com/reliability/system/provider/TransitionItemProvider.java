@@ -68,8 +68,6 @@ public class TransitionItemProvider
 
 			addNamePropertyDescriptor(object);
 			addDescriptionPropertyDescriptor(object);
-			addInputPortsPropertyDescriptor(object);
-			addOutputPortsPropertyDescriptor(object);
 			addTypePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
@@ -115,50 +113,6 @@ public class TransitionItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Input Ports feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addInputPortsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Transition_inputPorts_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Transition_inputPorts_feature", "_UI_Transition_type"),
-				 SystemPackage.Literals.TRANSITION__INPUT_PORTS,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Output Ports feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addOutputPortsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Transition_outputPorts_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Transition_outputPorts_feature", "_UI_Transition_type"),
-				 SystemPackage.Literals.TRANSITION__OUTPUT_PORTS,
-				 true,
-				 false,
-				 true,
-				 null,
 				 null,
 				 null));
 	}

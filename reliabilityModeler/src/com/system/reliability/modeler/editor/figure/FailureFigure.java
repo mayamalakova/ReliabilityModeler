@@ -1,11 +1,13 @@
 package com.system.reliability.modeler.editor.figure;
 
+import org.eclipse.draw2d.AbstractConnectionAnchor;
 import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.EllipseAnchor;
 import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.FreeformLayout;
 import org.eclipse.draw2d.Graphics;
+import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Point;
@@ -62,4 +64,20 @@ public class FailureFigure extends Figure implements IModelFigure {
 		return connectionAnchor;
 	}
 
+	class FailureAnchor extends AbstractConnectionAnchor {
+
+		public FailureAnchor(){
+		}
+
+		public FailureAnchor(IFigure owner){
+			super(owner);
+		}
+		
+		@Override
+		public Point getLocation(Point reference) {
+			Rectangle bounds = getOwner().getBounds();
+			return new Point(bounds.x, bounds.y + bounds.height / 2);
+		}
+
+}
 }

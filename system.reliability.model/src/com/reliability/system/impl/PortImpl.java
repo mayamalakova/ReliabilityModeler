@@ -6,25 +6,23 @@
  */
 package com.reliability.system.impl;
 
-import com.reliability.system.Port;
-import com.reliability.system.PositionType;
-import com.reliability.system.SystemPackage;
-import com.reliability.system.TransitionMatrixElement;
-
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import com.reliability.system.GeneralizedNet;
+import com.reliability.system.Port;
+import com.reliability.system.PositionType;
+import com.reliability.system.SystemPackage;
+import com.reliability.system.TransitionMatrixElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -35,6 +33,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link com.reliability.system.impl.PortImpl#getTransitionRow <em>Transition Row</em>}</li>
  *   <li>{@link com.reliability.system.impl.PortImpl#getType <em>Type</em>}</li>
+ *   <li>{@link com.reliability.system.impl.PortImpl#getOwner <em>Owner</em>}</li>
  * </ul>
  * </p>
  *
@@ -128,13 +127,86 @@ public class PortImpl extends PositionImpl implements Port {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public GeneralizedNet getOwner() {
+		if (eContainerFeatureID() != SystemPackage.PORT__OWNER) return null;
+		return (GeneralizedNet)eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetOwner(GeneralizedNet newOwner, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newOwner, SystemPackage.PORT__OWNER, msgs);
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOwner(GeneralizedNet newOwner) {
+		if (newOwner != eInternalContainer() || (eContainerFeatureID() != SystemPackage.PORT__OWNER && newOwner != null)) {
+			if (EcoreUtil.isAncestor(this, newOwner))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newOwner != null)
+				msgs = ((InternalEObject)newOwner).eInverseAdd(this, SystemPackage.GENERALIZED_NET__POSITIONS, GeneralizedNet.class, msgs);
+			msgs = basicSetOwner(newOwner, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SystemPackage.PORT__OWNER, newOwner, newOwner));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case SystemPackage.PORT__OWNER:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetOwner((GeneralizedNet)otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case SystemPackage.PORT__TRANSITION_ROW:
 				return ((InternalEList<?>)getTransitionRow()).basicRemove(otherEnd, msgs);
+			case SystemPackage.PORT__OWNER:
+				return basicSetOwner(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+		switch (eContainerFeatureID()) {
+			case SystemPackage.PORT__OWNER:
+				return eInternalContainer().eInverseRemove(this, SystemPackage.GENERALIZED_NET__POSITIONS, GeneralizedNet.class, msgs);
+		}
+		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
 
 	/**
@@ -149,6 +221,8 @@ public class PortImpl extends PositionImpl implements Port {
 				return getTransitionRow();
 			case SystemPackage.PORT__TYPE:
 				return getType();
+			case SystemPackage.PORT__OWNER:
+				return getOwner();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -169,6 +243,9 @@ public class PortImpl extends PositionImpl implements Port {
 			case SystemPackage.PORT__TYPE:
 				setType((PositionType)newValue);
 				return;
+			case SystemPackage.PORT__OWNER:
+				setOwner((GeneralizedNet)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -187,6 +264,9 @@ public class PortImpl extends PositionImpl implements Port {
 			case SystemPackage.PORT__TYPE:
 				setType(TYPE_EDEFAULT);
 				return;
+			case SystemPackage.PORT__OWNER:
+				setOwner((GeneralizedNet)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -203,6 +283,8 @@ public class PortImpl extends PositionImpl implements Port {
 				return transitionRow != null && !transitionRow.isEmpty();
 			case SystemPackage.PORT__TYPE:
 				return type != TYPE_EDEFAULT;
+			case SystemPackage.PORT__OWNER:
+				return getOwner() != null;
 		}
 		return super.eIsSet(featureID);
 	}

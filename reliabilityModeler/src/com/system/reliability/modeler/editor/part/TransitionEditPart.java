@@ -1,9 +1,7 @@
 package com.system.reliability.modeler.editor.part;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editpolicies.XYLayoutEditPolicy;
@@ -30,7 +28,7 @@ public abstract class TransitionEditPart extends ViewObjectEditPart {
 			 if (request.getNewObject() instanceof Failure) {
 				FailureView failure = (FailureView) request.getNewObject();
 				command = new CreateFailureCommand();
-				((CreateFailureCommand) command).setLocation(request.getLocation());
+				((CreateFailureCommand) command).setLocation(getConstraint());
 				((CreateFailureCommand) command).setFailure(failure);
 				((CreateFailureCommand) command).setParent((TransitionView) getHost().getModel());
 			}
@@ -38,5 +36,10 @@ public abstract class TransitionEditPart extends ViewObjectEditPart {
 			 return command;
 		}
 		
+		private Point getConstraint() {
+			Rectangle bounds = getFigure().getBounds();
+			return new Point(bounds.x + bounds.width/2 + 80, bounds.y + 60);
+		}
 	}
+	
 }

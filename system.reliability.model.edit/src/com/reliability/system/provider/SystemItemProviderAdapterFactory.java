@@ -223,11 +223,11 @@ public class SystemItemProviderAdapterFactory extends SystemAdapterFactory imple
 	 * This implementation substitutes the factory itself as the key for the adapter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @not generated
 	 */
 	@Override
 	public Adapter adapt(Notifier notifier, Object type) {
-		return super.adapt(notifier, this);
+		return super.adapt(notifier, type);
 	}
 
 	/**

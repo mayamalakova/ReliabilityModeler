@@ -12,13 +12,11 @@
         iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" unique="false"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="inputPorts" unique="false"
-        lowerBound="1" upperBound="-1" eType="#//Port"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="outputPorts" unique="false"
-        lowerBound="1" upperBound="-1" eType="#//Port"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="failureState" unique="false"
         lowerBound="1" eType="#//Failure" containment="true" eOpposite="#//Failure/owner"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" unique="false" eType="#//TransitionType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owner" eType="#//GeneralizedNet"
+        eOpposite="#//GeneralizedNet/transitions"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Position" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
@@ -38,15 +36,9 @@
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="transitions" upperBound="-1"
-        eType="#//Transition" containment="true"/>
+        eType="#//Transition" containment="true" eOpposite="#//Transition/owner"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="positions" upperBound="-1"
-        eType="#//Port" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="systemInputs" unique="false"
-        lowerBound="1" upperBound="-1" eType="#//Port" volatile="true" transient="true"
-        derived="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="finalPositions" unique="false"
-        lowerBound="1" upperBound="-1" eType="#//Port" volatile="true" transient="true"
-        derived="true"/>
+        eType="#//Port" containment="true" eOpposite="#//Port/owner"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="PositionType">
@@ -66,6 +58,8 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" unique="false" eType="#//PositionType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owner" eType="#//GeneralizedNet"
+        eOpposite="#//GeneralizedNet/positions"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Failure" eSuperTypes="#//Position">
     <eStructuralFeatures xsi:type="ecore:EReference" name="owner" eType="#//Transition"

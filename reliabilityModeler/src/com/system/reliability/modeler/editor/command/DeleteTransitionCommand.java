@@ -6,23 +6,23 @@ import com.reliability.system.view.ViewObject;
 
 public class DeleteTransitionCommand extends DeleteViewObjectCommand{
 	 private TransitionView transition;
-	  private GeneralizedNet system;
+	  private GeneralizedNet parent;
 	 
 	  @Override
 	  public void execute() {
-		  system.getTransitions().remove(transition);
+		  parent.getTransitions().remove(transition);
 		  detachLinks();
 	  }
 	 
 	  @Override
 	  public void undo() {
-		  system.getTransitions().add(transition);
+		  parent.getTransitions().add(transition);
 		  reattachLinks();
 	  }
 	 
 	  public void setTransition(TransitionView transition) {
 	    this.transition = transition;
-//	    this.system = transition.getOwner();
+	    this.parent = transition.getOwner();
 	  }
 
 	@Override

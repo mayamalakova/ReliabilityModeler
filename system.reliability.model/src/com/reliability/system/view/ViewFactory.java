@@ -14,7 +14,7 @@ import com.reliability.system.SystemFactory;
  * It provides a create method for each non-abstract class of the model.
  * <!-- end-user-doc -->
  * @see com.reliability.system.view.ViewPackage
- * @generated
+ * @not generated
  */
 public interface ViewFactory extends SystemFactory {
 	/**

@@ -6,13 +6,13 @@
  */
 package com.reliability.system.view;
 
-import com.reliability.system.SystemPackage;
-
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+
+import com.reliability.system.SystemPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -91,24 +91,6 @@ public interface ViewPackage extends EPackage {
 	int TRANSITION_VIEW__DESCRIPTION = SystemPackage.TRANSITION__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Input Ports</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRANSITION_VIEW__INPUT_PORTS = SystemPackage.TRANSITION__INPUT_PORTS;
-
-	/**
-	 * The feature id for the '<em><b>Output Ports</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRANSITION_VIEW__OUTPUT_PORTS = SystemPackage.TRANSITION__OUTPUT_PORTS;
-
-	/**
 	 * The feature id for the '<em><b>Failure State</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -125,6 +107,15 @@ public interface ViewPackage extends EPackage {
 	 * @ordered
 	 */
 	int TRANSITION_VIEW__TYPE = SystemPackage.TRANSITION__TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION_VIEW__OWNER = SystemPackage.TRANSITION__OWNER;
 
 	/**
 	 * The feature id for the '<em><b>Constraints</b></em>' attribute.
@@ -207,6 +198,15 @@ public interface ViewPackage extends EPackage {
 	 * @ordered
 	 */
 	int PORT_VIEW__TYPE = SystemPackage.PORT__TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PORT_VIEW__OWNER = SystemPackage.PORT__OWNER;
 
 	/**
 	 * The feature id for the '<em><b>Constraints</b></em>' attribute.
@@ -454,24 +454,6 @@ public interface ViewPackage extends EPackage {
 	 * @ordered
 	 */
 	int SYSTEM_VIEW__POSITIONS = SystemPackage.GENERALIZED_NET__POSITIONS;
-
-	/**
-	 * The feature id for the '<em><b>System Inputs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SYSTEM_VIEW__SYSTEM_INPUTS = SystemPackage.GENERALIZED_NET__SYSTEM_INPUTS;
-
-	/**
-	 * The feature id for the '<em><b>Final Positions</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SYSTEM_VIEW__FINAL_POSITIONS = SystemPackage.GENERALIZED_NET__FINAL_POSITIONS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.

@@ -155,11 +155,7 @@ public class ViewLinkItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		ViewObject labelValue = ((ViewLink)object).getSource();
-		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ?
-			getString("_UI_ViewLink_type") :
-			getString("_UI_ViewLink_type") + " " + label;
+		return ((ViewLink)object).toString();
 	}
 
 	/**

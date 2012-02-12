@@ -66,55 +66,9 @@ public class GeneralizedNetItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addSystemInputsPropertyDescriptor(object);
-			addFinalPositionsPropertyDescriptor(object);
 			addNamePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the System Inputs feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addSystemInputsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_GeneralizedNet_systemInputs_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_GeneralizedNet_systemInputs_feature", "_UI_GeneralizedNet_type"),
-				 SystemPackage.Literals.GENERALIZED_NET__SYSTEM_INPUTS,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Final Positions feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addFinalPositionsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_GeneralizedNet_finalPositions_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_GeneralizedNet_finalPositions_feature", "_UI_GeneralizedNet_type"),
-				 SystemPackage.Literals.GENERALIZED_NET__FINAL_POSITIONS,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
 	}
 
 	/**

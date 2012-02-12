@@ -6,15 +6,13 @@
  */
 package com.reliability.system.impl;
 
-import com.reliability.system.Position;
-import com.reliability.system.SystemPackage;
-
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+
+import com.reliability.system.Position;
+import com.reliability.system.SystemPackage;
 
 /**
  * <!-- begin-user-doc -->

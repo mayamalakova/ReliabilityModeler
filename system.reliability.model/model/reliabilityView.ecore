@@ -17,9 +17,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ViewLink">
     <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//ViewObject"
-        eOpposite="#//ViewObject/outgoingLinks"/>
+        eOpposite="#//ViewObject/outgoingLinks" eKeys="#//ViewObject/label"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//ViewObject"
-        eOpposite="#//ViewObject/incomingLinks"/>
+        eOpposite="#//ViewObject/incomingLinks" eKeys="#//ViewObject/label"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="bendpoints" upperBound="-1"
         eType="#//Point"/>
   </eClassifiers>

@@ -6,6 +6,13 @@
  */
 package com.reliability.system.impl;
 
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.impl.EPackageImpl;
+
 import com.reliability.system.Failure;
 import com.reliability.system.GeneralizedNet;
 import com.reliability.system.Port;
@@ -16,18 +23,8 @@ import com.reliability.system.SystemPackage;
 import com.reliability.system.Transition;
 import com.reliability.system.TransitionMatrixElement;
 import com.reliability.system.TransitionType;
-
 import com.reliability.system.view.ViewPackage;
-
 import com.reliability.system.view.impl.ViewPackageImpl;
-
-import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EReference;
-
-import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -190,7 +187,7 @@ public class SystemPackageImpl extends EPackageImpl implements SystemPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTransition_InputPorts() {
+	public EReference getTransition_FailureState() {
 		return (EReference)transitionEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -199,26 +196,17 @@ public class SystemPackageImpl extends EPackageImpl implements SystemPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTransition_OutputPorts() {
-		return (EReference)transitionEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getTransition_FailureState() {
-		return (EReference)transitionEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getTransition_Type() {
-		return (EAttribute)transitionEClass.getEStructuralFeatures().get(5);
+		return (EAttribute)transitionEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTransition_Owner() {
+		return (EReference)transitionEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -307,26 +295,8 @@ public class SystemPackageImpl extends EPackageImpl implements SystemPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getGeneralizedNet_SystemInputs() {
-		return (EReference)generalizedNetEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getGeneralizedNet_FinalPositions() {
-		return (EReference)generalizedNetEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getGeneralizedNet_Name() {
-		return (EAttribute)generalizedNetEClass.getEStructuralFeatures().get(4);
+		return (EAttribute)generalizedNetEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -354,6 +324,15 @@ public class SystemPackageImpl extends EPackageImpl implements SystemPackage {
 	 */
 	public EAttribute getPort_Type() {
 		return (EAttribute)portEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getPort_Owner() {
+		return (EReference)portEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -423,10 +402,9 @@ public class SystemPackageImpl extends EPackageImpl implements SystemPackage {
 		transitionEClass = createEClass(TRANSITION);
 		createEAttribute(transitionEClass, TRANSITION__NAME);
 		createEAttribute(transitionEClass, TRANSITION__DESCRIPTION);
-		createEReference(transitionEClass, TRANSITION__INPUT_PORTS);
-		createEReference(transitionEClass, TRANSITION__OUTPUT_PORTS);
 		createEReference(transitionEClass, TRANSITION__FAILURE_STATE);
 		createEAttribute(transitionEClass, TRANSITION__TYPE);
+		createEReference(transitionEClass, TRANSITION__OWNER);
 
 		positionEClass = createEClass(POSITION);
 		createEAttribute(positionEClass, POSITION__ID);
@@ -439,13 +417,12 @@ public class SystemPackageImpl extends EPackageImpl implements SystemPackage {
 		generalizedNetEClass = createEClass(GENERALIZED_NET);
 		createEReference(generalizedNetEClass, GENERALIZED_NET__TRANSITIONS);
 		createEReference(generalizedNetEClass, GENERALIZED_NET__POSITIONS);
-		createEReference(generalizedNetEClass, GENERALIZED_NET__SYSTEM_INPUTS);
-		createEReference(generalizedNetEClass, GENERALIZED_NET__FINAL_POSITIONS);
 		createEAttribute(generalizedNetEClass, GENERALIZED_NET__NAME);
 
 		portEClass = createEClass(PORT);
 		createEReference(portEClass, PORT__TRANSITION_ROW);
 		createEAttribute(portEClass, PORT__TYPE);
+		createEReference(portEClass, PORT__OWNER);
 
 		failureEClass = createEClass(FAILURE);
 		createEReference(failureEClass, FAILURE__OWNER);
@@ -490,10 +467,9 @@ public class SystemPackageImpl extends EPackageImpl implements SystemPackage {
 		initEClass(transitionEClass, Transition.class, "Transition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTransition_Name(), ecorePackage.getEString(), "name", null, 0, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTransition_Description(), ecorePackage.getEString(), "description", null, 0, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTransition_InputPorts(), this.getPort(), null, "inputPorts", null, 1, -1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTransition_OutputPorts(), this.getPort(), null, "outputPorts", null, 1, -1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTransition_FailureState(), this.getFailure(), this.getFailure_Owner(), "failureState", null, 1, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTransition_Type(), this.getTransitionType(), "type", null, 0, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTransition_Owner(), this.getGeneralizedNet(), this.getGeneralizedNet_Transitions(), "owner", null, 0, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(positionEClass, Position.class, "Position", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPosition_Id(), ecorePackage.getEString(), "id", null, 0, 1, Position.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -504,15 +480,14 @@ public class SystemPackageImpl extends EPackageImpl implements SystemPackage {
 		initEAttribute(getTransitionMatrixElement_Possibility(), ecorePackage.getEFloat(), "possibility", null, 0, 1, TransitionMatrixElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(generalizedNetEClass, GeneralizedNet.class, "GeneralizedNet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getGeneralizedNet_Transitions(), this.getTransition(), null, "transitions", null, 0, -1, GeneralizedNet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getGeneralizedNet_Positions(), this.getPort(), null, "positions", null, 0, -1, GeneralizedNet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getGeneralizedNet_SystemInputs(), this.getPort(), null, "systemInputs", null, 1, -1, GeneralizedNet.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEReference(getGeneralizedNet_FinalPositions(), this.getPort(), null, "finalPositions", null, 1, -1, GeneralizedNet.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getGeneralizedNet_Transitions(), this.getTransition(), this.getTransition_Owner(), "transitions", null, 0, -1, GeneralizedNet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGeneralizedNet_Positions(), this.getPort(), this.getPort_Owner(), "positions", null, 0, -1, GeneralizedNet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGeneralizedNet_Name(), ecorePackage.getEString(), "name", null, 0, 1, GeneralizedNet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(portEClass, Port.class, "Port", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPort_TransitionRow(), this.getTransitionMatrixElement(), null, "transitionRow", null, 0, -1, Port.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPort_Type(), this.getPositionType(), "type", null, 0, 1, Port.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPort_Owner(), this.getGeneralizedNet(), this.getGeneralizedNet_Positions(), "owner", null, 0, 1, Port.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(failureEClass, Failure.class, "Failure", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getFailure_Owner(), this.getTransition(), this.getTransition_FailureState(), "owner", null, 0, 1, Failure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

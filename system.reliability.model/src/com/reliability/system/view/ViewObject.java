@@ -7,7 +7,6 @@
 package com.reliability.system.view;
 
 import org.eclipse.draw2d.geometry.Rectangle;
-
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 

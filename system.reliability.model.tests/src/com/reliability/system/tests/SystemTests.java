@@ -35,7 +35,6 @@ public class SystemTests extends TestSuite {
 	 */
 	public static Test suite() {
 		TestSuite suite = new SystemTests("system Tests");
-		suite.addTestSuite(GeneralizedNetTest.class);
 		return suite;
 	}
 

@@ -6,18 +6,22 @@
  */
 package com.reliability.system.view.util;
 
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.util.Switch;
+
 import com.reliability.system.Failure;
 import com.reliability.system.GeneralizedNet;
 import com.reliability.system.Port;
 import com.reliability.system.Position;
 import com.reliability.system.Transition;
-
-import com.reliability.system.view.*;
-
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
-
-import org.eclipse.emf.ecore.util.Switch;
+import com.reliability.system.view.FailureView;
+import com.reliability.system.view.PortView;
+import com.reliability.system.view.SystemView;
+import com.reliability.system.view.TransitionView;
+import com.reliability.system.view.ViewLink;
+import com.reliability.system.view.ViewObject;
+import com.reliability.system.view.ViewPackage;
 
 /**
  * <!-- begin-user-doc -->

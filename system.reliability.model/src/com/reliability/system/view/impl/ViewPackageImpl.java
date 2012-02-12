@@ -394,7 +394,9 @@ public class ViewPackageImpl extends EPackageImpl implements ViewPackage {
 
 		initEClass(viewLinkEClass, ViewLink.class, "ViewLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getViewLink_Source(), this.getViewObject(), this.getViewObject_OutgoingLinks(), "source", null, 0, 1, ViewLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		getViewLink_Source().getEKeys().add(this.getViewObject_Label());
 		initEReference(getViewLink_Target(), this.getViewObject(), this.getViewObject_IncomingLinks(), "target", null, 0, 1, ViewLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		getViewLink_Target().getEKeys().add(this.getViewObject_Label());
 		initEAttribute(getViewLink_Bendpoints(), this.getPoint(), "bendpoints", null, 0, -1, ViewLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(failureViewEClass, FailureView.class, "FailureView", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
