@@ -1,4 +1,4 @@
-package com.system.reliability.modeler.editor;
+package com.system.reliability.modeler.properties;
 
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor.PropertyValueWrapper;
 import org.eclipse.ui.views.properties.IPropertyDescriptor;
@@ -7,8 +7,6 @@ import org.eclipse.ui.views.properties.IPropertySource;
 /**
  * A property source which unwraps values that are wrapped in an EMF
  * {@link PropertyValueWrapper}
- *
- * @author vainolo
  *
  */
 public class UnwrappingPropertySource implements IPropertySource {

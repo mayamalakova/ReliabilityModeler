@@ -263,18 +263,17 @@ public class TransitionMatrixElementImpl extends EObjectImpl implements Transiti
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @not generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (necessity: ");
+		StringBuffer result = new StringBuffer("<");
+		result.append(oppositePosition.getId());
+		result.append(": ");
 		result.append(necessity);
-		result.append(", possibility: ");
+		result.append(", ");
 		result.append(possibility);
-		result.append(')');
+		result.append(">");
 		return result.toString();
 	}
 
