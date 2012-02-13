@@ -8,7 +8,6 @@ import org.eclipse.ui.views.properties.IPropertySource;
 import org.eclipse.ui.views.properties.PropertyDescriptor;
 
 import com.reliability.system.Position;
-import com.reliability.system.TransitionMatrixElement;
 import com.reliability.system.view.PortView;
 import com.reliability.system.view.TransitionView;
 import com.reliability.system.view.ViewLink;

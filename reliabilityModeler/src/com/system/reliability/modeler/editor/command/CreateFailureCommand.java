@@ -12,7 +12,7 @@ import com.reliability.system.view.ViewLink;
 
 public class CreateFailureCommand extends Command {
 
-	private static final Dimension DEFAULT_DIMENSION = new Dimension(40, 40);
+	private static final Dimension DEFAULT_DIMENSION = new Dimension(44, 44);
 	private static final String DEFAULT_NAME = "M";
 	
 	protected FailureView newFailure; 

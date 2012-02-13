@@ -13,6 +13,7 @@ import org.eclipse.draw2d.XYLayout;
 import org.eclipse.draw2d.geometry.Rectangle;
 
 import com.system.reliability.modeler.editor.anchor.TransitionAnchor;
+import com.system.reliability.modeler.utils.Constants;
 
 public class ConnectorFigure extends Figure implements IModelFigure{
 	private Label label;
@@ -22,6 +23,10 @@ public class ConnectorFigure extends Figure implements IModelFigure{
 	public ConnectorFigure() {
 		setLayoutManager(new XYLayout());
 		square = new RectangleFigure();
+		square.setAntialias(1);
+		square.setLineWidth(3);
+		square.setBackgroundColor(Constants.COLOR_LIGHT_BLUE);
+		square.setForegroundColor(Constants.COLOR_DARK_BLUE);
 		add(square);
 		label = new Label();
 		label.setTextAlignment(PositionConstants.CENTER);
@@ -33,6 +38,8 @@ public class ConnectorFigure extends Figure implements IModelFigure{
 		Rectangle bounds = getBounds().getCopy();
 		setConstraint(square, new Rectangle(bounds.width/2 - CONNECTOR_WIDTH/2, LABEL_HEIGTH, CONNECTOR_WIDTH, CONNECTOR_WIDTH));
 		setConstraint(label, new Rectangle(0, 0, bounds.width, LABEL_HEIGTH));
+		graphics.setLineWidth(3);
+		graphics.setForegroundColor(Constants.COLOR_DARK_BLUE);
 		graphics.drawLine(bounds.x + bounds.width/2, bounds.y + LABEL_HEIGTH + CONNECTOR_WIDTH, bounds.x + bounds.width/2, bounds.y + bounds.height);
 		label.invalidate();
 	    square.invalidate();

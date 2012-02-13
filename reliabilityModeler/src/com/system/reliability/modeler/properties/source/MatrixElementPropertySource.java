@@ -29,6 +29,8 @@ public class MatrixElementPropertySource implements IPropertySource {
 		element = getElement(oppositePosition);
 		
 	}
+	
+	// IPropertySource method implementations -----------------------------------------------------
 	@Override
 	public Object getEditableValue() {
 		return element;
@@ -90,5 +92,6 @@ public class MatrixElementPropertySource implements IPropertySource {
 		
 		return null;
 	}
+	// END IPropertySource method implementations -----------------------------------------------------
 	
 }

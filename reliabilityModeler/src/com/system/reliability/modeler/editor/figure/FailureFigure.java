@@ -1,7 +1,6 @@
 package com.system.reliability.modeler.editor.figure;
 
 import org.eclipse.draw2d.AbstractConnectionAnchor;
-import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.EllipseAnchor;
 import org.eclipse.draw2d.Figure;
@@ -13,6 +12,8 @@ import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.Rectangle;
+
+import com.system.reliability.modeler.utils.Constants;
 
 public class FailureFigure extends Figure implements IModelFigure {
 	private Label label;
@@ -36,12 +37,12 @@ public class FailureFigure extends Figure implements IModelFigure {
 		Rectangle bounds = getClientArea();
 		setConstraint(label, new Rectangle(bounds.x + 10, bounds.y + 10,	bounds.width - 21, bounds.height - 21));
 		PointList trianglePolygon = new PointList(6);
-		Point point1 = new Point(bounds.x, bounds.y + bounds.height / 2);
-		Point point2 = new Point(bounds.x + bounds.width / 4, bounds.y + bounds.height - 1);
-		Point point3 = new Point(bounds.x + bounds.width * 3 / 4, bounds.y + bounds.height -1);
-		Point point4 = new Point(bounds.x + bounds.width - 1, bounds.y + bounds.height/2);
-		Point point5 = new Point(bounds.x + bounds.width * 3 / 4, bounds.y);
-		Point point6 =new Point(bounds.x + bounds.width / 4, bounds.y);
+		Point point1 = new Point(bounds.x  + 2, bounds.y + bounds.height / 2);
+		Point point2 = new Point(bounds.x + bounds.width / 4, bounds.y + bounds.height - 2);
+		Point point3 = new Point(bounds.x + bounds.width * 3 / 4, bounds.y + bounds.height -2);
+		Point point4 = new Point(bounds.x + bounds.width - 2, bounds.y + bounds.height/2);
+		Point point5 = new Point(bounds.x + bounds.width * 3 / 4, bounds.y + 2);
+		Point point6 =new Point(bounds.x + bounds.width / 4, bounds.y + 2);
 		
 		trianglePolygon.addPoint(point1);
 		trianglePolygon.addPoint(point2);
@@ -50,8 +51,10 @@ public class FailureFigure extends Figure implements IModelFigure {
 		trianglePolygon.addPoint(point5);
 		trianglePolygon.addPoint(point6);
 		
-		graphics.setBackgroundColor(ColorConstants.yellow);
-		graphics.setForegroundColor(ColorConstants.black);
+		graphics.setAntialias(1);
+		graphics.setLineWidth(3);
+		graphics.setBackgroundColor(Constants.COLOR_LIGHT_YELLOW);
+		graphics.setForegroundColor(Constants.COLOR_DARK_BLUE);
 		graphics.fillPolygon(trianglePolygon);
 		graphics.drawPolygon(trianglePolygon);
 	}
