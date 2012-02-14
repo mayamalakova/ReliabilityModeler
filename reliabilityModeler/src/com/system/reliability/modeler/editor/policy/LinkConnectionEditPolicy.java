@@ -11,8 +11,7 @@ public class LinkConnectionEditPolicy extends ConnectionEditPolicy {
 
 	@Override
 	protected Command getDeleteCommand(GroupRequest request) {
-		DeleteLinkCommand command = new DeleteLinkCommand();
-		command.setLink((ViewLink) getHost().getModel());
+		DeleteLinkCommand command = new DeleteLinkCommand((ViewLink) getHost().getModel());
 		return command;
 	}
 

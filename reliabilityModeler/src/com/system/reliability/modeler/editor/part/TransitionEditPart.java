@@ -1,7 +1,13 @@
 package com.system.reliability.modeler.editor.part;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Vector;
+
+import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.gef.AccessibleAnchorProvider;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editpolicies.XYLayoutEditPolicy;
@@ -41,5 +47,27 @@ public abstract class TransitionEditPart extends ViewObjectEditPart {
 			return new Point(bounds.x + bounds.width/2 + 80, bounds.y + 60);
 		}
 	}
+
+	@SuppressWarnings("rawtypes")
+	@Override
+	public Object getAdapter(Class key) {
+		if (key == AccessibleAnchorProvider.class) {
+			return new TransitionAnchorProvider();
+		}
+		return super.getAdapter(key);
+	}
 	
+	protected class TransitionAnchorProvider extends DefaultAccessibleAnchorProvider {
+		public List getSourceAnchorLocations() {
+			List list = new ArrayList();
+			//TODO fill list
+			return list;
+		}
+
+		public List getTargetAnchorLocations() {
+			List list = new ArrayList();
+			//TODO fill list
+			return list;
+		}
+	}
 }
