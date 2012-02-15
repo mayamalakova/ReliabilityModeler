@@ -8,8 +8,7 @@ Bundle-Activator: com.reliability.system.view.ui.ReliabilityViewEditorPlugin$Imp
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: com.reliability.system.ui,
- com.reliability.system.view.ui
+Export-Package: com.reliability.system.view.ui
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources;visibility:=reexport,
  system.reliability.model.edit;visibility:=reexport,
