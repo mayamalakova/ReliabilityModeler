@@ -346,13 +346,31 @@ public interface ViewPackage extends EPackage {
 	int VIEW_LINK__BENDPOINTS = 2;
 
 	/**
+	 * The feature id for the '<em><b>Source Anchor</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_LINK__SOURCE_ANCHOR = 3;
+
+	/**
+	 * The feature id for the '<em><b>Target Anchor</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_LINK__TARGET_ANCHOR = 4;
+
+	/**
 	 * The number of structural features of the '<em>Link</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VIEW_LINK_FEATURE_COUNT = 3;
+	int VIEW_LINK_FEATURE_COUNT = 5;
 
 	/**
 	 * The meta object id for the '{@link com.reliability.system.view.impl.FailureViewImpl <em>Failure View</em>}' class.
@@ -613,6 +631,28 @@ public interface ViewPackage extends EPackage {
 	EAttribute getViewLink_Bendpoints();
 
 	/**
+	 * Returns the meta object for the attribute '{@link com.reliability.system.view.ViewLink#getSourceAnchor <em>Source Anchor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Source Anchor</em>'.
+	 * @see com.reliability.system.view.ViewLink#getSourceAnchor()
+	 * @see #getViewLink()
+	 * @generated
+	 */
+	EAttribute getViewLink_SourceAnchor();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.reliability.system.view.ViewLink#getTargetAnchor <em>Target Anchor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Target Anchor</em>'.
+	 * @see com.reliability.system.view.ViewLink#getTargetAnchor()
+	 * @see #getViewLink()
+	 * @generated
+	 */
+	EAttribute getViewLink_TargetAnchor();
+
+	/**
 	 * Returns the meta object for class '{@link com.reliability.system.view.FailureView <em>Failure View</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -771,6 +811,22 @@ public interface ViewPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute VIEW_LINK__BENDPOINTS = eINSTANCE.getViewLink_Bendpoints();
+
+		/**
+		 * The meta object literal for the '<em><b>Source Anchor</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VIEW_LINK__SOURCE_ANCHOR = eINSTANCE.getViewLink_SourceAnchor();
+
+		/**
+		 * The meta object literal for the '<em><b>Target Anchor</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VIEW_LINK__TARGET_ANCHOR = eINSTANCE.getViewLink_TargetAnchor();
 
 		/**
 		 * The meta object literal for the '{@link com.reliability.system.view.impl.FailureViewImpl <em>Failure View</em>}' class.

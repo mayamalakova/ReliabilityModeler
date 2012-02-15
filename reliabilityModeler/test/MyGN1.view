@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<view:SystemView xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:view="system.reliability.model.view">
+  <transitions xsi:type="view:TransitionView" name="Input Driver 1" constraints="195,35,100,205" incomingLinks="/reliability/MyGN1.view#//@positions.0/@outgoingLinks.0">
+    <failureState xsi:type="view:FailureView" id="M1" constraints="325,95,40,40" incomingLinks="/reliability/MyGN1.view#//@transitions.0/@outgoingLinks.0"/>
+    <outgoingLinks target="view:FailureView /reliability/MyGN1.view#M1"/>
+    <outgoingLinks target="view:PortView /reliability/MyGN1.view#L12" sourceAnchor="1"/>
+  </transitions>
+  <transitions xsi:type="view:TransitionView" name="Input Driver 2" constraints="200,255,100,193" incomingLinks="/reliability/MyGN1.view#//@positions.2/@outgoingLinks.0">
+    <failureState xsi:type="view:FailureView" id="M2" constraints="330,315,40,40" incomingLinks="/reliability/MyGN1.view#//@transitions.1/@outgoingLinks.0"/>
+    <outgoingLinks target="view:FailureView /reliability/MyGN1.view#M2"/>
+    <outgoingLinks target="view:PortView /reliability/MyGN1.view#L22" sourceAnchor="1"/>
+  </transitions>
+  <transitions xsi:type="view:TransitionView" name="Visualization Component" constraints="192,476,181,195" incomingLinks="/reliability/MyGN1.view#//@positions.4/@outgoingLinks.0">
+    <failureState xsi:type="view:FailureView" id="M3" constraints="358,532,40,40" incomingLinks="/reliability/MyGN1.view#//@transitions.2/@outgoingLinks.0"/>
+    <outgoingLinks target="view:FailureView /reliability/MyGN1.view#M3"/>
+    <outgoingLinks target="view:PortView /reliability/MyGN1.view#L32" sourceAnchor="1"/>
+  </transitions>
+  <transitions xsi:type="view:TransitionView" name="Event Bus" type="Connector" constraints="508,53,100,628" incomingLinks="/reliability/MyGN1.view#//@positions.1/@outgoingLinks.0 /reliability/MyGN1.view#//@positions.3/@outgoingLinks.0 /reliability/MyGN1.view#//@positions.5/@outgoingLinks.0">
+    <failureState xsi:type="view:FailureView" id="M5" constraints="646,91,44,44" incomingLinks="/reliability/MyGN1.view#//@transitions.3/@outgoingLinks.0"/>
+    <outgoingLinks target="view:FailureView /reliability/MyGN1.view#M5"/>
+    <outgoingLinks target="view:PortView /reliability/MyGN1.view#L41" sourceAnchor="1"/>
+    <outgoingLinks target="view:PortView /reliability/MyGN1.view#L21" sourceAnchor="2">
+      <bendpoints>636,275</bendpoints>
+      <bendpoints>636,796</bendpoints>
+      <bendpoints>65,800</bendpoints>
+      <bendpoints>65,328</bendpoints>
+    </outgoingLinks>
+    <outgoingLinks target="view:PortView /reliability/MyGN1.view#L31" sourceAnchor="3">
+      <bendpoints>607,301</bendpoints>
+      <bendpoints>605,718</bendpoints>
+      <bendpoints>101,716</bendpoints>
+      <bendpoints>100,553</bendpoints>
+    </outgoingLinks>
+  </transitions>
+  <transitions xsi:type="view:TransitionView" name="Screen Driver" constraints="775,117,100,186" incomingLinks="/reliability/MyGN1.view#//@positions.6/@outgoingLinks.0">
+    <failureState xsi:type="view:FailureView" id="M4" constraints="884,172,40,40" incomingLinks="/reliability/MyGN1.view#//@transitions.4/@outgoingLinks.0"/>
+    <outgoingLinks target="view:FailureView /reliability/MyGN1.view#M4"/>
+    <outgoingLinks target="view:PortView /reliability/MyGN1.view#L42" sourceAnchor="1"/>
+  </transitions>
+  <positions xsi:type="view:PortView" id="L11" constraints="144,63,40,65">
+    <transitionRow oppositePosition="view:PortView /reliability/MyGN1.view#L12" necessity="1.0"/>
+    <transitionRow oppositePosition="view:FailureView /reliability/MyGN1.view#M1" necessity="0.01" possibility="0.99"/>
+    <outgoingLinks target="view:TransitionView /reliability/MyGN1.view#Input Driver 1"/>
+  </positions>
+  <positions xsi:type="view:PortView" id="L12" constraints="316,146,40,65" incomingLinks="/reliability/MyGN1.view#//@transitions.0/@outgoingLinks.1">
+    <transitionRow oppositePosition="view:PortView /reliability/MyGN1.view#L31" necessity="1.0"/>
+    <transitionRow oppositePosition="view:PortView /reliability/MyGN1.view#L41" possibility="1.0"/>
+    <transitionRow oppositePosition="view:FailureView /reliability/MyGN1.view#M5" necessity="0.02" possibility="0.98"/>
+    <outgoingLinks target="view:TransitionView /reliability/MyGN1.view#Event Bus">
+      <bendpoints>466,190</bendpoints>
+      <bendpoints>466,133</bendpoints>
+    </outgoingLinks>
+  </positions>
+  <positions xsi:type="view:PortView" id="L21" constraints="171,285,40,65" incomingLinks="/reliability/MyGN1.view#//@transitions.3/@outgoingLinks.2">
+    <transitionRow oppositePosition="view:PortView /reliability/MyGN1.view#L22" necessity="1.0"/>
+    <transitionRow oppositePosition="view:FailureView /reliability/MyGN1.view#M2" necessity="0.03" possibility="0.97"/>
+    <outgoingLinks target="view:TransitionView /reliability/MyGN1.view#Input Driver 2"/>
+  </positions>
+  <positions xsi:type="view:PortView" id="L22" constraints="328,353,40,65" incomingLinks="/reliability/MyGN1.view#//@transitions.1/@outgoingLinks.1">
+    <transitionRow oppositePosition="view:PortView /reliability/MyGN1.view#L31" necessity="1.0"/>
+    <transitionRow oppositePosition="view:PortView /reliability/MyGN1.view#L41" possibility="1.0"/>
+    <transitionRow oppositePosition="view:FailureView /reliability/MyGN1.view#M5" necessity="0.02" possibility="0.98"/>
+    <outgoingLinks target="view:TransitionView /reliability/MyGN1.view#Event Bus" targetAnchor="1">
+      <bendpoints>447,397</bendpoints>
+      <bendpoints>446,227</bendpoints>
+    </outgoingLinks>
+  </positions>
+  <positions xsi:type="view:PortView" id="L31" constraints="150,509,40,65" incomingLinks="/reliability/MyGN1.view#//@transitions.3/@outgoingLinks.3">
+    <transitionRow oppositePosition="view:PortView /reliability/MyGN1.view#L32" necessity="1.0"/>
+    <transitionRow oppositePosition="view:FailureView /reliability/MyGN1.view#M3" necessity="0.0040" possibility="0.996"/>
+    <outgoingLinks target="view:TransitionView /reliability/MyGN1.view#Visualization Component"/>
+  </positions>
+  <positions xsi:type="view:PortView" id="L32" constraints="357,572,40,65" incomingLinks="/reliability/MyGN1.view#//@transitions.2/@outgoingLinks.1">
+    <transitionRow oppositePosition="view:PortView /reliability/MyGN1.view#L31" possibility="1.0"/>
+    <transitionRow oppositePosition="view:PortView /reliability/MyGN1.view#L41" necessity="1.0"/>
+    <transitionRow oppositePosition="view:FailureView /reliability/MyGN1.view#M5" necessity="0.02" possibility="0.98"/>
+    <outgoingLinks target="view:TransitionView /reliability/MyGN1.view#Event Bus" targetAnchor="2">
+      <bendpoints>475,616</bendpoints>
+      <bendpoints>475,273</bendpoints>
+    </outgoingLinks>
+  </positions>
+  <positions xsi:type="view:PortView" id="L41" constraints="726,171,40,65" incomingLinks="/reliability/MyGN1.view#//@transitions.3/@outgoingLinks.1">
+    <transitionRow oppositePosition="view:PortView /reliability/MyGN1.view#L42" necessity="1.0"/>
+    <transitionRow oppositePosition="view:FailureView /reliability/MyGN1.view#M4" necessity="0.0070" possibility="0.993"/>
+    <outgoingLinks target="view:TransitionView /reliability/MyGN1.view#Screen Driver">
+      <bendpoints>799,214</bendpoints>
+      <bendpoints>799,197</bendpoints>
+    </outgoingLinks>
+  </positions>
+  <positions xsi:type="view:PortView" id="L42" constraints="889,209,40,65" incomingLinks="/reliability/MyGN1.view#//@transitions.4/@outgoingLinks.1"/>
+</view:SystemView>

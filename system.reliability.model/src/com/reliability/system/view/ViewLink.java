@@ -21,6 +21,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.reliability.system.view.ViewLink#getSource <em>Source</em>}</li>
  *   <li>{@link com.reliability.system.view.ViewLink#getTarget <em>Target</em>}</li>
  *   <li>{@link com.reliability.system.view.ViewLink#getBendpoints <em>Bendpoints</em>}</li>
+ *   <li>{@link com.reliability.system.view.ViewLink#getSourceAnchor <em>Source Anchor</em>}</li>
+ *   <li>{@link com.reliability.system.view.ViewLink#getTargetAnchor <em>Target Anchor</em>}</li>
  * </ul>
  * </p>
  *
@@ -100,5 +102,59 @@ public interface ViewLink extends EObject {
 	 * @generated
 	 */
 	EList<Point> getBendpoints();
+
+	/**
+	 * Returns the value of the '<em><b>Source Anchor</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Source Anchor</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Source Anchor</em>' attribute.
+	 * @see #setSourceAnchor(int)
+	 * @see com.reliability.system.view.ViewPackage#getViewLink_SourceAnchor()
+	 * @model default="0"
+	 * @generated
+	 */
+	int getSourceAnchor();
+
+	/**
+	 * Sets the value of the '{@link com.reliability.system.view.ViewLink#getSourceAnchor <em>Source Anchor</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Source Anchor</em>' attribute.
+	 * @see #getSourceAnchor()
+	 * @generated
+	 */
+	void setSourceAnchor(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Target Anchor</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Target Anchor</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Target Anchor</em>' attribute.
+	 * @see #setTargetAnchor(int)
+	 * @see com.reliability.system.view.ViewPackage#getViewLink_TargetAnchor()
+	 * @model default="0"
+	 * @generated
+	 */
+	int getTargetAnchor();
+
+	/**
+	 * Sets the value of the '{@link com.reliability.system.view.ViewLink#getTargetAnchor <em>Target Anchor</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Target Anchor</em>' attribute.
+	 * @see #getTargetAnchor()
+	 * @generated
+	 */
+	void setTargetAnchor(int value);
 
 } // ViewLink

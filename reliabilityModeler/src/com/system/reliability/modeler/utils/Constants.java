@@ -7,6 +7,7 @@ public interface Constants {
 	public static final int CONNECTOR_WIDTH = 40;
 	public static final int LABEL_HEIGTH = 25;
 	public static final int COMPONENT_WIDTH = 60;
+	public static final int COMPONENT_HEIGTH = 40;
 	
 	public static final Color COLOR_DARK_BLUE = new Color(null, 56, 93, 138);
 	public static final Color COLOR_LIGHT_BLUE = new Color(null, 95, 141, 170);

@@ -4,7 +4,7 @@ import org.eclipse.draw2d.IFigure;
 
 import com.system.reliability.modeler.editor.figure.FailureFigure;
 
-public class FailureEditPart extends ViewObjectEditPart {
+public class FailureEditPart extends PositionEditPart {
 
 	@Override
 	protected IFigure createFigure() {

@@ -22,6 +22,10 @@
         eOpposite="#//ViewObject/incomingLinks" eKeys="#//ViewObject/label"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="bendpoints" upperBound="-1"
         eType="#//Point"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sourceAnchor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="0"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetAnchor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="0"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="Point" instanceClassName="org.eclipse.draw2d.geometry.Point"/>
   <eClassifiers xsi:type="ecore:EClass" name="FailureView" eSuperTypes="reliability.ecore#//Failure #//ViewObject"/>

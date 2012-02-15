@@ -88,24 +88,6 @@ public abstract class ViewObjectEditPart extends AbstractGraphicalEditPart imple
 		manager.show();
 	}
 	
-	public ConnectionAnchor getSourceConnectionAnchor(ConnectionEditPart connection) {
-	    return ((IModelFigure)getFigure()).getConnectionAnchor();
-	  }
-	 
-	  public ConnectionAnchor getTargetConnectionAnchor(ConnectionEditPart connection) {
-	    return ((IModelFigure)getFigure()).getConnectionAnchor();
-	  }
-	 
-	  @Override 
-	  public ConnectionAnchor getSourceConnectionAnchor(Request request) {
-	    return ((IModelFigure)getFigure()).getConnectionAnchor();
-	  }
-	 
-	  @Override 
-	  public ConnectionAnchor getTargetConnectionAnchor(Request request) {
-	    return ((IModelFigure)getFigure()).getConnectionAnchor();
-	  } 
-
 	@Override
 	public void activate() {
 		if (!isActive()) {

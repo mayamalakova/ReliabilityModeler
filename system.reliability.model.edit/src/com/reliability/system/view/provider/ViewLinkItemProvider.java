@@ -65,6 +65,8 @@ public class ViewLinkItemProvider
 			addSourcePropertyDescriptor(object);
 			addTargetPropertyDescriptor(object);
 			addBendpointsPropertyDescriptor(object);
+			addSourceAnchorPropertyDescriptor(object);
+			addTargetAnchorPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -136,6 +138,50 @@ public class ViewLinkItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Source Anchor feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSourceAnchorPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ViewLink_sourceAnchor_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ViewLink_sourceAnchor_feature", "_UI_ViewLink_type"),
+				 ViewPackage.Literals.VIEW_LINK__SOURCE_ANCHOR,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Target Anchor feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTargetAnchorPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ViewLink_targetAnchor_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ViewLink_targetAnchor_feature", "_UI_ViewLink_type"),
+				 ViewPackage.Literals.VIEW_LINK__TARGET_ANCHOR,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns ViewLink.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -170,6 +216,8 @@ public class ViewLinkItemProvider
 
 		switch (notification.getFeatureID(ViewLink.class)) {
 			case ViewPackage.VIEW_LINK__BENDPOINTS:
+			case ViewPackage.VIEW_LINK__SOURCE_ANCHOR:
+			case ViewPackage.VIEW_LINK__TARGET_ANCHOR:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

@@ -7,7 +7,6 @@ import org.eclipse.draw2d.AbsoluteBendpoint;
 import org.eclipse.draw2d.BendpointConnectionRouter;
 import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.IFigure;
-import org.eclipse.draw2d.ManhattanConnectionRouter;
 import org.eclipse.draw2d.PolylineConnection;
 import org.eclipse.draw2d.PolylineDecoration;
 import org.eclipse.draw2d.geometry.Point;

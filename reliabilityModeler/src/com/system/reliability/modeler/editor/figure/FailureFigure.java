@@ -15,7 +15,7 @@ import org.eclipse.draw2d.geometry.Rectangle;
 
 import com.system.reliability.modeler.utils.Constants;
 
-public class FailureFigure extends Figure implements IModelFigure {
+public class FailureFigure extends Figure implements IPositionFigure {
 	private Label label;
 	private ConnectionAnchor connectionAnchor;	
 

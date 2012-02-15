@@ -259,6 +259,24 @@ public class ViewPackageImpl extends EPackageImpl implements ViewPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getViewLink_SourceAnchor() {
+		return (EAttribute)viewLinkEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getViewLink_TargetAnchor() {
+		return (EAttribute)viewLinkEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getFailureView() {
 		return failureViewEClass;
 	}
@@ -332,6 +350,8 @@ public class ViewPackageImpl extends EPackageImpl implements ViewPackage {
 		createEReference(viewLinkEClass, VIEW_LINK__SOURCE);
 		createEReference(viewLinkEClass, VIEW_LINK__TARGET);
 		createEAttribute(viewLinkEClass, VIEW_LINK__BENDPOINTS);
+		createEAttribute(viewLinkEClass, VIEW_LINK__SOURCE_ANCHOR);
+		createEAttribute(viewLinkEClass, VIEW_LINK__TARGET_ANCHOR);
 
 		failureViewEClass = createEClass(FAILURE_VIEW);
 
@@ -398,6 +418,8 @@ public class ViewPackageImpl extends EPackageImpl implements ViewPackage {
 		initEReference(getViewLink_Target(), this.getViewObject(), this.getViewObject_IncomingLinks(), "target", null, 0, 1, ViewLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		getViewLink_Target().getEKeys().add(this.getViewObject_Label());
 		initEAttribute(getViewLink_Bendpoints(), this.getPoint(), "bendpoints", null, 0, -1, ViewLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getViewLink_SourceAnchor(), ecorePackage.getEInt(), "sourceAnchor", "0", 0, 1, ViewLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getViewLink_TargetAnchor(), ecorePackage.getEInt(), "targetAnchor", "0", 0, 1, ViewLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(failureViewEClass, FailureView.class, "FailureView", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

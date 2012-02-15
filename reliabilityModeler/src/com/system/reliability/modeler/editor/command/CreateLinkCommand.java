@@ -34,14 +34,25 @@ public class CreateLinkCommand extends Command {
 
 	public void setTarget(ViewObject target) {
 		this.target = target;
+		//TODO the anchor index is relevant only for transitions
+		if (link != null) {
+			link.setTargetAnchor(target.getIncomingLinks().size());
+		}
 	}
 
 	public void setSource(ViewObject source) {
 		this.source = source;
+		//TODO the anchor index is relevant only for transitions
+		if (link != null) {
+			link.setSourceAnchor(source.getOutgoingLinks().size());
+		}
 	}
 
 	public void setLink(ViewLink link) {
 		this.link = link;
+		if (source != null) {
+			link.setSourceAnchor(source.getOutgoingLinks().size());
+		}
 	}
 	
 	private boolean validate() {

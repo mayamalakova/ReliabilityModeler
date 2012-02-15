@@ -15,7 +15,7 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import com.system.reliability.modeler.editor.anchor.PortAnchor;
 import com.system.reliability.modeler.utils.Constants;
 
-public class PortFigure extends Figure  implements IModelFigure {
+public class PortFigure extends Figure  implements IPositionFigure {
 	private Label label;
 	private Ellipse ellipse;
 	private ConnectionAnchor connectionAnchor;

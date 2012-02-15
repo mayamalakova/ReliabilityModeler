@@ -4,7 +4,7 @@ import org.eclipse.draw2d.IFigure;
 
 import com.system.reliability.modeler.editor.figure.PortFigure;
 
-public class PortEditPart extends ViewObjectEditPart {
+public class PortEditPart extends PositionEditPart {
 	
 	@Override
 	protected IFigure createFigure() {

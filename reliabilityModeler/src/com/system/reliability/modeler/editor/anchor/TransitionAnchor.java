@@ -6,7 +6,9 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 
 public class TransitionAnchor extends AbstractConnectionAnchor {
-
+	public int verticalOffset;
+	public int horizontalOffset;
+	
 	public TransitionAnchor(){
 	}
 
@@ -17,7 +19,7 @@ public class TransitionAnchor extends AbstractConnectionAnchor {
 	@Override
 	public Point getLocation(Point reference) {
 		Rectangle bounds = getOwner().getBounds();
-		return new Point(bounds.x + bounds.width/2, bounds.y + 80);
+		return new Point(bounds.x + bounds.width/2 + horizontalOffset, bounds.y + verticalOffset);
 	}
 
 }
