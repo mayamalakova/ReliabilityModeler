@@ -54,7 +54,10 @@ public class ReliabilityProfile {
 	}
 	
 	public String toString() {
-		String displayText = "Reliability: " + getTotalReliability() + " - weekest point: " + getWeakestTransition().getName();
+		if (getWeakestTransition() == null) {
+			return "Failed to calculate the system reliability! Not enough data!";
+		}
+		String displayText = "Failure necessity: " + getTotalReliability() + " - weekest point: " + getWeakestTransition().getName();
 		return displayText;
 	}
 }

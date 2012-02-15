@@ -13,4 +13,6 @@ public interface Constants {
 	public static final Color COLOR_LIGHT_BLUE = new Color(null, 95, 141, 170);
 	public static final Color COLOR_DARK_YELLOW = new Color(null, 229, 222, 89);
 	public static final Color COLOR_LIGHT_YELLOW = new Color(null, 242, 235, 140);
+	
+	public static final String ACTION_ANALYZE = "analyzeReliability";
 }

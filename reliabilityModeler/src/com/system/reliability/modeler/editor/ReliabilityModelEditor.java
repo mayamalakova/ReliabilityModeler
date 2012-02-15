@@ -9,6 +9,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.gef.ContextMenuProvider;
 import org.eclipse.gef.DefaultEditDomain;
 import org.eclipse.gef.palette.PaletteRoot;
 import org.eclipse.gef.ui.parts.GraphicalEditorWithFlyoutPalette;
@@ -32,6 +33,7 @@ public class ReliabilityModelEditor extends GraphicalEditorWithFlyoutPalette {
 	private GeneralizedNet system;
 	private Resource systemResource;
 	private PropertySheetPage propertyPage;
+	private AnalyzeReliabilityAction analyzeAction;
 
 	public ReliabilityModelEditor() {
 		setEditDomain(new DefaultEditDomain(this));
@@ -67,6 +69,11 @@ public class ReliabilityModelEditor extends GraphicalEditorWithFlyoutPalette {
 	protected void configureGraphicalViewer() {
 		super.configureGraphicalViewer();
 		getGraphicalViewer().setEditPartFactory(new ReliabilityEditPartFactory());
+		analyzeAction = new AnalyzeReliabilityAction(this);
+		analyzeAction.setModel(system);
+		getActionRegistry().registerAction(analyzeAction);
+		ContextMenuProvider menuProvider = new EditorContextMenuProvider(getGraphicalViewer(), getActionRegistry());
+		getGraphicalViewer().setContextMenu(menuProvider);
 	}
 
 	@Override

@@ -40,6 +40,10 @@ public class ReliabilityAnalyzer {
 		return systemModel;
 	}
 	
+	public void setSysteModel(GeneralizedNet model) {
+		systemModel = model;
+	}
+	
 	public void findAllFailurePaths(TransitionPath currentPath, Position currentPosition) {
 		if (currentPosition instanceof Failure) {
 			System.out.print(currentPath);

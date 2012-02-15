@@ -3,6 +3,7 @@ package com.system.reliability.modeler.utils;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.common.util.URI;
@@ -24,6 +25,7 @@ import com.reliability.system.view.ViewFactory;
 import com.reliability.system.view.ViewObject;
 import com.reliability.system.view.ViewPackage;
 import com.reliability.system.view.util.ViewResourceFactoryImpl;
+import com.system.reliability.analyzer.ReliabilityProfile;
 
 public class ReliabilityModelUtils {
 	
@@ -135,4 +137,14 @@ public class ReliabilityModelUtils {
 		return systemInputs;
 	}
 	
+	public static String getReliabilityProfilesText(Map<Port, ReliabilityProfile> reliabilityProfiles) {
+		StringBuilder result = new StringBuilder();
+		for (Port port: reliabilityProfiles.keySet()) {
+			ReliabilityProfile profile = reliabilityProfiles.get(port);
+			result.append("Input: " + port.getId() + " - " + profile);
+			result.append("\n");
+		}
+		
+		return result.toString();
+	}
 }

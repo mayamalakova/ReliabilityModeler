@@ -81,6 +81,11 @@ public abstract class TransitionFigure extends Figure implements IModelFigure{
 		if (outputAnchors == null) {
 			initAnchors();
 		}
+		// FIXME - this is a workaround, when deleting links the remaining
+		// anchor indexes need to be updated !!!
+		if (outputAnchors.size() <= anchorIndex) {
+			return outputAnchors.get(outputsCount - 1);
+		}
 		return outputAnchors.get(anchorIndex);
 	}
 
@@ -88,6 +93,12 @@ public abstract class TransitionFigure extends Figure implements IModelFigure{
 		if (inputAnchors == null) {
 			initAnchors();
 		}
+		// FIXME - this is a workaround, when deleting links the remaining
+		// anchor indexes need to be updated !!!
+		if (inputAnchors.size() <= anchorIndex) {
+			return inputAnchors.get(inputsCout - 1);
+		}
+		
 		return inputAnchors.get(anchorIndex);
 	}
 	
