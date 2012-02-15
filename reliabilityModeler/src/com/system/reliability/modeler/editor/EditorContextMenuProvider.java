@@ -8,8 +8,6 @@ import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.ui.actions.ActionFactory;
 
-import com.system.reliability.modeler.utils.Constants;
-
 public class EditorContextMenuProvider extends ContextMenuProvider {
 	private ActionRegistry actionRegistry;
 
@@ -27,8 +25,6 @@ public class EditorContextMenuProvider extends ContextMenuProvider {
 		action = getActionRegistry().getAction(ActionFactory.REDO.getId());
 		menu.appendToGroup(GEFActionConstants.GROUP_UNDO, action);
 		action = getActionRegistry().getAction(ActionFactory.DELETE.getId());
-		menu.appendToGroup(GEFActionConstants.GROUP_EDIT, action);
-		action = getActionRegistry().getAction(Constants.ACTION_ANALYZE);
 		menu.appendToGroup(GEFActionConstants.GROUP_EDIT, action);
 	}
 

@@ -33,7 +33,6 @@ public class ReliabilityModelEditor extends GraphicalEditorWithFlyoutPalette {
 	private GeneralizedNet system;
 	private Resource systemResource;
 	private PropertySheetPage propertyPage;
-	private AnalyzeReliabilityAction analyzeAction;
 
 	public ReliabilityModelEditor() {
 		setEditDomain(new DefaultEditDomain(this));
@@ -69,9 +68,6 @@ public class ReliabilityModelEditor extends GraphicalEditorWithFlyoutPalette {
 	protected void configureGraphicalViewer() {
 		super.configureGraphicalViewer();
 		getGraphicalViewer().setEditPartFactory(new ReliabilityEditPartFactory());
-		analyzeAction = new AnalyzeReliabilityAction(this);
-		analyzeAction.setModel(system);
-		getActionRegistry().registerAction(analyzeAction);
 		ContextMenuProvider menuProvider = new EditorContextMenuProvider(getGraphicalViewer(), getActionRegistry());
 		getGraphicalViewer().setContextMenu(menuProvider);
 	}
@@ -123,5 +119,9 @@ public class ReliabilityModelEditor extends GraphicalEditorWithFlyoutPalette {
             return propertyPage;
         }
         return super.getAdapter(type);
+    }
+    
+    public GeneralizedNet getModel() {
+    	return system;
     }
 }
