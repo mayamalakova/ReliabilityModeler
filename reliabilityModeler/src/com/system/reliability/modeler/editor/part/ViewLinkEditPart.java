@@ -15,7 +15,11 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.gef.CompoundSnapToHelper;
 import org.eclipse.gef.EditPolicy;
+import org.eclipse.gef.SnapToGeometry;
+import org.eclipse.gef.SnapToGrid;
+import org.eclipse.gef.SnapToHelper;
 import org.eclipse.gef.editparts.AbstractConnectionEditPart;
 import org.eclipse.gef.editpolicies.ConnectionEndpointEditPolicy;
 
@@ -36,8 +40,7 @@ public class ViewLinkEditPart extends AbstractConnectionEditPart {
 
 	@Override
 	protected void createEditPolicies() {
-		installEditPolicy(EditPolicy.CONNECTION_ENDPOINTS_ROLE,
-				new ConnectionEndpointEditPolicy());
+		installEditPolicy(EditPolicy.CONNECTION_ENDPOINTS_ROLE, new ConnectionEndpointEditPolicy());
 		installEditPolicy(EditPolicy.CONNECTION_ROLE, new LinkConnectionEditPolicy());
 		installEditPolicy(EditPolicy.CONNECTION_BENDPOINTS_ROLE, new LinkBendpointEditPolicy());
 	}
@@ -84,6 +87,30 @@ public class ViewLinkEditPart extends AbstractConnectionEditPart {
 		super.deactivate();
 	}
 
+	@SuppressWarnings("rawtypes")
+	@Override 
+	public Object getAdapter(Class key) {
+	    if (key == SnapToHelper.class) {
+	        List<SnapToHelper> helpers = new ArrayList<SnapToHelper>();
+	        if (Boolean.TRUE.equals(getViewer().getProperty(SnapToGeometry.PROPERTY_SNAP_ENABLED))) {
+	            helpers.add(new SnapToGeometry(this));
+	        }
+	        
+	        if (Boolean.TRUE.equals(getViewer().getProperty(SnapToGrid.PROPERTY_GRID_ENABLED))) {
+	            helpers.add(new SnapToGrid(this));
+	        }
+	        
+	        if(helpers.size()==0) {
+	            return null;
+	            
+	        } else {
+	            return new CompoundSnapToHelper(helpers.toArray(new SnapToHelper[0]));
+	        }
+	    }
+	    
+	    return super.getAdapter(key);
+	}
+	
 	public class ViewLinkAdapter implements Adapter {
 
 		/**

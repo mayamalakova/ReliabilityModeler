@@ -1,5 +1,6 @@
 package com.system.reliability.modeler.editor.part;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -10,11 +11,16 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.gef.CompoundSnapToHelper;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.NodeEditPart;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.RequestConstants;
+import org.eclipse.gef.SnapToGeometry;
+import org.eclipse.gef.SnapToGrid;
+import org.eclipse.gef.SnapToHelper;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
+import org.eclipse.gef.editpolicies.SnapFeedbackPolicy;
 import org.eclipse.jface.viewers.TextCellEditor;
 
 import com.reliability.system.view.PortView;
@@ -28,15 +34,16 @@ import com.system.reliability.modeler.editor.figure.IModelFigure;
 import com.system.reliability.modeler.editor.policy.GraphicalViewObjectEditPolicy;
 import com.system.reliability.modeler.editor.policy.ViewObjectDirectEditPolicy;
 import com.system.reliability.modeler.editor.policy.ViewObjectEditPolicy;
+import com.system.reliability.modeler.utils.Constants;
 
 public abstract class ViewObjectEditPart extends AbstractGraphicalEditPart implements NodeEditPart {
 	private static final Logger log = Logger.getLogger(ViewObjectEditPart.class);
 	
-	private VieObjectModelAdapter adapter;
+	private ViewObjectModelAdapter adapter;
 
 	public ViewObjectEditPart() {
 		super();
-		adapter = new VieObjectModelAdapter();
+		adapter = new ViewObjectModelAdapter();
 	}
 
 	@Override
@@ -63,6 +70,7 @@ public abstract class ViewObjectEditPart extends AbstractGraphicalEditPart imple
 		installEditPolicy(EditPolicy.DIRECT_EDIT_ROLE, new ViewObjectDirectEditPolicy());
 		installEditPolicy(EditPolicy.GRAPHICAL_NODE_ROLE, new GraphicalViewObjectEditPolicy());
 		installEditPolicy(EditPolicy.COMPONENT_ROLE, new ViewObjectEditPolicy());
+		installEditPolicy(Constants.POLICY_SNAP_TO_GRID, new SnapFeedbackPolicy());
 	}
 
 	
@@ -110,7 +118,31 @@ public abstract class ViewObjectEditPart extends AbstractGraphicalEditPart imple
 		super.deactivate();
 	}
 
-	public class VieObjectModelAdapter implements Adapter {
+	@SuppressWarnings("rawtypes")
+	@Override 
+	public Object getAdapter(Class key) {
+	    if (key == SnapToHelper.class) {
+	        List<SnapToHelper> helpers = new ArrayList<SnapToHelper>();
+	        if (Boolean.TRUE.equals(getViewer().getProperty(SnapToGeometry.PROPERTY_SNAP_ENABLED))) {
+	            helpers.add(new SnapToGeometry(this));
+	        }
+	        
+	        if (Boolean.TRUE.equals(getViewer().getProperty(SnapToGrid.PROPERTY_GRID_ENABLED))) {
+	            helpers.add(new SnapToGrid(this));
+	        }
+	        
+	        if(helpers.size()==0) {
+	            return null;
+	            
+	        } else {
+	            return new CompoundSnapToHelper(helpers.toArray(new SnapToHelper[0]));
+	        }
+	    }
+	    
+	    return super.getAdapter(key);
+	}
+	
+	public class ViewObjectModelAdapter implements Adapter {
 
 		@Override
 		public void notifyChanged(Notification notification) {
@@ -128,6 +160,7 @@ public abstract class ViewObjectEditPart extends AbstractGraphicalEditPart imple
 				refreshSourceConnections();
 			}
 			if (ViewPackage.TRANSITION_VIEW__INCOMING_LINKS == notification.getFeatureID(TransitionView.class) ||
+					ViewPackage.FAILURE_VIEW__INCOMING_LINKS == notification.getFeatureID(TransitionView.class) ||
 					ViewPackage.PORT_VIEW__INCOMING_LINKS == notification.getFeatureID(PortView.class)) {
 				refreshTargetConnections();
 			}

@@ -13,6 +13,8 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.gef.ContextMenuProvider;
 import org.eclipse.gef.DefaultEditDomain;
 import org.eclipse.gef.palette.PaletteRoot;
+import org.eclipse.gef.ui.actions.ToggleGridAction;
+import org.eclipse.gef.ui.actions.ToggleSnapToGeometryAction;
 import org.eclipse.gef.ui.parts.GraphicalEditorWithFlyoutPalette;
 import org.eclipse.gef.ui.properties.UndoablePropertySheetEntry;
 import org.eclipse.gef.ui.properties.UndoablePropertySheetPage;
@@ -71,6 +73,10 @@ public class ReliabilityModelEditor extends GraphicalEditorWithFlyoutPalette {
 	protected void configureGraphicalViewer() {
 		super.configureGraphicalViewer();
 		getGraphicalViewer().setEditPartFactory(new ReliabilityEditPartFactory());
+		//Register Snap to Grid and Snap to Geometry actions
+		getActionRegistry().registerAction(new ToggleGridAction(getGraphicalViewer()));
+		getActionRegistry().registerAction(new ToggleSnapToGeometryAction(getGraphicalViewer()));
+		
 		ContextMenuProvider menuProvider = new EditorContextMenuProvider(getGraphicalViewer(), getActionRegistry());
 		getGraphicalViewer().setContextMenu(menuProvider);
 	}

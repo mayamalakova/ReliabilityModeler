@@ -15,4 +15,5 @@ public interface Constants {
 	public static final Color COLOR_LIGHT_YELLOW = new Color(null, 248, 239, 78);
 	
 	public static final String ACTION_ANALYZE = "analyzeReliability";
+	public static final String POLICY_SNAP_TO_GRID = "Snap Feedback";
 }

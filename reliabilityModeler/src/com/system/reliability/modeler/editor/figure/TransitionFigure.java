@@ -71,34 +71,24 @@ public abstract class TransitionFigure extends Figure implements IModelFigure{
 		//sometimes the connection is created before the figure so bounds is still not set
 		int inputMargin = (modelConstraint.height > 0) ? connectionLineHeigth / (inputsCout + 1) : 20; 
 		int i = 0;
-		/*********************************************************************/
-		if (log.isDebugEnabled()) { log.debug("Updating inputAnchor anchor positions: ");}
-		/*********************************************************************/
 		for (TransitionAnchor inputAnchor: inputAnchors) {
 			/*********************************************************************/
-			if (log.isDebugEnabled()) { log.debug(i + " - " + inputAnchor.getVerticalOffset() + " -> ");}
+			if (log.isDebugEnabled()) { log.debug("Updating inputAnchor anchor " + i + " : " + inputAnchor.getVerticalOffset() + " -> " + (initialOffset + i * inputMargin));}
 			/*********************************************************************/
-			inputAnchor.setVerticalOffset(initialOffset + (i++) * inputMargin);
-			/*********************************************************************/
-			if (log.isDebugEnabled()) { log.debug(inputAnchor.getVerticalOffset());}
-			/*********************************************************************/
+			inputAnchor.setVerticalOffset(initialOffset + (i) * inputMargin);
 			inputAnchor.setHorizontalOffset(-1);
+			i++;
 		}
 		
 		int outputMargin = (modelConstraint.height > 0) ? connectionLineHeigth / (outputsCount + 1) : 20; 
 		i = 0;
-		/*********************************************************************/
-		if (log.isDebugEnabled()) { log.debug("Updating output anchor positions: ");}
-		/*********************************************************************/
 		for (TransitionAnchor outputAnchor: outputAnchors) {
 			/*********************************************************************/
-			if (log.isDebugEnabled()) { log.debug(i+ " - " + outputAnchor.getVerticalOffset() + " -> ");}
+			if (log.isDebugEnabled()) { log.debug("Updating output anchor " + i + " : " + outputAnchor.getVerticalOffset() + " -> " + (initialOffset + i * outputMargin));}
 			/*********************************************************************/
-			outputAnchor.setVerticalOffset(initialOffset + (i++) * outputMargin);
-			/*********************************************************************/
-			if (log.isDebugEnabled()) { log.debug(outputAnchor.getVerticalOffset());}
-			/*********************************************************************/
+			outputAnchor.setVerticalOffset(initialOffset + (i) * outputMargin);
 			outputAnchor.setHorizontalOffset(-1);
+			i++;
 		}
 
 	}

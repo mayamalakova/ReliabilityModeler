@@ -13,6 +13,7 @@ public class ReliabilityProfile {
 	private Map<Failure, Float> failureToNecessity;
 	private boolean isCalculated = false;
 	
+	//TODO add possibility to calculations
 	public ReliabilityProfile(){
 		failureToNecessity = new HashMap<Failure, Float>();
 	}

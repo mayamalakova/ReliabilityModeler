@@ -95,7 +95,7 @@ public abstract class TransitionEditPart extends ViewObjectEditPart {
 		
 		private Point getConstraint() {
 			Rectangle bounds = getFigure().getBounds();
-			return new Point(bounds.x + bounds.width/2 + 80, bounds.y + 60);
+			return new Point(bounds.x + bounds.width/2 + 80, bounds.y + 66);
 		}
 	}
 	

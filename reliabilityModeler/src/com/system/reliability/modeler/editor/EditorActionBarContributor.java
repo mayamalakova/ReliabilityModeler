@@ -2,12 +2,15 @@ package com.system.reliability.modeler.editor;
 
 import org.eclipse.gef.ui.actions.ActionBarContributor;
 import org.eclipse.gef.ui.actions.DeleteRetargetAction;
+import org.eclipse.gef.ui.actions.GEFActionConstants;
 import org.eclipse.gef.ui.actions.RedoRetargetAction;
 import org.eclipse.gef.ui.actions.UndoRetargetAction;
+import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.actions.ActionFactory;
+import org.eclipse.ui.actions.RetargetAction;
 
 
 public class EditorActionBarContributor extends ActionBarContributor {
@@ -20,6 +23,8 @@ public class EditorActionBarContributor extends ActionBarContributor {
 		addRetargetAction(new DeleteRetargetAction());
 		analyzeAction = new AnalyzeReliabilityAction();
 		addAction(analyzeAction);
+		addRetargetAction(new RetargetAction(GEFActionConstants.TOGGLE_GRID_VISIBILITY, "Show/Hide Grid", IAction.AS_CHECK_BOX));
+		addRetargetAction(new RetargetAction(GEFActionConstants.TOGGLE_SNAP_TO_GEOMETRY, "Snap to Geometry", IAction.AS_CHECK_BOX));
 	}
 
 	@Override
@@ -28,6 +33,8 @@ public class EditorActionBarContributor extends ActionBarContributor {
 		toolBarManager.add(getAction(ActionFactory.UNDO.getId()));
 		toolBarManager.add(getAction(ActionFactory.REDO.getId()));
 		toolBarManager.add(getAction(ActionFactory.DELETE.getId()));
+		toolBarManager.add(getAction(GEFActionConstants.TOGGLE_GRID_VISIBILITY));
+	    toolBarManager.add(getAction(GEFActionConstants.TOGGLE_SNAP_TO_GEOMETRY));
 //		toolBarManager.add(getAction(Constants.ACTION_ANALYZE));
 	}
 

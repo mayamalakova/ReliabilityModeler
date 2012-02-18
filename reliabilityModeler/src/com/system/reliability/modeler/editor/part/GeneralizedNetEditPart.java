@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.LayerConstants;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
+import org.eclipse.gef.editpolicies.SnapFeedbackPolicy;
 import org.eclipse.swt.SWT;
 
 import com.reliability.system.GeneralizedNet;
@@ -22,6 +23,7 @@ import com.reliability.system.SystemPackage;
 import com.reliability.system.Transition;
 import com.reliability.system.view.TransitionView;
 import com.system.reliability.modeler.editor.policy.ViewObjectLayoutPolicy;
+import com.system.reliability.modeler.utils.Constants;
 
 public class GeneralizedNetEditPart extends AbstractGraphicalEditPart {
 	private ReliabilityModelAdapter modelAdapter;
@@ -45,6 +47,7 @@ public class GeneralizedNetEditPart extends AbstractGraphicalEditPart {
 	@Override
 	protected void createEditPolicies() {
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, new ViewObjectLayoutPolicy());
+		installEditPolicy(Constants.POLICY_SNAP_TO_GRID, new SnapFeedbackPolicy());
 	}
 
 	@Override

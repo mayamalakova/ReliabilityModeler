@@ -27,7 +27,7 @@ public class MoveBendpointCommand extends Command {
 		this.index = index;
 	}
 
-	public void setOPMLink(ViewLink link) {
+	public void setLink(ViewLink link) {
 		this.link = link;
 	}
 
