@@ -21,8 +21,7 @@ public class GraphicalViewObjectEditPolicy extends GraphicalNodeEditPolicy {
 	@Override
 	protected Command getConnectionCreateCommand(CreateConnectionRequest request) {
 		CreateLinkCommand command = new CreateLinkCommand();
-		command.setSource((ViewObject) getHost().getModel());
-		command.setLink((ViewLink) request.getNewObject());
+		command.setSourceAndLink((ViewObject) getHost().getModel(), (ViewLink) request.getNewObject());
 		request.setStartCommand(command);
 		return command;
 	}

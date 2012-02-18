@@ -434,7 +434,11 @@ public class ViewLinkImpl extends EObjectImpl implements ViewLink {
 	@Override
 	public String toString() {
 		StringBuffer result = new StringBuffer("Link: ");
-		result.append(getSource().getLabel());
+		if (getSource() != null) {
+			result.append(getSource().getLabel());
+		}else {
+			result.append("N/A");
+		}
 		result.append(" -> ");
 		if (getTarget() != null) {
 			result.append(getTarget().getLabel());

@@ -2,12 +2,14 @@ package com.system.reliability.modeler.editor.part;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.NodeEditPart;
 import org.eclipse.gef.Request;
@@ -15,8 +17,11 @@ import org.eclipse.gef.RequestConstants;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 import org.eclipse.jface.viewers.TextCellEditor;
 
+import com.reliability.system.view.PortView;
+import com.reliability.system.view.TransitionView;
 import com.reliability.system.view.ViewLink;
 import com.reliability.system.view.ViewObject;
+import com.reliability.system.view.ViewPackage;
 import com.system.reliability.modeler.editor.ViewObjectCellEditorLocator;
 import com.system.reliability.modeler.editor.ViewObjectDirectEditManager;
 import com.system.reliability.modeler.editor.figure.IModelFigure;
@@ -25,11 +30,13 @@ import com.system.reliability.modeler.editor.policy.ViewObjectDirectEditPolicy;
 import com.system.reliability.modeler.editor.policy.ViewObjectEditPolicy;
 
 public abstract class ViewObjectEditPart extends AbstractGraphicalEditPart implements NodeEditPart {
-	private ModelAdapter adapter;
+	private static final Logger log = Logger.getLogger(ViewObjectEditPart.class);
+	
+	private VieObjectModelAdapter adapter;
 
 	public ViewObjectEditPart() {
 		super();
-		adapter = new ModelAdapter();
+		adapter = new VieObjectModelAdapter();
 	}
 
 	@Override
@@ -103,13 +110,27 @@ public abstract class ViewObjectEditPart extends AbstractGraphicalEditPart imple
 		super.deactivate();
 	}
 
-	public class ModelAdapter implements Adapter {
+	public class VieObjectModelAdapter implements Adapter {
 
 		@Override
 		public void notifyChanged(Notification notification) {
+			//removing the adapter also causes notification and in this case the feature is null 
+			if (notification.getFeature() == null) {
+				return;
+			}
+			
+			/*********************************************************************/
+			if (log.isDebugEnabled()) { log.debug("Notification for " + ((EStructuralFeature)notification.getFeature()).getName() + " for " + ((ViewObject) getModel()).getLabel());}
+			/*********************************************************************/
 			refreshVisuals();
-			refreshSourceConnections();
-			refreshTargetConnections();
+			if (ViewPackage.TRANSITION_VIEW__OUTGOING_LINKS == notification.getFeatureID(TransitionView.class) ||
+					ViewPackage.PORT_VIEW__OUTGOING_LINKS == notification.getFeatureID(PortView.class)) {
+				refreshSourceConnections();
+			}
+			if (ViewPackage.TRANSITION_VIEW__INCOMING_LINKS == notification.getFeatureID(TransitionView.class) ||
+					ViewPackage.PORT_VIEW__INCOMING_LINKS == notification.getFeatureID(PortView.class)) {
+				refreshTargetConnections();
+			}
 		}
 
 		@Override
@@ -124,7 +145,7 @@ public abstract class ViewObjectEditPart extends AbstractGraphicalEditPart imple
 
 		@Override
 		public boolean isAdapterForType(Object type) {
-			return ViewObject.class.isAssignableFrom((Class<?>) type) || ViewLink.class.isAssignableFrom((Class<?>) type);
+			return ViewObject.class.isAssignableFrom((Class<?>) type);
 		}
 	}
 

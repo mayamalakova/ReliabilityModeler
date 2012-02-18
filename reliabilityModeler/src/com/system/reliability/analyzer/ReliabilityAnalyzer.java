@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
-
+import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.resource.Resource;
 
 import com.reliability.system.Failure;
@@ -15,6 +15,8 @@ import com.reliability.system.TransitionMatrixElement;
 import com.system.reliability.modeler.utils.ReliabilityModelUtils;
 
 public class ReliabilityAnalyzer {
+	private static final Logger log = Logger.getLogger(ReliabilityAnalyzer.class);
+	
 	private  GeneralizedNet systemModel = null;
 	private Resource resource = null;
 	private Map<Port, ReliabilityProfile> reliabilityProfiles;
@@ -46,8 +48,10 @@ public class ReliabilityAnalyzer {
 	
 	public void findAllFailurePaths(TransitionPath currentPath, Position currentPosition) {
 		if (currentPosition instanceof Failure) {
-			System.out.print(currentPath);
-			System.out.println(" Necessity for failure = " + currentPath.getReliability());
+			/*********************************************************************/
+			if (log.isDebugEnabled()) { log.debug(currentPath); }
+			if (log.isDebugEnabled()) { log.debug(" Necessity for failure = " + currentPath.getReliability());  } //$NON-NLS-1$
+			/*********************************************************************/
 			ReliabilityProfile profile = reliabilityProfiles.get(currentPath.getStartPosition());
 			profile.updateFailureNecessity(currentPath);
 			return;
@@ -76,7 +80,7 @@ public class ReliabilityAnalyzer {
 			
 			switch (selection) {
 			case 1:
-				System.out.println("Enter model file location: ");
+				System.out.println("Enter model file location: "); 
 				String fileLocation = scanner.next();
 				analyzer.readModel(fileLocation);
 				if (analyzer.getSystemModel()  != null) {
@@ -98,26 +102,26 @@ public class ReliabilityAnalyzer {
 	}
 
 	private static void displayMenu() {
-			System.out.println("Select action:");
-			System.out.println("1  -Read model");
-			System.out.println("2 - Estimate reliability");
-			System.out.println("3 - Quit");
+			System.out.println("Select action:"); //$NON-NLS-1$
+			System.out.println("1  -Read model"); //$NON-NLS-1$
+			System.out.println("2 - Estimate reliability"); //$NON-NLS-1$
+			System.out.println("3 - Quit"); //$NON-NLS-1$
 	}
 	
 	private static void displayPortList(List<Port> ports){
 		StringBuilder sb = new StringBuilder();
 		for (Port port: ports) {
-			sb.append("Port " + port.getId() + ", ");
+			sb.append("Port " + port.getId() + ", "); //$NON-NLS-1$ //$NON-NLS-2$
 		}
 		
 		sb.delete(sb.length() - 1, sb.length());
-		System.out.println("System inputs: " + sb.toString());
+		System.out.println("System inputs: " + sb.toString()); //$NON-NLS-1$
 	}
 	
 	private static void displayReliabilityProfiles(Map<Port, ReliabilityProfile> reliabilityProfiles) {
 		for (Port port: reliabilityProfiles.keySet()) {
 			ReliabilityProfile profile = reliabilityProfiles.get(port);
-			System.out.println("Input: " + port.getId() + " - " + profile);
+			System.out.println("Input: " + port.getId() + " - " + profile); //$NON-NLS-1$ //$NON-NLS-2$
 		}
 	}
 	

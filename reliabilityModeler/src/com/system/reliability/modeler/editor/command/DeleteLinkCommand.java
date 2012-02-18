@@ -1,8 +1,10 @@
 package com.system.reliability.modeler.editor.command;
 
 import java.util.Hashtable;
+import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.eclipse.gef.commands.Command;
 
 import com.reliability.system.Failure;
@@ -14,6 +16,8 @@ import com.reliability.system.view.ViewLink;
 import com.reliability.system.view.ViewObject;
 
 public class DeleteLinkCommand extends Command {
+	private static final Logger log = Logger.getLogger(DeleteLinkCommand.class);
+	
 	private ViewLink link;
 	private ViewObject source;
 	private ViewObject target;
@@ -32,22 +36,38 @@ public class DeleteLinkCommand extends Command {
 
 	@Override
 	public void execute() {
+		/*********************************************************************/
+		if (log.isInfoEnabled()) { log.info("Deleting  " + link);}
+		/*********************************************************************/
 		source = link.getSource();
 		target = link.getTarget();
 		deleteElements();
-		link.setSource(null);
+		shiftSiblingLinks();
 		link.setTarget(null);
+		/*********************************************************************/
+		if (log.isDebugEnabled()) { log.debug("DeleteLinkCommand: Detached the link from its target  " + target);}
+		/*********************************************************************/
+		link.setSource(null);
+		/*********************************************************************/
+		if (log.isDebugEnabled()) { log.debug("DeleteLinkCommand: Detached the link from its source " + source);}
+		/*********************************************************************/
 	}
 
 	@Override
 	public void undo() {
-		link.setSource(source);
+		/*********************************************************************/
+		if (log.isInfoEnabled()) { log.info("Undo deleting  " + link);}
+		/*********************************************************************/
+		//unshift the sibling links before actually undeleting the link in order to refresh the link positions
+		unshiftSiblingLinks();
 		link.setTarget(target);
+		link.setSource(source);
 		
 		for (PortView port: matrixElements.keySet()) {
 			TransitionMatrixElement element = matrixElements.get(port);
 			port.getTransitionRow().add(element);
 		}
+		
 	}
 
 	public void setLink(ViewLink link) {
@@ -114,4 +134,52 @@ public class DeleteLinkCommand extends Command {
 		}
 	}
 	
+	private void shiftSiblingLinks() {
+		if (target instanceof TransitionView) {
+			shiftIncomingLinks(-1);
+		}
+		if (source instanceof TransitionView) {
+			shiftOutgoingLinks(-1);
+		}
+	}
+	
+	private void unshiftSiblingLinks() {
+		if (target instanceof TransitionView) {
+			shiftIncomingLinks(1);
+		}
+		if (source instanceof TransitionView) {
+			shiftOutgoingLinks(1);
+		}
+	}
+	
+	private void shiftOutgoingLinks(int shiftBy) {
+		List<ViewLink> sourceOutgoingLinks = source.getOutgoingLinks();
+		for (ViewLink siblingLink: sourceOutgoingLinks) {
+			//if shiftBy is less than 0 we are shifting the sibling links up, otherwise we are shifting them back down
+			if (!siblingLink.equals(link) && 
+					(shiftBy > 0 && siblingLink.getSourceAnchor() >= link.getSourceAnchor() || 
+					shiftBy < 0 && siblingLink.getSourceAnchor() > link.getSourceAnchor())) {
+				siblingLink.setSourceAnchor(siblingLink.getSourceAnchor() + shiftBy);
+				/*********************************************************************/
+				if (log.isDebugEnabled()) { log.debug("DeleteLinkCommand: Just shifted source link " + siblingLink + " by " + shiftBy + " sourceAnchor=" + siblingLink.getSourceAnchor());}
+				/*********************************************************************/
+			}
+		}
+	}
+
+	private void shiftIncomingLinks(int shiftBy) {
+		List<ViewLink> targetIncomingLinks = target.getIncomingLinks();
+		for (ViewLink siblingLink: targetIncomingLinks) {
+			//if shiftBy is less than 0 we are shifting the sibling links up, otherwise we are shifting them back down
+			if (!siblingLink.equals(link) && 
+					(shiftBy > 0 && siblingLink.getTargetAnchor() >= link.getTargetAnchor() || 
+					shiftBy < 0 && siblingLink.getTargetAnchor() > link.getTargetAnchor())) {
+				siblingLink.setTargetAnchor(siblingLink.getTargetAnchor() + shiftBy);
+				/*********************************************************************/
+				if (log.isDebugEnabled()) { log.debug("DeleteLinkCommand: Just shifted target link " + siblingLink + " by " + shiftBy + " targetAnchor=" + siblingLink.getTargetAnchor());}
+				/*********************************************************************/
+			}
+		}
+	}
+
 }

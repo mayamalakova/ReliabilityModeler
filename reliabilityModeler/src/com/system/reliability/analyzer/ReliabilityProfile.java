@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.reliability.system.Failure;
 import com.reliability.system.Transition;
+import com.system.reliability.modeler.i18n.Messages;
 
 public class ReliabilityProfile {
 	private Transition weakestTransition;
@@ -55,9 +56,9 @@ public class ReliabilityProfile {
 	
 	public String toString() {
 		if (getWeakestTransition() == null) {
-			return "Failed to calculate the system reliability! Not enough data!";
+			return Messages.profile_message_not_enough_data;
 		}
-		String displayText = "Failure necessity: " + getTotalReliability() + " - weekest point: " + getWeakestTransition().getName();
+		String displayText = "Failure necessity: " + getTotalReliability() + " - weekest point: " + getWeakestTransition().getName(); //$NON-NLS-1$ //$NON-NLS-2$
 		return displayText;
 	}
 }

@@ -1,5 +1,6 @@
 package com.system.reliability.modeler.editor.command;
 
+import org.apache.log4j.Logger;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.gef.commands.Command;
 
@@ -10,6 +11,8 @@ import com.reliability.system.view.ViewLink;
 import com.reliability.system.view.ViewObject;
 
 public class CreateLinkCommand extends Command {
+	private static final Logger log = Logger.getLogger(CreateLinkCommand.class);
+	
 	private ViewLink link;
 	private ViewObject source;
 	private ViewObject target;
@@ -21,6 +24,9 @@ public class CreateLinkCommand extends Command {
 
 	@Override
 	public void execute() {
+		/*********************************************************************/
+		if (log.isInfoEnabled()) {log.info("CreateLinkCommand  <" + source.getLabel() + ", " + target.getLabel() + ">");}
+		/*********************************************************************/
 		link.setSource(source);
 		link.setTarget(target);
 		//TODO: Handle the position loop case - still don't not what to do with it
@@ -32,29 +38,37 @@ public class CreateLinkCommand extends Command {
 		link.setTarget(null);
 	}
 
+	/**
+	 * Setting the link target - this means the command will be executed
+	 * @param target
+	 */
 	public void setTarget(ViewObject target) {
 		this.target = target;
-		//TODO the anchor index is relevant only for transitions
-		if (link != null) {
+		if (link != null && target instanceof Transition) {
+			/*********************************************************************/
+			if (log.isDebugEnabled()) {log.debug("CreateLinkCommand: set target anchor for link  " + link + " - targetAnchor=" + target.getIncomingLinks().size());}
+			/*********************************************************************/
 			link.setTargetAnchor(target.getIncomingLinks().size());
+		} else if (source instanceof Transition) {
+			this.link.setSourceAnchor(source.getOutgoingLinks().size());
+			/*********************************************************************/
+			if (log.isDebugEnabled()) {log.debug("CreateLinkCommand: set source anchor for link  " + link + " - targetAnchor=" + target.getOutgoingLinks().size());}
+			/*********************************************************************/
 		}
 	}
 
-	public void setSource(ViewObject source) {
+	/**
+	 * This method sets the initial command elements. The idea to set both items in 
+	 * one method is to avoid making asumptions about the of setting them 
+	 * @param source
+	 * @param link
+	 */
+	public void setSourceAndLink(ViewObject source, ViewLink link) {
 		this.source = source;
-		//TODO the anchor index is relevant only for transitions
-		if (link != null) {
-			link.setSourceAnchor(source.getOutgoingLinks().size());
-		}
+		this.link = link;
+		
 	}
 
-	public void setLink(ViewLink link) {
-		this.link = link;
-		if (source != null) {
-			link.setSourceAnchor(source.getOutgoingLinks().size());
-		}
-	}
-	
 	private boolean validate() {
 		if (link == null) {
 			return false;

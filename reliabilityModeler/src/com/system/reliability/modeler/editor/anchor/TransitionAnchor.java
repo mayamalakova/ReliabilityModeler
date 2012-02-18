@@ -6,8 +6,8 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 
 public class TransitionAnchor extends AbstractConnectionAnchor {
-	public int verticalOffset;
-	public int horizontalOffset;
+	private int verticalOffset;
+	private int horizontalOffset;
 	
 	public TransitionAnchor(){
 	}
@@ -20,6 +20,24 @@ public class TransitionAnchor extends AbstractConnectionAnchor {
 	public Point getLocation(Point reference) {
 		Rectangle bounds = getOwner().getBounds();
 		return new Point(bounds.x + bounds.width/2 + horizontalOffset, bounds.y + verticalOffset);
+	}
+
+	public int getHorizontalOffset() {
+		return horizontalOffset;
+	}
+
+	public void setHorizontalOffset(int horizontalOffset) {
+		this.horizontalOffset = horizontalOffset;
+	}
+
+	public int getVerticalOffset() {
+		return verticalOffset;
+	}
+
+	public void setVerticalOffset(int verticalOffset) {
+		this.verticalOffset = verticalOffset;
+		//notify the listening connection in order to make it redraw itself 
+		this.fireAnchorMoved();
 	}
 
 }

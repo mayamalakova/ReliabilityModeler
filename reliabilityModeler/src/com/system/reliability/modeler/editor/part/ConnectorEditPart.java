@@ -10,7 +10,7 @@ public class ConnectorEditPart extends TransitionEditPart {
 	@Override
 	protected IFigure createFigure() {
 		ViewObject model = (ViewObject) getModel();
-		return new ConnectorFigure(model.getOutgoingLinks().size(), model.getIncomingLinks().size());
+		return new ConnectorFigure(model.getIncomingLinks().size(), model.getOutgoingLinks().size());
 	}
 
 }

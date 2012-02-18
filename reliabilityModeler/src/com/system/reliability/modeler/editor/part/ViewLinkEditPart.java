@@ -3,6 +3,7 @@ package com.system.reliability.modeler.editor.part;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.eclipse.draw2d.AbsoluteBendpoint;
 import org.eclipse.draw2d.BendpointConnectionRouter;
 import org.eclipse.draw2d.Connection;
@@ -13,15 +14,19 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.editparts.AbstractConnectionEditPart;
 import org.eclipse.gef.editpolicies.ConnectionEndpointEditPolicy;
 
 import com.reliability.system.view.ViewLink;
+import com.reliability.system.view.ViewPackage;
 import com.system.reliability.modeler.editor.policy.LinkBendpointEditPolicy;
 import com.system.reliability.modeler.editor.policy.LinkConnectionEditPolicy;
 
 public class ViewLinkEditPart extends AbstractConnectionEditPart {
+	private static final Logger log = Logger.getLogger(ViewLinkEditPart.class);
+	
 	private ViewLinkAdapter adapter;
 	
 	public ViewLinkEditPart() {
@@ -42,11 +47,15 @@ public class ViewLinkEditPart extends AbstractConnectionEditPart {
 		PolylineConnection conn = (PolylineConnection) super.createFigure();
 		conn.setConnectionRouter(new BendpointConnectionRouter());
 		conn.setTargetDecoration(new PolylineDecoration());
+		
 		return conn;
 	}
 
 	@Override
 	protected void refreshVisuals() {
+		/*********************************************************************/
+		if (log.isDebugEnabled()) { log.debug("Refreshing visuals for " + getModel());}
+		/*********************************************************************/
 		Connection connection = getConnectionFigure();
 		List<Point> modelConstraint = ((ViewLink) getModel()).getBendpoints();
 		List<AbsoluteBendpoint> figureConstraint = new ArrayList<AbsoluteBendpoint>();
@@ -54,6 +63,9 @@ public class ViewLinkEditPart extends AbstractConnectionEditPart {
 			figureConstraint.add(new AbsoluteBendpoint(p));
 		}
 		connection.setRoutingConstraint(figureConstraint);
+		/*********************************************************************/
+		if (log.isDebugEnabled()) { log.debug("Refreshing visuals for " + getModel() + " finished");}
+		/*********************************************************************/
 	}
 
 	@Override
@@ -74,14 +86,36 @@ public class ViewLinkEditPart extends AbstractConnectionEditPart {
 
 	public class ViewLinkAdapter implements Adapter {
 
+		/**
+		 * Listen for changes in order to update the link bendpoints
+		 */
 		@Override
 		public void notifyChanged(Notification notification) {
-			refreshVisuals();
+			if (notification.getFeature() == null) {
+				return;
+			}
+			/*********************************************************************/
+			if (log.isDebugEnabled()) { log.debug("Notification for " + ((EStructuralFeature)notification.getFeature()).getName() + " for " + getModel());}
+			/*********************************************************************/
+			if (notification.getFeatureID(ViewLink.class) == ViewPackage.VIEW_LINK__TARGET_ANCHOR) {
+				//target anchor has changed - update the connection  in order to start it listening to the new target anchor
+				((PolylineConnection)getConnectionFigure()).setTargetAnchor(getTargetConnectionAnchor());
+			}
+			
+			if (notification.getFeatureID(ViewLink.class) == ViewPackage.VIEW_LINK__SOURCE_ANCHOR) {
+				//source anchor has changed - update the connection  in order to start it listening to the new source anchor
+				((PolylineConnection)getConnectionFigure()).setSourceAnchor(getSourceConnectionAnchor());
+			}
+			
+			if (ViewPackage.VIEW_LINK__BENDPOINTS == notification.getFeatureID(ViewLink.class )) {
+				refreshVisuals();
+			}
+
 		}
 
 		@Override
 		public Notifier getTarget() {
-			return (ViewLink) getModel();
+			return (Notifier) getModel();
 		}
 
 		@Override

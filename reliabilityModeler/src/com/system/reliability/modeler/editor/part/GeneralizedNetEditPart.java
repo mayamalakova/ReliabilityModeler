@@ -66,6 +66,7 @@ public class GeneralizedNetEditPart extends AbstractGraphicalEditPart {
 		if (!isActive()) {
 			GeneralizedNet model = (GeneralizedNet) getModel();
 			model.eAdapters().add(modelAdapter);
+			//listen to changes in the model transitions in order to show failures
 			for (Transition transition : model.getTransitions()) {
 				transition.eAdapters().add(modelAdapter);
 			}

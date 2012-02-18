@@ -17,3 +17,5 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.edit.ui;bundle-version="2.7.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: .,
+ lib/log4j-1.2.16.jar
