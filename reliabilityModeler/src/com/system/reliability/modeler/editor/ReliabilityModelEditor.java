@@ -3,6 +3,7 @@ package com.system.reliability.modeler.editor;
 import java.io.IOException;
 import java.util.EventObject;
 
+import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.URI;
@@ -30,6 +31,8 @@ import com.system.reliability.modeler.editor.part.ReliabilityEditPartFactory;
 import com.system.reliability.modeler.properties.RgetPropertySourceProvider;
 
 public class ReliabilityModelEditor extends GraphicalEditorWithFlyoutPalette {
+	private static Logger log = Logger.getLogger(ReliabilityModelEditor.class); 
+	
 	private GeneralizedNet system;
 	private Resource systemResource;
 	private PropertySheetPage propertyPage;
@@ -54,7 +57,7 @@ public class ReliabilityModelEditor extends GraphicalEditorWithFlyoutPalette {
 			systemResource.save(null);
 			getCommandStack().markSaveLocation();
 		} catch (IOException e) {
-			e.printStackTrace();
+			log.error("Failed to save the model file", e);
 		}
 	}
 
@@ -80,6 +83,7 @@ public class ReliabilityModelEditor extends GraphicalEditorWithFlyoutPalette {
 			IFileEditorInput fileInput = (IFileEditorInput) input;
 			IFile file = fileInput.getFile();
 			loadModel(file.getFullPath().toOSString());
+			setPartName(input.getName());
 		}
 	}
 
@@ -93,7 +97,7 @@ public class ReliabilityModelEditor extends GraphicalEditorWithFlyoutPalette {
 			systemResource.load(null);
 			system = (GeneralizedNet) systemResource.getContents().get(0);
 		} catch (IOException e) {
-			e.printStackTrace();
+			log.error("Failed to load the model file", e);
 		}
 	}
 
