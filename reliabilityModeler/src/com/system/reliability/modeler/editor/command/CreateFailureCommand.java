@@ -70,14 +70,15 @@ public class CreateFailureCommand extends Command {
 	}
 	
 	private String getDefaultId() {
-		Set<String> transitionNames = new HashSet<String>();
+		Set<String> failureNames = new HashSet<String>();
 		for (Transition transition: parent.getOwner().getTransitions()) {
-			transitionNames.add(transition.getName());
+			if (transition.getFailureState() != null)
+			failureNames.add(transition.getFailureState().getId());
 		}
 		
 		StringBuilder nameBuilder = new StringBuilder(DEFAULT_NAME + 1);
 		int i = 2;
-		while (transitionNames.contains(nameBuilder.toString())) {
+		while (failureNames.contains(nameBuilder.toString())) {
 			nameBuilder.replace(nameBuilder.length() - 1, nameBuilder.length(), "" + (i++));
 		}
 

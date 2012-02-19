@@ -30,6 +30,7 @@ import com.reliability.system.GeneralizedNet;
 import com.reliability.system.view.ViewPackage;
 import com.system.reliability.modeler.editor.palette.ModelEditorPalette;
 import com.system.reliability.modeler.editor.part.ReliabilityEditPartFactory;
+import com.system.reliability.modeler.i18n.Messages;
 import com.system.reliability.modeler.properties.RgetPropertySourceProvider;
 
 public class ReliabilityModelEditor extends GraphicalEditorWithFlyoutPalette {
@@ -59,7 +60,7 @@ public class ReliabilityModelEditor extends GraphicalEditorWithFlyoutPalette {
 			systemResource.save(null);
 			getCommandStack().markSaveLocation();
 		} catch (IOException e) {
-			log.error("Failed to save the model file", e);
+			log.error(Messages.editor_message_save_failed, e);
 		}
 	}
 
@@ -103,7 +104,7 @@ public class ReliabilityModelEditor extends GraphicalEditorWithFlyoutPalette {
 			systemResource.load(null);
 			system = (GeneralizedNet) systemResource.getContents().get(0);
 		} catch (IOException e) {
-			log.error("Failed to load the model file", e);
+			log.error(Messages.editor_message_load_failed, e);
 		}
 	}
 

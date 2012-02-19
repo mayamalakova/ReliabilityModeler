@@ -16,6 +16,7 @@ import com.system.reliability.modeler.editor.factory.ConnectorObjectFactory;
 import com.system.reliability.modeler.editor.factory.FailureObjectFactory;
 import com.system.reliability.modeler.editor.factory.LinkObjectFactory;
 import com.system.reliability.modeler.editor.factory.PortObjectFactory;
+import com.system.reliability.modeler.i18n.Messages;
 
 public class ModelEditorPalette extends PaletteRoot {
 
@@ -34,7 +35,7 @@ public class ModelEditorPalette extends PaletteRoot {
 	  }
 	 
 	  private void addControlGroup() {
-	    mainGroup = new PaletteGroup("Controls");
+	    mainGroup = new PaletteGroup("Controls"); //$NON-NLS-1$
 	    add(mainGroup);
 	    addSelectionTool();
 		   
@@ -42,8 +43,8 @@ public class ModelEditorPalette extends PaletteRoot {
 	  }
 	 
 	private void addElemensGroup() {
-		elementsGroup = new PaletteDrawer("Model Elements", ImageDescriptor.createFromFile(
-				RgetPlugin.class, "images/rget_model_16.png"));
+		elementsGroup = new PaletteDrawer(Messages.palette_drawer_elements, ImageDescriptor.createFromFile(
+				RgetPlugin.class, "images/rget_model_16.png")); //$NON-NLS-1$
 		add(elementsGroup);
 		addComponentTool();
 		addConnectorTool();
@@ -52,41 +53,41 @@ public class ModelEditorPalette extends PaletteRoot {
 	}
 	  
 	  private void addComponentTool() {
-	    CreationToolEntry entry = new CreationToolEntry("Component", "Create a new Component", new ComponentObjectFactory(), 
-	    		ImageDescriptor.createFromFile(RgetPlugin.class, "images/component_16.png"),
-				ImageDescriptor.createFromFile(RgetPlugin.class, "images/component_16.png"));
+	    CreationToolEntry entry = new CreationToolEntry(Messages.palette_create_component, Messages.palette_create_component_tooltip, new ComponentObjectFactory(), 
+	    		ImageDescriptor.createFromFile(RgetPlugin.class, "images/component_16.png"), //$NON-NLS-1$
+				ImageDescriptor.createFromFile(RgetPlugin.class, "images/component_16.png")); //$NON-NLS-1$
 	    entry.setToolClass(CreationAndDirectEditTool.class);
 	    elementsGroup.add(entry);
 	  }
 	 
 	  private void addConnectorTool() {
-	    CreationToolEntry entry = new CreationToolEntry("Connector", "Create a new Connector", new ConnectorObjectFactory(), 
-	    		ImageDescriptor.createFromFile(RgetPlugin.class, "images/connector_16.png"), 
-	    		ImageDescriptor.createFromFile(RgetPlugin.class, "images/connector_16.png"));
+	    CreationToolEntry entry = new CreationToolEntry(Messages.palette_create_connector, Messages.palette_create_connector_tooltip, new ConnectorObjectFactory(), 
+	    		ImageDescriptor.createFromFile(RgetPlugin.class, "images/connector_16.png"),  //$NON-NLS-1$
+	    		ImageDescriptor.createFromFile(RgetPlugin.class, "images/connector_16.png")); //$NON-NLS-1$
 	    entry.setToolClass(CreationAndDirectEditTool.class);
 	    elementsGroup.add(entry);
 	  }
 	  
 	private void addPortTool() {
-		CreationToolEntry entry = new CreationToolEntry("Port", "Create a new Port", 	new PortObjectFactory(), 
-				ImageDescriptor.createFromFile(RgetPlugin.class, "images/port_16.png"),  
-				ImageDescriptor.createFromFile(RgetPlugin.class, "images/port_16.png"));
+		CreationToolEntry entry = new CreationToolEntry(Messages.palette_create_port, Messages.palette_create_port_tooltip, 	new PortObjectFactory(), 
+				ImageDescriptor.createFromFile(RgetPlugin.class, "images/port_16.png"),   //$NON-NLS-1$
+				ImageDescriptor.createFromFile(RgetPlugin.class, "images/port_16.png")); //$NON-NLS-1$
 		entry.setToolClass(CreationAndDirectEditTool.class);
 		elementsGroup.add(entry);
 	}
 	
 	private void addFailureTool() {
-		CreationToolEntry entry = new CreationToolEntry("Failure", "Create a new Failure", 	new FailureObjectFactory(), 
-				ImageDescriptor.createFromFile(RgetPlugin.class, "images/failure_16.png"), 
-				ImageDescriptor.createFromFile(RgetPlugin.class, "images/failure_16.png"));
+		CreationToolEntry entry = new CreationToolEntry(Messages.palette_create_failure, Messages.palette_create_failure_tooltip, 	new FailureObjectFactory(), 
+				ImageDescriptor.createFromFile(RgetPlugin.class, "images/failure_16.png"),  //$NON-NLS-1$
+				ImageDescriptor.createFromFile(RgetPlugin.class, "images/failure_16.png")); //$NON-NLS-1$
 		entry.setToolClass(CreationAndDirectEditTool.class);
 		elementsGroup.add(entry);
 	}
 
 	private void addLinkTool() {
-		CreationToolEntry entry = new ConnectionCreationToolEntry("Link", "Create a new Link", 	new LinkObjectFactory(), 
-				ImageDescriptor.createFromFile(RgetPlugin.class, "images/link_16.gif"), 
-				ImageDescriptor.createFromFile(RgetPlugin.class, "images/link_16.gif"));
+		CreationToolEntry entry = new ConnectionCreationToolEntry(Messages.palette_link_elements, Messages.palette_link_elements_tooltip, 	new LinkObjectFactory(), 
+				ImageDescriptor.createFromFile(RgetPlugin.class, "images/link_16.gif"),  //$NON-NLS-1$
+				ImageDescriptor.createFromFile(RgetPlugin.class, "images/link_16.gif")); //$NON-NLS-1$
 		mainGroup.add(entry);
 	}
 	

@@ -12,6 +12,8 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.actions.ActionFactory;
 import org.eclipse.ui.actions.RetargetAction;
 
+import com.system.reliability.modeler.i18n.Messages;
+
 
 public class EditorActionBarContributor extends ActionBarContributor {
 	AnalyzeReliabilityAction analyzeAction;
@@ -23,8 +25,8 @@ public class EditorActionBarContributor extends ActionBarContributor {
 		addRetargetAction(new DeleteRetargetAction());
 		analyzeAction = new AnalyzeReliabilityAction();
 		addAction(analyzeAction);
-		addRetargetAction(new RetargetAction(GEFActionConstants.TOGGLE_GRID_VISIBILITY, "Show/Hide Grid", IAction.AS_CHECK_BOX));
-		addRetargetAction(new RetargetAction(GEFActionConstants.TOGGLE_SNAP_TO_GEOMETRY, "Snap to Geometry", IAction.AS_CHECK_BOX));
+		addRetargetAction(new RetargetAction(GEFActionConstants.TOGGLE_GRID_VISIBILITY, Messages.actions_show_hide_grid, IAction.AS_CHECK_BOX));
+		addRetargetAction(new RetargetAction(GEFActionConstants.TOGGLE_SNAP_TO_GEOMETRY, Messages.actions_snap_to_grid, IAction.AS_CHECK_BOX));
 	}
 
 	@Override

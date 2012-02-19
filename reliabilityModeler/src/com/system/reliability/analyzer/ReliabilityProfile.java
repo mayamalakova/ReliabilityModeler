@@ -59,7 +59,10 @@ public class ReliabilityProfile {
 		if (getWeakestTransition() == null) {
 			return Messages.profile_message_not_enough_data;
 		}
-		String displayText = "Failure necessity: " + getTotalReliability() + " - weekest point: " + getWeakestTransition().getName(); //$NON-NLS-1$ //$NON-NLS-2$
+		String necessity = Float.toString(getTotalReliability());  
+		String possibiility = Float.toString(1 - getTotalReliability());
+		String weekestPoint = getWeakestTransition().getName();
+		String displayText = Messages.bind(Messages.profile_result, new String[]{necessity, possibiility, weekestPoint});
 		return displayText;
 	}
 }
