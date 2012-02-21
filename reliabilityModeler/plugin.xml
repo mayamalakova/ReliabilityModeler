@@ -13,5 +13,15 @@
             name="Reliability Model Editor">
       </editor>
    </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="com.system.reliability.modeler.ReliabilityPerspectiveFactory"
+            fixed="true"
+            icon="icons/cube_molecule.png"
+            id="com.system.reliability.modeler.perspectiveId"
+            name="RAT">
+      </perspective>
+   </extension>
 
 </plugin>
