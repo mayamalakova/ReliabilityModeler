@@ -30,6 +30,9 @@ public class ReliabilityAnalyzer {
 			reliabilityProfiles.put(systemInput, profile);
 			findAllFailurePaths(new TransitionPath(systemInput), systemInput);
 		}
+		/*********************************************************************/
+		if (log.isInfoEnabled()) 	log.info("System Reliability Profile:\n" + ReliabilityModelUtils.getReliabilityProfilesText(reliabilityProfiles)); 
+		/*********************************************************************/
 		
 		return reliabilityProfiles;
 	}
@@ -58,7 +61,7 @@ public class ReliabilityAnalyzer {
 		}
 		
 		for (TransitionMatrixElement element: ((Port) currentPosition).getTransitionRow()) {
-			if (!currentPath.containsNode(element)) {
+			if (!currentPath.containsNode(element) && element.getNecessity() > 0) {
 				currentPath.addPosition(element);
 				findAllFailurePaths(currentPath, element.getOppositePosition());
 				currentPath.removeLastPosition();
@@ -90,7 +93,8 @@ public class ReliabilityAnalyzer {
 
 			case 2:
 				Map<Port, ReliabilityProfile> reliabilityProfiles = analyzer.estimateReliability();
-				displayReliabilityProfiles(reliabilityProfiles);
+				String result = ReliabilityModelUtils.getReliabilityProfilesText(reliabilityProfiles);
+				System.out.println(result);
 				break;
 				
 			default:
@@ -116,13 +120,6 @@ public class ReliabilityAnalyzer {
 		
 		sb.delete(sb.length() - 1, sb.length());
 		System.out.println("System inputs: " + sb.toString()); //$NON-NLS-1$
-	}
-	
-	private static void displayReliabilityProfiles(Map<Port, ReliabilityProfile> reliabilityProfiles) {
-		for (Port port: reliabilityProfiles.keySet()) {
-			ReliabilityProfile profile = reliabilityProfiles.get(port);
-			System.out.println("Input: " + port.getId() + " - " + profile); //$NON-NLS-1$ //$NON-NLS-2$
-		}
 	}
 	
 }

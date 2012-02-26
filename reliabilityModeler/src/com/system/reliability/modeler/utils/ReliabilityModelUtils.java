@@ -141,7 +141,7 @@ public class ReliabilityModelUtils {
 		StringBuilder result = new StringBuilder();
 		for (Port port: reliabilityProfiles.keySet()) {
 			ReliabilityProfile profile = reliabilityProfiles.get(port);
-			result.append("Input: " + port.getId() + " - " + profile);
+			result.append("Using input  " + port.getId() + " : " + profile);
 			result.append("\n");
 		}
 		
