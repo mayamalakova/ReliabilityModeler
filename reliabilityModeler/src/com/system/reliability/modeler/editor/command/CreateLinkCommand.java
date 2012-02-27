@@ -97,7 +97,7 @@ public class CreateLinkCommand extends Command {
 		return true;
 	}
 	
-	public boolean contains(EList<ViewLink> links, ViewObject object) {
+	private boolean contains(EList<ViewLink> links, ViewObject object) {
 		for (ViewLink link: links) {
 			if (link.getTarget().equals(object)){
 				return true;

@@ -15,6 +15,7 @@ import org.eclipse.gef.DefaultEditDomain;
 import org.eclipse.gef.palette.PaletteRoot;
 import org.eclipse.gef.ui.actions.ToggleGridAction;
 import org.eclipse.gef.ui.actions.ToggleSnapToGeometryAction;
+import org.eclipse.gef.ui.palette.FlyoutPaletteComposite.FlyoutPreferences;
 import org.eclipse.gef.ui.parts.GraphicalEditorWithFlyoutPalette;
 import org.eclipse.gef.ui.properties.UndoablePropertySheetEntry;
 import org.eclipse.gef.ui.properties.UndoablePropertySheetPage;
@@ -28,6 +29,7 @@ import org.eclipse.ui.views.properties.PropertySheetPage;
 
 import com.reliability.system.GeneralizedNet;
 import com.reliability.system.view.ViewPackage;
+import com.system.reliability.modeler.RatPlugin;
 import com.system.reliability.modeler.editor.palette.ModelEditorPalette;
 import com.system.reliability.modeler.editor.part.ReliabilityEditPartFactory;
 import com.system.reliability.modeler.i18n.Messages;
@@ -39,9 +41,11 @@ public class ReliabilityModelEditor extends GraphicalEditorWithFlyoutPalette {
 	private GeneralizedNet system;
 	private Resource systemResource;
 	private PropertySheetPage propertyPage;
+	private FlyoutPreferences palettePreferences;
 
 	public ReliabilityModelEditor() {
 		setEditDomain(new DefaultEditDomain(this));
+		palettePreferences = new PalettePreferences(RatPlugin.getDefault().getPreferenceStore());
 	}
 
 	@Override
@@ -135,4 +139,11 @@ public class ReliabilityModelEditor extends GraphicalEditorWithFlyoutPalette {
     public GeneralizedNet getModel() {
     	return system;
     }
+
+	@Override
+	protected FlyoutPreferences getPalettePreferences() {
+		return palettePreferences;
+	}
+    
+    
 }

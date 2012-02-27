@@ -5,7 +5,7 @@ import org.eclipse.gef.commands.Command;
 
 import com.reliability.system.view.ViewLink;
 
-public class CreateBendpointCommant extends Command {
+public class CreateBendpointCommand extends Command {
 	private int index;
     private Point location;
     private ViewLink link;

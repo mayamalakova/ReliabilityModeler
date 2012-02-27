@@ -6,18 +6,18 @@ import org.osgi.framework.BundleContext;
 /**
  * The activator class controls the plug-in life cycle
  */
-public class RgetPlugin extends AbstractUIPlugin {
+public class RatPlugin extends AbstractUIPlugin {
 
 	// The plug-in ID
 	public static final String PLUGIN_ID = "reliabilityModeler"; //$NON-NLS-1$
 
 	// The shared instance
-	private static RgetPlugin plugin;
+	private static RatPlugin plugin;
 	
 	/**
 	 * The constructor
 	 */
-	public RgetPlugin() {
+	public RatPlugin() {
 	}
 
 	/*
@@ -43,7 +43,7 @@ public class RgetPlugin extends AbstractUIPlugin {
 	 *
 	 * @return the shared instance
 	 */
-	public static RgetPlugin getDefault() {
+	public static RatPlugin getDefault() {
 		return plugin;
 	}
 

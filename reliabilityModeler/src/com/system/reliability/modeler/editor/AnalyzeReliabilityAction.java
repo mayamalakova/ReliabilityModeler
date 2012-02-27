@@ -13,7 +13,7 @@ import com.reliability.system.GeneralizedNet;
 import com.reliability.system.Port;
 import com.system.reliability.analyzer.ReliabilityAnalyzer;
 import com.system.reliability.analyzer.ReliabilityProfile;
-import com.system.reliability.modeler.RgetPlugin;
+import com.system.reliability.modeler.RatPlugin;
 import com.system.reliability.modeler.i18n.Messages;
 import com.system.reliability.modeler.utils.Constants;
 import com.system.reliability.modeler.utils.ReliabilityModelUtils;
@@ -25,7 +25,7 @@ public class AnalyzeReliabilityAction extends Action {
 		setId(Constants.ACTION_ANALYZE);
 		setText(Messages.action_analyze_label);
 		setToolTipText(Messages.action_analyze_tooltip);
-		ImageDescriptor image = AbstractUIPlugin.imageDescriptorFromPlugin(RgetPlugin.PLUGIN_ID,	"icons/rget_analyze_16.png"); //$NON-NLS-1$
+		ImageDescriptor image = AbstractUIPlugin.imageDescriptorFromPlugin(RatPlugin.PLUGIN_ID,	"icons/rget_analyze_16.png"); //$NON-NLS-1$
 		if (image != null) {
 			setImageDescriptor(image);
 		}

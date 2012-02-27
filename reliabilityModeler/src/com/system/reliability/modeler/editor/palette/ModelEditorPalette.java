@@ -9,7 +9,7 @@ import org.eclipse.gef.palette.PaletteRoot;
 import org.eclipse.gef.palette.SelectionToolEntry;
 import org.eclipse.jface.resource.ImageDescriptor;
 
-import com.system.reliability.modeler.RgetPlugin;
+import com.system.reliability.modeler.RatPlugin;
 import com.system.reliability.modeler.editor.CreationAndDirectEditTool;
 import com.system.reliability.modeler.editor.factory.ComponentObjectFactory;
 import com.system.reliability.modeler.editor.factory.ConnectorObjectFactory;
@@ -44,7 +44,7 @@ public class ModelEditorPalette extends PaletteRoot {
 	 
 	private void addElemensGroup() {
 		elementsGroup = new PaletteDrawer(Messages.palette_drawer_elements, ImageDescriptor.createFromFile(
-				RgetPlugin.class, "images/rget_model_16.png")); //$NON-NLS-1$
+				RatPlugin.class, "images/rget_model_16.png")); //$NON-NLS-1$
 		add(elementsGroup);
 		addComponentTool();
 		addConnectorTool();
@@ -54,40 +54,40 @@ public class ModelEditorPalette extends PaletteRoot {
 	  
 	  private void addComponentTool() {
 	    CreationToolEntry entry = new CreationToolEntry(Messages.palette_create_component, Messages.palette_create_component_tooltip, new ComponentObjectFactory(), 
-	    		ImageDescriptor.createFromFile(RgetPlugin.class, "images/component_16.png"), //$NON-NLS-1$
-				ImageDescriptor.createFromFile(RgetPlugin.class, "images/component_16.png")); //$NON-NLS-1$
+	    		ImageDescriptor.createFromFile(RatPlugin.class, "images/component_16.png"), //$NON-NLS-1$
+				ImageDescriptor.createFromFile(RatPlugin.class, "images/component_16.png")); //$NON-NLS-1$
 	    entry.setToolClass(CreationAndDirectEditTool.class);
 	    elementsGroup.add(entry);
 	  }
 	 
 	  private void addConnectorTool() {
 	    CreationToolEntry entry = new CreationToolEntry(Messages.palette_create_connector, Messages.palette_create_connector_tooltip, new ConnectorObjectFactory(), 
-	    		ImageDescriptor.createFromFile(RgetPlugin.class, "images/connector_16.png"),  //$NON-NLS-1$
-	    		ImageDescriptor.createFromFile(RgetPlugin.class, "images/connector_16.png")); //$NON-NLS-1$
+	    		ImageDescriptor.createFromFile(RatPlugin.class, "images/connector_16.png"),  //$NON-NLS-1$
+	    		ImageDescriptor.createFromFile(RatPlugin.class, "images/connector_16.png")); //$NON-NLS-1$
 	    entry.setToolClass(CreationAndDirectEditTool.class);
 	    elementsGroup.add(entry);
 	  }
 	  
 	private void addPortTool() {
 		CreationToolEntry entry = new CreationToolEntry(Messages.palette_create_port, Messages.palette_create_port_tooltip, 	new PortObjectFactory(), 
-				ImageDescriptor.createFromFile(RgetPlugin.class, "images/port_16.png"),   //$NON-NLS-1$
-				ImageDescriptor.createFromFile(RgetPlugin.class, "images/port_16.png")); //$NON-NLS-1$
+				ImageDescriptor.createFromFile(RatPlugin.class, "images/port_16.png"),   //$NON-NLS-1$
+				ImageDescriptor.createFromFile(RatPlugin.class, "images/port_16.png")); //$NON-NLS-1$
 		entry.setToolClass(CreationAndDirectEditTool.class);
 		elementsGroup.add(entry);
 	}
 	
 	private void addFailureTool() {
 		CreationToolEntry entry = new CreationToolEntry(Messages.palette_create_failure, Messages.palette_create_failure_tooltip, 	new FailureObjectFactory(), 
-				ImageDescriptor.createFromFile(RgetPlugin.class, "images/failure_16.png"),  //$NON-NLS-1$
-				ImageDescriptor.createFromFile(RgetPlugin.class, "images/failure_16.png")); //$NON-NLS-1$
+				ImageDescriptor.createFromFile(RatPlugin.class, "images/failure_16.png"),  //$NON-NLS-1$
+				ImageDescriptor.createFromFile(RatPlugin.class, "images/failure_16.png")); //$NON-NLS-1$
 		entry.setToolClass(CreationAndDirectEditTool.class);
 		elementsGroup.add(entry);
 	}
 
 	private void addLinkTool() {
 		CreationToolEntry entry = new ConnectionCreationToolEntry(Messages.palette_link_elements, Messages.palette_link_elements_tooltip, 	new LinkObjectFactory(), 
-				ImageDescriptor.createFromFile(RgetPlugin.class, "images/link_16.gif"),  //$NON-NLS-1$
-				ImageDescriptor.createFromFile(RgetPlugin.class, "images/link_16.gif")); //$NON-NLS-1$
+				ImageDescriptor.createFromFile(RatPlugin.class, "images/link_16.gif"),  //$NON-NLS-1$
+				ImageDescriptor.createFromFile(RatPlugin.class, "images/link_16.gif")); //$NON-NLS-1$
 		mainGroup.add(entry);
 	}
 	

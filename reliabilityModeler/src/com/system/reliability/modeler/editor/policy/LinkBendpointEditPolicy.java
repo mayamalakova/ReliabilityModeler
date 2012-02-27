@@ -19,7 +19,7 @@ import org.eclipse.gef.tools.ConnectionBendpointTracker;
 
 import com.reliability.system.view.ViewLink;
 import com.system.reliability.modeler.editor.LinkBendpointTrackerGrid;
-import com.system.reliability.modeler.editor.command.CreateBendpointCommant;
+import com.system.reliability.modeler.editor.command.CreateBendpointCommand;
 import com.system.reliability.modeler.editor.command.DeleteBendpointCommand;
 import com.system.reliability.modeler.editor.command.MoveBendpointCommand;
 
@@ -27,7 +27,7 @@ public class LinkBendpointEditPolicy extends BendpointEditPolicy {
 
 	@Override
 	protected Command getCreateBendpointCommand(BendpointRequest request) {
-		CreateBendpointCommant command = new CreateBendpointCommant();
+		CreateBendpointCommand command = new CreateBendpointCommand();
 		 
 	    Point p = request.getLocation();
 	 

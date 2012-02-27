@@ -4,7 +4,7 @@ import org.eclipse.gef.commands.Command;
 
 import com.reliability.system.view.ViewObject;
 
-public class RenameTransitionCommand extends Command {
+public class RenameViewObjectCommand extends Command {
 	private String oldName, newName;
 	private ViewObject model;
 

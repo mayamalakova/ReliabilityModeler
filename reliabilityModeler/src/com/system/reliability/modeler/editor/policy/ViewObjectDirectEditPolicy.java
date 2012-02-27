@@ -5,14 +5,14 @@ import org.eclipse.gef.editpolicies.DirectEditPolicy;
 import org.eclipse.gef.requests.DirectEditRequest;
 
 import com.reliability.system.view.ViewObject;
-import com.system.reliability.modeler.editor.command.RenameTransitionCommand;
+import com.system.reliability.modeler.editor.command.RenameViewObjectCommand;
 import com.system.reliability.modeler.editor.figure.IModelFigure;
 
 public class ViewObjectDirectEditPolicy extends DirectEditPolicy {
 
 	@Override
 	protected Command getDirectEditCommand(DirectEditRequest request) {
-		RenameTransitionCommand command = new RenameTransitionCommand();
+		RenameViewObjectCommand command = new RenameViewObjectCommand();
 	    command.setModel((ViewObject) getHost().getModel());
 	    command.setNewName((String) request.getCellEditor().getValue());
 	    return command;

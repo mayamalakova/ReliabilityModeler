@@ -70,7 +70,6 @@ public class MatrixRowPropertySource implements IPropertySource {
 	private Map<String, Position> getIdToOppositePort(PortView port) {
 		Map<String, Position> map = new HashMap<String, Position>();
 		for (ViewLink incomingLink: port.getOutgoingLinks()) {
-			//TODO handle loops
 			TransitionView transition = (TransitionView) incomingLink.getTarget();
 			for (ViewLink outgoingLink: transition.getOutgoingLinks()) {
 				ViewObject target = outgoingLink.getTarget();

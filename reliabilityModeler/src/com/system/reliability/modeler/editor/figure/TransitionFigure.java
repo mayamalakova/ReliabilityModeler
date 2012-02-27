@@ -102,24 +102,24 @@ public abstract class TransitionFigure extends Figure implements IModelFigure{
 	private void updateAnchorListsSize() {
 		if (inputAnchors.size() < inputsCout + 1) {
 			/*********************************************************************/
-			if (log.isInfoEnabled()) { log.info("Addind anchor size=" + inputAnchors.size() +" count=" + (inputsCout + 1));}
+			if (log.isInfoEnabled()) { log.info(getNameLabel().getText() +" - Addind input anchor size=" + inputAnchors.size() +" count=" + (inputsCout + 1));}
 			/*********************************************************************/
 			inputAnchors.add(new TransitionAnchor(this));
 		} else if (inputAnchors.size() > inputsCout + 1) {
 			/*********************************************************************/
-			if (log.isInfoEnabled()) { log.info("Removing anchor size=" + inputAnchors.size() +" count=" + (inputsCout + 1));}
+			if (log.isInfoEnabled()) { log.info(getNameLabel().getText() +" - Removing input anchor size=" + inputAnchors.size() +" count=" + (inputsCout + 1));}
 			/*********************************************************************/
 			inputAnchors.remove(inputsCout + 1);
 		}
 		
 		if (outputAnchors.size() < outputsCount + 1) {
 			/*********************************************************************/
-			if (log.isDebugEnabled()) { log.debug("Addind anchor size=" + outputAnchors.size() +" count=" + (outputsCount + 1));}
+			if (log.isDebugEnabled()) { log.debug(getNameLabel().getText() +" - Addind output anchor size=" + outputAnchors.size() +" count=" + (outputsCount + 1));}
 			/*********************************************************************/
 			outputAnchors.add(new TransitionAnchor(this));
 		} else if (outputAnchors.size() > outputsCount + 1) {
 			/*********************************************************************/
-			if (log.isDebugEnabled()) { log.debug("Removing anchor size=" + outputAnchors.size() +" count=" + (outputsCount + 1));}
+			if (log.isDebugEnabled()) { log.debug(getNameLabel().getText() +" - Removing output anchor size=" + outputAnchors.size() +" count=" + (outputsCount + 1));}
 			/*********************************************************************/
 			outputAnchors.remove(outputsCount + 1); 
 		}

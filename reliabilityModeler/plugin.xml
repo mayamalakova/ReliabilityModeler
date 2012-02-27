@@ -23,5 +23,46 @@
             name="RAT">
       </perspective>
    </extension>
+   <extension
+         id="ratProduct"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.eclipse.ui.ide.workbench"
+            name="Reliability Analysis Tools">
+         <property
+               name="windowImages"
+               value="icons/cube_molecule.png,icons/cube_molecule_32.png,icons/cube_molecule_48.png,eclipse.png,eclipse32.png">
+         </property>
+         <property
+               name="aboutText"
+               value="Reliability Analysis Tools">
+         </property>
+         <property
+               name="aboutImage"
+               value="icons/cube_molecule_48.png">
+         </property>
+         <property
+               name="startupForegroundColor"
+               value="C8D5EA">
+         </property>
+         <property
+               name="startupProgressRect"
+               value="0,280,455,15">
+         </property>
+         <property
+               name="startupMessageRect"
+               value="7,220,441,20">
+         </property>
+         <property
+               name="appName"
+               value="Reliability Analysis Tools">
+         </property>
+         <property
+               name="preferenceCustomization"
+               value="plugin_customization.ini">
+         </property>
+      </product>
+   </extension>
+  
 
 </plugin>
