@@ -1,4 +1,4 @@
-package com.system.reliability.modeler.editor;
+package com.system.reliability.modeler.editor.palette;
 
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.gef.ui.palette.FlyoutPaletteComposite;

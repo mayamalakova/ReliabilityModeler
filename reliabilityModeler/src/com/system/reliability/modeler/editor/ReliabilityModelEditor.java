@@ -31,6 +31,7 @@ import com.reliability.system.GeneralizedNet;
 import com.reliability.system.view.ViewPackage;
 import com.system.reliability.modeler.RatPlugin;
 import com.system.reliability.modeler.editor.palette.ModelEditorPalette;
+import com.system.reliability.modeler.editor.palette.PalettePreferences;
 import com.system.reliability.modeler.editor.part.ReliabilityEditPartFactory;
 import com.system.reliability.modeler.i18n.Messages;
 import com.system.reliability.modeler.properties.RgetPropertySourceProvider;

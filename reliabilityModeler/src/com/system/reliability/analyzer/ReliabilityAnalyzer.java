@@ -21,6 +21,10 @@ public class ReliabilityAnalyzer {
 	private Resource resource = null;
 	private Map<Port, ReliabilityProfile> reliabilityProfiles;
 
+	/**
+	 * Estimate the reliability of the system for each input port
+	 * @return a map of Port to ReliabilityProfile entries 
+	 */
 	public  Map<Port, ReliabilityProfile> estimateReliability() {
 		List<Port> systemInputs = ReliabilityModelUtils.getSystemInputs(systemModel);
 		displayPortList(systemInputs);
@@ -36,19 +40,54 @@ public class ReliabilityAnalyzer {
 		
 		return reliabilityProfiles;
 	}
+	
+	/**
+	 * Estimate the reliability of the system for each port in the given list 
+	 * @return a map of Port to ReliabilityProfile entries 
+	 */
+	public  Map<Port, ReliabilityProfile> estimateReliability(List<Port> systemInputs) {
+		reliabilityProfiles = new HashMap<Port, ReliabilityProfile>();
+		for (Port systemInput: systemInputs) {
+			ReliabilityProfile profile = new ReliabilityProfile();
+			reliabilityProfiles.put(systemInput, profile);
+			findAllFailurePaths(new TransitionPath(systemInput), systemInput);
+		}
+		/*********************************************************************/
+		if (log.isInfoEnabled()) 	log.info("System Reliability Profile:\n" + ReliabilityModelUtils.getReliabilityProfilesText(reliabilityProfiles)); 
+		/*********************************************************************/
+		
+		return reliabilityProfiles;
+	}
 
+	/**
+	 * Read a system model from the given file location
+	 * @param fileLocation
+	 */
 	public void readModel(String fileLocation) {
 		systemModel = (GeneralizedNet) ReliabilityModelUtils.createModelFromFile(fileLocation, resource);
 	}
 
+	/**
+	 * Get the system model instance 
+	 * @return
+	 */
 	public GeneralizedNet getSystemModel() {
 		return systemModel;
 	}
 	
+	/**
+	 * Set the system model instance
+	 * @param model
+	 */
 	public void setSysteModel(GeneralizedNet model) {
 		systemModel = model;
 	}
 	
+	/**
+	 * Find all transition paths from the current path to a failure state
+	 * @param currentPath
+	 * @param currentPosition
+	 */
 	public void findAllFailurePaths(TransitionPath currentPath, Position currentPosition) {
 		if (currentPosition instanceof Failure) {
 			/*********************************************************************/
