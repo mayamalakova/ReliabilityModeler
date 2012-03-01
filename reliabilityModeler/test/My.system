@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gn:GeneralizedNet xmlns:gn="system.reliability.model" name="User Interface">
-  <transitions name="Event Transmitter" inputPorts="#L12 #L22 #L32" outputPorts="#L11 #L21 #L31 #L41" type="Connector">
+  <transitions name="Event Transmitter"  type="Connector">
     <failureState id="M5"/>
   </transitions>
-  <transitions name="Input Device Driver 1" inputPorts="#L11" outputPorts="#L12">
+  <transitions name="Input Device Driver 1" >
     <failureState id="M1"/>
   </transitions>
   <transitions name="Screen Driver">
     <failureState id="M4"/>
   </transitions>
-  <transitions name="Input Device Driver 2" inputPorts="#L21" outputPorts="#L22">
+  <transitions name="Input Device Driver 2" >
     <failureState id="M2"/>
   </transitions>
-  <transitions name="Visualization Component" description="" inputPorts="#L31" outputPorts="#L32">
+  <transitions name="Visualization Component" description="" >
     <failureState id="M3"/>
   </transitions>
   <positions id="L11">

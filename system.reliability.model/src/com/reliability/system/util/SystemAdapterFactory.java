@@ -6,6 +6,7 @@
  */
 package com.reliability.system.util;
 
+import com.reliability.system.*;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;

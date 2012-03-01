@@ -6,11 +6,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.emf.common.notify.Adapter;
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.gef.CompoundSnapToHelper;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.NodeEditPart;
@@ -23,11 +19,9 @@ import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 import org.eclipse.gef.editpolicies.SnapFeedbackPolicy;
 import org.eclipse.jface.viewers.TextCellEditor;
 
-import com.reliability.system.view.PortView;
-import com.reliability.system.view.TransitionView;
+import com.reliability.system.view.Anchor;
 import com.reliability.system.view.ViewLink;
 import com.reliability.system.view.ViewObject;
-import com.reliability.system.view.ViewPackage;
 import com.system.reliability.modeler.editor.ViewObjectCellEditorLocator;
 import com.system.reliability.modeler.editor.ViewObjectDirectEditManager;
 import com.system.reliability.modeler.editor.figure.IModelFigure;
@@ -37,17 +31,20 @@ import com.system.reliability.modeler.editor.policy.ViewObjectEditPolicy;
 import com.system.reliability.modeler.utils.Constants;
 
 public abstract class ViewObjectEditPart extends AbstractGraphicalEditPart implements NodeEditPart {
-	private static final Logger log = Logger.getLogger(ViewObjectEditPart.class);
+	static final Logger log = Logger.getLogger(ViewObjectEditPart.class);
 	
 	private ViewObjectModelAdapter adapter;
 
 	public ViewObjectEditPart() {
 		super();
-		adapter = new ViewObjectModelAdapter();
+		adapter = getModelAdapter();
 	}
 
 	@Override
 	protected void refreshVisuals() {
+		/*********************************************************************/
+		if (log.isDebugEnabled()) { log.debug("Refreshing " + ((ViewObject) getModel()).getLabel());}
+		/*********************************************************************/
 		String name = null;
 		Rectangle constraints = null;
 		if (getModel() instanceof ViewObject) {
@@ -93,6 +90,8 @@ public abstract class ViewObjectEditPart extends AbstractGraphicalEditPart imple
 		}
 	}
 
+	protected abstract ViewObjectModelAdapter getModelAdapter();
+	
 	private void performDirectEditing() {
 		Label label = ((IModelFigure) getFigure()).getNameLabel();
 
@@ -141,45 +140,9 @@ public abstract class ViewObjectEditPart extends AbstractGraphicalEditPart imple
 	    
 	    return super.getAdapter(key);
 	}
-	
-	public class ViewObjectModelAdapter implements Adapter {
 
-		@Override
-		public void notifyChanged(Notification notification) {
-			//removing the adapter also causes notification and in this case the feature is null 
-			if (notification.getFeature() == null) {
-				return;
-			}
-			
-			/*********************************************************************/
-			if (log.isDebugEnabled()) { log.debug("Notification for " + ((EStructuralFeature)notification.getFeature()).getName() + " for " + ((ViewObject) getModel()).getLabel());}
-			/*********************************************************************/
-			refreshVisuals();
-			if (ViewPackage.TRANSITION_VIEW__OUTGOING_LINKS == notification.getFeatureID(TransitionView.class) ||
-					ViewPackage.PORT_VIEW__OUTGOING_LINKS == notification.getFeatureID(PortView.class)) {
-				refreshSourceConnections();
-			}
-			if (ViewPackage.TRANSITION_VIEW__INCOMING_LINKS == notification.getFeatureID(TransitionView.class) ||
-					ViewPackage.FAILURE_VIEW__INCOMING_LINKS == notification.getFeatureID(TransitionView.class) ||
-					ViewPackage.PORT_VIEW__INCOMING_LINKS == notification.getFeatureID(PortView.class)) {
-				refreshTargetConnections();
-			}
-		}
-
-		@Override
-		public Notifier getTarget() {
-			return (Notifier) getModel();
-		}
-
-		@Override
-		public void setTarget(Notifier newTarget) {
-			// Do nothing.
-		}
-
-		@Override
-		public boolean isAdapterForType(Object type) {
-			return ViewObject.class.isAssignableFrom((Class<?>) type);
-		}
+	public void updateAnchor(Anchor sourceAnchor) {
+		// do nothing
 	}
 
 }

@@ -1,12 +1,15 @@
 package com.system.reliability.modeler.editor.command;
 
 import org.apache.log4j.Logger;
+import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.gef.commands.Command;
 
 import com.reliability.system.Failure;
 import com.reliability.system.Position;
 import com.reliability.system.Transition;
+import com.reliability.system.view.Anchor;
+import com.reliability.system.view.ViewFactory;
 import com.reliability.system.view.ViewLink;
 import com.reliability.system.view.ViewObject;
 
@@ -16,6 +19,8 @@ public class CreateLinkCommand extends Command {
 	private ViewLink link;
 	private ViewObject source;
 	private ViewObject target;
+	private Point sourceLocation;
+	private Point targetLocation;
 
 	@Override
 	public boolean canExecute() {
@@ -27,34 +32,37 @@ public class CreateLinkCommand extends Command {
 		/*********************************************************************/
 		if (log.isInfoEnabled()) {log.info("CreateLinkCommand  <" + source.getLabel() + ", " + target.getLabel() + ">");}
 		/*********************************************************************/
+		Anchor sourceAnchor = ViewFactory.eINSTANCE.createAnchor();
+		sourceAnchor.setLocation(sourceLocation);
+		link.setSourceAnchor(sourceAnchor);
+		source.getAnchors().add(sourceAnchor);
+		
 		link.setSource(source);
+		
+		Anchor targetAnchor = ViewFactory.eINSTANCE.createAnchor();
+		targetAnchor.setLocation(targetLocation);
+		link.setTargetAnchor(targetAnchor);
+		this.target .getAnchors().add(targetAnchor);
+		
 		link.setTarget(target);
 		//TODO: Handle the position loop case - still don't not what to do with it
 	}
 
 	@Override
 	public void undo() {
-		link.setSource(null);
+		target.getAnchors().remove(link.getTargetAnchor());
+		source.getAnchors().remove(link.getSourceAnchor());
 		link.setTarget(null);
+		link.setSource(null);
 	}
 
 	/**
 	 * Setting the link target - this means the command will be executed
 	 * @param target
 	 */
-	public void setTarget(ViewObject target) {
+	public void setTarget(ViewObject target, Point targetLocation) {
+		this.targetLocation = targetLocation;
 		this.target = target;
-		if (link != null && target instanceof Transition) {
-			/*********************************************************************/
-			if (log.isDebugEnabled()) {log.debug("CreateLinkCommand: set target anchor for link  " + link + " - targetAnchor=" + target.getIncomingLinks().size());}
-			/*********************************************************************/
-			link.setTargetAnchor(target.getIncomingLinks().size());
-		} else if (source instanceof Transition) {
-			this.link.setSourceAnchor(source.getOutgoingLinks().size());
-			/*********************************************************************/
-			if (log.isDebugEnabled()) {log.debug("CreateLinkCommand: set source anchor for link  " + link + " - targetAnchor=" + target.getOutgoingLinks().size());}
-			/*********************************************************************/
-		}
 	}
 
 	/**
@@ -66,9 +74,12 @@ public class CreateLinkCommand extends Command {
 	public void setSourceAndLink(ViewObject source, ViewLink link) {
 		this.source = source;
 		this.link = link;
-		
 	}
 
+	public void setSourceLocation(Point sourceLocation) {
+		this.sourceLocation = sourceLocation;
+	}
+	
 	private boolean validate() {
 		if (link == null) {
 			return false;

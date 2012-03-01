@@ -154,13 +154,22 @@ public interface ViewPackage extends EPackage {
 	int TRANSITION_VIEW__INCOMING_LINKS = SystemPackage.TRANSITION_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Anchors</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION_VIEW__ANCHORS = SystemPackage.TRANSITION_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Transition View</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION_VIEW_FEATURE_COUNT = SystemPackage.TRANSITION_FEATURE_COUNT + 4;
+	int TRANSITION_VIEW_FEATURE_COUNT = SystemPackage.TRANSITION_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link com.reliability.system.view.impl.PortViewImpl <em>Port View</em>}' class.
@@ -245,13 +254,22 @@ public interface ViewPackage extends EPackage {
 	int PORT_VIEW__INCOMING_LINKS = SystemPackage.PORT_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Anchors</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PORT_VIEW__ANCHORS = SystemPackage.PORT_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Port View</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PORT_VIEW_FEATURE_COUNT = SystemPackage.PORT_FEATURE_COUNT + 4;
+	int PORT_VIEW_FEATURE_COUNT = SystemPackage.PORT_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link com.reliability.system.view.impl.ViewObjectImpl <em>Object</em>}' class.
@@ -300,13 +318,22 @@ public interface ViewPackage extends EPackage {
 	int VIEW_OBJECT__INCOMING_LINKS = 3;
 
 	/**
+	 * The feature id for the '<em><b>Anchors</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_OBJECT__ANCHORS = 4;
+
+	/**
 	 * The number of structural features of the '<em>Object</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VIEW_OBJECT_FEATURE_COUNT = 4;
+	int VIEW_OBJECT_FEATURE_COUNT = 5;
 
 	/**
 	 * The meta object id for the '{@link com.reliability.system.view.impl.ViewLinkImpl <em>Link</em>}' class.
@@ -346,7 +373,7 @@ public interface ViewPackage extends EPackage {
 	int VIEW_LINK__BENDPOINTS = 2;
 
 	/**
-	 * The feature id for the '<em><b>Source Anchor</b></em>' attribute.
+	 * The feature id for the '<em><b>Source Anchor</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -355,7 +382,7 @@ public interface ViewPackage extends EPackage {
 	int VIEW_LINK__SOURCE_ANCHOR = 3;
 
 	/**
-	 * The feature id for the '<em><b>Target Anchor</b></em>' attribute.
+	 * The feature id for the '<em><b>Target Anchor</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -437,13 +464,22 @@ public interface ViewPackage extends EPackage {
 	int FAILURE_VIEW__INCOMING_LINKS = SystemPackage.FAILURE_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Anchors</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FAILURE_VIEW__ANCHORS = SystemPackage.FAILURE_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Failure View</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FAILURE_VIEW_FEATURE_COUNT = SystemPackage.FAILURE_FEATURE_COUNT + 4;
+	int FAILURE_VIEW_FEATURE_COUNT = SystemPackage.FAILURE_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link com.reliability.system.view.impl.SystemViewImpl <em>System View</em>}' class.
@@ -492,6 +528,34 @@ public interface ViewPackage extends EPackage {
 	int SYSTEM_VIEW_FEATURE_COUNT = SystemPackage.GENERALIZED_NET_FEATURE_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link com.reliability.system.view.impl.AnchorImpl <em>Anchor</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.reliability.system.view.impl.AnchorImpl
+	 * @see com.reliability.system.view.impl.ViewPackageImpl#getAnchor()
+	 * @generated
+	 */
+	int ANCHOR = 6;
+
+	/**
+	 * The feature id for the '<em><b>Location</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANCHOR__LOCATION = 0;
+
+	/**
+	 * The number of structural features of the '<em>Anchor</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANCHOR_FEATURE_COUNT = 1;
+
+	/**
 	 * The meta object id for the '<em>Rectangle</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -499,7 +563,7 @@ public interface ViewPackage extends EPackage {
 	 * @see com.reliability.system.view.impl.ViewPackageImpl#getRectangle()
 	 * @generated
 	 */
-	int RECTANGLE = 6;
+	int RECTANGLE = 7;
 
 
 	/**
@@ -510,7 +574,7 @@ public interface ViewPackage extends EPackage {
 	 * @see com.reliability.system.view.impl.ViewPackageImpl#getPoint()
 	 * @generated
 	 */
-	int POINT = 7;
+	int POINT = 8;
 
 
 	/**
@@ -588,6 +652,17 @@ public interface ViewPackage extends EPackage {
 	EReference getViewObject_IncomingLinks();
 
 	/**
+	 * Returns the meta object for the reference list '{@link com.reliability.system.view.ViewObject#getAnchors <em>Anchors</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Anchors</em>'.
+	 * @see com.reliability.system.view.ViewObject#getAnchors()
+	 * @see #getViewObject()
+	 * @generated
+	 */
+	EReference getViewObject_Anchors();
+
+	/**
 	 * Returns the meta object for class '{@link com.reliability.system.view.ViewLink <em>Link</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -631,26 +706,26 @@ public interface ViewPackage extends EPackage {
 	EAttribute getViewLink_Bendpoints();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.reliability.system.view.ViewLink#getSourceAnchor <em>Source Anchor</em>}'.
+	 * Returns the meta object for the containment reference '{@link com.reliability.system.view.ViewLink#getSourceAnchor <em>Source Anchor</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Source Anchor</em>'.
+	 * @return the meta object for the containment reference '<em>Source Anchor</em>'.
 	 * @see com.reliability.system.view.ViewLink#getSourceAnchor()
 	 * @see #getViewLink()
 	 * @generated
 	 */
-	EAttribute getViewLink_SourceAnchor();
+	EReference getViewLink_SourceAnchor();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.reliability.system.view.ViewLink#getTargetAnchor <em>Target Anchor</em>}'.
+	 * Returns the meta object for the containment reference '{@link com.reliability.system.view.ViewLink#getTargetAnchor <em>Target Anchor</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Target Anchor</em>'.
+	 * @return the meta object for the containment reference '<em>Target Anchor</em>'.
 	 * @see com.reliability.system.view.ViewLink#getTargetAnchor()
 	 * @see #getViewLink()
 	 * @generated
 	 */
-	EAttribute getViewLink_TargetAnchor();
+	EReference getViewLink_TargetAnchor();
 
 	/**
 	 * Returns the meta object for class '{@link com.reliability.system.view.FailureView <em>Failure View</em>}'.
@@ -671,6 +746,27 @@ public interface ViewPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getSystemView();
+
+	/**
+	 * Returns the meta object for class '{@link com.reliability.system.view.Anchor <em>Anchor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Anchor</em>'.
+	 * @see com.reliability.system.view.Anchor
+	 * @generated
+	 */
+	EClass getAnchor();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.reliability.system.view.Anchor#getLocation <em>Location</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Location</em>'.
+	 * @see com.reliability.system.view.Anchor#getLocation()
+	 * @see #getAnchor()
+	 * @generated
+	 */
+	EAttribute getAnchor_Location();
 
 	/**
 	 * Returns the meta object for data type '{@link org.eclipse.draw2d.geometry.Rectangle <em>Rectangle</em>}'.
@@ -779,6 +875,14 @@ public interface ViewPackage extends EPackage {
 		EReference VIEW_OBJECT__INCOMING_LINKS = eINSTANCE.getViewObject_IncomingLinks();
 
 		/**
+		 * The meta object literal for the '<em><b>Anchors</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference VIEW_OBJECT__ANCHORS = eINSTANCE.getViewObject_Anchors();
+
+		/**
 		 * The meta object literal for the '{@link com.reliability.system.view.impl.ViewLinkImpl <em>Link</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -813,20 +917,20 @@ public interface ViewPackage extends EPackage {
 		EAttribute VIEW_LINK__BENDPOINTS = eINSTANCE.getViewLink_Bendpoints();
 
 		/**
-		 * The meta object literal for the '<em><b>Source Anchor</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Source Anchor</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute VIEW_LINK__SOURCE_ANCHOR = eINSTANCE.getViewLink_SourceAnchor();
+		EReference VIEW_LINK__SOURCE_ANCHOR = eINSTANCE.getViewLink_SourceAnchor();
 
 		/**
-		 * The meta object literal for the '<em><b>Target Anchor</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Target Anchor</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute VIEW_LINK__TARGET_ANCHOR = eINSTANCE.getViewLink_TargetAnchor();
+		EReference VIEW_LINK__TARGET_ANCHOR = eINSTANCE.getViewLink_TargetAnchor();
 
 		/**
 		 * The meta object literal for the '{@link com.reliability.system.view.impl.FailureViewImpl <em>Failure View</em>}' class.
@@ -847,6 +951,24 @@ public interface ViewPackage extends EPackage {
 		 * @generated
 		 */
 		EClass SYSTEM_VIEW = eINSTANCE.getSystemView();
+
+		/**
+		 * The meta object literal for the '{@link com.reliability.system.view.impl.AnchorImpl <em>Anchor</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.reliability.system.view.impl.AnchorImpl
+		 * @see com.reliability.system.view.impl.ViewPackageImpl#getAnchor()
+		 * @generated
+		 */
+		EClass ANCHOR = eINSTANCE.getAnchor();
+
+		/**
+		 * The meta object literal for the '<em><b>Location</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ANCHOR__LOCATION = eINSTANCE.getAnchor_Location();
 
 		/**
 		 * The meta object literal for the '<em>Rectangle</em>' data type.

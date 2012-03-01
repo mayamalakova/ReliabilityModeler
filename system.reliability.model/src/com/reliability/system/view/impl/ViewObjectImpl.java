@@ -6,6 +6,7 @@
  */
 package com.reliability.system.view.impl;
 
+import com.reliability.system.view.Anchor;
 import java.util.Collection;
 
 import org.eclipse.draw2d.geometry.Rectangle;
@@ -17,6 +18,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -35,6 +37,7 @@ import com.reliability.system.view.ViewPackage;
  *   <li>{@link com.reliability.system.view.impl.ViewObjectImpl#getLabel <em>Label</em>}</li>
  *   <li>{@link com.reliability.system.view.impl.ViewObjectImpl#getOutgoingLinks <em>Outgoing Links</em>}</li>
  *   <li>{@link com.reliability.system.view.impl.ViewObjectImpl#getIncomingLinks <em>Incoming Links</em>}</li>
+ *   <li>{@link com.reliability.system.view.impl.ViewObjectImpl#getAnchors <em>Anchors</em>}</li>
  * </ul>
  * </p>
  *
@@ -100,6 +103,16 @@ public abstract class ViewObjectImpl extends EObjectImpl implements ViewObject {
 	 * @ordered
 	 */
 	protected EList<ViewLink> incomingLinks;
+
+	/**
+	 * The cached value of the '{@link #getAnchors() <em>Anchors</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAnchors()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Anchor> anchors;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -191,6 +204,18 @@ public abstract class ViewObjectImpl extends EObjectImpl implements ViewObject {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Anchor> getAnchors() {
+		if (anchors == null) {
+			anchors = new EObjectResolvingEList<Anchor>(Anchor.class, this, ViewPackage.VIEW_OBJECT__ANCHORS);
+		}
+		return anchors;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -235,6 +260,8 @@ public abstract class ViewObjectImpl extends EObjectImpl implements ViewObject {
 				return getOutgoingLinks();
 			case ViewPackage.VIEW_OBJECT__INCOMING_LINKS:
 				return getIncomingLinks();
+			case ViewPackage.VIEW_OBJECT__ANCHORS:
+				return getAnchors();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -262,6 +289,10 @@ public abstract class ViewObjectImpl extends EObjectImpl implements ViewObject {
 				getIncomingLinks().clear();
 				getIncomingLinks().addAll((Collection<? extends ViewLink>)newValue);
 				return;
+			case ViewPackage.VIEW_OBJECT__ANCHORS:
+				getAnchors().clear();
+				getAnchors().addAll((Collection<? extends Anchor>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -286,6 +317,9 @@ public abstract class ViewObjectImpl extends EObjectImpl implements ViewObject {
 			case ViewPackage.VIEW_OBJECT__INCOMING_LINKS:
 				getIncomingLinks().clear();
 				return;
+			case ViewPackage.VIEW_OBJECT__ANCHORS:
+				getAnchors().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -306,6 +340,8 @@ public abstract class ViewObjectImpl extends EObjectImpl implements ViewObject {
 				return outgoingLinks != null && !outgoingLinks.isEmpty();
 			case ViewPackage.VIEW_OBJECT__INCOMING_LINKS:
 				return incomingLinks != null && !incomingLinks.isEmpty();
+			case ViewPackage.VIEW_OBJECT__ANCHORS:
+				return anchors != null && !anchors.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

@@ -1,33 +1,25 @@
 package com.system.reliability.modeler.editor.command;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.eclipse.gef.commands.Command;
-import org.eclipse.gef.commands.CompoundCommand;
 
 import com.reliability.system.view.FailureView;
 import com.reliability.system.view.TransitionView;
-import com.reliability.system.view.ViewLink;
+import com.reliability.system.view.ViewObject;
 
-public class DeleteFailureCommand extends CompoundCommand {
+public class DeleteFailureCommand extends DeleteViewObjectCommand {
 	private FailureView failure;
-	private ViewLink link;
 	private TransitionView parent;
-	
-	@Override
-	public List<Command> getCommands() {
-		List<Command> commands = new ArrayList<Command>();
-		return commands;
-	}
 	
 	public void setFailure(FailureView selectedFailure) { 
 		this.failure = selectedFailure;
-		this.link = selectedFailure.getIncomingLinks().get(0);
 		this.parent = (TransitionView) selectedFailure.getOwner();
 		
-		add(new DeleteLinkCommand(link));
-		
+		updateCommandList();
+	}
+	
+	@Override
+	protected void updateCommandList() {
+		super.updateCommandList();
 		Command deleteCommand = new Command() {
 			@Override
 			public boolean canExecute() {
@@ -44,7 +36,12 @@ public class DeleteFailureCommand extends CompoundCommand {
 			}
 		};
 		
-		add(deleteCommand);		
+		add(deleteCommand);
+	}
+
+	@Override
+	protected ViewObject getSelectedObject() {
+		return failure;
 	}
 	
 }

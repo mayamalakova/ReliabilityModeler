@@ -104,57 +104,55 @@ public interface ViewLink extends EObject {
 	EList<Point> getBendpoints();
 
 	/**
-	 * Returns the value of the '<em><b>Source Anchor</b></em>' attribute.
-	 * The default value is <code>"0"</code>.
+	 * Returns the value of the '<em><b>Source Anchor</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Source Anchor</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Source Anchor</em>' attribute.
-	 * @see #setSourceAnchor(int)
+	 * @return the value of the '<em>Source Anchor</em>' containment reference.
+	 * @see #setSourceAnchor(Anchor)
 	 * @see com.reliability.system.view.ViewPackage#getViewLink_SourceAnchor()
-	 * @model default="0"
+	 * @model containment="true"
 	 * @generated
 	 */
-	int getSourceAnchor();
+	Anchor getSourceAnchor();
 
 	/**
-	 * Sets the value of the '{@link com.reliability.system.view.ViewLink#getSourceAnchor <em>Source Anchor</em>}' attribute.
+	 * Sets the value of the '{@link com.reliability.system.view.ViewLink#getSourceAnchor <em>Source Anchor</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Source Anchor</em>' attribute.
+	 * @param value the new value of the '<em>Source Anchor</em>' containment reference.
 	 * @see #getSourceAnchor()
 	 * @generated
 	 */
-	void setSourceAnchor(int value);
+	void setSourceAnchor(Anchor value);
 
 	/**
-	 * Returns the value of the '<em><b>Target Anchor</b></em>' attribute.
-	 * The default value is <code>"0"</code>.
+	 * Returns the value of the '<em><b>Target Anchor</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Target Anchor</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Target Anchor</em>' attribute.
-	 * @see #setTargetAnchor(int)
+	 * @return the value of the '<em>Target Anchor</em>' containment reference.
+	 * @see #setTargetAnchor(Anchor)
 	 * @see com.reliability.system.view.ViewPackage#getViewLink_TargetAnchor()
-	 * @model default="0"
+	 * @model containment="true"
 	 * @generated
 	 */
-	int getTargetAnchor();
+	Anchor getTargetAnchor();
 
 	/**
-	 * Sets the value of the '{@link com.reliability.system.view.ViewLink#getTargetAnchor <em>Target Anchor</em>}' attribute.
+	 * Sets the value of the '{@link com.reliability.system.view.ViewLink#getTargetAnchor <em>Target Anchor</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Target Anchor</em>' attribute.
+	 * @param value the new value of the '<em>Target Anchor</em>' containment reference.
 	 * @see #getTargetAnchor()
 	 * @generated
 	 */
-	void setTargetAnchor(int value);
+	void setTargetAnchor(Anchor value);
 
 } // ViewLink

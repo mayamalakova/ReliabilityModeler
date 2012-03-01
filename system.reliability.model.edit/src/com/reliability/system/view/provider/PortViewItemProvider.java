@@ -68,6 +68,7 @@ public class PortViewItemProvider
 			addLabelPropertyDescriptor(object);
 			addOutgoingLinksPropertyDescriptor(object);
 			addIncomingLinksPropertyDescriptor(object);
+			addAnchorsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -152,6 +153,28 @@ public class PortViewItemProvider
 				 getString("_UI_ViewObject_incomingLinks_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_ViewObject_incomingLinks_feature", "_UI_ViewObject_type"),
 				 ViewPackage.Literals.VIEW_OBJECT__INCOMING_LINKS,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Anchors feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addAnchorsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ViewObject_anchors_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ViewObject_anchors_feature", "_UI_ViewObject_type"),
+				 ViewPackage.Literals.VIEW_OBJECT__ANCHORS,
 				 true,
 				 false,
 				 true,

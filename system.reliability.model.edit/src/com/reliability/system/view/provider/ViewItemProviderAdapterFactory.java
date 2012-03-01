@@ -190,6 +190,29 @@ public class ViewItemProviderAdapterFactory extends ViewAdapterFactory implement
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link com.reliability.system.view.Anchor} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected AnchorItemProvider anchorItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link com.reliability.system.view.Anchor}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createAnchorAdapter() {
+		if (anchorItemProvider == null) {
+			anchorItemProvider = new AnchorItemProvider(this);
+		}
+
+		return anchorItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -293,6 +316,7 @@ public class ViewItemProviderAdapterFactory extends ViewAdapterFactory implement
 		if (viewLinkItemProvider != null) viewLinkItemProvider.dispose();
 		if (failureViewItemProvider != null) failureViewItemProvider.dispose();
 		if (systemViewItemProvider != null) systemViewItemProvider.dispose();
+		if (anchorItemProvider != null) anchorItemProvider.dispose();
 	}
 
 }

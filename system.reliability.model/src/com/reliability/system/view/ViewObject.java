@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.reliability.system.view.ViewObject#getLabel <em>Label</em>}</li>
  *   <li>{@link com.reliability.system.view.ViewObject#getOutgoingLinks <em>Outgoing Links</em>}</li>
  *   <li>{@link com.reliability.system.view.ViewObject#getIncomingLinks <em>Incoming Links</em>}</li>
+ *   <li>{@link com.reliability.system.view.ViewObject#getAnchors <em>Anchors</em>}</li>
  * </ul>
  * </p>
  *
@@ -118,5 +119,21 @@ public interface ViewObject extends EObject {
 	 * @generated
 	 */
 	EList<ViewLink> getIncomingLinks();
+
+	/**
+	 * Returns the value of the '<em><b>Anchors</b></em>' reference list.
+	 * The list contents are of type {@link com.reliability.system.view.Anchor}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Anchors</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Anchors</em>' reference list.
+	 * @see com.reliability.system.view.ViewPackage#getViewObject_Anchors()
+	 * @model
+	 * @generated
+	 */
+	EList<Anchor> getAnchors();
 
 } // ViewObject

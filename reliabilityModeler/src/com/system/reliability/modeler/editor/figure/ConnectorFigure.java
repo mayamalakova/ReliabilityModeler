@@ -17,7 +17,6 @@ public class ConnectorFigure extends TransitionFigure{
 	private RectangleFigure square;
 
 	public ConnectorFigure(int inputsCout, int outputsCount) {
-		super(inputsCout, outputsCount);
 		setLayoutManager(new XYLayout());
 		square = new RectangleFigure();
 		square.setAntialias(1);

@@ -18,7 +18,6 @@ public class ComponentFigure extends TransitionFigure{
 	private Triangle triangle;
 
 	public ComponentFigure(int inputsCout, int outputsCount){
-		super(inputsCout, outputsCount);
 		setLayoutManager(new XYLayout());
 		triangle = new Triangle();
 		triangle.setDirection(PositionConstants.SOUTH);

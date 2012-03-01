@@ -18,6 +18,7 @@ import com.reliability.system.Failure;
 import com.reliability.system.Port;
 import com.reliability.system.Transition;
 import com.reliability.system.impl.SystemFactoryImpl;
+import com.reliability.system.view.Anchor;
 import com.reliability.system.view.FailureView;
 import com.reliability.system.view.PortView;
 import com.reliability.system.view.SystemView;
@@ -73,6 +74,7 @@ public class ViewFactoryImpl extends SystemFactoryImpl implements ViewFactory {
 			case ViewPackage.VIEW_LINK: return createViewLink();
 			case ViewPackage.FAILURE_VIEW: return createFailureView();
 			case ViewPackage.SYSTEM_VIEW: return createSystemView();
+			case ViewPackage.ANCHOR: return createAnchor();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -157,6 +159,16 @@ public class ViewFactoryImpl extends SystemFactoryImpl implements ViewFactory {
 	public SystemView createSystemView() {
 		SystemViewImpl systemView = new SystemViewImpl();
 		return systemView;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Anchor createAnchor() {
+		AnchorImpl anchor = new AnchorImpl();
+		return anchor;
 	}
 
 	/**

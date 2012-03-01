@@ -16,6 +16,7 @@ import com.reliability.system.GeneralizedNet;
 import com.reliability.system.Port;
 import com.reliability.system.Position;
 import com.reliability.system.Transition;
+import com.reliability.system.view.*;
 import com.reliability.system.view.FailureView;
 import com.reliability.system.view.PortView;
 import com.reliability.system.view.SystemView;
@@ -103,6 +104,10 @@ public class ViewAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseSystemView(SystemView object) {
 				return createSystemViewAdapter();
+			}
+			@Override
+			public Adapter caseAnchor(Anchor object) {
+				return createAnchorAdapter();
 			}
 			@Override
 			public Adapter caseTransition(Transition object) {
@@ -225,6 +230,20 @@ public class ViewAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createSystemViewAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link com.reliability.system.view.Anchor <em>Anchor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see com.reliability.system.view.Anchor
+	 * @generated
+	 */
+	public Adapter createAnchorAdapter() {
 		return null;
 	}
 

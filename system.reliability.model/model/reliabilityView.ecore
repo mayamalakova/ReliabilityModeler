@@ -14,6 +14,8 @@
         eType="#//ViewLink" containment="true" eOpposite="#//ViewLink/source"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="incomingLinks" upperBound="-1"
         eType="#//ViewLink" eOpposite="#//ViewLink/target"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="anchors" upperBound="-1"
+        eType="#//Anchor"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ViewLink">
     <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//ViewObject"
@@ -22,12 +24,15 @@
         eOpposite="#//ViewObject/incomingLinks" eKeys="#//ViewObject/label"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="bendpoints" upperBound="-1"
         eType="#//Point"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sourceAnchor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
-        defaultValueLiteral="0"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetAnchor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
-        defaultValueLiteral="0"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceAnchor" eType="#//Anchor"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetAnchor" eType="#//Anchor"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="Point" instanceClassName="org.eclipse.draw2d.geometry.Point"/>
   <eClassifiers xsi:type="ecore:EClass" name="FailureView" eSuperTypes="reliability.ecore#//Failure #//ViewObject"/>
   <eClassifiers xsi:type="ecore:EClass" name="SystemView" eSuperTypes="reliability.ecore#//GeneralizedNet"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Anchor">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="location" eType="#//Point"/>
+  </eClassifiers>
 </ecore:EPackage>

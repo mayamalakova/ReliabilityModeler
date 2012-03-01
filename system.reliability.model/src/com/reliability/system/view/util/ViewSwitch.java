@@ -15,6 +15,7 @@ import com.reliability.system.GeneralizedNet;
 import com.reliability.system.Port;
 import com.reliability.system.Position;
 import com.reliability.system.Transition;
+import com.reliability.system.view.*;
 import com.reliability.system.view.FailureView;
 import com.reliability.system.view.PortView;
 import com.reliability.system.view.SystemView;
@@ -125,6 +126,12 @@ public class ViewSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case ViewPackage.ANCHOR: {
+				Anchor anchor = (Anchor)theEObject;
+				T result = caseAnchor(anchor);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -216,6 +223,21 @@ public class ViewSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseSystemView(SystemView object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Anchor</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Anchor</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAnchor(Anchor object) {
 		return null;
 	}
 

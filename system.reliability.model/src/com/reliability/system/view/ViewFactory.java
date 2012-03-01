@@ -6,6 +6,7 @@
  */
 package com.reliability.system.view;
 
+import org.eclipse.emf.ecore.EFactory;
 import com.reliability.system.SystemFactory;
 
 /**
@@ -69,6 +70,15 @@ public interface ViewFactory extends SystemFactory {
 	 * @generated
 	 */
 	SystemView createSystemView();
+
+	/**
+	 * Returns a new object of class '<em>Anchor</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Anchor</em>'.
+	 * @generated
+	 */
+	Anchor createAnchor();
 
 	/**
 	 * Returns the package supported by this factory.

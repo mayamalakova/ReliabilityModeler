@@ -57,7 +57,7 @@ public class ViewLinkEditPart extends AbstractConnectionEditPart {
 	@Override
 	protected void refreshVisuals() {
 		/*********************************************************************/
-		if (log.isDebugEnabled()) { log.debug("Refreshing visuals for " + getModel());}
+		if (log.isDebugEnabled()) { log.debug("Refreshing link " + getModel());}
 		/*********************************************************************/
 		Connection connection = getConnectionFigure();
 		List<Point> modelConstraint = ((ViewLink) getModel()).getBendpoints();
@@ -66,9 +66,6 @@ public class ViewLinkEditPart extends AbstractConnectionEditPart {
 			figureConstraint.add(new AbsoluteBendpoint(p));
 		}
 		connection.setRoutingConstraint(figureConstraint);
-		/*********************************************************************/
-		if (log.isDebugEnabled()) { log.debug("Refreshing visuals for " + getModel() + " finished");}
-		/*********************************************************************/
 	}
 
 	@Override
@@ -124,16 +121,6 @@ public class ViewLinkEditPart extends AbstractConnectionEditPart {
 			/*********************************************************************/
 			if (log.isDebugEnabled()) { log.debug("Notification for " + ((EStructuralFeature)notification.getFeature()).getName() + " for " + getModel());}
 			/*********************************************************************/
-			if (notification.getFeatureID(ViewLink.class) == ViewPackage.VIEW_LINK__TARGET_ANCHOR) {
-				//target anchor has changed - update the connection  in order to start it listening to the new target anchor
-				((PolylineConnection)getConnectionFigure()).setTargetAnchor(getTargetConnectionAnchor());
-			}
-			
-			if (notification.getFeatureID(ViewLink.class) == ViewPackage.VIEW_LINK__SOURCE_ANCHOR) {
-				//source anchor has changed - update the connection  in order to start it listening to the new source anchor
-				((PolylineConnection)getConnectionFigure()).setSourceAnchor(getSourceConnectionAnchor());
-			}
-			
 			if (ViewPackage.VIEW_LINK__BENDPOINTS == notification.getFeatureID(ViewLink.class )) {
 				refreshVisuals();
 			}

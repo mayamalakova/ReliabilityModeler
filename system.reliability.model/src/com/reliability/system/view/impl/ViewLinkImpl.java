@@ -6,6 +6,7 @@
  */
 package com.reliability.system.view.impl;
 
+import com.reliability.system.view.Anchor;
 import java.util.Collection;
 
 import org.eclipse.draw2d.geometry.Point;
@@ -62,44 +63,24 @@ public class ViewLinkImpl extends EObjectImpl implements ViewLink {
 	protected EList<Point> bendpoints;
 
 	/**
-	 * The default value of the '{@link #getSourceAnchor() <em>Source Anchor</em>}' attribute.
+	 * The cached value of the '{@link #getSourceAnchor() <em>Source Anchor</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getSourceAnchor()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int SOURCE_ANCHOR_EDEFAULT = 0;
+	protected Anchor sourceAnchor;
 
 	/**
-	 * The cached value of the '{@link #getSourceAnchor() <em>Source Anchor</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSourceAnchor()
-	 * @generated
-	 * @ordered
-	 */
-	protected int sourceAnchor = SOURCE_ANCHOR_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getTargetAnchor() <em>Target Anchor</em>}' attribute.
+	 * The cached value of the '{@link #getTargetAnchor() <em>Target Anchor</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getTargetAnchor()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int TARGET_ANCHOR_EDEFAULT = 0;
-
-	/**
-	 * The cached value of the '{@link #getTargetAnchor() <em>Target Anchor</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTargetAnchor()
-	 * @generated
-	 * @ordered
-	 */
-	protected int targetAnchor = TARGET_ANCHOR_EDEFAULT;
+	protected Anchor targetAnchor;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -238,7 +219,7 @@ public class ViewLinkImpl extends EObjectImpl implements ViewLink {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getSourceAnchor() {
+	public Anchor getSourceAnchor() {
 		return sourceAnchor;
 	}
 
@@ -247,11 +228,14 @@ public class ViewLinkImpl extends EObjectImpl implements ViewLink {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSourceAnchor(int newSourceAnchor) {
-		int oldSourceAnchor = sourceAnchor;
+	public NotificationChain basicSetSourceAnchor(Anchor newSourceAnchor, NotificationChain msgs) {
+		Anchor oldSourceAnchor = sourceAnchor;
 		sourceAnchor = newSourceAnchor;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ViewPackage.VIEW_LINK__SOURCE_ANCHOR, oldSourceAnchor, sourceAnchor));
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ViewPackage.VIEW_LINK__SOURCE_ANCHOR, oldSourceAnchor, newSourceAnchor);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -259,7 +243,26 @@ public class ViewLinkImpl extends EObjectImpl implements ViewLink {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getTargetAnchor() {
+	public void setSourceAnchor(Anchor newSourceAnchor) {
+		if (newSourceAnchor != sourceAnchor) {
+			NotificationChain msgs = null;
+			if (sourceAnchor != null)
+				msgs = ((InternalEObject)sourceAnchor).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ViewPackage.VIEW_LINK__SOURCE_ANCHOR, null, msgs);
+			if (newSourceAnchor != null)
+				msgs = ((InternalEObject)newSourceAnchor).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ViewPackage.VIEW_LINK__SOURCE_ANCHOR, null, msgs);
+			msgs = basicSetSourceAnchor(newSourceAnchor, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ViewPackage.VIEW_LINK__SOURCE_ANCHOR, newSourceAnchor, newSourceAnchor));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Anchor getTargetAnchor() {
 		return targetAnchor;
 	}
 
@@ -268,11 +271,33 @@ public class ViewLinkImpl extends EObjectImpl implements ViewLink {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setTargetAnchor(int newTargetAnchor) {
-		int oldTargetAnchor = targetAnchor;
+	public NotificationChain basicSetTargetAnchor(Anchor newTargetAnchor, NotificationChain msgs) {
+		Anchor oldTargetAnchor = targetAnchor;
 		targetAnchor = newTargetAnchor;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ViewPackage.VIEW_LINK__TARGET_ANCHOR, oldTargetAnchor, targetAnchor));
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ViewPackage.VIEW_LINK__TARGET_ANCHOR, oldTargetAnchor, newTargetAnchor);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTargetAnchor(Anchor newTargetAnchor) {
+		if (newTargetAnchor != targetAnchor) {
+			NotificationChain msgs = null;
+			if (targetAnchor != null)
+				msgs = ((InternalEObject)targetAnchor).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ViewPackage.VIEW_LINK__TARGET_ANCHOR, null, msgs);
+			if (newTargetAnchor != null)
+				msgs = ((InternalEObject)newTargetAnchor).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ViewPackage.VIEW_LINK__TARGET_ANCHOR, null, msgs);
+			msgs = basicSetTargetAnchor(newTargetAnchor, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ViewPackage.VIEW_LINK__TARGET_ANCHOR, newTargetAnchor, newTargetAnchor));
 	}
 
 	/**
@@ -307,6 +332,10 @@ public class ViewLinkImpl extends EObjectImpl implements ViewLink {
 				return basicSetSource(null, msgs);
 			case ViewPackage.VIEW_LINK__TARGET:
 				return basicSetTarget(null, msgs);
+			case ViewPackage.VIEW_LINK__SOURCE_ANCHOR:
+				return basicSetSourceAnchor(null, msgs);
+			case ViewPackage.VIEW_LINK__TARGET_ANCHOR:
+				return basicSetTargetAnchor(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -368,10 +397,10 @@ public class ViewLinkImpl extends EObjectImpl implements ViewLink {
 				getBendpoints().addAll((Collection<? extends Point>)newValue);
 				return;
 			case ViewPackage.VIEW_LINK__SOURCE_ANCHOR:
-				setSourceAnchor((Integer)newValue);
+				setSourceAnchor((Anchor)newValue);
 				return;
 			case ViewPackage.VIEW_LINK__TARGET_ANCHOR:
-				setTargetAnchor((Integer)newValue);
+				setTargetAnchor((Anchor)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -395,10 +424,10 @@ public class ViewLinkImpl extends EObjectImpl implements ViewLink {
 				getBendpoints().clear();
 				return;
 			case ViewPackage.VIEW_LINK__SOURCE_ANCHOR:
-				setSourceAnchor(SOURCE_ANCHOR_EDEFAULT);
+				setSourceAnchor((Anchor)null);
 				return;
 			case ViewPackage.VIEW_LINK__TARGET_ANCHOR:
-				setTargetAnchor(TARGET_ANCHOR_EDEFAULT);
+				setTargetAnchor((Anchor)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -419,9 +448,9 @@ public class ViewLinkImpl extends EObjectImpl implements ViewLink {
 			case ViewPackage.VIEW_LINK__BENDPOINTS:
 				return bendpoints != null && !bendpoints.isEmpty();
 			case ViewPackage.VIEW_LINK__SOURCE_ANCHOR:
-				return sourceAnchor != SOURCE_ANCHOR_EDEFAULT;
+				return sourceAnchor != null;
 			case ViewPackage.VIEW_LINK__TARGET_ANCHOR:
-				return targetAnchor != TARGET_ANCHOR_EDEFAULT;
+				return targetAnchor != null;
 		}
 		return super.eIsSet(featureID);
 	}

@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import com.reliability.system.SystemPackage;
 import com.reliability.system.impl.SystemPackageImpl;
+import com.reliability.system.view.Anchor;
 import com.reliability.system.view.FailureView;
 import com.reliability.system.view.PortView;
 import com.reliability.system.view.SystemView;
@@ -74,6 +75,13 @@ public class ViewPackageImpl extends EPackageImpl implements ViewPackage {
 	 * @generated
 	 */
 	private EClass systemViewEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass anchorEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -223,6 +231,15 @@ public class ViewPackageImpl extends EPackageImpl implements ViewPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getViewObject_Anchors() {
+		return (EReference)viewObjectEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getViewLink() {
 		return viewLinkEClass;
 	}
@@ -259,8 +276,8 @@ public class ViewPackageImpl extends EPackageImpl implements ViewPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getViewLink_SourceAnchor() {
-		return (EAttribute)viewLinkEClass.getEStructuralFeatures().get(3);
+	public EReference getViewLink_SourceAnchor() {
+		return (EReference)viewLinkEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -268,8 +285,8 @@ public class ViewPackageImpl extends EPackageImpl implements ViewPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getViewLink_TargetAnchor() {
-		return (EAttribute)viewLinkEClass.getEStructuralFeatures().get(4);
+	public EReference getViewLink_TargetAnchor() {
+		return (EReference)viewLinkEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -288,6 +305,24 @@ public class ViewPackageImpl extends EPackageImpl implements ViewPackage {
 	 */
 	public EClass getSystemView() {
 		return systemViewEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getAnchor() {
+		return anchorEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAnchor_Location() {
+		return (EAttribute)anchorEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -345,17 +380,21 @@ public class ViewPackageImpl extends EPackageImpl implements ViewPackage {
 		createEAttribute(viewObjectEClass, VIEW_OBJECT__LABEL);
 		createEReference(viewObjectEClass, VIEW_OBJECT__OUTGOING_LINKS);
 		createEReference(viewObjectEClass, VIEW_OBJECT__INCOMING_LINKS);
+		createEReference(viewObjectEClass, VIEW_OBJECT__ANCHORS);
 
 		viewLinkEClass = createEClass(VIEW_LINK);
 		createEReference(viewLinkEClass, VIEW_LINK__SOURCE);
 		createEReference(viewLinkEClass, VIEW_LINK__TARGET);
 		createEAttribute(viewLinkEClass, VIEW_LINK__BENDPOINTS);
-		createEAttribute(viewLinkEClass, VIEW_LINK__SOURCE_ANCHOR);
-		createEAttribute(viewLinkEClass, VIEW_LINK__TARGET_ANCHOR);
+		createEReference(viewLinkEClass, VIEW_LINK__SOURCE_ANCHOR);
+		createEReference(viewLinkEClass, VIEW_LINK__TARGET_ANCHOR);
 
 		failureViewEClass = createEClass(FAILURE_VIEW);
 
 		systemViewEClass = createEClass(SYSTEM_VIEW);
+
+		anchorEClass = createEClass(ANCHOR);
+		createEAttribute(anchorEClass, ANCHOR__LOCATION);
 
 		// Create data types
 		rectangleEDataType = createEDataType(RECTANGLE);
@@ -411,6 +450,7 @@ public class ViewPackageImpl extends EPackageImpl implements ViewPackage {
 		initEAttribute(getViewObject_Label(), ecorePackage.getEString(), "label", "", 0, 1, ViewObject.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getViewObject_OutgoingLinks(), this.getViewLink(), this.getViewLink_Source(), "outgoingLinks", null, 0, -1, ViewObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getViewObject_IncomingLinks(), this.getViewLink(), this.getViewLink_Target(), "incomingLinks", null, 0, -1, ViewObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getViewObject_Anchors(), this.getAnchor(), null, "anchors", null, 0, -1, ViewObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(viewLinkEClass, ViewLink.class, "ViewLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getViewLink_Source(), this.getViewObject(), this.getViewObject_OutgoingLinks(), "source", null, 0, 1, ViewLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -418,12 +458,15 @@ public class ViewPackageImpl extends EPackageImpl implements ViewPackage {
 		initEReference(getViewLink_Target(), this.getViewObject(), this.getViewObject_IncomingLinks(), "target", null, 0, 1, ViewLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		getViewLink_Target().getEKeys().add(this.getViewObject_Label());
 		initEAttribute(getViewLink_Bendpoints(), this.getPoint(), "bendpoints", null, 0, -1, ViewLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getViewLink_SourceAnchor(), ecorePackage.getEInt(), "sourceAnchor", "0", 0, 1, ViewLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getViewLink_TargetAnchor(), ecorePackage.getEInt(), "targetAnchor", "0", 0, 1, ViewLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getViewLink_SourceAnchor(), this.getAnchor(), null, "sourceAnchor", null, 0, 1, ViewLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getViewLink_TargetAnchor(), this.getAnchor(), null, "targetAnchor", null, 0, 1, ViewLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(failureViewEClass, FailureView.class, "FailureView", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(systemViewEClass, SystemView.class, "SystemView", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(anchorEClass, Anchor.class, "Anchor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAnchor_Location(), this.getPoint(), "location", null, 0, 1, Anchor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize data types
 		initEDataType(rectangleEDataType, Rectangle.class, "Rectangle", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

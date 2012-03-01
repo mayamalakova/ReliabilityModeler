@@ -6,6 +6,7 @@
  */
 package com.reliability.system.impl;
 
+import com.reliability.system.*;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;

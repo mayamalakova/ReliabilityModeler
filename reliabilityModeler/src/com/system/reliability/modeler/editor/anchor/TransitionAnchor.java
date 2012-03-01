@@ -40,4 +40,7 @@ public class TransitionAnchor extends AbstractConnectionAnchor {
 		this.fireAnchorMoved();
 	}
 
+	public String toString() {
+		return ("<" + horizontalOffset + ", " + verticalOffset + ">");
+	}
 }

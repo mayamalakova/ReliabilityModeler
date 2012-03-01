@@ -154,7 +154,7 @@ public class ViewLinkItemProvider
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
 				 null,
 				 null));
 	}
@@ -176,7 +176,7 @@ public class ViewLinkItemProvider
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
 				 null,
 				 null));
 	}

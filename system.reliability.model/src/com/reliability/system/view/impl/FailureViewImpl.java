@@ -16,10 +16,12 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import com.reliability.system.impl.FailureImpl;
+import com.reliability.system.view.Anchor;
 import com.reliability.system.view.FailureView;
 import com.reliability.system.view.ViewLink;
 import com.reliability.system.view.ViewObject;
@@ -36,6 +38,7 @@ import com.reliability.system.view.ViewPackage;
  *   <li>{@link com.reliability.system.view.impl.FailureViewImpl#getLabel <em>Label</em>}</li>
  *   <li>{@link com.reliability.system.view.impl.FailureViewImpl#getOutgoingLinks <em>Outgoing Links</em>}</li>
  *   <li>{@link com.reliability.system.view.impl.FailureViewImpl#getIncomingLinks <em>Incoming Links</em>}</li>
+ *   <li>{@link com.reliability.system.view.impl.FailureViewImpl#getAnchors <em>Anchors</em>}</li>
  * </ul>
  * </p>
  *
@@ -101,6 +104,16 @@ public class FailureViewImpl extends FailureImpl implements FailureView {
 	 * @ordered
 	 */
 	protected EList<ViewLink> incomingLinks;
+
+	/**
+	 * The cached value of the '{@link #getAnchors() <em>Anchors</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAnchors()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Anchor> anchors;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -189,6 +202,18 @@ public class FailureViewImpl extends FailureImpl implements FailureView {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Anchor> getAnchors() {
+		if (anchors == null) {
+			anchors = new EObjectResolvingEList<Anchor>(Anchor.class, this, ViewPackage.FAILURE_VIEW__ANCHORS);
+		}
+		return anchors;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -233,6 +258,8 @@ public class FailureViewImpl extends FailureImpl implements FailureView {
 				return getOutgoingLinks();
 			case ViewPackage.FAILURE_VIEW__INCOMING_LINKS:
 				return getIncomingLinks();
+			case ViewPackage.FAILURE_VIEW__ANCHORS:
+				return getAnchors();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -260,6 +287,10 @@ public class FailureViewImpl extends FailureImpl implements FailureView {
 				getIncomingLinks().clear();
 				getIncomingLinks().addAll((Collection<? extends ViewLink>)newValue);
 				return;
+			case ViewPackage.FAILURE_VIEW__ANCHORS:
+				getAnchors().clear();
+				getAnchors().addAll((Collection<? extends Anchor>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -284,6 +315,9 @@ public class FailureViewImpl extends FailureImpl implements FailureView {
 			case ViewPackage.FAILURE_VIEW__INCOMING_LINKS:
 				getIncomingLinks().clear();
 				return;
+			case ViewPackage.FAILURE_VIEW__ANCHORS:
+				getAnchors().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -304,6 +338,8 @@ public class FailureViewImpl extends FailureImpl implements FailureView {
 				return outgoingLinks != null && !outgoingLinks.isEmpty();
 			case ViewPackage.FAILURE_VIEW__INCOMING_LINKS:
 				return incomingLinks != null && !incomingLinks.isEmpty();
+			case ViewPackage.FAILURE_VIEW__ANCHORS:
+				return anchors != null && !anchors.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -321,6 +357,7 @@ public class FailureViewImpl extends FailureImpl implements FailureView {
 				case ViewPackage.FAILURE_VIEW__LABEL: return ViewPackage.VIEW_OBJECT__LABEL;
 				case ViewPackage.FAILURE_VIEW__OUTGOING_LINKS: return ViewPackage.VIEW_OBJECT__OUTGOING_LINKS;
 				case ViewPackage.FAILURE_VIEW__INCOMING_LINKS: return ViewPackage.VIEW_OBJECT__INCOMING_LINKS;
+				case ViewPackage.FAILURE_VIEW__ANCHORS: return ViewPackage.VIEW_OBJECT__ANCHORS;
 				default: return -1;
 			}
 		}
@@ -340,6 +377,7 @@ public class FailureViewImpl extends FailureImpl implements FailureView {
 				case ViewPackage.VIEW_OBJECT__LABEL: return ViewPackage.FAILURE_VIEW__LABEL;
 				case ViewPackage.VIEW_OBJECT__OUTGOING_LINKS: return ViewPackage.FAILURE_VIEW__OUTGOING_LINKS;
 				case ViewPackage.VIEW_OBJECT__INCOMING_LINKS: return ViewPackage.FAILURE_VIEW__INCOMING_LINKS;
+				case ViewPackage.VIEW_OBJECT__ANCHORS: return ViewPackage.FAILURE_VIEW__ANCHORS;
 				default: return -1;
 			}
 		}
